@@ -115,61 +115,66 @@ const IndustrySnapshots: React.FC = () => {
         </div>
 
         <div className="snapshot-content-wrapper">
-          {industries.map((ind) => (
-            <div
-              key={ind.id}
-              className={`snapshot-content ${activeTab === ind.id ? "active" : ""}`}
-            >
-              <div className="snapshot-image-box">
-                <img src={ind.image} alt={ind.title} />
-              </div>
-              <div className="snapshot-info">
-                <h3>{ind.title}</h3>
-                <div className="industry-tag-list">
-                  {ind.tags.map((tag) => (
-                    <span key={tag} className="industry-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="metric-row">
-                  {ind.metrics.map((metric, idx) => (
-                    <div className="metric-item" key={idx}>
-                      <span className="metric-value">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                        >
-                          <path d="M12 19V5M5 12l7-7 7 7" />
-                        </svg>
-                        {metric.value}
+          <div className="snapshot-image-box">
+            <img
+              src={industries.find((i) => i.id === activeTab)?.image}
+              alt={industries.find((i) => i.id === activeTab)?.title}
+            />
+          </div>
+          <div className="snapshot-info-stack">
+            {industries.map((ind) => (
+              <div
+                key={ind.id}
+                className={`snapshot-info-pane ${activeTab === ind.id ? "active" : ""}`}
+              >
+                <div className="snapshot-info">
+                  <h3>{ind.title}</h3>
+                  <div className="industry-tag-list">
+                    {ind.tags.map((tag) => (
+                      <span key={tag} className="industry-tag">
+                        {tag}
                       </span>
-                      <span className="metric-label">{metric.label}</span>
+                    ))}
+                  </div>
+                  <div className="metric-row">
+                    {ind.metrics.map((metric, idx) => (
+                      <div className="metric-item" key={idx}>
+                        <span className="metric-value">
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                          >
+                            <path d="M12 19V5M5 12l7-7 7 7" />
+                          </svg>
+                          {metric.value}
+                        </span>
+                        <span className="metric-label">{metric.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="action-card">
+                    <div className="play-icon">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
                     </div>
-                  ))}
-                </div>
-                <div className="action-card">
-                  <div className="play-icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                    <div className="action-text">
+                      <h4>{ind.action.title}</h4>
+                      <p>{ind.action.time}</p>
+                    </div>
                   </div>
-                  <div className="action-text">
-                    <h4>{ind.action.title}</h4>
-                    <p>{ind.action.time}</p>
-                  </div>
+                  <button className="snapshot-cta">{ind.buttonText}</button>
                 </div>
-                <button className="snapshot-cta">{ind.buttonText}</button>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
