@@ -287,7 +287,8 @@ const LeadProblem: React.FC = () => {
             <h3 className="lead-cta-title">Stop the Leak. Start the Flow.</h3>
             <p className="lead-cta-text">
               You're paying <strong>4.3x more</strong> per appointment. Plus
-              missing <strong>3x the leads</strong>.<br />
+              missing <strong>3x the leads</strong>.
+              <br />
               Let's fix that in 48 hours.
             </p>
             <a href="#demo" className="lead-cta-button">
@@ -306,14 +307,7 @@ const LeadProblem: React.FC = () => {
               </svg>
               <span>Book Your Free Demo</span>
             </a>
-            <p
-              style={{
-                marginTop: "22px",
-                color: "#666",
-                fontSize: "16px",
-                fontWeight: 500,
-              }}
-            >
+            <p className="lead-cta-footer">
               ✓ See 3 leads turn into appointments live
               &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Get your custom ROI calculation
             </p>

@@ -5,6 +5,7 @@ import IndustrySnapshots from "./components/IndustrySnapshots";
 import ROICalculator from "./components/ROICalculator";
 import Proof from "./components/Proof";
 import FAQ from "./components/FAQ";
+import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <ROICalculator />
       <Proof />
       <FAQ />
+      <FinalCTA />
       <Footer />
     </div>
   );
