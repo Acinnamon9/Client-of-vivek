@@ -96,6 +96,9 @@ const IndustrySnapshots: React.FC = () => {
     },
   ];
 
+  const activeIndustry =
+    industries.find((i) => i.id === activeTab) || industries[0];
+
   return (
     <section className="roi-snapshot-section">
       <div className="roi-snapshot-container">
@@ -116,10 +119,7 @@ const IndustrySnapshots: React.FC = () => {
 
         <div className="snapshot-content-wrapper">
           <div className="snapshot-image-box">
-            <img
-              src={industries.find((i) => i.id === activeTab)?.image}
-              alt={industries.find((i) => i.id === activeTab)?.title}
-            />
+            <img src={activeIndustry.image} alt={activeIndustry.title} />
           </div>
           <div className="snapshot-info-stack">
             {industries.map((ind) => (
