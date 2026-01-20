@@ -29,7 +29,6 @@ const Comparison: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-12 items-center relative z-10">
           {mathComparison.map((sys, idx) => {
             const isAI = sys.id === "ai";
-            const accentColor = isAI ? "brand-success" : "brand-primary";
 
             return (
               <React.Fragment key={sys.id}>
