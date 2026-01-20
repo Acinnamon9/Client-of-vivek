@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CallUs from "./components/CallUs";
@@ -22,17 +22,29 @@ const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   const [isStacked, setIsStacked] = useState(true);
+  const [isDark, setIsDark] = useState(true);
+
+  // Sync theme with data attribute on HTML element
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  }, [isDark]);
 
   const stickyClass = isStacked
-    ? "sticky -top-px bg-(--background) shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)] transition-shadow duration-500"
-    : "relative bg-(--background)";
+    ? "sticky -top-px bg-(--background) shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500"
+    : "relative bg-(--background) transition-all duration-500";
 
   return (
     <div className="relative font-jakarta bg-(--background) selection:bg-brand-primary/20 selection:text-brand-primary min-h-screen">
       <Navbar />
       <LayoutToggle
         isStacked={isStacked}
-        onToggle={() => setIsStacked(!isStacked)}
+        onToggleLayout={() => setIsStacked(!isStacked)}
+        isDark={isDark}
+        onToggleTheme={() => setIsDark(!isDark)}
       />
 
       {/* Hero: No sticky, it's the base */}
