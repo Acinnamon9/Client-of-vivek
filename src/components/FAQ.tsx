@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { cva } from "class-variance-authority";
 import { Section, Container } from "./ui/Layout";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
@@ -9,28 +10,67 @@ interface FAQItemProps {
   children: React.ReactNode;
 }
 
+const itemVariants = cva(
+  "border border-black/5 rounded-2xl bg-[#fafafa] mb-4 overflow-hidden transition-all duration-300",
+  {
+    variants: {
+      open: {
+        true: "ring-2 ring-brand-primary/5",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      open: false,
+    },
+  },
+);
+
+const iconVariants = cva(
+  "text-2xl text-slate-400 transition-transform duration-300 font-medium",
+  {
+    variants: {
+      open: {
+        true: "rotate-180",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      open: false,
+    },
+  },
+);
+
+const contentVariants = cva(
+  "overflow-hidden transition-all duration-500 ease-in-out px-6 sm:px-8",
+  {
+    variants: {
+      open: {
+        true: "max-h-[800px] pb-8 opacity-100",
+        false: "max-h-0 opacity-0",
+      },
+    },
+    defaultVariants: {
+      open: false,
+    },
+  },
+);
+
 const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div
-      className={`border border-black/5 rounded-2xl bg-[#fafafa] mb-4 overflow-hidden transition-all duration-300 ${isOpen ? "ring-2 ring-[#ff5722]/5" : ""}`}
-    >
+    <div className={itemVariants({ open: isOpen })}>
       <button
-        className="w-full text-left p-6 sm:p-7 bg-none border-none flex justify-between items-center cursor-pointer text-lg sm:text-xl font-bold text-[#1a1a1a]"
+        className="w-full text-left p-6 sm:p-7 bg-none border-none flex justify-between items-center cursor-pointer text-lg sm:text-xl font-bold text-brand-dark"
         onClick={() => setIsOpen(!isOpen)}
       >
         {question}
-        <span
-          className={`text-2xl text-[#94a3b8] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-        >
+        <span className={iconVariants({ open: isOpen })}>
           {isOpen ? "−" : "+"}
         </span>
       </button>
-      <div
-        className={`overflow-hidden transition-all duration-400 ease-in-out px-6 sm:px-8 ${isOpen ? "max-h-[500px] pb-8 opacity-100" : "max-h-0 opacity-0"}`}
-      >
-        <div className="leading-relaxed text-[#4b5563] space-y-4">
+      <div className={contentVariants({ open: isOpen })}>
+        <div className="leading-relaxed text-slate-600 space-y-4 font-medium">
           {children}
         </div>
       </div>
@@ -78,7 +118,7 @@ const FAQ: React.FC = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
-                  className="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-[#ff5722] before:font-bold before:text-xl"
+                  className="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-brand-primary before:font-bold before:text-xl"
                 >
                   {item}
                 </li>
@@ -103,7 +143,7 @@ const FAQ: React.FC = () => {
 
         <Card className="mt-16 text-center border-none shadow-none bg-[#f8fafc]">
           <CardContent className="pt-10">
-            <div className="text-xl font-bold mb-6 text-[#1a1a1a]">
+            <div className="text-xl font-bold mb-6 text-brand-dark">
               Still have questions?
             </div>
             <Button

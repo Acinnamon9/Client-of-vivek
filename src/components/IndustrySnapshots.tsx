@@ -1,10 +1,38 @@
 import React, { useState } from "react";
+import { cva } from "class-variance-authority";
 import { industries } from "../constants/industryData";
 import { Section, Container } from "./ui/Layout";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
 import { Card, CardContent } from "./ui/Card";
-import { cn } from "../lib/utils";
+
+const tabVariants = cva(
+  "px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300",
+  {
+    variants: {
+      active: {
+        true: "bg-brand-link text-white shadow-lg shadow-brand-link/25",
+        false:
+          "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900",
+      },
+    },
+    defaultVariants: {
+      active: false,
+    },
+  },
+);
+
+const paneVariants = cva("transition-all duration-500 absolute w-full", {
+  variants: {
+    active: {
+      true: "opacity-100 translate-y-0 relative z-10",
+      false: "opacity-0 translate-y-8 pointer-events-none",
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
 
 const IndustrySnapshots: React.FC = () => {
   const [activeTab, setActiveTab] = useState("global");
@@ -24,12 +52,7 @@ const IndustrySnapshots: React.FC = () => {
             {industries.map((industry) => (
               <button
                 key={industry.id}
-                className={cn(
-                  "px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300",
-                  activeTab === industry.id
-                    ? "bg-brand-link text-white shadow-lg shadow-brand-link/25"
-                    : "bg-[#f5f7f9] text-[#64748b] hover:bg-[#e2e8f0] hover:text-[#1e293b]",
-                )}
+                className={tabVariants({ active: activeTab === industry.id })}
                 onClick={() => setActiveTab(industry.id)}
               >
                 {industry.label}
@@ -53,12 +76,7 @@ const IndustrySnapshots: React.FC = () => {
             {industries.map((ind) => (
               <div
                 key={ind.id}
-                className={cn(
-                  "transition-all duration-500 absolute w-full",
-                  activeTab === ind.id
-                    ? "opacity-100 translate-y-0 relative z-10"
-                    : "opacity-0 translate-y-8 pointer-events-none",
-                )}
+                className={paneVariants({ active: activeTab === ind.id })}
               >
                 <h3 className="text-3xl sm:text-4xl font-black text-brand-dark mb-6 leading-tight">
                   {ind.title}

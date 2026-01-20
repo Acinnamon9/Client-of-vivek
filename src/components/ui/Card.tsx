@@ -1,33 +1,34 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "glass" | "white" | "dark" | "outline";
-}
+const cardVariants = cva(
+  "rounded-[32px] overflow-hidden transition-all duration-400 ease-out",
+  {
+    variants: {
+      variant: {
+        white:
+          "bg-white border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.03)]",
+        glass:
+          "bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.05)]",
+        dark: "bg-brand-dark text-white border border-white/5",
+        outline: "bg-transparent border-2 border-black/5",
+      },
+    },
+    defaultVariants: {
+      variant: "white",
+    },
+  },
+);
 
-const Card: React.FC<CardProps> = ({
-  className,
-  variant = "white",
-  ...props
-}) => {
-  const variants = {
-    white:
-      "bg-white border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.03)]",
-    glass:
-      "bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.05)]",
-    dark: "bg-brand-dark text-white border border-white/5",
-    outline: "bg-transparent border-2 border-black/5",
-  };
+interface CardProps
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {}
 
+const Card: React.FC<CardProps> = ({ className, variant, ...props }) => {
   return (
-    <div
-      className={cn(
-        "rounded-[32px] overflow-hidden transition-all duration-400 ease-out",
-        variants[variant],
-        className,
-      )}
-      {...props}
-    />
+    <div className={cn(cardVariants({ variant }), className)} {...props} />
   );
 };
 
