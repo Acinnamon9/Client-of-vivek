@@ -1,106 +1,111 @@
 import React from "react";
+import {
+  footerPlatformLinks,
+  footerCompanyLinks,
+  footerContactInfo,
+  footerSocialLinks,
+} from "../constants/footerData";
+import { Container } from "./ui/Layout";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0f0f0f] pt-20 pb-10 px-5 text-white/40 text-sm">
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-[60px]">
-        <div className="col-span-1">
-          <a
-            href="/"
-            className="text-white text-2xl font-extrabold no-underline mb-4 inline-block"
-          >
-            Ravan.ai
-          </a>
-          <p className="leading-[1.6] mt-3">
-            Building the world's first truly autonomous AI sales workforce.
-            Scale your business without scaling your headcount.
+    <footer className="bg-brand-dark pt-24 pb-12 px-5 text-[#94a3b8] text-sm font-['Plus_Jakarta_Sans',sans-serif]">
+      <Container>
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-16 mb-20">
+          <div className="space-y-6">
+            <a
+              href="/"
+              className="text-white text-3xl font-black no-underline tracking-tighter"
+            >
+              Ravan<span className="text-brand-primary">.ai</span>
+            </a>
+            <p className="leading-relaxed text-base font-medium max-w-xs">
+              Building the world's first truly autonomous AI sales workforce.
+              Scale your business without scaling your headcount.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-white text-lg font-black mb-8 tracking-tight">
+              Platform
+            </h4>
+            <ul className="space-y-4">
+              {footerPlatformLinks.map((link, idx) => (
+                <li key={idx}>
+                  <a
+                    href={link.href}
+                    className="hover:text-white transition-all duration-300 no-underline font-bold"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-lg font-black mb-8 tracking-tight">
+              Company
+            </h4>
+            <ul className="space-y-4">
+              {footerCompanyLinks.map((link, idx) => (
+                <li key={idx}>
+                  <a
+                    href={link.href}
+                    className="hover:text-white transition-all duration-300 no-underline font-bold"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-lg font-black mb-8 tracking-tight">
+              Contact
+            </h4>
+            <ul className="space-y-4 font-bold">
+              <li>
+                <a
+                  href={`mailto:${footerContactInfo.email}`}
+                  className="hover:text-white transition-all duration-300 no-underline"
+                >
+                  {footerContactInfo.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${footerContactInfo.phone.replace(/[^0-9+]/g, "")}`}
+                  className="hover:text-white transition-all duration-300 no-underline"
+                >
+                  {footerContactInfo.phone}
+                </a>
+              </li>
+              <li>{footerContactInfo.address}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="font-bold opacity-60 font-['Plus_Jakarta_Sans',sans-serif] tracking-tight">
+            &copy; {currentYear} Ravan.ai. Built for Global Dominance.
           </p>
-        </div>
-
-        <div>
-          <h4 className="text-white text-base font-bold mb-6">Platform</h4>
-          <ul className="list-none">
-            {[
-              { label: "Features", href: "#features" },
-              { label: "AI Influencer", href: "#ai-influencer" },
-              { label: "AI Sales Rep", href: "#ai-sales-rep" },
-              { label: "Integrations", href: "#integrations" },
-            ].map((link, idx) => (
-              <li key={idx} className="mb-3">
-                <a
-                  href={link.href}
-                  className="text-white/40 hover:text-white transition-colors duration-300 no-underline"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white text-base font-bold mb-6">Company</h4>
-          <ul className="list-none">
-            {[
-              { label: "About Us", href: "#about" },
-              { label: "Case Studies", href: "#case-studies" },
-              { label: "Privacy Policy", href: "#privacy" },
-              { label: "Terms of Service", href: "#terms" },
-            ].map((link, idx) => (
-              <li key={idx} className="mb-3">
-                <a
-                  href={link.href}
-                  className="text-white/40 hover:text-white transition-colors duration-300 no-underline"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-white text-base font-bold mb-6">Contact</h4>
-          <ul className="list-none">
-            <li className="mb-3">
-              <a
-                href="mailto:support@ravan.ai"
-                className="text-white/40 hover:text-white transition-colors duration-300 no-underline"
-              >
-                support@ravan.ai
-              </a>
-            </li>
-            <li className="mb-3">
-              <a
-                href="tel:+1234567890"
-                className="text-white/40 hover:text-white transition-colors duration-300 no-underline"
-              >
-                +1 (234) 567-890
-              </a>
-            </li>
-            <li className="mb-3">Dubai, UAE</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="mt-20 pt-10 border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto flex flex-wrap justify-between items-center gap-5">
-          <p>&copy; {currentYear} Ravan.ai. All rights reserved.</p>
-          <div className="flex gap-6">
-            {["LinkedIn", "Twitter", "Instagram"].map((social, idx) => (
+          <div className="flex gap-8">
+            {footerSocialLinks.map((social, idx) => (
               <a
                 key={idx}
                 href="#"
-                className="text-white/40 hover:text-white font-semibold transition-colors no-underline"
+                className="hover:text-white font-black transition-all no-underline text-xs uppercase tracking-widest"
               >
                 {social}
               </a>
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

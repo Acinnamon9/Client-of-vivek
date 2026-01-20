@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Section, Container } from "./ui/Layout";
+import { Card } from "./ui/Card";
+import Button from "./ui/Button";
 
 const ROICalculator: React.FC = () => {
   const [leads, setLeads] = useState(1000);
@@ -7,11 +10,6 @@ const ROICalculator: React.FC = () => {
   const [projectedRevenue, setProjectedRevenue] = useState(0);
 
   useEffect(() => {
-    // Logic:
-    // Current Revenue = Leads * (Rate/100) * Deal
-    // AI Revenue (Assumption: 30% uplift in conversion) = Leads * (Rate * 1.3 / 100) * Deal
-    // Difference = AI Revenue - Current Revenue
-    // Simplified: Difference = Current Revenue * 0.3
     const currentRevenue = leads * (closeRate / 100) * dealValue;
     const additionalRevenue = currentRevenue * 0.3;
     setProjectedRevenue(additionalRevenue);
@@ -26,84 +24,126 @@ const ROICalculator: React.FC = () => {
   };
 
   return (
-    <section className="bg-linear-to-br from-[#1a1a1a] to-[#2d2d2d] py-[100px] px-5 text-white font-['Plus_Jakarta_Sans',sans-serif]">
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
-        <div className="mb-10 lg:mb-0">
-          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
-            Calculate Your Potential Revenue Uplift
-          </h2>
-          <p className="text-lg lg:text-xl text-gray-300 leading-relaxed">
-            See exactly how much revenue you're missing out on by relying on
-            human-only sales teams. Our AI increases contact rates and
-            follow-ups, leading to more closed deals.
-          </p>
-        </div>
-
-        <div className="bg-white rounded-[24px] p-10 text-[#1a1a1a] shadow-[0_24px_60px_rgba(0,0,0,0.2)]">
-          <div className="mb-[30px]">
-            <div className="flex justify-between mb-3 font-bold text-[#1e293b]">
-              <span>Monthly Leads</span>
-              <span className="text-[#ff5722]">{leads.toLocaleString()}</span>
-            </div>
-            <input
-              type="range"
-              min="100"
-              max="10000"
-              step="100"
-              value={leads}
-              className="w-full h-1.5 bg-[#eee] rounded-full appearance-none outline-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-[#ff5722] [&::-webkit-slider-thumb]:rounded-full"
-              onChange={(e) => setLeads(parseInt(e.target.value))}
-            />
-          </div>
-
-          <div className="mb-[30px]">
-            <div className="flex justify-between mb-3 font-bold text-[#1e293b]">
-              <span>Average Deal Value</span>
-              <span className="text-[#ff5722]">
-                ${dealValue.toLocaleString()}
-              </span>
-            </div>
-            <input
-              type="range"
-              min="500"
-              max="50000"
-              step="500"
-              value={dealValue}
-              className="w-full h-1.5 bg-[#eee] rounded-full appearance-none outline-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-[#ff5722] [&::-webkit-slider-thumb]:rounded-full"
-              onChange={(e) => setDealValue(parseInt(e.target.value))}
-            />
-          </div>
-
-          <div className="mb-[30px]">
-            <div className="flex justify-between mb-3 font-bold text-[#1e293b]">
-              <span>Current Close Rate</span>
-              <span className="text-[#ff5722]">{closeRate}%</span>
-            </div>
-            <input
-              type="range"
-              min="1"
-              max="20"
-              step="0.5"
-              value={closeRate}
-              className="w-full h-1.5 bg-[#eee] rounded-full appearance-none outline-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-[#ff5722] [&::-webkit-slider-thumb]:rounded-full"
-              onChange={(e) => setCloseRate(parseFloat(e.target.value))}
-            />
-          </div>
-
-          <div className="bg-[#fff5f2] rounded-2xl p-6 mt-10 text-center">
-            <div className="text-sm font-bold text-[#64748b] uppercase tracking-[0.05em] mb-3">
-              Projected Additional Revenue (Month)
-            </div>
-            <div className="text-5xl font-black text-[#ff5722]">
-              {formatMoney(projectedRevenue)}
-            </div>
-            <div className="text-xs text-[#94a3b8] mt-4">
-              *Based on conservative 30% increase in conversion with AI
-            </div>
-          </div>
-        </div>
+    <Section className="bg-brand-dark overflow-hidden relative font-['Plus_Jakarta_Sans',sans-serif]">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-brand-primary rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[100px]"></div>
       </div>
-    </section>
+
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="max-w-xl">
+            <h2 className="text-5xl sm:text-6xl font-black text-white mb-8 leading-[1.1] tracking-tighter">
+              Calculate Your{" "}
+              <span className="text-brand-primary">Revenue Uplift</span>
+            </h2>
+            <p className="text-xl text-[#94a3b8] leading-relaxed font-medium mb-10">
+              See exactly how much revenue you're missing out on by relying on
+              human-only sales teams. Our AI increases contact rates and
+              follow-ups, leading to more closed deals.
+            </p>
+            <Button
+              size="xl"
+              className="shadow-2xl shadow-brand-primary/20"
+              onClick={() =>
+                window.open("https://myteam.ravan.ai/book", "_blank")
+              }
+            >
+              Get Your Custom Plan
+            </Button>
+          </div>
+
+          <Card variant="white" className="p-8 sm:p-12 shadow-2xl">
+            <div className="space-y-10">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center font-black">
+                  <span className="text-brand-dark uppercase tracking-widest text-xs">
+                    Monthly Leads
+                  </span>
+                  <span className="text-brand-primary text-2xl">
+                    {leads.toLocaleString()}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="100"
+                  max="10000"
+                  step="100"
+                  value={leads}
+                  className="w-full h-2 bg-slate-100 rounded-full appearance-none cursor-pointer accent-brand-primary"
+                  onChange={(e) => setLeads(parseInt(e.target.value))}
+                />
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex justify-between items-center font-black">
+                  <span className="text-brand-dark uppercase tracking-widest text-xs">
+                    Avg. Deal Value
+                  </span>
+                  <span className="text-brand-primary text-2xl">
+                    ${dealValue.toLocaleString()}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="500"
+                  max="50000"
+                  step="500"
+                  value={dealValue}
+                  className="w-full h-2 bg-slate-100 rounded-full appearance-none cursor-pointer accent-brand-primary"
+                  onChange={(e) => setDealValue(parseInt(e.target.value))}
+                />
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex justify-between items-center font-black">
+                  <span className="text-brand-dark uppercase tracking-widest text-xs">
+                    Current Close Rate
+                  </span>
+                  <span className="text-brand-primary text-2xl">
+                    {closeRate}%
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  step="0.5"
+                  value={closeRate}
+                  className="w-full h-2 bg-slate-100 rounded-full appearance-none cursor-pointer accent-brand-primary"
+                  onChange={(e) => setCloseRate(parseFloat(e.target.value))}
+                />
+              </div>
+
+              <div className="bg-brand-primary/5 rounded-[32px] p-8 text-center border border-brand-primary/10 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                </div>
+                <div className="text-[10px] font-black text-[#64748b] uppercase tracking-[0.2em] mb-4">
+                  Projected Additional Revenue / Month
+                </div>
+                <div className="text-5xl sm:text-6xl font-black text-brand-primary tracking-tighter mb-4">
+                  {formatMoney(projectedRevenue)}
+                </div>
+                <div className="text-xs text-[#94a3b8] font-bold">
+                  *Based on conservative 30% increase in conversion with AI
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </Container>
+    </Section>
   );
 };
 

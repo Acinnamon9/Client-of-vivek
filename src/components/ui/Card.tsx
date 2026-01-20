@@ -46,7 +46,7 @@ const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => (
   <div
-    className={cn("p-8 sm:p-10 border-t border-black/[0.03]", className)}
+    className={cn("p-8 sm:p-10 border-t border-black/3", className)}
     {...props}
   />
 );
