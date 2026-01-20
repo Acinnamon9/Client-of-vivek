@@ -34,7 +34,7 @@ function App() {
   }, [isDark]);
 
   const stickyClass = isStacked
-    ? "sticky -top-px bg-(--background) shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500"
+    ? "relative md:sticky md:-top-px bg-(--background) shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-500"
     : "relative bg-(--background) transition-all duration-500";
 
   return (
