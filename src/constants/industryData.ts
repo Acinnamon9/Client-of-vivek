@@ -3,18 +3,12 @@ export interface IndustryMetric {
   label: string;
 }
 
-export interface IndustryAction {
-  title: string;
-  time: string;
-}
-
 export interface Industry {
   id: string;
   label: string;
   title: string;
   tags: string[];
   metrics: IndustryMetric[];
-  action: IndustryAction;
   buttonText: string;
   image: string;
 }
@@ -29,10 +23,6 @@ export const industries: Industry[] = [
       { value: "1.2M+", label: "API Calls/Mo" },
       { value: "99.9%", label: "Uptime Reliability" },
     ],
-    action: {
-      title: "System Deep Dive",
-      time: "03:12 • Infrastructure Overview",
-    },
     buttonText: "Explore the Platform",
     image: "/Global Status.png",
   },
@@ -45,12 +35,8 @@ export const industries: Industry[] = [
       { value: "400%", label: "in CVR" },
       { value: "25–35%", label: "in show-up rate" },
     ],
-    action: {
-      title: "Hear It In Action",
-      time: "01:53 • Real Estate AI Rep",
-    },
     buttonText: "Book a Meeting",
-    image: "/Real Estate.jpg",
+    image: "/Real Estate.png",
   },
   {
     id: "gaming",
@@ -61,7 +47,6 @@ export const industries: Industry[] = [
       { value: "3.2x", label: "LTV increase" },
       { value: "55%", label: "in reactivation rate" },
     ],
-    action: { title: "Hear It In Action", time: "02:15 • Casino VIP Rep" },
     buttonText: "Book a Meeting",
     image: "/Gaming and Casinos.jpg",
   },
@@ -74,10 +59,6 @@ export const industries: Industry[] = [
       { value: "92%", label: "show-up rate" },
       { value: "60%", label: "reduction in no-shows" },
     ],
-    action: {
-      title: "Hear It In Action",
-      time: "01:42 • Clinic AI Assistant",
-    },
     buttonText: "Book a Meeting",
     image: "/Healthcare.png",
   },
@@ -90,9 +71,8 @@ export const industries: Industry[] = [
       { value: "3x", label: "Faster Underwriting" },
       { value: "$45k", label: "saved in ops cost" },
     ],
-    action: { title: "Hear It In Action", time: "02:30 • Finance AI Broker" },
     buttonText: "Book a Meeting",
-    image: "https://loremflickr.com/800/600/dashboard,finance,bank",
+    image: "/Lending and Finance.png",
   },
   {
     id: "logistics",
@@ -103,10 +83,6 @@ export const industries: Industry[] = [
       { value: "24/7", label: "Fleet Coverage" },
       { value: "48%", label: "reduction in dispatch errors" },
     ],
-    action: {
-      title: "Hear It In Action",
-      time: "01:58 • Logistics Dispatch AI",
-    },
     buttonText: "Book a Meeting",
     image: "/Transportation and Logistics.png",
   },

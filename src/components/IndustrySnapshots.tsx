@@ -4,7 +4,6 @@ import { industries } from "../constants/industryData";
 import { Section, Container } from "./ui/Layout";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
-import { Card, CardContent } from "./ui/Card";
 
 const tabVariants = cva(
   "px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300",
@@ -111,29 +110,6 @@ const IndustrySnapshots: React.FC = () => {
                     </div>
                   ))}
                 </div>
-
-                <Card className="bg-(--card) border-(--border) shadow-sm mb-8 hover:translate-x-2 transition-transform">
-                  <CardContent className="p-6 flex items-center gap-5">
-                    <div className="w-12 h-12 bg-brand-action rounded-full flex items-center justify-center text-white shrink-0 shadow-lg shadow-brand-action/20">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className="text-base font-bold text-(--foreground)">
-                        {ind.action.title}
-                      </h4>
-                      <p className="text-sm text-(--muted-foreground) font-medium">
-                        {ind.action.time}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
 
                 <Button
                   variant="black"
