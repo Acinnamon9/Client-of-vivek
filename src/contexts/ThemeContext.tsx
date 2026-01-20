@@ -7,7 +7,7 @@
  * to the document root for CSS styling.
  */
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useWidgetContext } from "./WidgetContext";
+import { useWidgetContext } from "./WidgetContext.tsx";
 
 type Theme = "light" | "dark";
 
