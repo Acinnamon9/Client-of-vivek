@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-0 left-[-5%] w-[400px] hidden lg:block pointer-events-none z-0"
       >
         <img
-          src="/Woman.png"
+          src="https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Woman.png"
           alt="AI Team Member"
           className="w-full h-auto object-contain opacity-80"
         />
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-0 right-[-5%] w-[420px] hidden lg:block pointer-events-none z-0"
       >
         <img
-          src="/Guy.png"
+          src="https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Guy.png"
           alt="AI Team Member"
           className="w-full h-auto object-contain opacity-80"
         />

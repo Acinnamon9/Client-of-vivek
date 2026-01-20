@@ -98,28 +98,32 @@ export const timelineEvents: LeadProblemTimelineEvent[] = [
     event: "Lead Submits Form",
     result: "AI calls immediately",
     type: "won",
-    image: "/Lead submits form.jpg",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Lead submits form.jpg",
   },
   {
     time: "3 min",
     event: "Peak Interest Window",
     result: "Your SDR hasn't seen it yet",
     type: "lost",
-    image: "/Peak Interest Window.jpg",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Peak Interest Window.jpg",
   },
   {
     time: "1 hour",
     event: "Lead Goes Cold",
     result: "21x less likely to convert",
     type: "lost",
-    image: "/Lead Goes Cold.jpg",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Lead Goes Cold.jpg",
   },
   {
     time: "24 hours",
     event: "First Contact Attempt",
     result: "Already bought from competitor",
     type: "lost",
-    image: "/First Contact Attempt.jpg",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/First Contact Attempt.jpg",
   },
 ];
 
@@ -132,7 +136,8 @@ export const failureCards: LeadProblemFailureCard[] = [
     desc: "MIT research: Contact within 5 minutes = 21x more likely to convert. Your average: 3+ hours.",
     metric: "78%",
     label: "NEVER CONTACTED",
-    image: "/Woman.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Woman.png",
     icon: (
       <svg
         width="44"
@@ -152,7 +157,8 @@ export const failureCards: LeadProblemFailureCard[] = [
     desc: "80% of sales require 12+ touches. Your team averages 2 before giving up.",
     metric: "12x",
     label: "MORE TOUCHES NEEDED",
-    image: "/Guy.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Guy.png",
     icon: (
       <svg
         width="44"
@@ -171,7 +177,8 @@ export const failureCards: LeadProblemFailureCard[] = [
     desc: "You're paying $166 per show while AI delivers them for $1.14. That's 145x overpayment.",
     metric: "$166",
     label: "YOUR COST PER SHOW",
-    image: "/Guy and woman.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Guy and woman.png",
     icon: (
       <svg
         width="44"

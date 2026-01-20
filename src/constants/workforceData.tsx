@@ -22,7 +22,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Social Media Influencer",
     replaces: "Ad Agency",
     replacesValue: "$5k/mo",
-    image: "/Social media influencer.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Social media influencer.png",
     features: [
       "Creates & posts viral content daily",
       "Manages paid ad campaigns 24/7",
@@ -51,7 +52,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Sales Representative",
     replaces: "3 SDRs",
     replacesValue: "$15k/mo",
-    image: "/Sales representative.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Sales representative.png",
     features: [
       "Calls leads within 3 minutes",
       "Qualifies prospects via SMS/Call",
@@ -79,7 +81,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Receptionist",
     replaces: "Front Desk",
     replacesValue: "$4k/mo",
-    image: "/Receptionist.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Receptionist.png",
     features: [
       "Answers inbound calls instantly",
       "Routes calls to appropriate staff",
@@ -106,7 +109,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Customer Service",
     replaces: "Support Rep",
     replacesValue: "$4k/mo",
-    image: "/Customer service.png",
+    image:
+      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Customer service.png",
     features: [
       "Resolves common issues instantly",
       "Available across Chat, SMS, Email",
