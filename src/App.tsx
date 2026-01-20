@@ -3,6 +3,11 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CallUs from "./components/CallUs";
 import LeadProblem from "./components/LeadProblem";
+import Comparison from "./components/lead-problem/Comparison";
+import Timeline from "./components/lead-problem/Timeline";
+import FailureCards from "./components/lead-problem/FailureCards";
+import Funnel from "./components/lead-problem/Funnel";
+import CTA from "./components/lead-problem/CTA";
 
 // Lazy load non-critical sections
 const Workforce = lazy(() => import("./components/Workforce"));
@@ -26,8 +31,24 @@ function App() {
         <CallUs />
       </div>
 
+      {/* The Problem Series */}
       <div className="sticky top-0 z-20 shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
         <LeadProblem />
+      </div>
+      <div className="sticky top-0 z-21 shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
+        <Comparison />
+      </div>
+      <div className="sticky top-0 z-22 shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
+        <Timeline />
+      </div>
+      <div className="sticky top-0 z-23 shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
+        <FailureCards />
+      </div>
+      <div className="sticky top-0 z-24 shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
+        <Funnel />
+      </div>
+      <div className="sticky top-0 z-25 shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
+        <CTA />
       </div>
 
       <Suspense fallback={<div className="h-screen bg-(--background)" />}>

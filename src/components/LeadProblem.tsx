@@ -1,15 +1,10 @@
 import React from "react";
 import { Section, Container } from "./ui/Layout";
 import Badge from "./ui/Badge";
-import Comparison from "./lead-problem/Comparison";
-import Timeline from "./lead-problem/Timeline";
-import FailureCards from "./lead-problem/FailureCards";
-import Funnel from "./lead-problem/Funnel";
-import CTA from "./lead-problem/CTA";
 
 const LeadProblem: React.FC = () => {
   return (
-    <Section className="bg-(--background) relative overflow-hidden font-jakarta">
+    <Section className="bg-(--background) relative overflow-hidden font-jakarta flex flex-col justify-center min-h-screen">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[300px] bg-linear-to-b from-(--muted)/20 to-transparent"></div>
@@ -22,7 +17,7 @@ const LeadProblem: React.FC = () => {
 
       <Container className="relative z-10">
         {/* Header */}
-        <div className="text-center mb-24 animate-fade-in-up">
+        <div className="text-center animate-fade-in-up">
           <Badge variant="brand" className="mb-8">
             <svg
               width="16"
@@ -36,30 +31,36 @@ const LeadProblem: React.FC = () => {
             </svg>
             The Sales System Problem
           </Badge>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-(--foreground) leading-[1.1] mb-8 tracking-tighter">
-            The Problem: You're Bleeding Appointments
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-(--foreground) leading-[1.05] mb-8 tracking-tighter uppercase px-4">
+            The Problem:
             <br />
-            While Competitors Run{" "}
-            <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent relative inline-block">
-              Automated Revenue Machines
-              <span
-                className="absolute bottom-1 left-0 w-full h-1 bg-brand-primary/30 rounded-full scale-x-0 animate-expand-underline origin-left"
-                style={{ animationDelay: "0.5s" }}
-              ></span>
+            You're Bleeding
+            <br />
+            <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent italic">
+              Appointments
             </span>
           </h2>
-          <p className="text-xl sm:text-2xl text-(--muted-foreground) leading-relaxed max-w-3xl mx-auto font-medium">
+          <p className="text-xl sm:text-2xl md:text-3xl text-(--muted-foreground) leading-relaxed max-w-3xl mx-auto font-medium tracking-tight">
             Think of your leads like milk from expensive cows — every second
             counts before it spoils. Here's exactly what's happening to your
             $100,000 ad spend:
           </p>
-        </div>
 
-        <Comparison />
-        <Timeline />
-        <FailureCards />
-        <Funnel />
-        <CTA />
+          <div className="mt-16 animate-bounce">
+            <div className="w-10 h-10 rounded-full border-2 border-(--border) flex items-center justify-center mx-auto opacity-30">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+              >
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+              </svg>
+            </div>
+          </div>
+        </div>
       </Container>
     </Section>
   );
