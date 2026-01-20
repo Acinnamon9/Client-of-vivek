@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { COUNTRY_CODES } from "./useCallLogic";
+import { CountryInfo } from "./useCallLogic";
 
 interface CallFormProps {
+  countries: CountryInfo[];
   name: string;
   setName: (val: string) => void;
   email: string;
@@ -17,6 +18,7 @@ interface CallFormProps {
 }
 
 const CallForm: React.FC<CallFormProps> = ({
+  countries,
   name,
   setName,
   email,
@@ -77,8 +79,8 @@ const CallForm: React.FC<CallFormProps> = ({
               onChange={(e) => setCountryCode(e.target.value)}
               className="relative z-10 appearance-none w-full bg-(--muted) border border-(--border) rounded-xl px-3 py-3.5 text-sm text-(--foreground) outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all shadow-inner font-mono text-center cursor-pointer"
             >
-              {COUNTRY_CODES.map((c) => (
-                <option key={c.code} value={c.code}>
+              {countries.map((c) => (
+                <option key={`${c.code}-${c.label}`} value={c.code}>
                   {c.code} {c.label}
                 </option>
               ))}

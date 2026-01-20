@@ -206,6 +206,7 @@ export const useCallLogic = () => {
   };
 
   return {
+    countries,
     countryCode,
     setCountryCode,
     phoneNumber,

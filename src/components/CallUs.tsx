@@ -10,6 +10,7 @@ import SuccessScreen from "./call-us/SuccessScreen";
 
 const CallUs: React.FC = () => {
   const {
+    countries,
     countryCode,
     setCountryCode,
     phoneNumber,
@@ -124,6 +125,7 @@ const CallUs: React.FC = () => {
                 <CallingAnimation loadingText={loadingText} />
               ) : !isSubmitted ? (
                 <CallForm
+                  countries={countries}
                   name={name}
                   setName={setName}
                   email={email}
