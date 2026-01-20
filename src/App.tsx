@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="app-main">
+    <div>
       <Hero />
       <LeadProblem />
       <Workforce />

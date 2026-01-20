@@ -9,16 +9,20 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`faq-item ${isOpen ? "active" : ""}`}>
-      <button className="faq-question" onClick={() => setIsOpen(!isOpen)}>
+    <div
+      className={`border border-black/6 rounded-[20px] bg-[#fcfcfc] mb-5 overflow-hidden ${isOpen ? "active" : ""}`}
+    >
+      <button
+        className="w-full text-left p-7 bg-none border-none flex justify-between items-center cursor-pointer text-[19px] font-bold"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         {question}
-        <span className="faq-icon">{isOpen ? "−" : "+"}</span>
+        <span className="text-2xl text-[#94a3b8]">{isOpen ? "−" : "+"}</span>
       </button>
       <div
-        className={`faq-answer`}
-        style={{ maxHeight: isOpen ? "1000px" : "0" }}
+        className={`overflow-hidden transition-all duration-400 ease-out px-8 ${isOpen ? "max-h-[500px] pb-8" : "max-h-0"}`}
       >
-        <div className="faq-answer-content">{children}</div>
+        <div className="leading-[1.6] text-[#475569] space-y-4">{children}</div>
       </div>
     </div>
   );
@@ -26,17 +30,21 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
 
 const FAQ: React.FC = () => {
   return (
-    <div className="faq-main-section">
-      <div className="faq-container">
-        <div className="faq-header">
-          <span className="faq-badge">Everything You Need to Know</span>
-          <h2 className="faq-title">Frequently Asked Questions</h2>
-          <p className="faq-subtitle">
+    <div className="bg-white py-[100px] px-5 font-['Plus_Jakarta_Sans',sans-serif]">
+      <div className="max-w-[900px] mx-auto">
+        <div className="text-center mb-[60px]">
+          <span className="bg-[#f1f5f9] text-[#475569] px-4 py-1.5 rounded-full text-sm font-bold">
+            Everything You Need to Know
+          </span>
+          <h2 className="text-[40px] font-black mt-6">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-[#64748b] mt-4">
             Common questions about deploying your AI workforce.
           </p>
         </div>
 
-        <div className="faq-grid">
+        <div>
           <FAQItem question="How does the AI compare to a human SDR?">
             <p>
               Our AI outperforms human SDRs in speed, consistency, and cost.
@@ -54,10 +62,19 @@ const FAQ: React.FC = () => {
               Not at all. We handle the entire implementation for you. We
               typically have clients live within 48 to 72 hours.
             </p>
-            <ul className="faq-list">
-              <li>We clone your voice (optional)</li>
-              <li>We upload your scripts and knowledge base</li>
-              <li>We connect it to your CRM and calendar</li>
+            <ul className="list-none pl-0">
+              {[
+                "We clone your voice (optional)",
+                "We upload your scripts and knowledge base",
+                "We connect it to your CRM and calendar",
+              ].map((item, idx) => (
+                <li
+                  key={idx}
+                  className="py-2 relative pl-6 before:content-['•'] before:absolute before:left-2 before:text-[#ff5722] before:font-black"
+                >
+                  {item}
+                </li>
+              ))}
             </ul>
           </FAQItem>
 
@@ -76,9 +93,12 @@ const FAQ: React.FC = () => {
           </FAQItem>
         </div>
 
-        <div className="faq-cta-section">
-          <div className="faq-cta-text">Still have questions?</div>
-          <a href="https://myteam.ravan.ai/book" className="faq-cta-button">
+        <div className="mt-[60px] text-center p-10 bg-[#f8fafc] rounded-[24px]">
+          <div className="text-lg font-bold mb-6">Still have questions?</div>
+          <a
+            href="https://myteam.ravan.ai/book"
+            className="inline-block bg-[#ff5722] text-white px-8 py-4 rounded-xl font-bold no-underline transition-transform duration-300 ease-out hover:-translate-y-0.5"
+          >
             Book a Free Demo Call
           </a>
         </div>

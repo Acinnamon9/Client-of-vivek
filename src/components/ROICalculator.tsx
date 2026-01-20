@@ -26,22 +26,24 @@ const ROICalculator: React.FC = () => {
   };
 
   return (
-    <section className="calculator-section">
-      <div className="calc-container">
-        <div className="calc-content">
-          <h2>Calculate Your Potential Revenue Uplift</h2>
-          <p>
+    <section className="bg-linear-to-br from-[#1a1a1a] to-[#2d2d2d] py-[100px] px-5 text-white font-['Plus_Jakarta_Sans',sans-serif]">
+      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
+        <div className="mb-10 lg:mb-0">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+            Calculate Your Potential Revenue Uplift
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-300 leading-relaxed">
             See exactly how much revenue you're missing out on by relying on
             human-only sales teams. Our AI increases contact rates and
             follow-ups, leading to more closed deals.
           </p>
         </div>
 
-        <div className="calculator-card">
-          <div className="input-group">
-            <div className="input-label">
+        <div className="bg-white rounded-[24px] p-10 text-[#1a1a1a] shadow-[0_24px_60px_rgba(0,0,0,0.2)]">
+          <div className="mb-[30px]">
+            <div className="flex justify-between mb-3 font-bold text-[#1e293b]">
               <span>Monthly Leads</span>
-              <span className="input-value">{leads.toLocaleString()}</span>
+              <span className="text-[#ff5722]">{leads.toLocaleString()}</span>
             </div>
             <input
               type="range"
@@ -49,15 +51,17 @@ const ROICalculator: React.FC = () => {
               max="10000"
               step="100"
               value={leads}
-              className="range-slider"
+              className="w-full h-1.5 bg-[#eee] rounded-full appearance-none outline-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-[#ff5722] [&::-webkit-slider-thumb]:rounded-full"
               onChange={(e) => setLeads(parseInt(e.target.value))}
             />
           </div>
 
-          <div className="input-group">
-            <div className="input-label">
+          <div className="mb-[30px]">
+            <div className="flex justify-between mb-3 font-bold text-[#1e293b]">
               <span>Average Deal Value</span>
-              <span className="input-value">${dealValue.toLocaleString()}</span>
+              <span className="text-[#ff5722]">
+                ${dealValue.toLocaleString()}
+              </span>
             </div>
             <input
               type="range"
@@ -65,15 +69,15 @@ const ROICalculator: React.FC = () => {
               max="50000"
               step="500"
               value={dealValue}
-              className="range-slider"
+              className="w-full h-1.5 bg-[#eee] rounded-full appearance-none outline-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-[#ff5722] [&::-webkit-slider-thumb]:rounded-full"
               onChange={(e) => setDealValue(parseInt(e.target.value))}
             />
           </div>
 
-          <div className="input-group">
-            <div className="input-label">
+          <div className="mb-[30px]">
+            <div className="flex justify-between mb-3 font-bold text-[#1e293b]">
               <span>Current Close Rate</span>
-              <span className="input-value">{closeRate}%</span>
+              <span className="text-[#ff5722]">{closeRate}%</span>
             </div>
             <input
               type="range"
@@ -81,17 +85,19 @@ const ROICalculator: React.FC = () => {
               max="20"
               step="0.5"
               value={closeRate}
-              className="range-slider"
+              className="w-full h-1.5 bg-[#eee] rounded-full appearance-none outline-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-[#ff5722] [&::-webkit-slider-thumb]:rounded-full"
               onChange={(e) => setCloseRate(parseFloat(e.target.value))}
             />
           </div>
 
-          <div className="calc-results">
-            <div className="result-label">
+          <div className="bg-[#fff5f2] rounded-2xl p-6 mt-10 text-center">
+            <div className="text-sm font-bold text-[#64748b] uppercase tracking-[0.05em] mb-3">
               Projected Additional Revenue (Month)
             </div>
-            <div className="result-value">{formatMoney(projectedRevenue)}</div>
-            <div className="calc-note">
+            <div className="text-5xl font-black text-[#ff5722]">
+              {formatMoney(projectedRevenue)}
+            </div>
+            <div className="text-xs text-[#94a3b8] mt-4">
               *Based on conservative 30% increase in conversion with AI
             </div>
           </div>
