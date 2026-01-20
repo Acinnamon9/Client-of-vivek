@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Section, Container } from "./ui/Layout";
-// import { Card } from "./ui/Card"; // Using custom phone card
 import Button from "./ui/Button";
 import { containerVariants, itemVariants } from "../animations";
 
@@ -197,29 +196,29 @@ const CallUs: React.FC = () => {
           className="relative group perspective-1000"
         >
           {/* Phone Frame */}
-          <div className="relative w-[340px] sm:w-[380px] h-[720px] rounded-[50px] bg-[#1a1a1a] p-3 shadow-2xl shadow-brand-primary/20 border-4 border-[#2a2a2a] ring-1 ring-white/10 transition-transform duration-500 hover:rotate-y-2 hover:rotate-x-2">
+          <div className="relative w-[340px] sm:w-[380px] h-[720px] rounded-[50px] bg-(--card) p-3 shadow-2xl shadow-brand-primary/20 border-4 border-(--muted) ring-1 ring-black/5 dark:ring-white/10 transition-transform duration-500 hover:rotate-y-2 hover:rotate-x-2">
             {/* Screen Container */}
-            <div className="relative w-full h-full bg-black rounded-[40px] overflow-hidden flex flex-col isolate">
-              {/* Gloss Reflection */}
-              <div className="absolute inset-0 bg-linear-to-tr from-white/5 to-transparent pointer-events-none z-20 opacity-50"></div>
+            <div className="relative w-full h-full bg-(--background) rounded-[40px] overflow-hidden flex flex-col isolate">
+              {/* Gloss Reflection (More Subtle) */}
+              <div className="absolute inset-0 bg-linear-to-tr from-(--foreground)/5 to-transparent pointer-events-none z-20 opacity-30"></div>
 
-              {/* Ambient Background Glow */}
-              <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0deg,rgba(255,87,34,0.1)_180deg,transparent_360deg)] animate-[rotate-slow_10s_linear_infinite] opacity-30 pointer-events-none z-0"></div>
-              <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/90 to-black/95 z-0 backdrop-blur-3xl"></div>
+              {/* Ambient Background Glow (Theme-aware) */}
+              <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand-primary)_180deg,transparent_360deg)] animate-[rotate-slow_10s_linear_infinite] opacity-10 pointer-events-none z-0 mix-blend-plus-lighter"></div>
+              <div className="absolute inset-0 bg-(--background)/90 z-0 backdrop-blur-2xl"></div>
 
               {/* Status Bar */}
-              <div className="relative z-30 px-6 pt-4 pb-2 flex justify-between items-center text-[10px] font-medium text-white/60">
+              <div className="relative z-30 px-6 pt-4 pb-2 flex justify-between items-center text-[10px] font-medium text-(--muted-foreground)">
                 <span>{currentTime}</span>
                 <div className="flex gap-1.5 items-center">
                   <div className="flex gap-0.5 items-end h-2.5">
-                    <div className="w-0.5 h-1 bg-white/60"></div>
-                    <div className="w-0.5 h-1.5 bg-white/60"></div>
-                    <div className="w-0.5 h-2 bg-white/60"></div>
-                    <div className="w-0.5 h-2.5 bg-white/60"></div>
+                    <div className="w-0.5 h-1 bg-(--foreground)/60"></div>
+                    <div className="w-0.5 h-1.5 bg-(--foreground)/60"></div>
+                    <div className="w-0.5 h-2 bg-(--foreground)/60"></div>
+                    <div className="w-0.5 h-2.5 bg-(--foreground)/60"></div>
                   </div>
                   <span className="text-[9px]">5G</span>
-                  <div className="w-5 h-2.5 border border-white/30 rounded-[2px] relative">
-                    <div className="absolute inset-0.5 bg-white/80 w-[80%]"></div>
+                  <div className="w-5 h-2.5 border border-(--foreground)/30 rounded-[2px] relative">
+                    <div className="absolute inset-0.5 bg-(--foreground)/80 w-[80%]"></div>
                   </div>
                 </div>
               </div>
@@ -227,13 +226,13 @@ const CallUs: React.FC = () => {
               {/* App Content */}
               <div className="relative z-10 flex-1 flex flex-col px-6 pt-8 pb-8 overflow-y-auto no-scrollbar">
                 <div className="mb-8 text-center">
-                  <div className="w-16 h-16 bg-brand-primary/20 rounded-2xl mx-auto flex items-center justify-center mb-4 border border-brand-primary/30 shadow-[0_0_30px_rgba(255,87,34,0.3)]">
+                  <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl mx-auto flex items-center justify-center mb-4 border border-brand-primary/20 shadow-[0_0_30px_rgba(255,87,34,0.15)]">
                     <span className="text-2xl">📞</span>
                   </div>
-                  <h3 className="text-white font-bold text-xl tracking-tight">
+                  <h3 className="text-(--foreground) font-bold text-xl tracking-tight">
                     AI Dialer
                   </h3>
-                  <p className="text-white/40 text-xs mt-1">
+                  <p className="text-(--muted-foreground) text-xs mt-1">
                     Secure Connection Request
                   </p>
                 </div>
@@ -258,41 +257,41 @@ const CallUs: React.FC = () => {
 
                       <div className="space-y-4">
                         <div className="group/input relative">
-                          <div className="absolute inset-0 bg-brand-primary/20 rounded-xl blur-md opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 bg-brand-primary/10 rounded-xl blur-md opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500"></div>
                           <input
                             type="text"
                             placeholder="Your Name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="relative w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/20 outline-none focus:border-brand-primary/50 focus:bg-white/10 transition-all"
+                            className="relative w-full bg-(--muted) border border-(--border) rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/60 outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all shadow-inner"
                           />
                         </div>
 
                         <div className="group/input relative">
-                          <div className="absolute inset-0 bg-brand-primary/20 rounded-xl blur-md opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 bg-brand-primary/10 rounded-xl blur-md opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500"></div>
                           <input
                             type="email"
                             placeholder="Email Address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="relative w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/20 outline-none focus:border-brand-primary/50 focus:bg-white/10 transition-all"
+                            className="relative w-full bg-(--muted) border border-(--border) rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/60 outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all shadow-inner"
                           />
                         </div>
 
                         <div className="group/input relative">
-                          <div className="absolute inset-0 bg-brand-primary/20 rounded-xl blur-md opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500"></div>
+                          <div className="absolute inset-0 bg-brand-primary/10 rounded-xl blur-md opacity-0 group-focus-within/input:opacity-100 transition-opacity duration-500"></div>
                           <input
                             type="tel"
                             placeholder="Phone Number (+1...)"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
-                            className="relative w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-white/20 outline-none focus:border-brand-primary/50 focus:bg-white/10 transition-all font-mono"
+                            className="relative w-full bg-(--muted) border border-(--border) rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/60 outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all font-mono shadow-inner"
                           />
                         </div>
                       </div>
 
                       {errorMgs && (
-                        <div className="text-red-400 text-[10px] text-center bg-red-500/10 py-2 rounded-lg border border-red-500/20">
+                        <div className="text-brand-action text-[10px] text-center bg-brand-action/5 py-2 rounded-lg border border-brand-action/20">
                           {errorMgs}
                         </div>
                       )}
@@ -301,7 +300,7 @@ const CallUs: React.FC = () => {
                         <button
                           type="submit"
                           disabled={isCalling}
-                          className="w-full bg-brand-primary hover:bg-brand-accent active:scale-95 text-white font-bold py-4 rounded-2xl shadow-[0_10px_30px_rgba(255,87,34,0.3)] transition-all duration-300 flex items-center justify-center gap-3 group/call disabled:opacity-50 disabled:pointer-events-none"
+                          className="w-full bg-brand-primary hover:bg-brand-accent active:scale-95 text-white font-bold py-4 rounded-2xl shadow-[0_10px_30px_rgba(255,87,34,0.3)] transition-all duration-300 flex items-center justify-center gap-3 group/call disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
                         >
                           {isCalling ? (
                             <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -316,7 +315,7 @@ const CallUs: React.FC = () => {
                             </>
                           )}
                         </button>
-                        <p className="text-center text-[10px] text-white/30 mt-3 font-medium tracking-wide">
+                        <p className="text-center text-[10px] text-(--muted-foreground) mt-3 font-medium tracking-wide opacity-60">
                           SECURE ENCRYPTED CONNECTION
                         </p>
                       </div>
@@ -328,26 +327,26 @@ const CallUs: React.FC = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       className="flex-1 flex flex-col items-center justify-center text-center"
                     >
-                      <div className="w-20 h-20 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center mb-6 shadow-[0_0_50px_rgba(34,197,94,0.4)] animate-pulse">
-                        <span className="text-3xl">✓</span>
+                      <div className="w-20 h-20 rounded-full bg-brand-success/10 border-2 border-brand-success flex items-center justify-center mb-6 shadow-[0_0_50px_rgba(34,197,94,0.2)] animate-pulse">
+                        <span className="text-3xl text-brand-success">✓</span>
                       </div>
-                      <h4 className="text-white font-bold text-2xl mb-2">
+                      <h4 className="text-(--foreground) font-bold text-2xl mb-2">
                         Connecting...
                       </h4>
-                      <p className="text-white/60 text-sm mb-8 px-4">
+                      <p className="text-(--muted-foreground) text-sm mb-8 px-4">
                         Agent is dialing{" "}
-                        <span className="text-white font-mono">
+                        <span className="text-(--foreground) font-mono">
                           {phoneNumber}
                         </span>
                       </p>
 
-                      <div className="w-full bg-white/5 rounded-2xl p-4 border border-white/10 mb-8">
-                        <div className="flex justify-between text-[10px] text-white/40 mb-2 uppercase tracking-wider">
+                      <div className="w-full bg-(--muted) rounded-2xl p-4 border border-(--border) mb-8">
+                        <div className="flex justify-between text-[10px] text-(--muted-foreground) mb-2 uppercase tracking-wider">
                           <span>Status</span>
-                          <span className="text-green-400">Active</span>
+                          <span className="text-brand-success">Active</span>
                         </div>
-                        <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                          <div className="h-full bg-green-500 w-[60%] animate-[shine-slow_2s_linear_infinite]"></div>
+                        <div className="h-1 w-full bg-(--foreground)/10 rounded-full overflow-hidden">
+                          <div className="h-full bg-brand-success w-[60%] animate-[shine-slow_2s_linear_infinite]"></div>
                         </div>
                       </div>
 
@@ -358,7 +357,7 @@ const CallUs: React.FC = () => {
                           setName("");
                           setEmail("");
                         }}
-                        className="text-white/40 hover:text-white text-xs font-medium transition-colors"
+                        className="text-(--muted-foreground) hover:text-(--foreground) text-xs font-medium transition-colors"
                       >
                         Dismiss
                       </button>
@@ -368,7 +367,7 @@ const CallUs: React.FC = () => {
               </div>
 
               {/* Home Indicator */}
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full z-30"></div>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-(--foreground)/20 rounded-full z-30"></div>
             </div>
           </div>
         </motion.div>
