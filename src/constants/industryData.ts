@@ -34,7 +34,7 @@ export const industries: Industry[] = [
       time: "03:12 • Infrastructure Overview",
     },
     buttonText: "Explore the Platform",
-    image: "https://loremflickr.com/800/600/dashboard,analytics,data",
+    image: "/Global Status.png",
   },
   {
     id: "real-estate",
@@ -50,7 +50,7 @@ export const industries: Industry[] = [
       time: "01:53 • Real Estate AI Rep",
     },
     buttonText: "Book a Meeting",
-    image: "https://loremflickr.com/800/600/dashboard,realestate,data",
+    image: "/Real Estate.jpg",
   },
   {
     id: "gaming",
@@ -63,7 +63,7 @@ export const industries: Industry[] = [
     ],
     action: { title: "Hear It In Action", time: "02:15 • Casino VIP Rep" },
     buttonText: "Book a Meeting",
-    image: "https://loremflickr.com/800/600/dashboard,casino,poker",
+    image: "/Gaming and Casinos.jpg",
   },
   {
     id: "healthcare",
@@ -79,7 +79,7 @@ export const industries: Industry[] = [
       time: "01:42 • Clinic AI Assistant",
     },
     buttonText: "Book a Meeting",
-    image: "https://loremflickr.com/800/600/dashboard,medical,clinic",
+    image: "/Healthcare.png",
   },
   {
     id: "finance",
@@ -108,6 +108,6 @@ export const industries: Industry[] = [
       time: "01:58 • Logistics Dispatch AI",
     },
     buttonText: "Book a Meeting",
-    image: "https://loremflickr.com/800/600/dashboard,logistics,truck",
+    image: "/Transportation and Logistics.png",
   },
 ];
