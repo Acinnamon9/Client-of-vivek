@@ -36,7 +36,7 @@ const LeadProblem: React.FC = () => {
             The Sales System Problem
           </Badge>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-brand-dark leading-[1.1] mb-8 tracking-tighter">
-            You're Still Bleeding Appointments
+            The Problem: You're Bleeding Appointments
             <br />
             While Competitors Run{" "}
             <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent relative inline-block">

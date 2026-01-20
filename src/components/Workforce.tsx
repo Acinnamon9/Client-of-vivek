@@ -10,7 +10,7 @@ const Workforce: React.FC = () => {
     <Section id="workforce" className="font-jakarta bg-slate-50/50">
       <Container className="max-w-[1400px]">
         <div className="text-center max-w-[900px] mx-auto mb-20">
-          <Badge variant="brand" className="mb-8 animate-fade-in-down">
+          <Badge variant="ghost" className="mb-8 animate-fade-in-down">
             <svg
               width="16"
               height="16"

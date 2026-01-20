@@ -159,7 +159,7 @@ export const manualFunnel: LeadProblemFunnelStage[] = [
     subText: "2 follow-ups only",
   },
   { width: "20%", top: 240, text: "100 Booked", subText: "" },
-  { width: "12%", top: 320, text: "60 Shows", subText: "" },
+  { width: "15%", top: 320, text: "60 Shows", subText: "" },
 ];
 
 export const aiFunnel: LeadProblemFunnelStage[] = [

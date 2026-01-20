@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
               size="lg"
               className="px-10 shadow-xl shadow-brand-primary/15 rounded-2xl"
               onClick={() =>
-                window.open("https://myteam.ravan.ai/book", "_blank")
+                window.open("https://atomicx.ravan.ai/book", "_blank")
               }
             >
               Book Demo
@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
                   className="w-full rounded-2xl"
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    window.open("https://myteam.ravan.ai/book", "_blank");
+                    window.open("https://atomicx.ravan.ai/book", "_blank");
                   }}
                 >
                   Book Demo

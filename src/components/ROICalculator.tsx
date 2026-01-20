@@ -20,7 +20,7 @@ const ROICalculator: React.FC = () => {
   };
 
   return (
-    <Section className="bg-brand-dark overflow-hidden relative font-jakarta">
+    <Section className="bg-(--background) overflow-hidden relative font-jakarta">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-brand-primary rounded-full blur-[120px]"></div>
@@ -30,11 +30,11 @@ const ROICalculator: React.FC = () => {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="max-w-xl">
-            <h2 className="text-5xl sm:text-6xl font-black text-white mb-8 leading-[1.1] tracking-tighter">
+            <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) mb-8 leading-[1.1] tracking-tighter">
               Calculate Your{" "}
               <span className="text-brand-primary">Revenue Uplift</span>
             </h2>
-            <p className="text-xl text-[#94a3b8] leading-relaxed font-medium mb-10">
+            <p className="text-xl text-(--muted-foreground) leading-relaxed font-medium mb-10">
               See exactly how much revenue you're missing out on by relying on
               human-only sales teams. Our AI increases contact rates and
               follow-ups, leading to more closed deals.
@@ -43,7 +43,7 @@ const ROICalculator: React.FC = () => {
               size="xl"
               className="shadow-2xl shadow-brand-primary/20"
               onClick={() =>
-                window.open("https://myteam.ravan.ai/book", "_blank")
+                window.open("https://atomicx.ravan.ai/book", "_blank")
               }
             >
               Get Your Custom Plan
@@ -54,10 +54,10 @@ const ROICalculator: React.FC = () => {
             <div className="space-y-10">
               <div className="space-y-4">
                 <div className="flex justify-between items-center font-black">
-                  <span className="text-brand-dark uppercase tracking-widest text-xs">
+                  <span className="text-(--muted-foreground) uppercase tracking-widest text-[10px]">
                     Monthly Leads
                   </span>
-                  <span className="text-brand-primary text-2xl">
+                  <span className="text-brand-primary text-2xl font-black">
                     {leads.toLocaleString()}
                   </span>
                 </div>
@@ -67,17 +67,17 @@ const ROICalculator: React.FC = () => {
                   max="10000"
                   step="100"
                   value={leads}
-                  className="w-full h-2 bg-slate-100 rounded-full appearance-none cursor-pointer accent-brand-primary"
+                  className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
                   onChange={(e) => setLeads(parseInt(e.target.value))}
                 />
               </div>
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center font-black">
-                  <span className="text-brand-dark uppercase tracking-widest text-xs">
+                  <span className="text-(--muted-foreground) uppercase tracking-widest text-[10px]">
                     Avg. Deal Value
                   </span>
-                  <span className="text-brand-primary text-2xl">
+                  <span className="text-brand-primary text-2xl font-black">
                     ${dealValue.toLocaleString()}
                   </span>
                 </div>
@@ -87,17 +87,17 @@ const ROICalculator: React.FC = () => {
                   max="50000"
                   step="500"
                   value={dealValue}
-                  className="w-full h-2 bg-slate-100 rounded-full appearance-none cursor-pointer accent-brand-primary"
+                  className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
                   onChange={(e) => setDealValue(parseInt(e.target.value))}
                 />
               </div>
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center font-black">
-                  <span className="text-brand-dark uppercase tracking-widest text-xs">
+                  <span className="text-(--muted-foreground) uppercase tracking-widest text-[10px]">
                     Current Close Rate
                   </span>
-                  <span className="text-brand-primary text-2xl">
+                  <span className="text-brand-primary text-2xl font-black">
                     {closeRate}%
                   </span>
                 </div>
@@ -107,7 +107,7 @@ const ROICalculator: React.FC = () => {
                   max="20"
                   step="0.5"
                   value={closeRate}
-                  className="w-full h-2 bg-slate-100 rounded-full appearance-none cursor-pointer accent-brand-primary"
+                  className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
                   onChange={(e) => setCloseRate(parseFloat(e.target.value))}
                 />
               </div>
@@ -125,13 +125,13 @@ const ROICalculator: React.FC = () => {
                     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                   </svg>
                 </div>
-                <div className="text-[10px] font-black text-[#64748b] uppercase tracking-[0.2em] mb-4">
+                <div className="text-[10px] font-black text-(--muted-foreground) uppercase tracking-[0.2em] mb-4">
                   Projected Additional Revenue / Month
                 </div>
-                <div className="text-5xl sm:text-6xl font-black text-brand-primary tracking-tighter mb-4">
+                <div className="text-5xl sm:text-6xl font-black text-brand-primary tracking-tighter mb-4 transition-transform group-hover:scale-105 duration-500">
                   {formatMoney(projectedRevenue)}
                 </div>
-                <div className="text-xs text-[#94a3b8] font-bold">
+                <div className="text-[10px] text-(--muted-foreground) font-bold opacity-60">
                   *Based on conservative 30% increase in conversion with AI
                 </div>
               </div>
