@@ -83,7 +83,7 @@ const IndustrySnapshots: React.FC = () => {
 
                 <div className="flex gap-2.5 mb-10 flex-wrap">
                   {ind.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" size="md">
+                    <Badge key={tag} variant="ghost" size="md">
                       {tag}
                     </Badge>
                   ))}
