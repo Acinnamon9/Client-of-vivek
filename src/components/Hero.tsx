@@ -9,9 +9,6 @@ import Button from "./ui/Button";
 // import AnimatedNumber from "./ui/AnimatedNumber";
 import { containerVariants, itemVariants } from "../animations";
 
-import GuyImg from "../assets/Guy.png";
-import WomanImg from "../assets/Woman.png";
-
 const Hero: React.FC = () => {
   // const [badgeIndex, setBadgeIndex] = useState(0);
 
@@ -32,7 +29,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-0 left-[-5%] w-[400px] hidden lg:block pointer-events-none z-0"
       >
         <img
-          src={WomanImg}
+          src="/Woman.png"
           alt="AI Team Member"
           className="w-full h-auto object-contain opacity-80"
         />
@@ -45,7 +42,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-0 right-[-5%] w-[420px] hidden lg:block pointer-events-none z-0"
       >
         <img
-          src={GuyImg}
+          src="/Guy.png"
           alt="AI Team Member"
           className="w-full h-auto object-contain opacity-80"
         />

@@ -22,7 +22,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Social Media Influencer",
     replaces: "Ad Agency",
     replacesValue: "$5k/mo",
-    image: "/src/assets/Social media influencer.png",
+    image: "/Social media influencer.png",
     features: [
       "Creates & posts viral content daily",
       "Manages paid ad campaigns 24/7",
@@ -51,7 +51,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Sales Representative",
     replaces: "3 SDRs",
     replacesValue: "$15k/mo",
-    image: "/src/assets/Sales representative.png",
+    image: "/Sales representative.png",
     features: [
       "Calls leads within 3 minutes",
       "Qualifies prospects via SMS/Call",
@@ -79,7 +79,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Receptionist",
     replaces: "Front Desk",
     replacesValue: "$4k/mo",
-    image: "/src/assets/Receptionist.png",
+    image: "/Receptionist.png",
     features: [
       "Answers inbound calls instantly",
       "Routes calls to appropriate staff",
@@ -106,7 +106,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Customer Service",
     replaces: "Support Rep",
     replacesValue: "$4k/mo",
-    image: "/src/assets/Customer service.png",
+    image: "/Customer service.png",
     features: [
       "Resolves common issues instantly",
       "Available across Chat, SMS, Email",
