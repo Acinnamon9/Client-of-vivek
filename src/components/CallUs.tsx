@@ -69,30 +69,6 @@ const CallUs: React.FC = () => {
             Experience the speed and human-like conversation of our AI agents
             firsthand. Enter your details into the secure terminal.
           </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start"
-          >
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-(--background) bg-(--muted) overflow-hidden shadow-sm"
-                >
-                  <img
-                    src={`https://i.pravatar.cc/100?img=${i + 20}`}
-                    alt="user"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="text-sm font-medium text-(--muted-foreground)">
-              <strong className="text-(--foreground)">128+</strong> calls
-              initiated today
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Right Side: Phone Interface */}

@@ -7,14 +7,10 @@ interface PhoneFrameProps {
 
 const PhoneFrame: React.FC<PhoneFrameProps> = ({ children, currentTime }) => {
   return (
-    <div className="relative w-[340px] sm:w-[380px] h-[720px] rounded-[50px] bg-(--card) p-3 shadow-2xl shadow-brand-primary/20 border-4 border-(--muted) ring-1 ring-black/5 dark:ring-white/10 transition-transform duration-500 hover:rotate-y-2 hover:rotate-x-2">
-      <div className="relative w-full h-full bg-(--background) rounded-[40px] overflow-hidden flex flex-col isolate">
+    <div className="relative h-[min(640px,75vh)] aspect-9/17 rounded-[48px] bg-white/80 dark:bg-black/60 backdrop-blur-2xl p-1 shadow-2xl shadow-brand-primary/10 dark:shadow-brand-primary/20 border border-white/60 dark:border-white/5 ring-1 ring-black/5 transition-all duration-700 hover:scale-[1.02]">
+      <div className="relative w-full h-full bg-transparent rounded-[44px] overflow-hidden flex flex-col isolate border border-white/40 dark:border-white/5">
         {/* Gloss Reflection */}
-        <div className="absolute inset-0 bg-linear-to-tr from-(--foreground)/5 to-transparent pointer-events-none z-20 opacity-30"></div>
-
-        {/* Ambient Background Glow */}
-        <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand-primary)_180deg,transparent_360deg)] animate-[rotate-slow_10s_linear_infinite] opacity-10 pointer-events-none z-0 mix-blend-plus-lighter"></div>
-        <div className="absolute inset-0 bg-(--background)/90 z-0 backdrop-blur-2xl"></div>
+        <div className="absolute inset-0 bg-linear-to-tr from-white dark:from-white/10 to-transparent pointer-events-none z-20 opacity-50 dark:opacity-20"></div>
 
         {/* Status Bar */}
         <div className="relative z-30 px-6 pt-4 pb-2 flex justify-between items-center text-[10px] font-medium text-(--muted-foreground)">

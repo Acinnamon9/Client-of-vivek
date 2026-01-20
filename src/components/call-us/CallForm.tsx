@@ -56,7 +56,7 @@ const CallForm: React.FC<CallFormProps> = ({
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="relative w-full bg-(--muted) border border-(--border) rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/60 outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all shadow-inner"
+            className="relative w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:border-brand-primary/50 focus:bg-white transition-all shadow-sm backdrop-blur-md"
           />
         </div>
 
@@ -67,7 +67,7 @@ const CallForm: React.FC<CallFormProps> = ({
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="relative w-full bg-(--muted) border border-(--border) rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/60 outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all shadow-inner"
+            className="relative w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:border-brand-primary/50 focus:bg-white transition-all shadow-sm backdrop-blur-md"
           />
         </div>
 
@@ -77,14 +77,23 @@ const CallForm: React.FC<CallFormProps> = ({
             <select
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
-              className="relative z-10 appearance-none w-full bg-(--muted) border border-(--border) rounded-xl px-3 py-3.5 text-sm text-(--foreground) outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all shadow-inner font-mono text-center cursor-pointer"
+              className="relative z-10 appearance-none w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-3 py-3.5 text-sm text-(--foreground) outline-none focus:border-brand-primary/50 focus:bg-white transition-all shadow-sm font-mono text-center cursor-pointer backdrop-blur-md"
             >
               {countries.map((c) => (
-                <option key={`${c.code}-${c.label}`} value={c.code}>
+                <option
+                  key={`${c.code}-${c.label}`}
+                  value={c.code}
+                  className="bg-(--background) text-(--foreground)"
+                >
                   {c.code} {c.label}
                 </option>
               ))}
-              <option value="">Other</option>
+              <option
+                value=""
+                className="bg-(--background) text-(--foreground)"
+              >
+                Other
+              </option>
             </select>
             <div className="absolute right-2 top-1/2 -translate-y-1/2 z-20 pointer-events-none text-(--muted-foreground)/50">
               <svg
@@ -112,7 +121,7 @@ const CallForm: React.FC<CallFormProps> = ({
               placeholder="Phone Number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="relative z-10 w-full bg-(--muted) border border-(--border) rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/60 outline-none focus:border-brand-primary/50 focus:bg-(--background) transition-all font-mono shadow-inner"
+              className="relative z-10 w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:border-brand-primary/50 focus:bg-white transition-all font-mono shadow-sm backdrop-blur-md"
             />
           </div>
         </div>
