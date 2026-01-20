@@ -30,6 +30,8 @@
   --animate-rotate-slow: rotate-slow 35s linear infinite;
   --animate-rotate-slow-reverse: rotate-slow 35s linear infinite reverse;
   --animate-shine-slow: shine-slow 4s infinite;
+  --animate-scan: scan 4s linear infinite;
+  --animate-pulse-success: pulse-success 2s infinite;
 }
 
 @layer base {
@@ -253,5 +255,26 @@
   100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0;
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+@keyframes pulse-success {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
   }
 }

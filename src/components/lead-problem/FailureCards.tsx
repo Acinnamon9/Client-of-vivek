@@ -26,21 +26,37 @@ const FailureCards: React.FC = () => {
               className="group relative p-1 rounded-[40px] bg-linear-to-br from-brand-primary/10 via-transparent to-transparent hover:from-brand-primary/20 transition-all duration-700 hover:shadow-2xl shadow-black/5"
             >
               <div className="bg-(--card)/80 backdrop-blur-2xl rounded-[38px] p-10 text-center relative overflow-hidden border border-(--border) h-full flex flex-col items-center">
-                {/* 1. Technical Icon Slot */}
-                <div className="w-20 h-20 mb-8 rounded-2xl bg-brand-primary flex items-center justify-center text-white shadow-xl shadow-brand-primary/25 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                  {React.cloneElement(card.icon as React.ReactElement, {
-                    size: 32,
-                    strokeWidth: 2.5,
-                  })}
+                {/* 1. Image / Icon Slot */}
+                <div className="relative w-full mb-8">
+                  {card.image && (
+                    <div className="relative aspect-square rounded-[32px] overflow-hidden border border-(--border) mb-6 group-hover:border-brand-primary/50 transition-colors duration-500">
+                      <motion.img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        whileHover={{ scale: 1.05 }}
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-(--background)/60 to-transparent"></div>
+                    </div>
+                  )}
+
+                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl bg-brand-primary flex items-center justify-center text-white shadow-xl shadow-brand-primary/25 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 z-10">
+                    {React.cloneElement(card.icon as React.ReactElement, {
+                      size: 24,
+                      strokeWidth: 2.5,
+                    })}
+                  </div>
                 </div>
 
                 {/* 2. Content Hierarchy */}
-                <h4 className="text-2xl font-black text-(--foreground) mb-4 uppercase tracking-tighter">
-                  {card.title}
-                </h4>
-                <p className="text-(--muted-foreground) font-medium leading-relaxed mb-10 text-sm tracking-tight grow px-2">
-                  {card.desc}
-                </p>
+                <div className="mt-4">
+                  <h4 className="text-2xl font-black text-(--foreground) mb-4 uppercase tracking-tighter">
+                    {card.title}
+                  </h4>
+                  <p className="text-(--muted-foreground) font-medium leading-relaxed mb-10 text-sm tracking-tight grow px-2">
+                    {card.desc}
+                  </p>
+                </div>
 
                 {/* 3. The Quantitative Punchline */}
                 <div className="mt-auto pt-8 border-t border-(--border) w-full">

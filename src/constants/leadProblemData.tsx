@@ -1,10 +1,22 @@
+/**
+ * @file leadProblemData.tsx
+ * @description Constants and interfaces defining the data for the "Lead Problem" section.
+ * This includes comparison stats between manual and AI systems, timeline events, failure metrics, and funnel data.
+ */
+
 import React from "react";
 
+/**
+ * Represents a single statistic with a label and its corresponding value.
+ */
 export interface LeadProblemStat {
   label: string;
   value: string;
 }
 
+/**
+ * Defines the structure for comparing different lead management systems (e.g., Manual vs AI).
+ */
 export interface LeadProblemSystem {
   id: string;
   title: string;
@@ -13,21 +25,32 @@ export interface LeadProblemSystem {
   colorClass: string;
 }
 
+/**
+ * Represents an event in the lead conversion timeline, used to illustrate 'won' or 'lost' opportunities.
+ */
 export interface LeadProblemTimelineEvent {
   time: string;
   event: string;
   result: string;
   type: "won" | "lost";
+  image?: string;
 }
 
+/**
+ * Structure for cards highlighting specific failures in traditional lead management.
+ */
 export interface LeadProblemFailureCard {
   title: string;
   desc: string;
   metric: string;
   label: string;
   icon: React.ReactNode;
+  image?: string;
 }
 
+/**
+ * Defines a stage within a lead funnel visualization.
+ */
 export interface LeadProblemFunnelStage {
   width: string;
   top: number;
@@ -36,6 +59,9 @@ export interface LeadProblemFunnelStage {
   badge?: string;
 }
 
+/**
+ * Data for comparing the current manual system against the AI sales system.
+ */
 export const mathComparison: LeadProblemSystem[] = [
   {
     id: "current",
@@ -63,39 +89,50 @@ export const mathComparison: LeadProblemSystem[] = [
   },
 ];
 
+/**
+ * Sequential events demonstrating typical failures in speed-to-lead for manual systems.
+ */
 export const timelineEvents: LeadProblemTimelineEvent[] = [
   {
     time: "0 min",
     event: "Lead Submits Form",
     result: "AI calls immediately",
     type: "won",
+    image: "/src/assets/Lead submits form.jpg",
   },
   {
     time: "3 min",
     event: "Peak Interest Window",
     result: "Your SDR hasn't seen it yet",
     type: "lost",
+    image: "/src/assets/Peak Interest Window.jpg",
   },
   {
     time: "1 hour",
     event: "Lead Goes Cold",
     result: "21x less likely to convert",
     type: "lost",
+    image: "/src/assets/Lead Goes Cold.jpg",
   },
   {
     time: "24 hours",
     event: "First Contact Attempt",
     result: "Already bought from competitor",
     type: "lost",
+    image: "/src/assets/First Contact Attempt.jpg",
   },
 ];
 
+/**
+ * Highlight metrics for specific failure points in the current sales process.
+ */
 export const failureCards: LeadProblemFailureCard[] = [
   {
     title: "Speed to Lead Failure",
     desc: "MIT research: Contact within 5 minutes = 21x more likely to convert. Your average: 3+ hours.",
     metric: "78%",
     label: "NEVER CONTACTED",
+    image: "/src/assets/Woman.png",
     icon: (
       <svg
         width="44"
@@ -115,6 +152,7 @@ export const failureCards: LeadProblemFailureCard[] = [
     desc: "80% of sales require 12+ touches. Your team averages 2 before giving up.",
     metric: "12x",
     label: "MORE TOUCHES NEEDED",
+    image: "/src/assets/Guy.png",
     icon: (
       <svg
         width="44"
@@ -133,6 +171,7 @@ export const failureCards: LeadProblemFailureCard[] = [
     desc: "You're paying $166 per show while AI delivers them for $1.14. That's 145x overpayment.",
     metric: "$166",
     label: "YOUR COST PER SHOW",
+    image: "/src/assets/Guy and woman.png",
     icon: (
       <svg
         width="44"
@@ -149,6 +188,9 @@ export const failureCards: LeadProblemFailureCard[] = [
   },
 ];
 
+/**
+ * Conversion funnel stages for the manual/traditional sales process.
+ */
 export const manualFunnel: LeadProblemFunnelStage[] = [
   { width: "90%", top: 0, text: "1000 Leads", subText: "$50K spent" },
   { width: "50%", top: 80, text: "350 Contacted", subText: "3+ hours delay" },
@@ -162,6 +204,9 @@ export const manualFunnel: LeadProblemFunnelStage[] = [
   { width: "15%", top: 320, text: "60 Shows", subText: "" },
 ];
 
+/**
+ * Conversion funnel stages for the AI-driven sales process, showing improved efficiency.
+ */
 export const aiFunnel: LeadProblemFunnelStage[] = [
   {
     width: "100%",
