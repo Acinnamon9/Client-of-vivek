@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Section, Container } from "./ui/Layout";
+import Badge from "./ui/Badge";
+import Button from "./ui/Button";
+import { Card, CardContent } from "./ui/Card";
 
 interface FAQItemProps {
   question: string;
@@ -10,19 +14,25 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
 
   return (
     <div
-      className={`border border-black/6 rounded-[20px] bg-[#fcfcfc] mb-5 overflow-hidden ${isOpen ? "active" : ""}`}
+      className={`border border-black/5 rounded-2xl bg-[#fafafa] mb-4 overflow-hidden transition-all duration-300 ${isOpen ? "ring-2 ring-[#ff5722]/5" : ""}`}
     >
       <button
-        className="w-full text-left p-7 bg-none border-none flex justify-between items-center cursor-pointer text-[19px] font-bold"
+        className="w-full text-left p-6 sm:p-7 bg-none border-none flex justify-between items-center cursor-pointer text-lg sm:text-xl font-bold text-[#1a1a1a]"
         onClick={() => setIsOpen(!isOpen)}
       >
         {question}
-        <span className="text-2xl text-[#94a3b8]">{isOpen ? "−" : "+"}</span>
+        <span
+          className={`text-2xl text-[#94a3b8] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+        >
+          {isOpen ? "−" : "+"}
+        </span>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-400 ease-out px-8 ${isOpen ? "max-h-[500px] pb-8" : "max-h-0"}`}
+        className={`overflow-hidden transition-all duration-400 ease-in-out px-6 sm:px-8 ${isOpen ? "max-h-[500px] pb-8 opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <div className="leading-[1.6] text-[#475569] space-y-4">{children}</div>
+        <div className="leading-relaxed text-[#4b5563] space-y-4">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -30,21 +40,19 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
 
 const FAQ: React.FC = () => {
   return (
-    <div className="bg-white py-[100px] px-5 font-['Plus_Jakarta_Sans',sans-serif]">
-      <div className="max-w-[900px] mx-auto">
-        <div className="text-center mb-[60px]">
-          <span className="bg-[#f1f5f9] text-[#475569] px-4 py-1.5 rounded-full text-sm font-bold">
-            Everything You Need to Know
-          </span>
-          <h2 className="text-[40px] font-black mt-6">
+    <Section className="font-['Plus_Jakarta_Sans',sans-serif]">
+      <Container className="max-w-[900px]">
+        <div className="text-center mb-16">
+          <Badge variant="secondary">Everything You Need to Know</Badge>
+          <h2 className="text-4xl sm:text-5xl font-black mt-6 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-[#64748b] mt-4">
+          <p className="text-lg text-[#64748b] mt-4 max-w-2xl mx-auto">
             Common questions about deploying your AI workforce.
           </p>
         </div>
 
-        <div>
+        <div className="space-y-4">
           <FAQItem question="How does the AI compare to a human SDR?">
             <p>
               Our AI outperforms human SDRs in speed, consistency, and cost.
@@ -62,7 +70,7 @@ const FAQ: React.FC = () => {
               Not at all. We handle the entire implementation for you. We
               typically have clients live within 48 to 72 hours.
             </p>
-            <ul className="list-none pl-0">
+            <ul className="list-none pl-0 space-y-2 mt-4">
               {[
                 "We clone your voice (optional)",
                 "We upload your scripts and knowledge base",
@@ -70,7 +78,7 @@ const FAQ: React.FC = () => {
               ].map((item, idx) => (
                 <li
                   key={idx}
-                  className="py-2 relative pl-6 before:content-['•'] before:absolute before:left-2 before:text-[#ff5722] before:font-black"
+                  className="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-[#ff5722] before:font-bold before:text-xl"
                 >
                   {item}
                 </li>
@@ -93,17 +101,22 @@ const FAQ: React.FC = () => {
           </FAQItem>
         </div>
 
-        <div className="mt-[60px] text-center p-10 bg-[#f8fafc] rounded-[24px]">
-          <div className="text-lg font-bold mb-6">Still have questions?</div>
-          <a
-            href="https://myteam.ravan.ai/book"
-            className="inline-block bg-[#ff5722] text-white px-8 py-4 rounded-xl font-bold no-underline transition-transform duration-300 ease-out hover:-translate-y-0.5"
-          >
-            Book a Free Demo Call
-          </a>
-        </div>
-      </div>
-    </div>
+        <Card className="mt-16 text-center border-none shadow-none bg-[#f8fafc]">
+          <CardContent className="pt-10">
+            <div className="text-xl font-bold mb-6 text-[#1a1a1a]">
+              Still have questions?
+            </div>
+            <Button
+              onClick={() =>
+                window.open("https://myteam.ravan.ai/book", "_blank")
+              }
+            >
+              Book a Free Demo Call
+            </Button>
+          </CardContent>
+        </Card>
+      </Container>
+    </Section>
   );
 };
 
