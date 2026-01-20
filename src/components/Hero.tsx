@@ -5,13 +5,12 @@ import {
   useInView,
   useSpring,
   useTransform,
+  type Variants,
 } from "framer-motion";
 import { heroStats, heroBenefits, heroBadgeLines } from "../constants/heroData";
 import { Section, Container } from "./ui/Layout";
-import Badge from "./ui/Badge";
 import Button from "./ui/Button";
 import { Card } from "./ui/Card";
-import { cn } from "../lib/utils";
 
 const AnimatedNumber: React.FC<{ value: string }> = ({ value }) => {
   const ref = useRef(null);
@@ -53,7 +52,7 @@ const Hero: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -64,7 +63,7 @@ const Hero: React.FC = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
