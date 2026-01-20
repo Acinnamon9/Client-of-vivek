@@ -4,12 +4,12 @@ import { mathComparison } from "../../constants/leadProblemData";
 import { Card } from "../ui/Card";
 
 const systemVariants = cva(
-  "rounded-[32px] p-10 border-4 bg-white shadow-xl transition-all duration-500 hover:-translate-y-2",
+  "rounded-[32px] p-10 border-4 bg-(--card) shadow-xl transition-all duration-500 hover:-translate-y-2",
   {
     variants: {
       type: {
-        current: "border-brand-primary/20 bg-brand-primary/1",
-        ai: "border-brand-success/20 bg-brand-success/1",
+        current: "border-brand-primary/20",
+        ai: "border-brand-success/20",
       },
     },
     defaultVariants: {
@@ -49,9 +49,11 @@ const Comparison: React.FC = () => {
   return (
     <Card
       variant="white"
-      className="p-8 sm:p-16 mb-20 shadow-2xl border-brand-primary/5 bg-[radial-gradient(circle_at_top_right,rgba(255,87,34,0.02),transparent)]"
+      className="p-8 sm:p-16 mb-20 shadow-2xl border-(--border) relative overflow-hidden"
     >
-      <h3 className="text-4xl font-black text-center mb-16 text-brand-dark tracking-tight">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/2 blur-[80px] pointer-events-none"></div>
+
+      <h3 className="text-4xl font-black text-center mb-16 text-(--foreground) tracking-tight">
         The Brutal Math of Your Current System
       </h3>
 
@@ -70,18 +72,18 @@ const Comparison: React.FC = () => {
                   {sys.stats.map((stat, i) => (
                     <div
                       key={i}
-                      className="flex justify-between items-center pb-5 border-b border-black/4 last:border-0 last:pb-0"
+                      className="flex justify-between items-center pb-5 border-b border-(--border) last:border-0 last:pb-0"
                     >
-                      <span className="text-[#64748b] font-bold">
+                      <span className="text-(--muted-foreground) font-bold">
                         {stat.label}
                       </span>
-                      <span className="text-xl font-black text-brand-dark">
+                      <span className="text-xl font-black text-(--foreground)">
                         {stat.value}
                       </span>
                     </div>
                   ))}
-                  <div className="pt-6 border-t-4 border-black/3 mt-4 flex justify-between items-center">
-                    <span className="text-sm font-black text-[#94a3b8] uppercase">
+                  <div className="pt-6 border-t-4 border-(--muted) mt-4 flex justify-between items-center">
+                    <span className="text-sm font-black text-(--muted-foreground) uppercase">
                       Cost Per Show
                     </span>
                     <span className={systemCostVariants({ type })}>
@@ -100,7 +102,7 @@ const Comparison: React.FC = () => {
         })}
       </div>
 
-      <div className="text-center text-2xl sm:text-3xl font-black text-brand-dark">
+      <div className="text-center text-2xl sm:text-3xl font-black text-(--foreground)">
         You're paying{" "}
         <span className="text-brand-primary bg-brand-primary/5 px-3 py-1 rounded-xl">
           145x more

@@ -134,7 +134,7 @@ const Hero: React.FC = () => {
               size="xl"
               className="px-12 shadow-2xl shadow-brand-primary/30"
               onClick={() =>
-                window.open("https://myteam.ravan.ai/book", "_blank")
+                window.open("https://atomicx.ravan.ai/book", "_blank")
               }
             >
               Enterprise Demo

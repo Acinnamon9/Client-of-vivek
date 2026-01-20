@@ -14,10 +14,10 @@ const FailureCards: React.FC = () => {
           <div className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-brand-primary flex items-center justify-center text-white shadow-xl shadow-brand-primary/25 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
             {card.icon}
           </div>
-          <h4 className="text-2xl font-black text-brand-dark mb-4">
+          <h4 className="text-2xl font-black text-(--foreground) mb-4">
             {card.title}
           </h4>
-          <p className="text-[#64748b] font-medium leading-relaxed mb-8 min-h-[80px]">
+          <p className="text-(--muted-foreground) font-medium leading-relaxed mb-8 min-h-[80px]">
             {card.desc}
           </p>
           <div className="text-5xl font-black text-brand-primary mb-2">

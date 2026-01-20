@@ -9,9 +9,10 @@ import CTA from "./lead-problem/CTA";
 
 const LeadProblem: React.FC = () => {
   return (
-    <Section className="bg-linear-to-b from-[#faf8f5] to-white relative overflow-hidden font-jakarta">
-      {/* Background Orbs */}
+    <Section className="bg-(--background) relative overflow-hidden font-jakarta">
+      {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[300px] bg-linear-to-b from-(--muted)/20 to-transparent"></div>
         <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-brand-primary/3 rounded-full blur-[120px] animate-float-orb"></div>
         <div
           className="absolute bottom-[20%] right-[-10%] w-[400px] h-[400px] bg-brand-success/2 rounded-full blur-[100px] animate-float-orb"
@@ -35,7 +36,7 @@ const LeadProblem: React.FC = () => {
             </svg>
             The Sales System Problem
           </Badge>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-brand-dark leading-[1.1] mb-8 tracking-tighter">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-(--foreground) leading-[1.1] mb-8 tracking-tighter">
             The Problem: You're Bleeding Appointments
             <br />
             While Competitors Run{" "}
@@ -47,7 +48,7 @@ const LeadProblem: React.FC = () => {
               ></span>
             </span>
           </h2>
-          <p className="text-xl sm:text-2xl text-[#64748b] leading-relaxed max-w-3xl mx-auto font-medium">
+          <p className="text-xl sm:text-2xl text-(--muted-foreground) leading-relaxed max-w-3xl mx-auto font-medium">
             Think of your leads like milk from expensive cows — every second
             counts before it spoils. Here's exactly what's happening to your
             $100,000 ad spend:

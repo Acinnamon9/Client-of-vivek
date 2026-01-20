@@ -11,11 +11,11 @@ interface FAQItemProps {
 }
 
 const itemVariants = cva(
-  "border border-black/5 rounded-2xl bg-[#fafafa] mb-4 overflow-hidden transition-all duration-300",
+  "border border-(--border) rounded-2xl bg-(--card) mb-4 overflow-hidden transition-all duration-300",
   {
     variants: {
       open: {
-        true: "ring-2 ring-brand-primary/5",
+        true: "ring-2 ring-brand-primary/10",
         false: "",
       },
     },
@@ -26,7 +26,7 @@ const itemVariants = cva(
 );
 
 const iconVariants = cva(
-  "text-2xl text-slate-400 transition-transform duration-300 font-medium",
+  "text-2xl text-(--muted-foreground) transition-transform duration-300 font-medium",
   {
     variants: {
       open: {
@@ -61,7 +61,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
   return (
     <div className={itemVariants({ open: isOpen })}>
       <button
-        className="w-full text-left p-6 sm:p-7 bg-none border-none flex justify-between items-center cursor-pointer text-lg sm:text-xl font-bold text-brand-dark"
+        className="w-full text-left p-6 sm:p-7 bg-none border-none flex justify-between items-center cursor-pointer text-lg sm:text-xl font-bold text-(--foreground)"
         onClick={() => setIsOpen(!isOpen)}
       >
         {question}
@@ -70,7 +70,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
         </span>
       </button>
       <div className={contentVariants({ open: isOpen })}>
-        <div className="leading-relaxed text-slate-600 space-y-4 font-medium">
+        <div className="leading-relaxed text-(--muted-foreground) space-y-4 font-medium">
           {children}
         </div>
       </div>
@@ -80,14 +80,14 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
 
 const FAQ: React.FC = () => {
   return (
-    <Section id="faq" className="font-['Plus_Jakarta_Sans',sans-serif]">
+    <Section id="faq" className="font-jakarta">
       <Container className="max-w-[900px]">
         <div className="text-center mb-16">
           <Badge variant="secondary">Everything You Need to Know</Badge>
-          <h2 className="text-4xl sm:text-5xl font-black mt-6 tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black mt-6 tracking-tight text-(--foreground)">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-[#64748b] mt-4 max-w-2xl mx-auto">
+          <p className="text-lg text-(--muted-foreground) mt-4 max-w-2xl mx-auto">
             Common questions about deploying your AI workforce.
           </p>
         </div>
@@ -141,14 +141,14 @@ const FAQ: React.FC = () => {
           </FAQItem>
         </div>
 
-        <Card className="mt-16 text-center border-none shadow-none bg-[#f8fafc]">
+        <Card className="mt-16 text-center border-none shadow-none bg-(--muted)/20">
           <CardContent className="pt-10">
-            <div className="text-xl font-bold mb-6 text-brand-dark">
+            <div className="text-xl font-bold mb-6 text-(--foreground)">
               Still have questions?
             </div>
             <Button
               onClick={() =>
-                window.open("https://myteam.ravan.ai/book", "_blank")
+                window.open("https://atomicx.ravan.ai/book", "_blank")
               }
             >
               Book a Free Demo Call

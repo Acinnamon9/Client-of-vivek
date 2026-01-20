@@ -7,7 +7,7 @@ import RoleCard from "./workforce/RoleCard";
 
 const Workforce: React.FC = () => {
   return (
-    <Section id="workforce" className="font-jakarta bg-slate-50/50">
+    <Section id="workforce" className="font-jakarta bg-(--muted)/10">
       <Container className="max-w-[1400px]">
         <div className="text-center max-w-[900px] mx-auto mb-20">
           <Badge variant="ghost" className="mb-8 animate-fade-in-down">
@@ -24,10 +24,10 @@ const Workforce: React.FC = () => {
             </svg>
             The New Standard
           </Badge>
-          <h2 className="text-5xl sm:text-6xl font-black text-brand-dark leading-tight mb-6 tracking-tight animate-fade-in-up">
+          <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) leading-tight mb-6 tracking-tight animate-fade-in-up">
             Your 24/7 AI Sales Workforce
           </h2>
-          <p className="text-xl text-[#64748b] leading-relaxed animate-fade-in-up font-medium">
+          <p className="text-xl text-(--muted-foreground) leading-relaxed animate-fade-in-up font-medium">
             Replace the chaos of human teams with the precision of AI. One
             integrated system handling every stage of your pipeline.
           </p>
@@ -44,7 +44,7 @@ const Workforce: React.FC = () => {
             size="xl"
             className="px-16"
             onClick={() =>
-              window.open("https://myteam.ravan.ai/book", "_blank")
+              window.open("https://atomicx.ravan.ai/book", "_blank")
             }
           >
             BOOK A DEMO CALL
