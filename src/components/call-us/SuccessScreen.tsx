@@ -32,7 +32,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({
           {phoneNumber}
         </span>
       </p>
-
+      {/* 
       <div className="w-full bg-(--muted) rounded-2xl p-4 border border-(--border) mb-8">
         <div className="flex justify-between text-[10px] text-(--muted-foreground) mb-2 uppercase tracking-wider">
           <span>Status</span>
@@ -41,7 +41,7 @@ const SuccessScreen: React.FC<SuccessScreenProps> = ({
         <div className="h-1 w-full bg-(--foreground)/10 rounded-full overflow-hidden">
           <div className="h-full bg-brand-success w-[60%] animate-[shine-slow_2s_linear_infinite]"></div>
         </div>
-      </div>
+      </div> */}
 
       <button
         onClick={onDismiss}
