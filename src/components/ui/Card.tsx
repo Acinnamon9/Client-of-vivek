@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = ({
       "bg-white border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.03)]",
     glass:
       "bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.05)]",
-    dark: "bg-[#1a1a1a] text-white border border-white/5",
+    dark: "bg-brand-dark text-white border border-white/5",
     outline: "bg-transparent border-2 border-black/5",
   };
 

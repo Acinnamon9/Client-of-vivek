@@ -1,8 +1,42 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand Colors */
+  --color-brand-primary: #ff5722;
+  --color-brand-secondary: #ff8a65;
+  --color-brand-accent: #ff6a3d;
+  --color-brand-dark: #1a1a1a;
+  --color-brand-deep: #0f0f0f;
+  --color-brand-success: #22c55e;
+  --color-brand-success-deep: #00aa00;
+  --color-brand-action: #ef4444;
+  --color-brand-link: #4361ee;
+
+  /* Custom Animations */
+  --animate-float-orb: float-orb 25s ease-in-out infinite;
+  --animate-float-orb-reverse: float-orb 25s ease-in-out infinite reverse;
+  --animate-badge-float: badge-float 4s ease-in-out infinite;
+  --animate-badge-float-enhanced: float-badge-enhanced 3.5s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2s infinite;
+  --animate-fade-rotate: fadeRotate 3s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-fade-in-down: fadeInDown 0.8s ease-out forwards;
+  --animate-expand-line: expand-line 1s ease-out forwards;
+  --animate-pulse-bg: pulse-bg 8s ease-in-out infinite;
+  --animate-badge-glow: badge-glow 3s ease-in-out infinite;
+  --animate-expand-underline: expand-underline 1.2s ease-out forwards;
+  --animate-vs-pulse: vs-pulse 2s ease-in-out infinite;
+  --animate-pulse-timeline: pulse-timeline 6s ease-in-out infinite;
+  --animate-rotate-slow: rotate-slow 35s linear infinite;
+  --animate-rotate-slow-reverse: rotate-slow 35s linear infinite reverse;
+  --animate-shine-slow: shine-slow 4s infinite;
+}
+
 @layer base {
   :root {
-    font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family:
+      "Plus Jakarta Sans", "Inter", system-ui, Avenir, Helvetica, Arial,
+      sans-serif;
     line-height: 1.5;
     font-weight: 400;
     color-scheme: light;

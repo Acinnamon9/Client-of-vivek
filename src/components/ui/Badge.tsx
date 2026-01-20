@@ -15,10 +15,10 @@ const Badge: React.FC<BadgeProps> = ({
 }) => {
   const variants = {
     brand:
-      "bg-linear-to-br from-[#ff5722] to-[#ff8a65] text-white shadow-[0_8px_20px_rgba(255,87,34,0.25)]",
+      "bg-linear-to-br from-brand-primary to-brand-secondary text-white shadow-[0_8px_20px_rgba(255,87,34,0.25)]",
     secondary: "bg-[#f1f5f9] text-[#475569]",
-    outline: "bg-transparent border border-[#ff5722]/20 text-[#ff5722]",
-    ghost: "bg-[#ff5722]/10 text-[#ff5722] border border-transparent",
+    outline: "bg-transparent border border-brand-primary/20 text-brand-primary",
+    ghost: "bg-brand-primary/10 text-brand-primary border border-transparent",
   };
 
   const sizes = {

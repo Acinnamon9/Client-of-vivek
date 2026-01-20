@@ -14,7 +14,7 @@ const Section: React.FC<SectionProps> = ({
     <section
       className={cn(
         "py-[100px] lg:py-[120px] px-5 relative overflow-hidden",
-        dark ? "bg-[#0f0f0f] text-white" : "bg-white text-[#1a1a1a]",
+        dark ? "bg-brand-deep text-white" : "bg-white text-brand-dark",
         className,
       )}
       {...props}

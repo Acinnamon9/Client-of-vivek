@@ -11,13 +11,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", ...props }, ref) => {
     const variants = {
       primary:
-        "bg-linear-to-br from-[#ff5722] to-[#ff6a3d] text-white shadow-[0_16px_40px_rgba(255,87,34,0.35)] hover:translate-y-[-4px] hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(255,87,34,0.5)]",
+        "bg-linear-to-br from-brand-primary to-brand-accent text-white shadow-[0_16px_40px_rgba(255,87,34,0.35)] hover:translate-y-[-4px] hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(255,87,34,0.5)]",
       secondary:
         "bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/20",
       outline:
-        "bg-transparent border-2 border-[#ff5722] text-[#ff5722] hover:bg-[#ff5722] hover:text-white",
-      black: "bg-[#1a1a1a] text-white hover:bg-[#333]",
-      ghost: "text-[#666] hover:text-[#1a1a1a] bg-transparent",
+        "bg-transparent border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white",
+      black: "bg-brand-dark text-white hover:bg-[#333]",
+      ghost: "text-[#666] hover:text-brand-dark bg-transparent",
     };
 
     const sizes = {
