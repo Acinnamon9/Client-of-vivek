@@ -7,6 +7,7 @@
  * to the document root for CSS styling.
  */
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useWidgetContext } from "./WidgetContext";
 
 type Theme = "light" | "dark";
 
@@ -34,11 +35,26 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     return "light";
   });
 
+  const { shadowRoot } = useWidgetContext();
+
   useEffect(() => {
-    // Apply theme to document element
-    document.documentElement.setAttribute("data-theme", theme);
+    // Determine the target element for the theme attribute
+    // If in a Shadow DOM (web component), apply to the root container
+    // Otherwise, apply to document.documentElement
+    let target: HTMLElement | null = null;
+
+    if (shadowRoot) {
+      // Apply to the custom element itself
+      target = shadowRoot.host as HTMLElement;
+    } else {
+      target = document.documentElement;
+    }
+
+    if (target) {
+      target.setAttribute("data-theme", theme);
+    }
     localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, [theme, shadowRoot]);
 
   const toggleTheme = () => {
     setThemeState((prev) => (prev === "light" ? "dark" : "light"));

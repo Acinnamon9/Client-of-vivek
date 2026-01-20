@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { WidgetProvider } from "./contexts/WidgetContext.tsx";
+import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 import "./index.css";
 
 class ReactWidget extends HTMLElement {
@@ -33,7 +34,9 @@ class ReactWidget extends HTMLElement {
         type={type}
         shadowRoot={this.shadowRoot}
       >
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </WidgetProvider>,
     );
   }

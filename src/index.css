@@ -33,6 +33,7 @@
 }
 
 @layer base {
+  :host,
   :root {
     --background: #ffffff;
     --foreground: #1a1a1a;
@@ -52,6 +53,7 @@
     color: var(--foreground);
   }
 
+  :host([data-theme="dark"]),
   [data-theme="dark"] {
     --background: #0f0f0f;
     --foreground: #ffffff;
