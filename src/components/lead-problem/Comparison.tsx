@@ -1,121 +1,152 @@
 import React from "react";
-import { cva } from "class-variance-authority";
+import { motion } from "framer-motion";
 import { mathComparison } from "../../constants/leadProblemData";
-import { Card } from "../ui/Card";
 import { Section, Container } from "../ui/Layout";
+import { cn } from "../../lib/utils";
 
-const systemVariants = cva(
-  "rounded-[32px] p-10 border-4 bg-(--card) shadow-xl transition-all duration-500 hover:-translate-y-2",
-  {
-    variants: {
-      type: {
-        current: "border-brand-primary/20",
-        ai: "border-brand-success/20",
-      },
-    },
-    defaultVariants: {
-      type: "current",
-    },
-  },
-);
-
-const systemTitleVariants = cva(
-  "text-xs font-black tracking-widest uppercase",
-  {
-    variants: {
-      type: {
-        current: "text-brand-primary",
-        ai: "text-brand-success",
-      },
-    },
-    defaultVariants: {
-      type: "current",
-    },
-  },
-);
-
-const systemCostVariants = cva("text-5xl font-black tracking-tighter", {
-  variants: {
-    type: {
-      current: "text-brand-primary",
-      ai: "text-brand-success",
-    },
-  },
-  defaultVariants: {
-    type: "current",
-  },
-});
-
+/**
+ * Comparison Component (Legacy Reference / Alternative Layout)
+ * Visualizes the Current vs AI system comparison as a dual-card breakdown.
+ * Styled with the same premium glassmorphism as the Verdict and Audit blocks.
+ */
 const Comparison: React.FC = () => {
   return (
     <Section
       id="lead-problem-comparison"
-      className="bg-(--background) py-24 sm:py-32"
+      className="bg-(--background) py-24 sm:py-32 relative overflow-hidden"
     >
-      <Container>
-        <Card
-          variant="white"
-          className="p-8 sm:p-16 shadow-2xl border-(--border) relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/2 blur-[80px] pointer-events-none"></div>
-
-          <h3 className="text-4xl font-black text-center mb-16 text-(--foreground) tracking-tight uppercase">
-            The Brutal Math of Your Current System
+      <Container className="max-w-screen-2xl">
+        <div className="text-center mb-20">
+          <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-(--foreground) tracking-tighter uppercase mb-6">
+            The Brutal Math
           </h3>
+          <p className="text-xl text-(--muted-foreground) max-w-2xl mx-auto font-medium">
+            Side-by-side efficiency audit of your legacy infrastructure vs. the
+            AI System.
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 items-center mb-16">
-            {mathComparison.map((sys, idx) => {
-              const type = sys.id === "current" ? "current" : ("ai" as const);
-              return (
-                <React.Fragment key={sys.id}>
-                  <div className={systemVariants({ type })}>
-                    <div className="text-center mb-10">
-                      <span className={systemTitleVariants({ type })}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-12 items-center relative z-10">
+          {mathComparison.map((sys, idx) => {
+            const isAI = sys.id === "ai";
+            const accentColor = isAI ? "brand-success" : "brand-primary";
+
+            return (
+              <React.Fragment key={sys.id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.2 }}
+                  className={cn(
+                    "group relative p-1 rounded-[40px] transition-all duration-700",
+                    isAI
+                      ? "bg-linear-to-br from-brand-success/20 via-transparent to-brand-success/5 shadow-brand-success/5"
+                      : "bg-linear-to-br from-brand-primary/20 via-transparent to-brand-primary/5 shadow-brand-primary/5",
+                    "hover:shadow-2xl",
+                  )}
+                >
+                  <div className="bg-(--card)/80 backdrop-blur-2xl rounded-[38px] p-10 md:p-12 border border-(--border) relative overflow-hidden">
+                    {/* Background technical glow */}
+                    <div
+                      className={cn(
+                        "absolute top-0 right-0 w-48 h-48 blur-[100px] rounded-full opacity-10",
+                        isAI ? "bg-brand-success" : "bg-brand-primary",
+                      )}
+                    ></div>
+
+                    {/* Component Header */}
+                    <div className="flex items-center gap-3 mb-10">
+                      <div
+                        className={cn(
+                          "h-px flex-1 bg-linear-to-r to-transparent",
+                          isAI
+                            ? "from-brand-success/40"
+                            : "from-brand-primary/40",
+                        )}
+                      ></div>
+                      <span
+                        className={cn(
+                          "text-xs font-black uppercase tracking-[0.4em] whitespace-nowrap",
+                          isAI ? "text-brand-success" : "text-brand-primary",
+                        )}
+                      >
                         {sys.title}
                       </span>
                     </div>
-                    <div className="space-y-6">
+
+                    {/* Stats List */}
+                    <div className="space-y-8">
                       {sys.stats.map((stat, i) => (
                         <div
                           key={i}
-                          className="flex justify-between items-center pb-5 border-b border-(--border) last:border-0 last:pb-0"
+                          className="flex justify-between items-end pb-4 border-b border-(--border)/50 last:border-0 last:pb-0"
                         >
-                          <span className="text-(--muted-foreground) font-bold">
+                          <span className="text-sm font-bold text-(--muted-foreground) uppercase tracking-wide">
                             {stat.label}
                           </span>
-                          <span className="text-xl font-black text-(--foreground)">
+                          <span className="text-2xl font-black text-(--foreground) tracking-tight">
                             {stat.value}
                           </span>
                         </div>
                       ))}
-                      <div className="pt-6 border-t-4 border-(--muted) mt-4 flex justify-between items-center">
-                        <span className="text-sm font-black text-(--muted-foreground) uppercase">
+
+                      {/* Final Result / Cost Per Show */}
+                      <div
+                        className={cn(
+                          "mt-10 p-8 rounded-3xl border transition-all duration-500",
+                          isAI
+                            ? "bg-brand-success/5 border-brand-success/20 group-hover:bg-brand-success/10"
+                            : "bg-brand-primary/5 border-brand-primary/20 group-hover:bg-brand-primary/10",
+                        )}
+                      >
+                        <p className="text-[10px] font-black text-(--muted-foreground) uppercase tracking-[0.3em] mb-4">
                           Cost Per Show
-                        </span>
-                        <span className={systemCostVariants({ type })}>
+                        </p>
+                        <p
+                          className={cn(
+                            "text-5xl md:text-6xl font-black tracking-tighter",
+                            isAI ? "text-brand-success" : "text-brand-primary",
+                          )}
+                        >
                           {sys.costPerShow}
-                        </span>
+                        </p>
                       </div>
                     </div>
                   </div>
-                  {idx === 0 && (
-                    <div className="w-16 h-16 rounded-full bg-brand-primary flex items-center justify-center text-white text-xl font-black shadow-xl shadow-brand-primary/30 animate-pulse scale-110">
+                </motion.div>
+
+                {idx === 0 && (
+                  <div className="flex flex-row lg:flex-col items-center gap-4 justify-center">
+                    <div className="h-px lg:w-px lg:h-24 bg-linear-to-b from-transparent via-(--border) to-transparent flex-1"></div>
+                    <div className="w-14 h-14 rounded-full border border-(--border) bg-(--card) flex items-center justify-center text-xs font-black text-(--muted-foreground) shadow-xl relative z-10 backdrop-blur-md">
                       VS
                     </div>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
+                    <div className="h-px lg:w-px lg:h-24 bg-linear-to-b from-transparent via-(--border) to-transparent flex-1"></div>
+                  </div>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
 
-          <div className="text-center text-2xl sm:text-3xl font-black text-(--foreground) uppercase tracking-tighter">
-            You're paying{" "}
-            <span className="text-brand-primary bg-brand-primary/5 px-3 py-1 rounded-xl">
-              145x more
-            </span>{" "}
-            per-appointment.
+        {/* Global Verdict Summary */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
+          <div className="inline-block p-8 rounded-[40px] bg-(--card)/40 backdrop-blur-3xl border border-(--border) shadow-2xl">
+            <p className="text-3xl md:text-4xl font-black text-(--foreground) tracking-tighter uppercase">
+              You're paying <br className="sm:hidden" />
+              <span className="text-brand-primary bg-brand-primary/10 px-6 py-2 rounded-2xl mx-2">
+                145x more
+              </span>{" "}
+              per-appointment.
+            </p>
           </div>
-        </Card>
+        </motion.div>
       </Container>
     </Section>
   );
