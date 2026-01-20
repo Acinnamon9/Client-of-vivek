@@ -1,46 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-  useSpring,
-  useTransform,
-  type Variants,
-} from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { heroStats, heroBenefits, heroBadgeLines } from "../constants/heroData";
 import { Section, Container } from "./ui/Layout";
 import Button from "./ui/Button";
 import { Card } from "./ui/Card";
-
-const AnimatedNumber: React.FC<{ value: string }> = ({ value }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const numericMatch = value.match(/(\d+)/);
-  const suffixMatch = value.match(/([^\d].*)/);
-
-  const targetValue = numericMatch ? parseInt(numericMatch[0]) : 0;
-  const suffix = suffixMatch ? suffixMatch[0] : "";
-
-  const spring = useSpring(0, {
-    mass: 1,
-    stiffness: 100,
-    damping: 30,
-  });
-
-  const display = useTransform(
-    spring,
-    (latest) => Math.floor(latest).toLocaleString() + suffix,
-  );
-
-  useEffect(() => {
-    if (isInView) {
-      spring.set(targetValue);
-    }
-  }, [isInView, spring, targetValue]);
-
-  return <motion.span ref={ref}>{display}</motion.span>;
-};
+import AnimatedNumber from "./ui/AnimatedNumber";
+import { containerVariants, itemVariants } from "../animations";
 
 const Hero: React.FC = () => {
   const [badgeIndex, setBadgeIndex] = useState(0);
@@ -52,28 +17,8 @@ const Hero: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-    },
-  };
-
   return (
-    <Section className="bg-linear-to-b from-[#faf8f5] to-[#f5ede5] min-h-[90vh] flex items-center relative overflow-hidden font-['Plus_Jakarta_Sans',sans-serif]">
+    <Section className="bg-linear-to-b from-[#faf8f5] to-[#f5ede5] min-h-[90vh] flex items-center relative overflow-hidden font-jakarta">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-link/2 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>

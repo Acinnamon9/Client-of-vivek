@@ -9,7 +9,7 @@ import CTA from "./lead-problem/CTA";
 
 const LeadProblem: React.FC = () => {
   return (
-    <Section className="bg-linear-to-b from-[#faf8f5] to-white relative overflow-hidden font-['Plus_Jakarta_Sans',sans-serif]">
+    <Section className="bg-linear-to-b from-[#faf8f5] to-white relative overflow-hidden font-jakarta">
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-brand-primary/3 rounded-full blur-[120px] animate-float-orb"></div>

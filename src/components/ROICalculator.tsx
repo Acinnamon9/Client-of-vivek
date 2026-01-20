@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Section, Container } from "./ui/Layout";
 import { Card } from "./ui/Card";
 import Button from "./ui/Button";
@@ -7,13 +7,9 @@ const ROICalculator: React.FC = () => {
   const [leads, setLeads] = useState(1000);
   const [dealValue, setDealValue] = useState(2000);
   const [closeRate, setCloseRate] = useState(5);
-  const [projectedRevenue, setProjectedRevenue] = useState(0);
 
-  useEffect(() => {
-    const currentRevenue = leads * (closeRate / 100) * dealValue;
-    const additionalRevenue = currentRevenue * 0.3;
-    setProjectedRevenue(additionalRevenue);
-  }, [leads, dealValue, closeRate]);
+  const currentRevenue = leads * (closeRate / 100) * dealValue;
+  const projectedRevenue = currentRevenue * 0.3;
 
   const formatMoney = (number: number) => {
     return new Intl.NumberFormat("en-US", {
@@ -24,7 +20,7 @@ const ROICalculator: React.FC = () => {
   };
 
   return (
-    <Section className="bg-brand-dark overflow-hidden relative font-['Plus_Jakarta_Sans',sans-serif]">
+    <Section className="bg-brand-dark overflow-hidden relative font-jakarta">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-brand-primary rounded-full blur-[120px]"></div>

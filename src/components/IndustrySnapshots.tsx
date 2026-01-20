@@ -41,7 +41,7 @@ const IndustrySnapshots: React.FC = () => {
     industries.find((i) => i.id === activeTab) || industries[0];
 
   return (
-    <Section className="font-['Plus_Jakarta_Sans',sans-serif]">
+    <Section className="font-jakarta">
       <Container>
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-black text-brand-dark mb-8 tracking-tight">

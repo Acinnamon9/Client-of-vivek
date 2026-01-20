@@ -48,6 +48,10 @@
     min-width: 320px;
     min-height: 100vh;
   }
+
+  .font-jakarta {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
 }
 
 /* Custom Keyframes */
