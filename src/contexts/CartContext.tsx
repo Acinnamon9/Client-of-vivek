@@ -1,3 +1,10 @@
+/**
+ * CartContext.tsx
+ *
+ * Provides global shopping cart state and management functions.
+ * Manages cart items, quantities, totals, and cart visibility (open/closed).
+ * Useful for e-commerce implementations where a persistent cart is needed across components.
+ */
 import { createContext, useContext, useState, ReactNode } from "react";
 
 export interface CartItem {
@@ -36,7 +43,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         return prevCart.map((item) =>
           item.id === id
             ? { ...item, quantity: item.quantity + newItem.quantity }
-            : item
+            : item,
         );
       }
 
@@ -55,7 +62,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
 
   return (

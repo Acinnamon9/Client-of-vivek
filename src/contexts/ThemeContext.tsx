@@ -1,3 +1,11 @@
+/**
+ * ThemeContext.tsx
+ *
+ * Manages the application's visual theme (light vs dark mode).
+ * Handles persistent storage of theme preferences in localStorage,
+ * detects system-level theme settings, and applies theme attributes
+ * to the document root for CSS styling.
+ */
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";

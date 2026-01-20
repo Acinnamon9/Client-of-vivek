@@ -1,24 +1,56 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { heroStats, heroBenefits, heroBadgeLines } from "../constants/heroData";
+import React /* useEffect, useState */ from "react";
+import { motion /*, AnimatePresence */ } from "framer-motion";
+// import {
+//   heroStats, heroBenefits , heroBadgeLines,
+// } from "../constants/heroData";
 import { Section, Container } from "./ui/Layout";
 import Button from "./ui/Button";
-import { Card } from "./ui/Card";
-import AnimatedNumber from "./ui/AnimatedNumber";
+// import { Card } from "./ui/Card";
+// import AnimatedNumber from "./ui/AnimatedNumber";
 import { containerVariants, itemVariants } from "../animations";
 
-const Hero: React.FC = () => {
-  const [badgeIndex, setBadgeIndex] = useState(0);
+import GuyImg from "../assets/Guy.png";
+import WomanImg from "../assets/Woman.png";
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setBadgeIndex((prev) => (prev + 1) % heroBadgeLines.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+const Hero: React.FC = () => {
+  // const [badgeIndex, setBadgeIndex] = useState(0);
+
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setBadgeIndex((prev) => (prev + 1) % heroBadgeLines.length);
+  //   }, 4000);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   return (
-    <Section className="bg-linear-to-b from-[#faf8f5] to-[#f5ede5] min-h-[90vh] flex items-center relative overflow-hidden font-jakarta">
+    <Section className="bg-linear-to-t from-(--muted) to-(--background) min-h-[90vh] pt-32 sm:pt-40 flex items-center relative overflow-hidden font-jakarta">
+      {/* Visual Assets (Sliding Up) */}
+      <motion.div
+        initial={{ y: 200, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        className="absolute bottom-0 left-[-5%] w-[400px] hidden lg:block pointer-events-none z-0"
+      >
+        <img
+          src={WomanImg}
+          alt="AI Team Member"
+          className="w-full h-auto object-contain opacity-80"
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ y: 200, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+        className="absolute bottom-0 right-[-5%] w-[420px] hidden lg:block pointer-events-none z-0"
+      >
+        <img
+          src={GuyImg}
+          alt="AI Team Member"
+          className="w-full h-auto object-contain opacity-80"
+        />
+      </motion.div>
+
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-link/2 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
@@ -31,8 +63,8 @@ const Hero: React.FC = () => {
           animate="visible"
         >
           {/* Dynamic Badge */}
-          <motion.div variants={itemVariants} className="mb-10 w-full max-w-md">
-            <div className="bg-white px-6 py-3 rounded-full border border-brand-primary/20 shadow-xl shadow-brand-primary/5 flex items-center gap-4 overflow-hidden relative">
+          {/* <motion.div variants={itemVariants} className="mb-10 w-full max-w-md">
+            <div className="bg-(--card) px-6 py-3 rounded-full border border-brand-primary/20 shadow-xl shadow-brand-primary/5 flex items-center gap-4 overflow-hidden relative">
               <span className="w-2.5 h-2.5 bg-brand-primary rounded-full animate-pulse shrink-0"></span>
               <div className="relative h-5 flex-1 text-left">
                 <AnimatePresence mode="wait">
@@ -49,47 +81,31 @@ const Hero: React.FC = () => {
                 </AnimatePresence>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.05] text-brand-dark mb-10 tracking-tighter"
+            className="text-6xl sm:text-7xl md:text-8xl font-black leading-[1.05] text-(--foreground) mb-12 tracking-tighter max-w-5xl"
           >
-            Deploy a Full AI Sales & Marketing Team That Books
-            <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent relative inline-block mx-2">
-              300-500 Qualified Appointments
-              <span
-                className="absolute bottom-2 left-0 w-full h-1.5 bg-brand-primary/20 rounded-full scale-x-0 animate-expand-underline origin-left"
-                style={{ animationDelay: "0.8s" }}
-              ></span>
-            </span>
-            Every Month — On Autopilot
+            Full AI{" "}
+            <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent">
+              Sales & Marketing
+            </span>{" "}
+            Team
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl text-[#475569] leading-relaxed mb-12 max-w-3xl font-medium"
+            className="text-xl sm:text-2xl md:text-3xl text-(--muted-foreground) leading-relaxed mb-16 max-w-4xl font-medium tracking-tight"
           >
-            <strong className="text-brand-dark font-black">
-              Never miss another lead.
-            </strong>{" "}
-            Your AI team calls within
-            <span className="text-brand-dark font-black bg-brand-primary/10 px-2 py-0.5 rounded-lg mx-1">
-              3 minutes
+            Hundreds of qualified appointments every month —{" "}
+            <span className="text-(--foreground) font-semibold italic">
+              while you sleep.
             </span>
-            , follows up{" "}
-            <span className="text-brand-dark font-black bg-brand-primary/10 px-2 py-0.5 rounded-lg mx-1">
-              12+ times
-            </span>
-            , and books appointments{" "}
-            <span className="text-brand-dark font-black bg-brand-primary/10 px-2 py-0.5 rounded-lg mx-1">
-              while you sleep
-            </span>
-            .
           </motion.p>
 
           {/* Stats Grid */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16 w-full"
           >
@@ -107,7 +123,7 @@ const Hero: React.FC = () => {
                 </div>
               </Card>
             ))}
-          </motion.div>
+          </motion.div> */}
 
           {/* CTAs */}
           <motion.div
@@ -126,31 +142,31 @@ const Hero: React.FC = () => {
             <Button
               size="xl"
               variant="outline"
-              className="px-12 bg-white/50 backdrop-blur-sm border-black/10 text-brand-dark"
+              className="px-12 bg-(--card)/50 backdrop-blur-sm border-(--border) text-(--foreground)"
             >
               Join Waitlist
             </Button>
           </motion.div>
 
           {/* Benefits List */}
-          <motion.div variants={itemVariants} className="w-full max-w-2xl">
+          {/* <motion.div variants={itemVariants} className="w-full max-w-2xl">
             <div className="flex flex-col gap-4">
               {heroBenefits.map((benefit, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ x: 10 }}
-                  className="flex items-center gap-4 p-5 bg-white/40 backdrop-blur-md rounded-2xl border border-black/3 transition-all hover:bg-white hover:shadow-xl hover:shadow-brand-primary/5 group"
+                  className="flex items-center gap-4 p-5 bg-(--card)/40 backdrop-blur-md rounded-2xl border border-(--border) transition-all hover:bg-(--card) hover:shadow-xl hover:shadow-brand-primary/5 group"
                 >
                   <span className="w-7 h-7 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-black shadow-lg shadow-brand-primary/20 group-hover:scale-110 transition-transform">
                     ✓
                   </span>
-                  <span className="text-[#64748b] font-bold text-base sm:text-lg text-left">
+                  <span className="text-(--muted-foreground) font-bold text-base sm:text-lg text-left">
                     {benefit}
                   </span>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </Container>
     </Section>

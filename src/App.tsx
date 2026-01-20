@@ -1,5 +1,7 @@
 import { Suspense, lazy } from "react";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import CallUs from "./components/CallUs";
 import LeadProblem from "./components/LeadProblem";
 
 // Lazy load non-critical sections
@@ -14,7 +16,9 @@ const Footer = lazy(() => import("./components/Footer"));
 function App() {
   return (
     <div>
+      <Navbar />
       <Hero />
+      <CallUs />
       <LeadProblem />
       <Suspense fallback={<div className="h-20" />}>
         <Workforce />

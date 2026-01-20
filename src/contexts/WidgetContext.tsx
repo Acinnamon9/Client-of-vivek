@@ -1,3 +1,10 @@
+/**
+ * WidgetContext.tsx
+ *
+ * Provides configuration and environment context for the embedded widget.
+ * Stores agent details, styling schemas, and reference to the Shadow DOM root.
+ * This context is essential for components to know their operational environment.
+ */
 import { createContext, useContext } from "react";
 
 type WidgetContextType = {

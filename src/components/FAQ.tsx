@@ -80,7 +80,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, children }) => {
 
 const FAQ: React.FC = () => {
   return (
-    <Section className="font-['Plus_Jakarta_Sans',sans-serif]">
+    <Section id="faq" className="font-['Plus_Jakarta_Sans',sans-serif]">
       <Container className="max-w-[900px]">
         <div className="text-center mb-16">
           <Badge variant="secondary">Everything You Need to Know</Badge>

@@ -7,7 +7,7 @@ import RoleCard from "./workforce/RoleCard";
 
 const Workforce: React.FC = () => {
   return (
-    <Section className="font-jakarta bg-slate-50/50">
+    <Section id="workforce" className="font-jakarta bg-slate-50/50">
       <Container className="max-w-[1400px]">
         <div className="text-center max-w-[900px] mx-auto mb-20">
           <Badge variant="brand" className="mb-8 animate-fade-in-down">

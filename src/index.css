@@ -34,19 +34,44 @@
 
 @layer base {
   :root {
+    --background: #ffffff;
+    --foreground: #1a1a1a;
+    --card: #ffffff;
+    --card-foreground: #1a1a1a;
+    --muted: #f5ede5;
+    --muted-foreground: #475569;
+    --border: rgba(0, 0, 0, 0.05);
+
     font-family:
       "Plus Jakarta Sans", "Inter", system-ui, Avenir, Helvetica, Arial,
       sans-serif;
     line-height: 1.5;
     font-weight: 400;
     color-scheme: light;
-    background-color: #ffffff;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  [data-theme="dark"] {
+    --background: #0f0f0f;
+    --foreground: #ffffff;
+    --card: #1a1a1a;
+    --card-foreground: #ffffff;
+    --muted: #1c1c1c;
+    --muted-foreground: #94a3b8;
+    --border: rgba(255, 255, 255, 0.1);
+    color-scheme: dark;
   }
 
   body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+    background-color: var(--background);
+    color: var(--foreground);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   .font-jakarta {
