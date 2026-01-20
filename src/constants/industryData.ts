@@ -24,7 +24,8 @@ export const industries: Industry[] = [
       { value: "99.9%", label: "Uptime Reliability" },
     ],
     buttonText: "Explore the Platform",
-    image: "/Global Status.png",
+    image:
+      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Global Status.png",
   },
   {
     id: "real-estate",
@@ -36,7 +37,8 @@ export const industries: Industry[] = [
       { value: "25–35%", label: "in show-up rate" },
     ],
     buttonText: "Book a Meeting",
-    image: "/Real Estate.png",
+    image:
+      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Real Estate.png",
   },
   {
     id: "gaming",
@@ -48,7 +50,8 @@ export const industries: Industry[] = [
       { value: "55%", label: "in reactivation rate" },
     ],
     buttonText: "Book a Meeting",
-    image: "/Gaming and Casinos.jpg",
+    image:
+      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Gaming and Casinos.jpg",
   },
   {
     id: "healthcare",
@@ -60,7 +63,8 @@ export const industries: Industry[] = [
       { value: "60%", label: "reduction in no-shows" },
     ],
     buttonText: "Book a Meeting",
-    image: "/Healthcare.png",
+    image:
+      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Healthcare.png",
   },
   {
     id: "finance",
@@ -72,7 +76,8 @@ export const industries: Industry[] = [
       { value: "$45k", label: "saved in ops cost" },
     ],
     buttonText: "Book a Meeting",
-    image: "/Lending and Finance.png",
+    image:
+      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Lending and Finance.png",
   },
   {
     id: "logistics",
@@ -84,6 +89,7 @@ export const industries: Industry[] = [
       { value: "48%", label: "reduction in dispatch errors" },
     ],
     buttonText: "Book a Meeting",
-    image: "/Transportation and Logistics.png",
+    image:
+      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Transportation and Logistics.png",
   },
 ];
