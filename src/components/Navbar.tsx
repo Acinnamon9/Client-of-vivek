@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-8 pointer-events-none font-jakarta">
+    <nav className="fixed top-0 left-0 right-0 z-100 px-6 py-8 pointer-events-none font-jakarta">
       <div
         className={`max-w-[1440px] mx-auto transition-all duration-500 pointer-events-auto ${
           isScrolled

@@ -13,7 +13,7 @@ const tabVariants = cva(
       active: {
         true: "bg-brand-link text-white shadow-lg shadow-brand-link/25",
         false:
-          "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-900",
+          "bg-(--muted)/20 text-(--muted-foreground) hover:bg-(--muted)/40 hover:text-(--foreground)",
       },
     },
     defaultVariants: {
@@ -44,7 +44,7 @@ const IndustrySnapshots: React.FC = () => {
     <Section id="industry" className="font-jakarta">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-brand-dark mb-8 tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-(--foreground) mb-8 tracking-tight">
             ROI Snapshot by Industry
           </h2>
 
@@ -63,7 +63,7 @@ const IndustrySnapshots: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[500px]">
           {/* Image Pane */}
-          <div className="rounded-[32px] overflow-hidden shadow-2xl h-[400px] md:h-full group">
+          <div className="rounded-[32px] overflow-hidden shadow-2xl h-[400px] md:h-full group border border-(--border)">
             <img
               src={activeIndustry.image}
               alt={activeIndustry.title}
@@ -78,7 +78,7 @@ const IndustrySnapshots: React.FC = () => {
                 key={ind.id}
                 className={paneVariants({ active: activeTab === ind.id })}
               >
-                <h3 className="text-3xl sm:text-4xl font-black text-brand-dark mb-6 leading-tight">
+                <h3 className="text-3xl sm:text-4xl font-black text-(--foreground) mb-6 leading-tight uppercase tracking-tighter">
                   {ind.title}
                 </h3>
 
@@ -90,7 +90,7 @@ const IndustrySnapshots: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 mb-10 pt-8 border-t border-black/5">
+                <div className="grid grid-cols-2 gap-8 mb-10 pt-8 border-t border-(--border)">
                   {ind.metrics.map((metric, idx) => (
                     <div className="flex flex-col gap-2" key={idx}>
                       <span className="text-3xl sm:text-4xl font-black text-brand-success flex items-center gap-2">
@@ -105,14 +105,14 @@ const IndustrySnapshots: React.FC = () => {
                         </svg>
                         {metric.value}
                       </span>
-                      <span className="text-sm font-bold text-[#64748b] uppercase tracking-wider">
+                      <span className="text-sm font-bold text-(--muted-foreground) uppercase tracking-wider">
                         {metric.label}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <Card className="bg-white border-none shadow-sm mb-8 hover:translate-x-2">
+                <Card className="bg-(--card) border-(--border) shadow-sm mb-8 hover:translate-x-2 transition-transform">
                   <CardContent className="p-6 flex items-center gap-5">
                     <div className="w-12 h-12 bg-brand-action rounded-full flex items-center justify-center text-white shrink-0 shadow-lg shadow-brand-action/20">
                       <svg
@@ -125,10 +125,10 @@ const IndustrySnapshots: React.FC = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-brand-dark">
+                      <h4 className="text-base font-bold text-(--foreground)">
                         {ind.action.title}
                       </h4>
-                      <p className="text-sm text-[#64748b] font-medium">
+                      <p className="text-sm text-(--muted-foreground) font-medium">
                         {ind.action.time}
                       </p>
                     </div>
@@ -140,7 +140,7 @@ const IndustrySnapshots: React.FC = () => {
                   size="lg"
                   className="w-full"
                   onClick={() =>
-                    window.open("https://myteam.ravan.ai/book", "_blank")
+                    window.open("https://atomicx.ravan.ai/book", "_blank")
                   }
                 >
                   {ind.buttonText}

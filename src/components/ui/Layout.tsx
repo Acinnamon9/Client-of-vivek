@@ -13,7 +13,7 @@ const Section: React.FC<SectionProps> = ({
   return (
     <section
       className={cn(
-        "py-[100px] lg:py-[120px] px-5 relative overflow-hidden",
+        "min-h-screen flex flex-col justify-center py-[100px] lg:py-[120px] px-5 relative overflow-hidden",
         "bg-(--background) text-(--foreground)",
         dark && "bg-brand-deep text-white", // Maintain specific overrides if needed
         className,
