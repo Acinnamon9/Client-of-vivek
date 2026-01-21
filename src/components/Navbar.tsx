@@ -24,11 +24,11 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-100 px-6 py-8 pointer-events-none font-jakarta">
       <div
-        className={`max-w-[1440px] mx-auto transition-all duration-500 pointer-events-auto ${
-          isScrolled
-            ? "bg-(--card)/40 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-[24px] px-12 py-4"
+        id="navbar-container"
+        className={`max-w-[1440px] mx-auto transition-all duration-500 pointer-events-auto ${isScrolled
+            ? "glass-navbar-frosted rounded-[24px] px-12 py-4"
             : "bg-transparent border border-transparent px-6 py-3"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -127,7 +127,43 @@ const Navbar: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
+
+      {/* SVG Filter for Glass Effect */}
+      <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }}>
+        <filter id="frosted-filter" primitiveUnits="objectBoundingBox">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.6"
+            numOctaves="3"
+            result="noise"
+          />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.005" result="blur" />
+          <feDisplacementMap
+            in="blur"
+            in2="noise"
+            scale="0.02"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          >
+            <animate
+              attributeName="scale"
+              to="0.04"
+              dur="0.3s"
+              begin="navbar-container.mouseover"
+              fill="freeze"
+            />
+            <animate
+              attributeName="scale"
+              to="0.02"
+              dur="0.3s"
+              begin="navbar-container.mouseout"
+              fill="freeze"
+            />
+          </feDisplacementMap>
+        </filter>
+      </svg>
     </nav>
+
   );
 };
 

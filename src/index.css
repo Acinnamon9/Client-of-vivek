@@ -35,13 +35,17 @@
 }
 
 @layer base {
+
   :host,
   :root {
-    --background: #F6F4F1; /* Warm Base */
+    --background: #F6F4F1;
+    /* Warm Base */
     --foreground: #1a1a1a;
-    --card: #FAF9F7; /* Slightly Lighter for Inputs/Cards */
+    --card: #FAF9F7;
+    /* Slightly Lighter for Inputs/Cards */
     --card-foreground: #1a1a1a;
-    --muted: #EFEDE8; /* Slightly Darker for Contrast */
+    --muted: #EFEDE8;
+    /* Slightly Darker for Contrast */
     --muted-foreground: #475569;
     --border: rgba(26, 26, 26, 0.08);
 
@@ -85,44 +89,53 @@
 
 /* Custom Keyframes */
 @keyframes float-orb {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
   }
+
   33% {
     transform: translate(50px, -50px) scale(1.1);
   }
+
   66% {
     transform: translate(-30px, 30px) scale(0.9);
   }
 }
 
 @keyframes badge-float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-4px);
   }
 }
 
 @keyframes float-badge-enhanced {
+
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
   }
+
   50% {
     transform: translateY(-6px) rotate(2deg);
   }
 }
 
 @keyframes pulse-dot {
+
   0%,
   100% {
     opacity: 1;
     box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
   }
+
   50% {
     opacity: 0.6;
     box-shadow: 0 0 0 8px rgba(255, 87, 34, 0);
@@ -130,16 +143,19 @@
 }
 
 @keyframes fadeRotate {
+
   0%,
   100% {
     opacity: 0;
     transform: translateY(12px);
   }
+
   5%,
   28% {
     opacity: 1;
     transform: translateY(0);
   }
+
   33% {
     opacity: 0;
     transform: translateY(-12px);
@@ -151,6 +167,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -162,6 +179,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -175,20 +193,24 @@
 }
 
 @keyframes pulse-bg {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
 }
 
 @keyframes badge-glow {
+
   0%,
   100% {
     box-shadow: 0 8px 24px rgba(255, 87, 34, 0.35);
   }
+
   50% {
     box-shadow: 0 12px 32px rgba(255, 87, 34, 0.5);
   }
@@ -201,20 +223,24 @@
 }
 
 @keyframes vs-pulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.08);
   }
 }
 
 @keyframes pulse-timeline {
+
   0%,
   100% {
     opacity: 0.5;
   }
+
   50% {
     opacity: 1;
   }
@@ -224,6 +250,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -233,6 +260,7 @@
   0% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }
@@ -242,6 +270,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -252,6 +281,7 @@
     transform: translate(-50%, -50%) scale(0);
     opacity: 1;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0;
@@ -262,19 +292,46 @@
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(400%);
   }
 }
 
 @keyframes pulse-success {
+
   0%,
   100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.6;
     transform: scale(1.1);
   }
+}
+
+/* Glass Effect Utility */
+.backdrop-frosted {
+  backdrop-filter: url(#frosted);
+  -webkit-backdrop-filter: url(#frosted);
+}
+/* Premium Frosted Glass Effects */
+.glass-navbar-frosted {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px) url(#frosted-filter);
+  -webkit-backdrop-filter: blur(12px) url(#frosted-filter);
+}
+
+[data-theme="dark"] .glass-navbar-frosted {
+  background: rgba(15, 15, 15, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 16px 48px rgba(0, 0, 0, 0.4);
 }
