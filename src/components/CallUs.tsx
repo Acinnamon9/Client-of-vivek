@@ -54,7 +54,7 @@ const CallUs: React.FC = () => {
 
           <motion.h2
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tighter text-(--foreground) leading-[1.05]"
+            className="text-3xl sm:text-4xl md:text-5xl font-medium mb-6 tracking-tight text-(--foreground) leading-[1.05]"
           >
             Don't believe us? <br />
             <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent italic">
@@ -64,7 +64,7 @@ const CallUs: React.FC = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-lg text-(--muted-foreground) mb-10 max-w-md mx-auto lg:mx-0 font-medium leading-relaxed"
+            className="text-base sm:text-lg text-(--muted-foreground) opacity-60 font-normal mb-10 max-w-md mx-auto lg:mx-0 leading-relaxed"
           >
             Experience the speed and human-like conversation of our AI agents
             firsthand. Enter your details into the secure terminal.
@@ -86,10 +86,10 @@ const CallUs: React.FC = () => {
                   <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl mx-auto flex items-center justify-center mb-4 border border-brand-primary/20 shadow-[0_0_30px_rgba(255,87,34,0.15)]">
                     <span className="text-2xl">📞</span>
                   </div>
-                  <h3 className="text-(--foreground) font-bold text-xl tracking-tight">
+                  <h3 className="text-(--foreground) font-medium text-xl tracking-tight">
                     AI Dialer
                   </h3>
-                  <p className="text-(--muted-foreground) text-xs mt-1">
+                  <p className="text-(--muted-foreground) text-xs mt-1 opacity-50 font-normal">
                     Secure Connection Request
                   </p>
                 </>

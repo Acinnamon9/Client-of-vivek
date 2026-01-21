@@ -56,7 +56,7 @@ const CallForm: React.FC<CallFormProps> = ({
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="relative w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:border-brand-primary/50 focus:bg-white transition-all shadow-sm backdrop-blur-md"
+            className="relative w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4)] backdrop-blur-md"
           />
         </div>
 
@@ -67,17 +67,17 @@ const CallForm: React.FC<CallFormProps> = ({
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="relative w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:border-brand-primary/50 focus:bg-white transition-all shadow-sm backdrop-blur-md"
+            className="relative w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4)] backdrop-blur-md"
           />
         </div>
 
-        <div className="group/input relative flex gap-3">
-          <div className="w-[100px] relative shrink-0">
+        <div className="group/input relative flex gap-4">
+          <div className="w-[104px] relative shrink-0">
             <div className="absolute inset-0 bg-brand-primary/10 rounded-xl blur-md opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             <select
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
-              className="relative z-10 appearance-none w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-3 py-3.5 text-sm text-(--foreground) outline-none focus:border-brand-primary/50 focus:bg-white transition-all shadow-sm font-mono text-center cursor-pointer backdrop-blur-md"
+              className="relative z-10 appearance-none w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-3 py-3.5 text-sm text-(--foreground) outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4)] font-mono text-center cursor-pointer backdrop-blur-md"
             >
               {countries.map((c) => (
                 <option
@@ -121,7 +121,7 @@ const CallForm: React.FC<CallFormProps> = ({
               placeholder="Phone Number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="relative z-10 w-full bg-white/80 dark:bg-white/5 border border-white/80 dark:border-white/10 rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:border-brand-primary/50 focus:bg-white transition-all font-mono shadow-sm backdrop-blur-md"
+              className="relative z-10 w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all font-mono shadow-inner backdrop-blur-md"
             />
           </div>
         </div>
@@ -137,20 +137,22 @@ const CallForm: React.FC<CallFormProps> = ({
         <button
           type="submit"
           disabled={isCalling}
-          className="w-full bg-brand-primary hover:bg-brand-accent active:scale-95 text-white font-bold py-4 rounded-2xl shadow-[0_10px_30px_rgba(255,87,34,0.3)] transition-all duration-300 flex items-center justify-center gap-3 group/call disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
+          className="w-full bg-[#ff5722] hover:bg-[#ff6235] hover:shadow-[10px_10px_25px_rgba(255,87,34,0.25)] active:scale-[0.98] text-white/90 font-medium py-5 rounded-2xl shadow-[6px_6px_20px_rgba(255,87,34,0.15),inset_1px_1px_0px_rgba(255,255,255,0.2)] transition-all duration-500 flex items-center justify-center gap-3 group/call disabled:opacity-50 disabled:pointer-events-none cursor-pointer border border-white/10"
         >
           {isCalling ? (
-            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <div className="w-5 h-5 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
           ) : (
             <>
-              <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center -ml-2 group-hover/call:bg-white/30 transition-colors">
+              <span className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center -ml-2 group-hover/call:bg-white/15 transition-all duration-300">
                 📞
               </span>
-              <span className="tracking-wide text-sm">INITIATE CALL</span>
+              <span className="tracking-[0.12em] text-sm font-medium">
+                INITIATE CALL
+              </span>
             </>
           )}
         </button>
-        <p className="text-center text-[10px] text-(--muted-foreground) mt-3 font-medium tracking-wide opacity-60">
+        <p className="text-center text-[10px] text-(--muted-foreground) mt-4 font-normal tracking-wide opacity-50">
           SECURE ENCRYPTED CONNECTION
         </p>
       </div>

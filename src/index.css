@@ -37,13 +37,13 @@
 @layer base {
   :host,
   :root {
-    --background: #ffffff;
+    --background: #F6F4F1; /* Warm Base */
     --foreground: #1a1a1a;
-    --card: #ffffff;
+    --card: #FAF9F7; /* Slightly Lighter for Inputs/Cards */
     --card-foreground: #1a1a1a;
-    --muted: #f5ede5;
+    --muted: #EFEDE8; /* Slightly Darker for Contrast */
     --muted-foreground: #475569;
-    --border: rgba(0, 0, 0, 0.05);
+    --border: rgba(26, 26, 26, 0.08);
 
     font-family:
       "Plus Jakarta Sans", "Inter", system-ui, Avenir, Helvetica, Arial,
