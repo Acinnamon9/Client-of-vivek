@@ -9,6 +9,8 @@ import Button from "./ui/Button";
 // import AnimatedNumber from "./ui/AnimatedNumber";
 import { containerVariants, itemVariants } from "../animations";
 
+import Typewriter from "./ui/Typewriter";
+
 const Hero: React.FC = () => {
   // const [badgeIndex, setBadgeIndex] = useState(0);
 
@@ -84,11 +86,18 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-6xl sm:text-7xl md:text-8xl font-black leading-[1.05] text-(--foreground) mb-12 tracking-tighter max-w-5xl"
           >
-            Full AI{" "}
-            <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent">
-              Sales & Marketing
-            </span>{" "}
-            Team
+            <Typewriter
+              delay={0.6}
+              segments={[
+                { text: "Full AI " },
+                {
+                  text: "Sales & Marketing",
+                  className: "bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent"
+                },
+                { text: " Team" }
+              ]}
+              cursorColor="#ff5722"
+            />
           </motion.h1>
 
           <motion.p
@@ -128,8 +137,9 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row justify-center gap-6 mb-16 w-full sm:w-auto"
           >
             <Button
+              variant="glass-primary"
               size="xl"
-              className="px-12 shadow-2xl shadow-brand-primary/30"
+              className="px-12"
               onClick={() =>
                 window.open("https://atomicx.ravan.ai/book", "_blank")
               }
@@ -137,9 +147,9 @@ const Hero: React.FC = () => {
               Enterprise Demo
             </Button>
             <Button
+              variant="glass"
               size="xl"
-              variant="outline"
-              className="px-12 bg-(--card)/50 backdrop-blur-sm border-(--border) text-(--foreground)"
+              className="px-12"
             >
               Join Waitlist
             </Button>
