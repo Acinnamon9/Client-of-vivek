@@ -45,18 +45,18 @@ function App() {
       </div>
 
       {/* The Problem Series */}
-      <div className="relative z-20 bg-(--background)">
+      {/* <div className="relative z-20 bg-(--background)">
         <LeadProblem />
-      </div>
+      </div> */}
       <div className="relative z-22 bg-(--background)">
         <Timeline />
       </div>
-      <div className="relative z-23 bg-(--background)">
+      {/* <div className="relative z-23 bg-(--background)">
         <FailureCards />
-      </div>
-      <div className="relative z-24 bg-(--background)">
+      </div> */}
+      {/* <div className="relative z-24 bg-(--background)">
         <Funnel />
-      </div>
+      </div> */}
       <div className="relative z-25 bg-(--background)">
         <CTA />
       </div>
