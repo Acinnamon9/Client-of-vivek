@@ -29,64 +29,82 @@ const CallUs: React.FC = () => {
     resetForm,
   } = useCallLogic();
 
+  const [mousePos, setMousePos] = React.useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
+
   return (
     <Section
       id="demo"
-      className="py-24 sm:py-32 bg-linear-to-b from-(--background) to-(--muted) overflow-hidden relative"
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="py-24 sm:py-32 bg-linear-to-b from-(--background) to-(--muted) overflow-hidden relative group/section"
     >
-      {/* Electric Ambience Background - High Energy Motion */}
+      {/* Interactive Background Layers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            x: [-300, 400, -150, 250, 0],
-            y: [-150, 300, -75, 200, 0],
-            scale: [1, 1.6, 0.7, 1.3, 1],
-            rotate: [0, 90, 180, 270, 360],
+        {/* Mouse Spotlight - more intense */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover/section:opacity-100 transition-opacity duration-700 z-0"
+          style={{
+            background: mousePos
+              ? `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 87, 34, 0.12), transparent 80%)`
+              : "",
           }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-brand-primary/25 rounded-full blur-[100px]"
         />
+
+        {/* Dynamic Orbs - Bolder and more reactive */}
         <motion.div
           animate={{
-            x: [400, -300, 200, -400, 0],
-            y: [300, -200, 150, -300, 0],
-            scale: [1.4, 0.6, 1.2, 0.8, 1.4],
-            rotate: [360, 270, 180, 90, 0],
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-20%] right-[-20%] w-[700px] h-[700px] bg-brand-primary/15 rounded-full blur-[120px]"
-        />
-        <motion.div
-          animate={{
-            x: [-500, 500],
-            y: [400, -400],
-            scale: [0.5, 1.4],
+            x: mousePos ? mousePos.x * 0.08 - 150 : 0,
+            y: mousePos ? mousePos.y * 0.08 - 150 : 0,
+            opacity: mousePos ? 0.8 : 0.4,
+            scale: mousePos ? [1.1, 1.15, 1.1] : 1,
           }}
           transition={{
-            duration: 4,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
+            x: { type: "spring", damping: 30, stiffness: 40, mass: 1.5 },
+            y: { type: "spring", damping: 30, stiffness: 40, mass: 1.5 },
+            scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[90px]"
+          className="absolute top-1/6 left-1/6 w-[650px] h-[650px] bg-brand-primary/20 rounded-full blur-[110px]"
         />
         <motion.div
           animate={{
-            x: [0, -450, 450, 0],
-            y: [0, 300, -300, 0],
+            x: mousePos ? mousePos.x * -0.06 + 150 : 0,
+            y: mousePos ? mousePos.y * -0.06 + 150 : 0,
+            opacity: mousePos ? 0.6 : 0.3,
+            scale: mousePos ? [1.2, 1.25, 1.2] : 1.1,
           }}
-          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-brand-primary/15 rounded-full blur-[110px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.8, 1],
-            opacity: [0.3, 0.9, 0.3],
-            x: [200, -200, 200],
+          transition={{
+            x: { type: "spring", damping: 35, stiffness: 30, mass: 2 },
+            y: { type: "spring", damping: 35, stiffness: 30, mass: 2 },
+            scale: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            },
           }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] right-[10%] w-[350px] h-[350px] bg-brand-primary/25 rounded-full blur-[80px]"
+          className="absolute bottom-1/6 right-1/6 w-[750px] h-[750px] bg-brand-primary/15 rounded-full blur-[130px]"
         />
+
+        {/* Additional "Energy" Layer */}
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(255,87,34,0.1),transparent_70%)]" />
       </div>
 
       <Container className="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24">

@@ -60,15 +60,33 @@ const FALLBACK_COUNTRIES: CountryInfo[] = [
 
 export const useCallLogic = () => {
   const [countries, setCountries] = useState<CountryInfo[]>(FALLBACK_COUNTRIES);
-  const [countryCode, setCountryCode] = useState("+1");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
+  // Initialize state from localStorage if available
+  const [countryCode, setCountryCode] = useState(
+    () => localStorage.getItem("ravan_country_code") || "+1",
+  );
+  const [phoneNumber, setPhoneNumber] = useState(
+    () => localStorage.getItem("ravan_phone_number") || "",
+  );
+  const [name, setName] = useState(
+    () => localStorage.getItem("ravan_user_name") || "",
+  );
+  const [email, setEmail] = useState(
+    () => localStorage.getItem("ravan_user_email") || "",
+  );
   const [isCalling, setIsCalling] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [currentTime, setCurrentTime] = useState("");
   const [loadingText, setLoadingText] = useState("Initializing connection...");
+
+  // Persist to localStorage when values change
+  useEffect(() => {
+    localStorage.setItem("ravan_country_code", countryCode);
+    localStorage.setItem("ravan_phone_number", phoneNumber);
+    localStorage.setItem("ravan_user_name", name);
+    localStorage.setItem("ravan_user_email", email);
+  }, [countryCode, phoneNumber, name, email]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -152,10 +170,10 @@ export const useCallLogic = () => {
 
   const resetForm = () => {
     setIsSubmitted(false);
-    setPhoneNumber("");
-    setName("");
-    setEmail("");
     setErrorMsg("");
+    // We keep name, email, and countryCode for persistence
+    // PhoneNumber is cleared to allow a fresh entry for a new call
+    setPhoneNumber("");
   };
 
   const handleCall = async (e: React.FormEvent) => {
