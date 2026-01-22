@@ -10,7 +10,7 @@ const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { workforceRoles } from "../constants/workforceData";
 import { Section, Container } from "./ui/Layout";
 import Button from "./ui/Button";
@@ -109,7 +109,7 @@ const Workforce: React.FC = () => {
             drag="x"
             onDragStart={() => (isDragging.current = true)}
             onDragEnd={() => (isDragging.current = false)}
-            onDrag={(e, info) => {
+            onDrag={(_, info) => {
               baseX.set(baseX.get() + info.delta.x * 0.02);
             }}
           >
