@@ -1,19 +1,20 @@
 import React from "react";
+import Button from "./ui/Button";
+import { Container } from "./ui/Layout";
+import { useTheme } from "../contexts/ThemeContext";
 import {
   footerPlatformLinks,
   footerCompanyLinks,
   footerContactInfo,
   footerSocialLinks,
 } from "../constants/footerData";
-import { Container } from "./ui/Layout";
-import { useTheme } from "../contexts/ThemeContext";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <footer className="bg-(--background) border-t border-(--border) pt-24 pb-12 px-5 text-(--muted-foreground) text-sm font-['Plus_Jakarta_Sans',sans-serif]">
+    <footer className="bg-(--background) border-t border-(--border) pt-24 pb-12 px-5 text-(--muted-foreground) text-sm">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-16 mb-20">
           <div className="space-y-6">
@@ -36,12 +37,14 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {footerPlatformLinks.map((link, idx) => (
                 <li key={idx}>
-                  <a
+                  <Button
+                    as="a"
                     href={link.href}
-                    className="hover:text-brand-primary transition-all duration-300 no-underline font-bold"
+                    variant="link"
+                    className="justify-start"
                   >
                     {link.label}
-                  </a>
+                  </Button>
                 </li>
               ))}
             </ul>
@@ -54,12 +57,14 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {footerCompanyLinks.map((link, idx) => (
                 <li key={idx}>
-                  <a
+                  <Button
+                    as="a"
                     href={link.href}
-                    className="hover:text-brand-primary transition-all duration-300 no-underline font-bold"
+                    variant="link"
+                    className="justify-start"
                   >
                     {link.label}
-                  </a>
+                  </Button>
                 </li>
               ))}
             </ul>

@@ -7,7 +7,7 @@ import { Card } from "./ui/Card";
 
 const Proof: React.FC = () => {
   return (
-    <Section id="proof" className="bg-(--background) font-jakarta">
+    <Section id="proof" className="bg-(--background)">
       <Container>
         <div className="text-center mb-16">
           <Badge variant="ghost" className="mb-6">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Section, Container } from "./ui/Layout";
 import { Card } from "./ui/Card";
 import Button from "./ui/Button";
+import Slider from "./ui/Slider";
 import { useCurrency } from "../hooks/useCurrency";
 
 const ROICalculator: React.FC = () => {
@@ -14,7 +15,7 @@ const ROICalculator: React.FC = () => {
   const projectedRevenue = currentRevenue * 0.3;
 
   return (
-    <Section className="bg-(--background) overflow-hidden relative font-jakarta">
+    <Section className="bg-(--background) overflow-hidden relative">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-brand-primary rounded-full blur-[120px]"></div>
@@ -46,65 +47,35 @@ const ROICalculator: React.FC = () => {
 
           <Card variant="white" className="p-8 sm:p-12 shadow-2xl">
             <div className="space-y-10">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center font-black">
-                  <span className="text-(--muted-foreground) uppercase tracking-widest text-[10px]">
-                    Monthly Leads
-                  </span>
-                  <span className="text-brand-primary text-2xl font-black">
-                    {leads.toLocaleString()}
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min="10"
-                  max="1000"
-                  step="10"
-                  value={leads}
-                  className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
-                  onChange={(e) => setLeads(parseInt(e.target.value))}
-                />
-              </div>
+              <Slider
+                label="Monthly Leads"
+                valueDisplay={leads.toLocaleString()}
+                min="10"
+                max="1000"
+                step="10"
+                value={leads}
+                onChange={(e) => setLeads(parseInt(e.target.value))}
+              />
 
-              <div className="space-y-4">
-                <div className="flex justify-between items-center font-black">
-                  <span className="text-(--muted-foreground) uppercase tracking-widest text-[10px]">
-                    Avg. Deal Value
-                  </span>
-                  <span className="text-brand-primary text-2xl font-black">
-                    {formatCurrency(dealValue)}
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min="500"
-                  max="50000"
-                  step="500"
-                  value={dealValue}
-                  className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
-                  onChange={(e) => setDealValue(parseInt(e.target.value))}
-                />
-              </div>
+              <Slider
+                label="Avg. Deal Value"
+                valueDisplay={formatCurrency(dealValue)}
+                min="500"
+                max="50000"
+                step="500"
+                value={dealValue}
+                onChange={(e) => setDealValue(parseInt(e.target.value))}
+              />
 
-              <div className="space-y-4">
-                <div className="flex justify-between items-center font-black">
-                  <span className="text-(--muted-foreground) uppercase tracking-widest text-[10px]">
-                    Current Close Rate
-                  </span>
-                  <span className="text-brand-primary text-2xl font-black">
-                    {closeRate}%
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min="1"
-                  max="20"
-                  step="0.5"
-                  value={closeRate}
-                  className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
-                  onChange={(e) => setCloseRate(parseFloat(e.target.value))}
-                />
-              </div>
+              <Slider
+                label="Current Close Rate"
+                valueDisplay={`${closeRate}%`}
+                min="1"
+                max="20"
+                step="0.5"
+                value={closeRate}
+                onChange={(e) => setCloseRate(parseFloat(e.target.value))}
+              />
 
               <div className="bg-brand-primary/5 rounded-[32px] p-8 text-center border border-brand-primary/10 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">

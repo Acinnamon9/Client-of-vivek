@@ -1,16 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
+import { useTheme } from "../../contexts/ThemeContext";
 
-interface LayoutToggleProps {
-  isDark: boolean;
-  onToggleTheme: () => void;
-}
+const LayoutToggle: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
-const LayoutToggle: React.FC<LayoutToggleProps> = ({
-  isDark,
-  onToggleTheme,
-}) => {
   return (
     <div className="fixed bottom-8 left-8 z-200 flex flex-col gap-3">
       {/* Container */}
@@ -34,7 +30,7 @@ const LayoutToggle: React.FC<LayoutToggleProps> = ({
           </div>
 
           <button
-            onClick={onToggleTheme}
+            onClick={toggleTheme}
             className="relative w-12 h-6 bg-brand-primary/10 rounded-full flex items-center p-1 transition-colors hover:bg-brand-primary/20"
           >
             <motion.div

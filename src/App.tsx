@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CallUs from "./components/CallUs";
@@ -15,21 +15,10 @@ const FinalCTA = lazy(() => import("./components/FinalCTA"));
 const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
-  const [isDark, setIsDark] = useState(true);
-
-  // Sync theme with data attribute on HTML element
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
-  }, [isDark]);
-
   return (
     <div className="relative font-jakarta bg-(--background) selection:bg-brand-primary/20 selection:text-brand-primary min-h-screen">
       <Navbar />
-      <LayoutToggle isDark={isDark} onToggleTheme={() => setIsDark(!isDark)} />
+      <LayoutToggle />
 
       {/* Hero: No sticky, it's the base */}
       <div className="relative z-0">

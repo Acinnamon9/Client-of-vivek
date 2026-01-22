@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <Section className="bg-linear-to-t from-(--muted) to-(--background) min-h-[90vh] pt-32 sm:pt-40 flex items-center relative overflow-hidden font-jakarta">
+    <Section className="bg-linear-to-t from-(--muted) to-(--background) min-h-[90vh] pt-32 sm:pt-40 flex items-center relative overflow-hidden">
       {/* Visual Assets (Sliding Up) */}
       {HERO_CONFIG.showVisualAssets && (
         <>
