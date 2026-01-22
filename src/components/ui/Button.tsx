@@ -17,9 +17,9 @@ const buttonVariants = cva(
         ghost: "text-slate-600 hover:text-brand-dark bg-transparent",
         link: "text-(--muted-foreground) hover:text-brand-primary underline-offset-4 hover:underline p-0 h-auto font-bold",
         glass:
-          "bg-white/5 backdrop-blur-xl border border-white/10 text-(--foreground) shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.05),0_10px_20px_rgba(0,0,0,0.1)] hover:bg-white/10 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_15px_30px_rgba(0,0,0,0.15)]",
+          "bg-white/5 backdrop-blur-xl border border-white/10 text-(--foreground) shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.05)] hover:bg-white/10 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_0_20px_rgba(0,0,0,0.1)]",
         "glass-primary":
-          "bg-brand-primary/10 backdrop-blur-xl border border-brand-primary/20 text-brand-primary shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(255,87,34,0.1),0_10px_20px_rgba(255,87,34,0.1)] hover:bg-brand-primary/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_15px_30px_rgba(255,87,34,0.2)]",
+          "bg-brand-primary/10 backdrop-blur-xl border border-brand-primary/20 text-brand-primary shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(255,87,34,0.1)] hover:bg-brand-primary/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_25px_rgba(255,87,34,0.15)]",
       },
       size: {
         sm: "px-4 py-2 text-sm rounded-lg",

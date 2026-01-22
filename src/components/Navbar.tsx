@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
                   className={cn(
                     "text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 transition-all",
                     isActive
-                      ? "bg-white/10 border-white/20 text-white -translate-y-px shadow-[0_4px_12px_rgba(255,255,255,0.05)] duration-0"
+                      ? "bg-white/10 border-white/20 text-white -translate-y-px shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] duration-0"
                       : "border-white/5 opacity-70 hover:opacity-100 duration-300",
                   )}
                 >

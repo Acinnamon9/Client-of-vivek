@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { heroStats, heroBenefits, heroBadgeLines } from "../constants/heroData";
 import { Section, Container } from "./ui/Layout";
 import Button from "./ui/Button";
@@ -33,8 +34,8 @@ const Hero: React.FC = () => {
 
   return (
     <Section
-      id="demo"
-      className="bg-linear-to-t from-(--muted) to-(--background) min-h-[90vh] pt-32 sm:pt-40 flex items-center relative overflow-hidden"
+      id="hero"
+      className="bg-linear-to-t from-(--muted) to-(--background) min-h-screen pt-32 sm:pt-48 lg:pt-64 flex items-center relative overflow-hidden"
     >
       {/* Visual Assets (Sliding Up) */}
       {HERO_CONFIG.showVisualAssets && (
@@ -172,7 +173,13 @@ const Hero: React.FC = () => {
               Book Demo
             </Button>
             <Tooltip content="Try our AI bot from within this page">
-              <Button variant="glass" size="xl" className="px-12">
+              <Button
+                as="a"
+                href="#demo"
+                variant="glass"
+                size="xl"
+                className="px-12"
+              >
                 Try Now
               </Button>
             </Tooltip>
@@ -180,21 +187,23 @@ const Hero: React.FC = () => {
 
           {/* Benefits List */}
           {HERO_CONFIG.showBenefits && (
-            <motion.div variants={itemVariants} className="w-full max-w-2xl">
-              <div className="flex flex-col gap-4">
+            <motion.div variants={itemVariants} className="max-w-2xl">
+              <div className="flex flex-col items-center gap-4">
                 {heroBenefits.map((benefit, idx) => (
-                  <motion.div
+                  <motion.a
                     key={idx}
-                    whileHover={{ x: 10 }}
-                    className="flex items-center gap-4 p-5 bg-(--card)/40 backdrop-blur-md rounded-2xl border border-(--border) transition-all hover:bg-(--card) hover:shadow-xl hover:shadow-brand-primary/5 group"
+                    href={benefit.href}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-4 px-8 py-4 bg-white/5 backdrop-blur-2xl border border-white/10 transition-all shadow-[inset_0_0_30px_rgba(0,0,0,0.15),inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.3)] group cursor-pointer text-left no-underline rounded-2xl"
                   >
-                    <span className="w-7 h-7 rounded-full bg-brand-primary text-white flex items-center justify-center text-xs font-black shadow-lg shadow-brand-primary/20 group-hover:scale-110 transition-transform">
-                      ✓
+                    <span className="w-10 h-10 rounded-xl bg-linear-to-br from-brand-primary/20 to-brand-primary/5 text-brand-primary flex items-center justify-center border border-brand-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform shrink-0">
+                      <ArrowRight size={18} strokeWidth={3} />
                     </span>
-                    <span className="text-(--muted-foreground) font-bold text-base sm:text-lg text-left">
-                      {benefit}
+                    <span className="text-(--foreground) font-bold text-base sm:text-lg whitespace-nowrap">
+                      {benefit.label}
                     </span>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>

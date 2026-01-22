@@ -5,9 +5,9 @@ export const heroStats = [
 ];
 
 export const heroBenefits = [
-  "Watch 3 real appointments get booked during your demo",
-  "Get your custom implementation plan in 48 hours",
-  "30-day money-back guarantee - zero risk",
+  { label: "Talk to our AI Agent right now", href: "#demo" },
+  { label: "Checkout the toolset", href: "#workforce" },
+  { label: "Our Clients", href: "#proof" },
 ];
 
 export const heroBadgeLines = [

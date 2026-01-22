@@ -11,7 +11,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
       <section
         ref={ref}
         className={cn(
-          "py-[100px] lg:py-[120px] px-5 relative overflow-hidden",
+          "py-[110px] lg:py-[140px] px-5 relative overflow-hidden",
           "bg-(--background) text-(--foreground)",
           dark && "bg-brand-deep text-white", // Maintain specific overrides if needed
           className,
