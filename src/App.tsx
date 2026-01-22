@@ -2,11 +2,7 @@ import { Suspense, lazy, useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CallUs from "./components/CallUs";
-import LeadProblem from "./components/LeadProblem";
 import Timeline from "./components/lead-problem/Timeline";
-import FailureCards from "./components/lead-problem/FailureCards";
-import Funnel from "./components/lead-problem/Funnel";
-import CTA from "./components/lead-problem/CTA";
 import LayoutToggle from "./components/ui/LayoutToggle";
 
 // Lazy load non-critical sections
@@ -44,21 +40,8 @@ function App() {
         <CallUs />
       </div>
 
-      {/* The Problem Series */}
-      {/* <div className="relative z-20 bg-(--background)">
-        <LeadProblem />
-      </div> */}
       <div className="relative z-22 bg-(--background)">
         <Timeline />
-      </div>
-      {/* <div className="relative z-23 bg-(--background)">
-        <FailureCards />
-      </div> */}
-      {/* <div className="relative z-24 bg-(--background)">
-        <Funnel />
-      </div> */}
-      <div className="relative z-25 bg-(--background)">
-        <CTA />
       </div>
 
       <Suspense fallback={<div className="h-screen bg-(--background)" />}>

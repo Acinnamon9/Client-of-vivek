@@ -1,58 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useNavbar } from "../hooks/useNavbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./ui/Button";
 import SpotlightEffect from "./ui/SpotlightEffect";
 import { cn } from "../lib/utils";
 
-const navLinks = [
-  { label: "Test Drive", href: "#demo" },
-  { label: "Platform", href: "#workforce" },
-  { label: "Solutions", href: "#industry" },
-  { label: "Proof", href: "#proof" },
-  { label: "FAQ", href: "#faq" },
-];
-
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "-10% 0px -80% 0px",
-      threshold: 0,
-    };
-
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      handleIntersection,
-      observerOptions,
-    );
-
-    navLinks.forEach((link) => {
-      const sectionId = link.href.replace("#", "");
-      const element = document.getElementById(sectionId);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const {
+    isScrolled,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    activeSection,
+    navLinks,
+  } = useNavbar();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-100 px-6 py-8 pointer-events-none font-jakarta">
