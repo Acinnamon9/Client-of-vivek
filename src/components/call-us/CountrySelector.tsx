@@ -49,7 +49,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="relative flex items-center justify-center gap-2 w-[104px] bg-white/5 dark:bg-zinc-800/40 border-none rounded-xl px-2 py-3.5 text-sm text-(--foreground) outline-none transition-all shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),inset_0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md cursor-pointer hover:bg-white/10 dark:hover:bg-zinc-700/50"
+        className="relative flex items-center justify-center gap-2 w-[104px] bg-brand-primary/12 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-2 py-3.5 text-sm text-(--foreground) outline-none transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.04),inset_0_0_15px_rgba(255,255,255,0.02)] dark:shadow-[inset_0_1px_2px_rgba(255,255,255,0.05)] backdrop-blur-md cursor-pointer hover:bg-brand-primary/20 dark:hover:bg-white/10"
       >
         {selectedCountry && (
           <>
@@ -88,22 +88,22 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="absolute top-full left-0 mt-2 w-[280px] bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden origin-top-left"
+            className="absolute top-full left-0 mt-3 w-[260px] bg-(--card) border border-(--border) rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden origin-top-left z-50 backdrop-blur-xl"
           >
             {/* Search Input */}
-            <div className="p-3 border-b border-white/5">
+            <div className="p-4 border-b border-(--border)">
               <input
                 autoFocus
                 type="text"
-                placeholder="Search country..."
+                placeholder="Search countries..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-white/5 border-none rounded-lg px-3 py-2 text-xs text-white placeholder:text-white/20 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-inner"
+                className="w-full bg-(--muted)/50 border-none rounded-xl px-4 py-2.5 text-sm text-(--foreground) placeholder:text-(--muted-foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all font-medium"
               />
             </div>
 
             {/* List */}
-            <div className="max-h-[300px] overflow-y-auto no-scrollbar p-1">
+            <div className="max-h-[280px] overflow-y-auto no-scrollbar py-2 px-1">
               {filteredCountries.length > 0 ? (
                 filteredCountries.map((c) => (
                   <button
@@ -115,24 +115,35 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
                       setSearch("");
                     }}
                     className={cn(
-                      "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-xs transition-colors hover:bg-white/5",
-                      selectedCode === c.code &&
-                        "bg-brand-primary/10 text-brand-primary",
+                      "w-full flex items-center gap-4 px-4 py-3 rounded-xl text-left transition-all hover:bg-(--muted)/50 group",
+                      selectedCode === c.code
+                        ? "bg-brand-primary/10 text-brand-primary"
+                        : "text-(--foreground)",
                     )}
                   >
-                    <img
-                      src={c.flag}
-                      alt={c.label}
-                      className="w-5 h-3.5 object-cover rounded-sm"
-                    />
-                    <span className="font-bold w-6">{c.label}</span>
-                    <span className="flex-1 truncate opacity-70">{c.name}</span>
-                    <span className="font-mono opacity-50">{c.code}</span>
+                    <div className="relative shrink-0">
+                      <img
+                        src={c.flag}
+                        alt={c.label}
+                        className="w-6 h-4 object-cover rounded shadow-sm border border-(--border)"
+                      />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-sm font-bold tracking-tight">
+                        {c.label}
+                      </span>
+                      <span className="text-[10px] truncate text-(--muted-foreground) uppercase tracking-wider">
+                        {c.name}
+                      </span>
+                    </div>
+                    <span className="ml-auto font-mono text-[10px] text-(--muted-foreground)/30 group-hover:text-(--muted-foreground)/60 transition-colors">
+                      {c.code}
+                    </span>
                   </button>
                 ))
               ) : (
-                <div className="p-4 text-center text-xs text-white/30 italic">
-                  No countries found
+                <div className="p-8 text-center text-xs text-(--muted-foreground)/60 italic">
+                  No matches found
                 </div>
               )}
             </div>
