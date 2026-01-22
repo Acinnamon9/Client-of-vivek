@@ -18,7 +18,7 @@ export const useNavbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-10% 0px -80% 0px",
+      rootMargin: "-15% 0px -70% 0px", // Detect when section is in the upper third
       threshold: 0,
     };
 
@@ -35,22 +35,45 @@ export const useNavbar = () => {
       observerOptions,
     );
 
-    navLinks.forEach((link) => {
-      const sectionId = link.href.replace("#", "");
-      // Use shadowRoot if available (widget mode), otherwise fallback to document (dev mode)
-      const root = shadowRoot || document;
-      const element = root.getElementById(sectionId);
-      if (element) observer.observe(element);
-    });
+    const root = shadowRoot || document;
 
-    return () => observer.disconnect();
-  }, []);
+    const observeElements = () => {
+      navLinks.forEach((link) => {
+        const sectionId = link.href.replace("#", "");
+        const element = root.getElementById(sectionId);
+        if (element) {
+          observer.observe(element);
+        }
+      });
+    };
+
+    // Initial check
+    observeElements();
+
+    // Re-check when DOM changes (for lazy-loaded components)
+    const mutationObserver = new MutationObserver(observeElements);
+
+    // In shadow DOM mode, we observe the shadow root itself.
+    // In document mode, we observe the body.
+    const targetNode = shadowRoot || document.body;
+    if (targetNode) {
+      mutationObserver.observe(targetNode, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [shadowRoot]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
