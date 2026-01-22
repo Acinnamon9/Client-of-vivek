@@ -60,9 +60,9 @@ const Navbar: React.FC = () => {
         id="navbar-container"
         spotlightSize={250}
         spotlightColor="rgba(255, 255, 255, 0.20)"
-        className={`max-w-[1440px] mx-auto transition-all duration-500 pointer-events-auto ${
+        className={`max-w-360 mx-auto transition-all duration-500 pointer-events-auto ${
           isScrolled
-            ? "glass-navbar-frosted rounded-[24px] px-12 py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_20px_40px_rgba(0,0,0,0.1)]"
+            ? "glass-navbar-frosted rounded-3xl px-12 py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_20px_40px_rgba(0,0,0,0.1)]"
             : "bg-transparent border border-transparent px-6 py-3"
         }`}
       >
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
                   className={cn(
                     "text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 transition-all duration-300",
                     isActive
-                      ? "bg-white/10 border-white/20 text-white translate-y-[-1px] shadow-[0_4px_12px_rgba(255,255,255,0.05)]"
+                      ? "bg-white/10 border-white/20 text-white -translate-y-px shadow-[0_4px_12px_rgba(255,255,255,0.05)]"
                       : "border-white/5 opacity-70 hover:opacity-100",
                   )}
                 >
