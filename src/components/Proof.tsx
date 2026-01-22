@@ -26,9 +26,17 @@ const Proof: React.FC = () => {
           className="p-4 sm:p-12 shadow-2xl border-(--border)"
         >
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
-            <div className="text-3xl font-black text-brand-link opacity-20 tracking-tighter">
-              {caseStudy.logo}
-            </div>
+            {caseStudy.sourceLogo ? (
+              <img
+                src={caseStudy.sourceLogo}
+                alt={caseStudy.logo}
+                className="h-24 w-auto object-contain rounded-2xl"
+              />
+            ) : (
+              <div className="text-3xl font-black text-brand-link opacity-20 tracking-tighter">
+                {caseStudy.logo}
+              </div>
+            )}
             <h3 className="text-3xl sm:text-4xl font-black text-(--foreground) leading-tight max-w-3xl">
               {caseStudy.title}
             </h3>

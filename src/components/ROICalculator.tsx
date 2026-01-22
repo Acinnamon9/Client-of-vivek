@@ -2,22 +2,16 @@ import React, { useState } from "react";
 import { Section, Container } from "./ui/Layout";
 import { Card } from "./ui/Card";
 import Button from "./ui/Button";
+import { useCurrency } from "../hooks/useCurrency";
 
 const ROICalculator: React.FC = () => {
   const [leads, setLeads] = useState(1000);
   const [dealValue, setDealValue] = useState(2000);
   const [closeRate, setCloseRate] = useState(5);
+  const { formatCurrency } = useCurrency();
 
   const currentRevenue = leads * (closeRate / 100) * dealValue;
   const projectedRevenue = currentRevenue * 0.3;
-
-  const formatMoney = (number: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(number);
-  };
 
   return (
     <Section className="bg-(--background) overflow-hidden relative font-jakarta">
@@ -63,9 +57,9 @@ const ROICalculator: React.FC = () => {
                 </div>
                 <input
                   type="range"
-                  min="100"
-                  max="10000"
-                  step="100"
+                  min="10"
+                  max="1000"
+                  step="10"
                   value={leads}
                   className="w-full h-2 bg-(--muted) rounded-full appearance-none cursor-pointer accent-brand-primary"
                   onChange={(e) => setLeads(parseInt(e.target.value))}
@@ -78,7 +72,7 @@ const ROICalculator: React.FC = () => {
                     Avg. Deal Value
                   </span>
                   <span className="text-brand-primary text-2xl font-black">
-                    ${dealValue.toLocaleString()}
+                    {formatCurrency(dealValue)}
                   </span>
                 </div>
                 <input
@@ -129,7 +123,7 @@ const ROICalculator: React.FC = () => {
                   Projected Additional Revenue / Month
                 </div>
                 <div className="text-5xl sm:text-6xl font-black text-brand-primary tracking-tighter mb-4 transition-transform group-hover:scale-105 duration-500">
-                  {formatMoney(projectedRevenue)}
+                  {formatCurrency(projectedRevenue)}
                 </div>
                 <div className="text-[10px] text-(--muted-foreground) font-bold opacity-60">
                   *Based on conservative 30% increase in conversion with AI

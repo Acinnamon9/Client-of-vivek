@@ -5,6 +5,7 @@ export interface ProofMetric {
 
 export interface ProofCaseStudy {
   logo: string;
+  sourceLogo?: string;
   title: string;
   metrics: ProofMetric[];
   challenge: string;
@@ -17,6 +18,8 @@ export interface ProofCaseStudy {
 
 export const caseStudy: ProofCaseStudy = {
   logo: "DANUBE",
+  sourceLogo:
+    "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
   title: "How Danube Properties Generated $5 Million+ in Sales in 30 Days",
   metrics: [
     { value: "$5.2M", label: "Revenue Generated" },
