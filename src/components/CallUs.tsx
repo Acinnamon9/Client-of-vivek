@@ -30,7 +30,10 @@ const CallUs: React.FC = () => {
   } = useCallLogic();
 
   return (
-    <Section className="py-24 sm:py-32 bg-linear-to-b from-(--background) to-(--muted) overflow-hidden relative">
+    <Section
+      id="demo"
+      className="py-24 sm:py-32 bg-linear-to-b from-(--background) to-(--muted) overflow-hidden relative"
+    >
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 

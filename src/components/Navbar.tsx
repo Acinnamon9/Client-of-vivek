@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./ui/Button";
 import SpotlightEffect from "./ui/SpotlightEffect";
+import { cn } from "../lib/utils";
 
 const navLinks = [
+  { label: "Test Drive", href: "#demo" },
   { label: "Platform", href: "#workforce" },
   { label: "Solutions", href: "#industry" },
   { label: "Proof", href: "#proof" },
@@ -13,6 +15,36 @@ const navLinks = [
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-10% 0px -80% 0px",
+      threshold: 0,
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions,
+    );
+
+    navLinks.forEach((link) => {
+      const sectionId = link.href.replace("#", "");
+      const element = document.getElementById(sectionId);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,20 +76,43 @@ const Navbar: React.FC = () => {
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-12">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-bold text-(--foreground)/60 hover:text-brand-primary transition-colors no-underline uppercase tracking-widest"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-2">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "");
+              return (
+                <Button
+                  key={link.label}
+                  as="a"
+                  href={link.href}
+                  variant="glass"
+                  size="lg"
+                  className={cn(
+                    "text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 transition-all duration-300",
+                    isActive
+                      ? "bg-white/10 border-white/20 text-white translate-y-[-1px] shadow-[0_4px_12px_rgba(255,255,255,0.05)]"
+                      : "border-white/5 opacity-70 hover:opacity-100",
+                  )}
+                >
+                  <span className="relative">
+                    {link.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNav"
+                        className="absolute -bottom-1 left-0 right-0 h-px bg-brand-primary/50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </span>
+                </Button>
+              );
+            })}
             <div className="h-6 w-px bg-(--border) mx-4"></div>
             <Button
-              size="lg"
-              className="px-10 shadow-xl shadow-brand-primary/15 rounded-2xl"
+              variant="glass-primary"
+              size="xl"
+              className="px-10 rounded-[20px]"
               onClick={() =>
                 window.open("https://atomicx.ravan.ai/book", "_blank")
               }
@@ -106,19 +161,29 @@ const Navbar: React.FC = () => {
               className="md:hidden overflow-hidden relative z-10"
             >
               <div className="flex flex-col gap-5 pb-4 border-t border-(--border) pt-6">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="text-base font-bold text-(--foreground) no-underline hover:text-brand-primary transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.href.replace("#", "");
+                  return (
+                    <Button
+                      key={link.label}
+                      as="a"
+                      href={link.href}
+                      variant="glass"
+                      className={cn(
+                        "w-full justify-start py-4 px-6 border-white/5",
+                        isActive &&
+                          "bg-white/10 text-brand-primary border-brand-primary/20",
+                      )}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Button>
+                  );
+                })}
                 <Button
-                  size="lg"
-                  className="w-full rounded-2xl"
+                  variant="glass-primary"
+                  size="xl"
+                  className="w-full rounded-[20px]"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     window.open("https://atomicx.ravan.ai/book", "_blank");

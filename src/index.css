@@ -37,20 +37,20 @@
 }
 
 @layer base {
-
   :host,
   :root {
-    --background: #F6F4F1;
+    --background: #f6f4f1;
     /* Warm Base */
     --foreground: #1a1a1a;
-    --card: #FAF9F7;
+    --card: #faf9f7;
     /* Slightly Lighter for Inputs/Cards */
     --card-foreground: #1a1a1a;
-    --muted: #EFEDE8;
+    --muted: #efede8;
     /* Slightly Darker for Contrast */
     --muted-foreground: #475569;
     --border: rgba(26, 26, 26, 0.08);
 
+    scroll-behavior: smooth;
     font-family:
       "Plus Jakarta Sans", "Inter", system-ui, Avenir, Helvetica, Arial,
       sans-serif;
@@ -91,7 +91,6 @@
 
 /* Custom Keyframes */
 @keyframes float-orb {
-
   0%,
   100% {
     transform: translate(0, 0) scale(1);
@@ -107,7 +106,6 @@
 }
 
 @keyframes badge-float {
-
   0%,
   100% {
     transform: translateY(0);
@@ -119,7 +117,6 @@
 }
 
 @keyframes float-badge-enhanced {
-
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
@@ -131,7 +128,6 @@
 }
 
 @keyframes pulse-dot {
-
   0%,
   100% {
     opacity: 1;
@@ -145,7 +141,6 @@
 }
 
 @keyframes fadeRotate {
-
   0%,
   100% {
     opacity: 0;
@@ -195,7 +190,6 @@
 }
 
 @keyframes pulse-bg {
-
   0%,
   100% {
     opacity: 1;
@@ -207,7 +201,6 @@
 }
 
 @keyframes badge-glow {
-
   0%,
   100% {
     box-shadow: 0 8px 24px rgba(255, 87, 34, 0.35);
@@ -225,7 +218,6 @@
 }
 
 @keyframes vs-pulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -237,7 +229,6 @@
 }
 
 @keyframes pulse-timeline {
-
   0%,
   100% {
     opacity: 0.5;
@@ -301,7 +292,6 @@
 }
 
 @keyframes pulse-success {
-
   0%,
   100% {
     opacity: 1;
@@ -323,7 +313,7 @@
 .glass-navbar-frosted {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.1),
     0 8px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px) url(#frosted-filter);
@@ -333,18 +323,28 @@
 [data-theme="dark"] .glass-navbar-frosted {
   background: rgba(15, 15, 15, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05),
     0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
