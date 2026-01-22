@@ -34,7 +34,7 @@ const Workforce: React.FC = () => {
 
   useAnimationFrame((_, delta) => {
     if (!isHovered.current && !isDragging.current) {
-      baseX.set(baseX.get() - 0.5 * (delta / 16));
+      baseX.set(baseX.get() - 0.005 * (delta / 16));
     }
   });
 
@@ -84,51 +84,53 @@ const Workforce: React.FC = () => {
             that never sleep, never miss a lead, and never underperform.
           </p>
         </div>
+      </Container>
 
-        {/* Workforce Marquee: Truly Infinite Interactive Fleet */}
-        <div
-          className="group/marquee relative -mx-6 sm:-mx-12 mb-24 cursor-grab active:cursor-grabbing overflow-hidden"
-          onMouseEnter={() => (isHovered.current = true)}
-          onMouseLeave={() => (isHovered.current = false)}
-        >
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 md:w-64 bg-linear-to-r from-(--background) via-(--background)/90 to-transparent z-20"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 md:w-64 bg-linear-to-l from-(--background) via-(--background)/90 to-transparent z-20"></div>
+      {/* Workforce Marquee: Truly Infinite Interactive Fleet - Now Full Width */}
+      <div
+        className="group/marquee relative mb-24 cursor-grab active:cursor-grabbing overflow-hidden"
+        onMouseEnter={() => (isHovered.current = true)}
+        onMouseLeave={() => (isHovered.current = false)}
+      >
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 md:w-64 bg-linear-to-r from-(--background) via-(--background)/90 to-transparent z-20"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 md:w-64 bg-linear-to-l from-(--background) via-(--background)/90 to-transparent z-20"></div>
 
-          <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/marquee:opacity-100 transition-all duration-500 pointer-events-none z-30">
-            <div className="px-5 py-2 bg-brand-primary/10 border border-brand-primary/20 rounded-full backdrop-blur-md flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></div>
-              <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em]">
-                Drag to Navigate Fleet
-              </span>
-            </div>
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/marquee:opacity-100 transition-all duration-500 pointer-events-none z-30">
+          <div className="px-5 py-2 bg-brand-primary/10 border border-brand-primary/20 rounded-full backdrop-blur-md flex items-center gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></div>
+            <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em]">
+              Drag to Navigate Fleet
+            </span>
           </div>
-
-          <motion.div
-            className="flex gap-8 px-6 sm:px-12"
-            style={{ x: wrappedX, width: "fit-content" }}
-            drag="x"
-            onDragStart={() => (isDragging.current = true)}
-            onDragEnd={() => (isDragging.current = false)}
-            onDrag={(_, info) => {
-              baseX.set(baseX.get() + info.delta.x * 0.02);
-            }}
-          >
-            {[
-              ...workforceRoles,
-              ...workforceRoles,
-              ...workforceRoles,
-              ...workforceRoles,
-            ].map((role, idx) => (
-              <div
-                key={`${role.id}-${idx}`}
-                className="w-[85vw] md:w-[600px] shrink-0 select-none"
-              >
-                <RoleCard role={role} />
-              </div>
-            ))}
-          </motion.div>
         </div>
 
+        <motion.div
+          className="flex gap-8 px-6 sm:px-12"
+          style={{ x: wrappedX, width: "fit-content" }}
+          drag="x"
+          onDragStart={() => (isDragging.current = true)}
+          onDragEnd={() => (isDragging.current = false)}
+          onDrag={(_, info) => {
+            baseX.set(baseX.get() + info.delta.x * 0.02);
+          }}
+        >
+          {[
+            ...workforceRoles,
+            ...workforceRoles,
+            ...workforceRoles,
+            ...workforceRoles,
+          ].map((role, idx) => (
+            <div
+              key={`${role.id}-${idx}`}
+              className="w-[85vw] md:w-[600px] shrink-0 select-none"
+            >
+              <RoleCard role={role} />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      <Container className="max-w-7xl relative z-10">
         {/* Global Action */}
         <div className="text-center">
           <motion.div
