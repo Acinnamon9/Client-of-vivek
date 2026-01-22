@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { CountryInfo } from "./useCallLogic";
+import CountrySelector from "./CountrySelector";
+import SpotlightEffect from "../ui/SpotlightEffect";
 
 interface CallFormProps {
   countries: CountryInfo[];
@@ -56,7 +58,7 @@ const CallForm: React.FC<CallFormProps> = ({
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="relative w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4)] backdrop-blur-md"
+            className="relative w-full bg-white/5 dark:bg-zinc-800/40 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-white/20 placeholder:font-light placeholder:tracking-wide outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),inset_0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md"
           />
         </div>
 
@@ -67,52 +69,16 @@ const CallForm: React.FC<CallFormProps> = ({
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="relative w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4)] backdrop-blur-md"
+            className="relative w-full bg-white/5 dark:bg-zinc-800/40 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-white/20 placeholder:font-light placeholder:tracking-wide outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),inset_0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md"
           />
         </div>
 
         <div className="group/input relative flex gap-4">
-          <div className="w-[104px] relative shrink-0">
-            <div className="absolute inset-0 bg-brand-primary/10 rounded-xl blur-md opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-            <select
-              value={countryCode}
-              onChange={(e) => setCountryCode(e.target.value)}
-              className="relative z-10 appearance-none w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-3 py-3.5 text-sm text-(--foreground) outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all shadow-[inset_2px_2px_4px_rgba(0,0,0,0.05)] dark:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4)] font-mono text-center cursor-pointer backdrop-blur-md"
-            >
-              {countries.map((c) => (
-                <option
-                  key={`${c.code}-${c.label}`}
-                  value={c.code}
-                  className="bg-(--background) text-(--foreground)"
-                >
-                  {c.code} {c.label}
-                </option>
-              ))}
-              <option
-                value=""
-                className="bg-(--background) text-(--foreground)"
-              >
-                Other
-              </option>
-            </select>
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 z-20 pointer-events-none text-(--muted-foreground)/50">
-              <svg
-                width="10"
-                height="6"
-                viewBox="0 0 10 6"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 1L5 5L9 1"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
+          <CountrySelector
+            countries={countries}
+            selectedCode={countryCode}
+            onSelect={setCountryCode}
+          />
 
           <div className="relative flex-1">
             <div className="absolute inset-0 bg-brand-primary/10 rounded-xl blur-md opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -121,7 +87,7 @@ const CallForm: React.FC<CallFormProps> = ({
               placeholder="Phone Number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="relative z-10 w-full bg-(--card) dark:bg-white/5 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-(--foreground)/40 outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all font-mono shadow-inner backdrop-blur-md"
+              className="relative z-10 w-full bg-white/5 dark:bg-zinc-800/40 border-none rounded-xl px-4 py-3.5 text-sm text-(--foreground) placeholder:text-white/20 placeholder:font-light placeholder:tracking-wide outline-none focus:ring-1 focus:ring-brand-primary/30 transition-all font-mono shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),inset_0_0_15px_rgba(255,255,255,0.05)] backdrop-blur-md"
             />
           </div>
         </div>
@@ -134,24 +100,37 @@ const CallForm: React.FC<CallFormProps> = ({
       )}
 
       <div className="mt-auto pt-6">
-        <button
+        <SpotlightEffect
+          as="button"
           type="submit"
           disabled={isCalling}
-          className="w-full bg-[#ff5722] hover:bg-[#ff6235] hover:shadow-[10px_10px_25px_rgba(255,87,34,0.25)] active:scale-[0.98] text-white/90 font-medium py-5 rounded-2xl shadow-[6px_6px_20px_rgba(255,87,34,0.15),inset_1px_1px_0px_rgba(255,255,255,0.2)] transition-all duration-500 flex items-center justify-center gap-3 group/call disabled:opacity-50 disabled:pointer-events-none cursor-pointer border border-white/10"
+          className="w-full bg-[#10b981]/10 hover:bg-[#10b981]/15 active:scale-[0.98] text-[#10b981] font-bold py-5 rounded-2xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.2),inset_0_0_30px_rgba(255,255,255,0.1),0_10px_20px_rgba(16,185,129,0.1)] transition-all duration-300 flex items-center justify-center gap-3 group/call disabled:opacity-50 disabled:pointer-events-none cursor-pointer border border-[#10b981]/20 backdrop-blur-md relative overflow-hidden"
         >
           {isCalling ? (
-            <div className="w-5 h-5 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
+            <div className="w-5 h-5 border-2 border-[#10b981]/30 border-t-[#10b981] rounded-full animate-spin relative z-10"></div>
           ) : (
             <>
-              <span className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center -ml-2 group-hover/call:bg-white/15 transition-all duration-300">
-                📞
+              <span className="w-9 h-9 rounded-full bg-[#10b981]/10 flex items-center justify-center -ml-2 group-hover/call:scale-110 transition-all duration-300 shadow-sm shadow-[#10b981]/20 relative z-10">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-[#10b981]"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
               </span>
-              <span className="tracking-[0.12em] text-sm font-medium">
+              <span className="tracking-[0.12em] text-sm text-[#10b981] relative z-10">
                 INITIATE CALL
               </span>
             </>
           )}
-        </button>
+        </SpotlightEffect>
         <p className="text-center text-[10px] text-(--muted-foreground) mt-4 font-normal tracking-wide opacity-50">
           SECURE ENCRYPTED CONNECTION
         </p>

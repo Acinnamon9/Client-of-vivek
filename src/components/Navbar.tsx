@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./ui/Button";
+import SpotlightEffect from "./ui/SpotlightEffect";
 
 const navLinks = [
   { label: "Platform", href: "#workforce" },
@@ -23,14 +24,17 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-100 px-6 py-8 pointer-events-none font-jakarta">
-      <div
+      <SpotlightEffect
         id="navbar-container"
-        className={`max-w-[1440px] mx-auto transition-all duration-500 pointer-events-auto ${isScrolled
-            ? "glass-navbar-frosted rounded-[24px] px-12 py-4"
+        spotlightSize={250}
+        spotlightColor="rgba(255, 255, 255, 0.20)"
+        className={`max-w-[1440px] mx-auto transition-all duration-500 pointer-events-auto ${
+          isScrolled
+            ? "glass-navbar-frosted rounded-[24px] px-12 py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_20px_40px_rgba(0,0,0,0.1)]"
             : "bg-transparent border border-transparent px-6 py-3"
-          }`}
+        }`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative z-10">
           {/* Logo */}
           <a
             href="/"
@@ -99,7 +103,7 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0, height: 0, marginTop: 0 }}
               animate={{ opacity: 1, height: "auto", marginTop: 20 }}
               exit={{ opacity: 0, height: 0, marginTop: 0 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden relative z-10"
             >
               <div className="flex flex-col gap-5 pb-4 border-t border-(--border) pt-6">
                 {navLinks.map((link) => (
@@ -126,10 +130,17 @@ const Navbar: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </SpotlightEffect>
 
       {/* SVG Filter for Glass Effect */}
-      <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }}>
+      <svg
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          pointerEvents: "none",
+        }}
+      >
         <filter id="frosted-filter" primitiveUnits="objectBoundingBox">
           <feTurbulence
             type="fractalNoise"
@@ -137,7 +148,11 @@ const Navbar: React.FC = () => {
             numOctaves="3"
             result="noise"
           />
-          <feGaussianBlur in="SourceGraphic" stdDeviation="0.005" result="blur" />
+          <feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="0.005"
+            result="blur"
+          />
           <feDisplacementMap
             in="blur"
             in2="noise"
@@ -163,7 +178,6 @@ const Navbar: React.FC = () => {
         </filter>
       </svg>
     </nav>
-
   );
 };
 

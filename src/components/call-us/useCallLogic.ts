@@ -4,17 +4,58 @@ export interface CountryInfo {
   code: string;
   label: string;
   name: string;
+  flag: string; // URL to flag image
 }
 
 const FALLBACK_COUNTRIES: CountryInfo[] = [
-  { code: "+1", label: "US", name: "United States" },
-  { code: "+44", label: "GB", name: "United Kingdom" },
-  { code: "+61", label: "AU", name: "Australia" },
-  { code: "+91", label: "IN", name: "India" },
-  { code: "+49", label: "DE", name: "Germany" },
-  { code: "+33", label: "FR", name: "France" },
-  { code: "+81", label: "JP", name: "Japan" },
-  { code: "+65", label: "SG", name: "Singapore" },
+  {
+    code: "+1",
+    label: "US",
+    name: "United States",
+    flag: "https://flagcdn.com/us.svg",
+  },
+  {
+    code: "+44",
+    label: "GB",
+    name: "United Kingdom",
+    flag: "https://flagcdn.com/gb.svg",
+  },
+  {
+    code: "+61",
+    label: "AU",
+    name: "Australia",
+    flag: "https://flagcdn.com/au.svg",
+  },
+  {
+    code: "+91",
+    label: "IN",
+    name: "India",
+    flag: "https://flagcdn.com/in.svg",
+  },
+  {
+    code: "+49",
+    label: "DE",
+    name: "Germany",
+    flag: "https://flagcdn.com/de.svg",
+  },
+  {
+    code: "+33",
+    label: "FR",
+    name: "France",
+    flag: "https://flagcdn.com/fr.svg",
+  },
+  {
+    code: "+81",
+    label: "JP",
+    name: "Japan",
+    flag: "https://flagcdn.com/jp.svg",
+  },
+  {
+    code: "+65",
+    label: "SG",
+    name: "Singapore",
+    flag: "https://flagcdn.com/sg.svg",
+  },
 ];
 
 export const useCallLogic = () => {
@@ -33,7 +74,7 @@ export const useCallLogic = () => {
     const fetchCountries = async () => {
       try {
         const response = await fetch(
-          "https://restcountries.com/v3.1/all?fields=name,idd,cca2",
+          "https://restcountries.com/v3.1/all?fields=name,idd,cca2,flags",
         );
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
@@ -46,6 +87,7 @@ export const useCallLogic = () => {
               code: root + (c.idd?.suffixes?.length === 1 ? suffix : ""),
               label: c.cca2,
               name: c.name.common,
+              flag: c.flags?.svg || c.flags?.png || "",
             };
           })
           .filter((c: CountryInfo) => c.code && c.label)

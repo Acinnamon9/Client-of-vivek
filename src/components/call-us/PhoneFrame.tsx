@@ -17,7 +17,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({
 
   return (
     <div
-      className="relative z-10 h-[min(640px,75vh)] aspect-9/17 rounded-[48px] p-1 transition-all duration-700 hover:scale-[1.02] mx-auto"
+      className="relative z-10 w-full max-w-[360px] aspect-[9/19] h-auto rounded-[48px] p-1 transition-all duration-700 hover:scale-[1.02] mx-auto"
       style={{ transformStyle: "preserve-3d" }}
     >
       {isElectric && (
@@ -118,7 +118,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({
         Phone Body Chassis (Visual Layer)
         - Replaces the styles formerly on the parent div to allow z-index layering
       */}
-      <div className="absolute inset-0 rounded-[48px] bg-white/80 dark:bg-[#f5ede5] backdrop-blur-2xl shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.1),-1px_-1px_0px_rgba(255,255,255,0.8)_inset] dark:shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.3),-1px_-1px_0px_rgba(255,255,255,0.4)_inset] border-t border-l border-white/60 dark:border-white/20 border-b border-r border-black/10 ring-1 ring-black/5 z-0"></div>
+      <div className="absolute inset-0 rounded-[48px] bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-2xl shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.1),-1px_-1px_0px_rgba(255,255,255,0.8)_inset] dark:shadow-[30px_30px_60px_-15px_rgba(0,0,0,0.3),-1px_-1px_0px_rgba(255,255,255,0.1)_inset] border-t border-l border-white/60 dark:border-white/10 border-b border-r border-black/10 ring-1 ring-black/5 z-0"></div>
 
       {/* 
         Inner Digital Screen:
