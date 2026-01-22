@@ -1,5 +1,16 @@
-import React from "react";
-import { motion } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useAnimationFrame,
+} from "framer-motion";
+// Custom wrap function: (value, min, max)
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+import { useRef, useEffect } from "react";
 import { workforceRoles } from "../constants/workforceData";
 import { Section, Container } from "./ui/Layout";
 import Button from "./ui/Button";
@@ -10,6 +21,23 @@ import RoleCard from "./workforce/RoleCard";
  * Presents the AI Workforce as a high-end command center.
  */
 const Workforce: React.FC = () => {
+  const baseX = useMotionValue(0);
+  const isHovered = useRef(false);
+  const isDragging = useRef(false);
+
+  const x = useSpring(baseX, {
+    damping: 50,
+    stiffness: 400,
+  });
+
+  const wrappedX = useTransform(x, (v) => `${wrap(-25, -50, v)}%`);
+
+  useAnimationFrame((_, delta) => {
+    if (!isHovered.current && !isDragging.current) {
+      baseX.set(baseX.get() - 0.5 * (delta / 16));
+    }
+  });
+
   return (
     <Section
       id="workforce"
@@ -57,19 +85,48 @@ const Workforce: React.FC = () => {
           </p>
         </div>
 
-        {/* Workforce Dossiers Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10 mb-24">
-          {workforceRoles.map((role, idx) => (
-            <motion.div
-              key={role.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              <RoleCard role={role} />
-            </motion.div>
-          ))}
+        {/* Workforce Marquee: Truly Infinite Interactive Fleet */}
+        <div
+          className="group/marquee relative -mx-6 sm:-mx-12 mb-24 cursor-grab active:cursor-grabbing overflow-hidden"
+          onMouseEnter={() => (isHovered.current = true)}
+          onMouseLeave={() => (isHovered.current = false)}
+        >
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 md:w-64 bg-linear-to-r from-(--background) via-(--background)/90 to-transparent z-20"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 md:w-64 bg-linear-to-l from-(--background) via-(--background)/90 to-transparent z-20"></div>
+
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/marquee:opacity-100 transition-all duration-500 pointer-events-none z-30">
+            <div className="px-5 py-2 bg-brand-primary/10 border border-brand-primary/20 rounded-full backdrop-blur-md flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></div>
+              <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em]">
+                Drag to Navigate Fleet
+              </span>
+            </div>
+          </div>
+
+          <motion.div
+            className="flex gap-8 px-6 sm:px-12"
+            style={{ x: wrappedX, width: "fit-content" }}
+            drag="x"
+            onDragStart={() => (isDragging.current = true)}
+            onDragEnd={() => (isDragging.current = false)}
+            onDrag={(e, info) => {
+              baseX.set(baseX.get() + info.delta.x * 0.02);
+            }}
+          >
+            {[
+              ...workforceRoles,
+              ...workforceRoles,
+              ...workforceRoles,
+              ...workforceRoles,
+            ].map((role, idx) => (
+              <div
+                key={`${role.id}-${idx}`}
+                className="w-[85vw] md:w-[600px] shrink-0 select-none"
+              >
+                <RoleCard role={role} />
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Global Action */}

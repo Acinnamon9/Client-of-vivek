@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useWidgetContext } from "../contexts/WidgetContext";
 
 export const navLinks = [
   { label: "Test Drive", href: "#demo" },
@@ -12,6 +13,7 @@ export const useNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { shadowRoot } = useWidgetContext();
 
   useEffect(() => {
     const observerOptions = {
@@ -35,7 +37,9 @@ export const useNavbar = () => {
 
     navLinks.forEach((link) => {
       const sectionId = link.href.replace("#", "");
-      const element = document.getElementById(sectionId);
+      // Use shadowRoot if available (widget mode), otherwise fallback to document (dev mode)
+      const root = shadowRoot || document;
+      const element = root.getElementById(sectionId);
       if (element) observer.observe(element);
     });
 
