@@ -14,17 +14,17 @@ const Navbar: React.FC = () => {
     navLinks,
   } = useNavbar();
 
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-100 px-6 py-8 pointer-events-none">
       <SpotlightEffect
         id="navbar-container"
         spotlightSize={250}
         spotlightColor="rgba(255, 255, 255, 0.20)"
-        className={`max-w-360 mx-auto transition-all duration-500 pointer-events-auto ${
-          isScrolled
-            ? "glass-navbar-frosted rounded-3xl px-12 py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_20px_40px_rgba(0,0,0,0.1)]"
-            : "bg-transparent border border-transparent px-6 py-3"
-        }`}
+        className={`max-w-360 mx-auto transition-all duration-500 pointer-events-auto ${isScrolled
+          ? "glass-navbar-frosted rounded-3xl px-12 py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_20px_40px_rgba(0,0,0,0.1)]"
+          : "bg-transparent border border-transparent px-6 py-3"
+          }`}
       >
         <div className="flex items-center justify-between relative z-10">
           {/* Logo */}
@@ -42,9 +42,10 @@ const Navbar: React.FC = () => {
               const isActive = activeSection === link.href.replace("#", "");
               return (
                 <Button
-                  key={link.label}
-                  as="a"
-                  href={link.href}
+                  onClick={() => {
+                    window.location.href = link.href;
+                    setMobileMenuOpen(false);
+                  }}
                   variant="glass"
                   size="lg"
                   className={cn(
@@ -137,7 +138,7 @@ const Navbar: React.FC = () => {
                       className={cn(
                         "w-full justify-start py-4 px-6 border-white/5",
                         isActive &&
-                          "bg-white/10 text-brand-primary border-brand-primary/20",
+                        "bg-white/10 text-brand-primary border-brand-primary/20",
                       )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
