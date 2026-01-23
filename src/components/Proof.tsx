@@ -7,102 +7,79 @@ import { Card } from "./ui/Card";
 
 const Proof: React.FC = () => {
   return (
-    <Section id="proof" className="bg-(--background)">
+    <Section id="proof" className="bg-(--background) py-20 sm:py-24">
       <Container>
-        <div className="text-center mb-16">
-          <Badge variant="ghost" className="mb-6">
-            Case Study
+        <div className="text-center mb-10">
+          <Badge variant="ghost" className="mb-4">
+            Direct Impact
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-black text-(--foreground) tracking-tight">
-            Real Results, Real Revenue.
+          <h2 className="text-3xl sm:text-5xl font-black text-(--foreground) tracking-tight">
+            Real Revenue. Verified.
           </h2>
-          <p className="text-xl text-(--muted-foreground) mt-6 font-medium">
-            See how top companies are scaling with Ravan.ai
-          </p>
         </div>
 
         <Card
           variant="white"
-          className="p-4 sm:p-12 shadow-2xl border-(--border)"
+          className="p-6 sm:p-10 shadow-xl border-(--border)"
         >
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
             {caseStudy.sourceLogo ? (
               <img
                 src={caseStudy.sourceLogo}
                 alt={caseStudy.logo}
-                className="h-24 w-auto object-contain rounded-2xl"
+                className="h-16 w-auto object-contain rounded-xl"
               />
             ) : (
-              <div className="text-3xl font-black text-brand-link opacity-20 tracking-tighter">
+              <div className="text-2xl font-black text-brand-link opacity-20 tracking-tighter">
                 {caseStudy.logo}
               </div>
             )}
-            <h3 className="text-3xl sm:text-4xl font-black text-(--foreground) leading-tight max-w-3xl">
+            <h3 className="text-2xl sm:text-3xl font-black text-(--foreground) leading-tight max-w-2xl text-left md:text-right">
               {caseStudy.title}
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {caseStudy.metrics.map((metric, idx) => (
               <div
                 key={idx}
-                className="bg-(--muted)/30 p-10 rounded-[28px] text-center border border-(--border) transition-all duration-300 hover:-translate-y-2 hover:bg-(--muted)/50"
+                className="bg-(--muted)/20 p-6 sm:p-8 rounded-[24px] text-center border border-(--border) transition-all duration-300 hover:bg-(--muted)/40"
               >
-                <span className="block text-4xl sm:text-5xl font-black text-(--foreground) mb-2">
+                <span className="block text-3xl sm:text-4xl font-black text-(--foreground) mb-1">
                   {metric.value}
                 </span>
-                <span className="block text-[10px] font-black text-(--muted-foreground) uppercase tracking-widest leading-none">
+                <span className="block text-[10px] font-black text-(--muted-foreground) uppercase tracking-widest">
                   {metric.label}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-            <div className="space-y-10">
-              <div className="space-y-4">
-                <h4 className="flex items-center gap-3 text-xl font-black text-brand-primary">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  >
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-12 xl:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <h4 className="flex items-center gap-2 text-lg font-black text-brand-primary">
                   The Challenge
                 </h4>
-                <p className="text-lg text-(--muted-foreground) leading-relaxed font-medium">
+                <p className="text-base text-(--muted-foreground) leading-relaxed font-medium">
                   {caseStudy.challenge}
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="flex items-center gap-3 text-xl font-black text-brand-success">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  >
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
+              <div className="space-y-3">
+                <h4 className="flex items-center gap-2 text-lg font-black text-brand-success">
                   The Solution
                 </h4>
-                <p className="text-lg text-(--muted-foreground) leading-relaxed font-medium mb-6">
+                <p className="text-base text-(--muted-foreground) leading-relaxed font-medium">
                   {caseStudy.solution}
                 </p>
-                <ul className="space-y-4">
+                <ul className="space-y-2.5 mt-4">
                   {caseStudy.solutionPoints.map((item, idx) => (
                     <li
                       key={idx}
-                      className="flex items-center gap-3 text-(--foreground) font-semibold"
+                      className="flex items-start gap-3 text-(--foreground) font-semibold text-sm"
                     >
-                      <span className="w-6 h-6 rounded-full bg-brand-success/10 text-brand-success flex items-center justify-center text-sm font-black shrink-0">
+                      <span className="w-5 h-5 rounded-full bg-brand-success/10 text-brand-success flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">
                         ✓
                       </span>
                       {item}
@@ -114,21 +91,21 @@ const Proof: React.FC = () => {
 
             <Card
               variant="glass"
-              className="p-10 border-brand-link/10 bg-brand-link/5 relative group"
+              className="lg:col-span-12 xl:col-span-5 p-8 border-brand-link/10 bg-brand-link/5 relative group h-full flex flex-col justify-between"
             >
-              <div className="absolute top-8 left-8 text-6xl text-brand-link/10 font-serif pointer-events-none select-none">
+              <div className="absolute top-4 left-6 text-5xl text-brand-link/10 font-serif pointer-events-none select-none">
                 "
               </div>
-              <p className="text-xl italic leading-relaxed text-(--foreground) mb-10 relative z-10 font-medium opacity-90">
+              <p className="text-lg italic leading-relaxed text-(--foreground) mb-8 relative z-10 font-medium opacity-90">
                 {caseStudy.testimonial}
               </p>
-              <div className="flex items-center gap-5 relative z-10">
-                <div className="w-14 h-14 bg-linear-to-br from-brand-link to-brand-link/60 rounded-full shadow-lg"></div>
+              <div className="flex items-center gap-4 relative z-10">
+                <div className="w-12 h-12 bg-linear-to-br from-brand-link to-brand-link/60 rounded-full shadow-lg shrink-0"></div>
                 <div>
-                  <h5 className="font-black text-(--foreground) text-lg leading-none mb-1">
+                  <h5 className="font-black text-(--foreground) text-base leading-none mb-1">
                     {caseStudy.author}
                   </h5>
-                  <p className="text-sm text-(--muted-foreground) font-bold">
+                  <p className="text-xs text-(--muted-foreground) font-bold">
                     {caseStudy.role}
                   </p>
                 </div>
@@ -136,10 +113,10 @@ const Proof: React.FC = () => {
             </Card>
           </div>
 
-          <div className="mt-20 text-center">
+          <div className="mt-12 text-center">
             <Button
-              size="xl"
-              className="px-12"
+              size="lg"
+              className="px-10 rounded-2xl"
               onClick={() =>
                 window.open("https://atomicx.ravan.ai/book", "_blank")
               }
@@ -150,15 +127,15 @@ const Proof: React.FC = () => {
         </Card>
 
         {/* Logo Cloud */}
-        <div className="mt-32">
-          <div className="text-center text-[10px] font-black text-(--muted-foreground) mb-12 uppercase tracking-[0.3em] opacity-60">
+        <div className="mt-20">
+          <div className="text-center text-[10px] font-black text-(--muted-foreground) mb-8 uppercase tracking-[0.3em] opacity-60">
             Trusted By Industry Leaders
           </div>
-          <div className="flex justify-center items-center gap-12 sm:gap-20 flex-wrap opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
+          <div className="flex justify-center items-center gap-10 sm:gap-16 flex-wrap opacity-30 grayscale hover:opacity-50 transition-all duration-700">
             {trustedLogos.map((logo, idx) => (
               <div
                 key={idx}
-                className="font-black text-2xl sm:text-3xl text-(--foreground) tracking-tighter hover:scale-110 transition-transform cursor-default"
+                className="font-black text-xl sm:text-2xl text-(--foreground) tracking-tighter hover:scale-110 transition-transform cursor-default"
               >
                 {logo}
               </div>

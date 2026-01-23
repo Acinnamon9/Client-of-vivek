@@ -10,6 +10,7 @@ import { containerVariants, itemVariants } from "../animations";
 
 import Typewriter from "./ui/Typewriter";
 import Tooltip from "./ui/Tooltip";
+import NeuralNetwork from "./ui/NeuralNetwork";
 
 /**
  * FEATURE TOGGLES
@@ -71,6 +72,15 @@ const Hero: React.FC = () => {
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-link/2 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+
+      {/* Neural Network Decoration */}
+      <div className="absolute inset-0 z-0 neural-network-bg pointer-events-none">
+        <NeuralNetwork
+          dotColor="#00c2ff"
+          lineColor="#00c2ff"
+          className="w-full h-full"
+        />
+      </div>
 
       <Container className="relative z-10">
         <motion.div

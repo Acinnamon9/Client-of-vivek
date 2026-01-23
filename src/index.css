@@ -325,6 +325,17 @@
     0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
+/* Theme-aware neural network visibility */
+.neural-network-bg {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .neural-network-bg {
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;

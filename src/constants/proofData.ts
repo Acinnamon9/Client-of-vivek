@@ -20,25 +20,25 @@ export const caseStudy: ProofCaseStudy = {
   logo: "DANUBE",
   sourceLogo:
     "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
-  title: "How Danube Properties Generated $5 Million+ in Sales in 30 Days",
+  title: "How Danube Properties Accelerated Sales by $5.2 Million in 30 Days",
   metrics: [
-    { value: "$5.2M", label: "Revenue Generated" },
-    { value: "1,240", label: "Qualified Leads" },
-    { value: "480", label: "Appointments Booked" },
+    { value: "$5.2M", label: "Monthly Revenue Increase" },
+    { value: "1,240", label: "Qualified Prospects" },
+    { value: "480", label: "Meeting Booked (AI)" },
   ],
   challenge:
-    "Danube was drowning in leads but converting poorly. Their sales team couldn't follow up fast enough, resulting in wasted ad spend and lost opportunities.",
+    "Danube was processing thousands of raw leads but struggled with slow response times. Their manual outreach team couldn't keep up, leading to qualified prospects cooling off and massive budget leakage.",
   solution:
-    "They deployed Ravan.ai's AI Sales Rep to handle initial outreach and qualification.",
+    "They integrated the Ravan.ai Unified Workforce to handle 100% of incoming lead qualification and instantaneous booking.",
   solutionPoints: [
-    "Instant lead response (under 2 mins)",
-    "24/7 qualification of prospects",
-    "Automated booking directly to sales calendars",
+    "Average response time dropped from 4 hours to sub-120 seconds",
+    "24/7 autonomous engagement across multiple timezones",
+    "Deep CRM integration for automated deal routing",
   ],
   testimonial:
-    "We were skeptical at first, but the results are undeniable. Ravan.ai didn't just replace our SDRs, it outperformed them by a factor of 10. Our sales team now only talks to qualified leads.",
-  author: "Sarah J.",
-  role: "VP of Sales, Danube Properties",
+    "Ravan.ai transformed our sales efficiency. By removing the bottleneck of initial manual qualification, our senior closers can now focus exclusively on high-value interactions. It's significantly more effective than our previous outbound team.",
+  author: "Adel Sajan",
+  role: "Managing Director, Danube Properties",
 };
 
 export const trustedLogos = ["DANUBE", "EMAAR", "DAMAC", "SOBHA", "NAKHEEL"];
