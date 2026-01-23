@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { heroStats, heroBenefits, heroBadgeLines } from "../constants/heroData";
+import { heroBenefits, heroBadgeLines } from "../constants/heroData";
+import { trustedLogos } from "../constants/proofData";
 import { Section, Container } from "./ui/Layout";
 import Button from "./ui/Button";
-import { Card } from "./ui/Card";
-import AnimatedNumber from "./ui/AnimatedNumber";
+
 import { containerVariants, itemVariants } from "../animations";
 
 import Typewriter from "./ui/Typewriter";
@@ -19,32 +19,13 @@ import Magnetic from "./ui/Magnetic";
  */
 const HERO_CONFIG = {
   showBadge: true,
-  showStats: false, // Set to true to show Leads Generated / Qualified Leads
+  showStats: false,
   showBenefits: true,
-  showVisualAssets: true, // The Woman and Guy images
+  showVisualAssets: false, // Disabled for cleaner Enterprise look
 };
 
 const Hero: React.FC = () => {
   const [badgeIndex, setBadgeIndex] = useState(0);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
-
-  const moveX1 = useTransform(springX, [0, window.innerWidth], [-20, 20]);
-  const moveY1 = useTransform(springY, [0, window.innerHeight], [-20, 20]);
-  const moveX2 = useTransform(springX, [0, window.innerWidth], [20, -20]);
-  const moveY2 = useTransform(springY, [0, window.innerHeight], [20, -20]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -58,48 +39,16 @@ const Hero: React.FC = () => {
       id="hero"
       className="bg-linear-to-t from-(--muted) to-(--background) min-h-screen pt-32 sm:pt-48 lg:pt-64 flex items-center relative overflow-hidden"
     >
-      {/* Visual Assets (Sliding Up) */}
-      {HERO_CONFIG.showVisualAssets && (
-        <>
-          <motion.div
-            initial={{ y: 200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            style={{ x: moveX1, y: moveY1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="absolute bottom-0 left-[-5%] w-[400px] hidden lg:block pointer-events-none z-0"
-          >
-            <img
-              src="https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Woman.png"
-              alt="AI Team Member"
-              className="w-full h-auto object-contain opacity-80"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ y: 200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            style={{ x: moveX2, y: moveY2 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="absolute bottom-0 right-[-5%] w-[420px] hidden lg:block pointer-events-none z-0"
-          >
-            <img
-              src="https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Guy.png"
-              alt="AI Team Member"
-              className="w-full h-auto object-contain opacity-80"
-            />
-          </motion.div>
-        </>
-      )}
-
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-link/2 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+      {/* Background Decor - Minimalist */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-20"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-200/50 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 opacity-30"></div>
 
       {/* Neural Network Decoration */}
-      <div className="absolute inset-0 z-0 neural-network-bg pointer-events-none">
+      <div className="absolute inset-0 z-0 neural-network-bg pointer-events-none opacity-40">
         <NeuralNetwork
-          dotColor="#0081A7"
-          lineColor="#0081A7"
+          dotColor="#0f766e"
+          lineColor="#0f766e"
           className="w-full h-full"
         />
       </div>
@@ -117,8 +66,8 @@ const Hero: React.FC = () => {
               variants={itemVariants}
               className="mb-10 w-full max-w-md"
             >
-              <div className="bg-(--card) px-6 py-3 rounded-full border border-brand-primary/20 shadow-xl shadow-brand-primary/5 flex items-center gap-4 overflow-hidden relative">
-                <span className="w-2.5 h-2.5 bg-brand-primary rounded-full animate-pulse shrink-0"></span>
+              <div className="bg-white/50 backdrop-blur-sm px-6 py-3 rounded-full border border-black/5 shadow-sm flex items-center gap-4 overflow-hidden relative">
+                <span className="w-2 h-2 bg-brand-depth rounded-full animate-pulse shrink-0"></span>
                 <div className="relative h-5 flex-1 text-left">
                   <AnimatePresence mode="wait">
                     <motion.span
@@ -127,7 +76,7 @@ const Hero: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.6, ease: "anticipate" }}
-                      className="absolute inset-0 text-[11px] sm:text-xs font-black text-brand-primary uppercase tracking-widest whitespace-nowrap"
+                      className="absolute inset-0 text-[11px] sm:text-xs font-bold text-brand-depth uppercase tracking-widest whitespace-nowrap"
                     >
                       {heroBadgeLines[badgeIndex]}
                     </motion.span>
@@ -147,12 +96,11 @@ const Hero: React.FC = () => {
                 { text: "Full AI " },
                 {
                   text: "Sales & Marketing",
-                  className:
-                    "bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent",
+                  className: "text-(--foreground)", // Removed gradient, plain strong text
                 },
                 { text: " Team" },
               ]}
-              cursorColor="#0081A7"
+              cursorColor="#0f172a"
             />
           </motion.h1>
 
@@ -166,28 +114,7 @@ const Hero: React.FC = () => {
             </span>
           </motion.p>
 
-          {/* Stats Grid */}
-          {HERO_CONFIG.showStats && (
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16 w-full"
-            >
-              {heroStats.map((item, idx) => (
-                <Card
-                  key={idx}
-                  variant="white"
-                  className="p-8 border-black/3 group hover:border-brand-primary/30 transition-all duration-500"
-                >
-                  <div className="text-4xl md:text-5xl font-black text-brand-primary mb-2 tracking-tighter">
-                    <AnimatedNumber value={item.value} />
-                  </div>
-                  <div className="text-[10px] text-[#94a3b8] uppercase tracking-[0.2em] font-black">
-                    {item.label}
-                  </div>
-                </Card>
-              ))}
-            </motion.div>
-          )}
+          {/* Stats Grid - Removed as per clean up */}
 
           {/* CTAs */}
           <motion.div
@@ -196,9 +123,9 @@ const Hero: React.FC = () => {
           >
             <Magnetic>
               <Button
-                variant="glass-primary"
+                variant="primary"
                 size="xl"
-                className="px-12"
+                className="px-12 rounded-full"
                 onClick={() =>
                   window.open("https://atomicx.ravan.ai/book", "_blank")
                 }
@@ -211,14 +138,28 @@ const Hero: React.FC = () => {
                 <Button
                   as="a"
                   href="#demo"
-                  variant="glass"
+                  variant="outline"
                   size="xl"
-                  className="px-12"
+                  className="px-12 rounded-full border-brand-depth/20"
                 >
                   Try Now
                 </Button>
               </Magnetic>
             </Tooltip>
+          </motion.div>
+
+          {/* Trusted By Strip (New) */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <div className="text-[10px] font-bold text-(--muted-foreground) uppercase tracking-[0.3em] mb-6 opacity-60">
+              Trusted by Forward-Thinking Enterprises
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 sm:gap-12 opacity-40 grayscale hover:opacity-70 transition-opacity duration-500">
+              {trustedLogos.map((logo, idx) => (
+                <span key={idx} className="text-xl sm:text-2xl font-black text-(--foreground) tracking-tighter">
+                  {logo}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* Benefits List */}

@@ -8,18 +8,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-linear-to-br from-brand-orange to-brand-coral text-white font-black shadow-[0_16px_40px_rgba(245,127,0,0.35)] hover:-translate-y-1 hover:scale-105 hover:shadow-[0_20px_50px_rgba(245,127,0,0.5)]",
+          "bg-brand-primary text-white font-bold shadow-lg shadow-brand-primary/20 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-primary/30 active:scale-95",
         secondary:
-          "bg-brand-cerulean text-white shadow-[0_16px_40px_rgba(0,129,167,0.3)] hover:-translate-y-1 hover:scale-105",
+          "bg-white text-brand-depth border border-brand-depth/10 shadow-sm hover:bg-brand-muted hover:border-brand-depth/20",
         outline:
-          "bg-transparent border-2 border-brand-cerulean text-brand-cerulean hover:bg-brand-cerulean hover:text-white",
-        black: "bg-brand-depth text-white hover:bg-brand-deep-teal",
-        ghost: "text-(--muted-foreground) hover:text-brand-depth bg-transparent",
-        link: "text-(--muted-foreground) hover:text-brand-cerulean underline-offset-4 hover:underline p-0 h-auto font-bold",
+          "bg-transparent border border-brand-depth/20 text-brand-depth hover:bg-brand-depth hover:text-white",
+        black: "bg-black text-white hover:bg-gray-900",
+        ghost: "text-brand-muted-foreground hover:text-brand-foreground hover:bg-brand-muted/50",
+        link: "text-brand-link hover:text-brand-depth underline-offset-4 hover:underline p-0 h-auto font-bold",
         glass:
-          "bg-white/5 backdrop-blur-xl border border-white/10 text-(--foreground) shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.05)] hover:bg-white/10 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_0_20px_rgba(0,0,0,0.1)]",
+          "bg-white/40 backdrop-blur-md border border-white/20 text-brand-depth hover:bg-white/60",
         "glass-primary":
-          "bg-brand-cerulean/10 backdrop-blur-xl border border-brand-cerulean/20 text-brand-cerulean shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,129,167,0.1)] hover:bg-brand-cerulean/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_25px_rgba(0,129,167,0.15)]",
+          "bg-brand-depth/90 backdrop-blur-md text-white shadow-xl hover:bg-brand-depth",
       },
       size: {
         sm: "px-4 py-2 text-sm rounded-lg",

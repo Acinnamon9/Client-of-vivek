@@ -8,10 +8,10 @@ const cardVariants = cva(
     variants: {
       variant: {
         white:
-          "bg-(--card) text-(--card-foreground) border border-(--border) shadow-[0_20px_60px_rgba(0,0,0,0.03)]",
+          "bg-(--card) text-(--card-foreground) border border-(--border) shadow-xl shadow-black/5",
         glass:
-          "bg-(--card)/90 backdrop-blur-xl border border-(--border) shadow-[0_20px_60px_rgba(0,0,0,0.05)]",
-        dark: "bg-brand-dark text-white border border-white/5",
+          "bg-(--card)/80 backdrop-blur-xl border border-(--border) shadow-lg shadow-black/5",
+        dark: "bg-brand-depth text-white border border-white/10",
         outline: "bg-transparent border-2 border-(--border)",
       },
     },
@@ -23,8 +23,8 @@ const cardVariants = cva(
 
 interface CardProps
   extends
-    React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
+  React.HTMLAttributes<HTMLDivElement>,
+  VariantProps<typeof cardVariants> { }
 
 const Card: React.FC<CardProps> = ({ className, variant, ...props }) => {
   return (

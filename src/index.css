@@ -1,34 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  /* AI Agency Color Palette - Version 2.0 */
-  --color-brand-depth: #213A57;
-  --color-brand-deep-teal: #0B6477;
-  --color-brand-ocean: #006B84;
-  --color-brand-cerulean: #0081A7;
-  --color-brand-tech-teal: #0B8788;
-  --color-brand-teal: #14919B;
+  /* AI Agency Color Palette - Minimalist Signal v4.0 */
+  /* Neutral scale for hierarchy */
+  --color-brand-depth: #020617;
+  /* Slate 950 */
+  --color-brand-dark: #0f172a;
+  /* Slate 900 */
 
-  --color-brand-aqua: #00AFB9;
-  --color-brand-turquoise: #3BB9A4;
-  --color-brand-light-aqua: #0AD1C8;
-  --color-brand-mint: #45DFB1;
-  --color-brand-mint-light: #80ED99;
+  /* Primary Signal - Used sparingly */
+  --color-brand-primary: #0f172a;
+  /* Primary is now dark/neutral for main actions */
+  --color-brand-ocean: #334155;
+  /* Slate 700 */
 
-  --color-brand-orange: #F57F00;
-  --color-brand-coral: #F07167;
-  --color-brand-peach: #FED9B7;
+  /* Accents - The "Signal" colors */
+  --color-brand-deep-teal: #0f766e;
+  /* Teal 700 - Subdued signal */
+  --color-brand-cerulean: #0ea5e9;
+  /* Sky 500 - Links/Interactive */
+  --color-brand-tech-teal: #0f172a;
+  /* Replaced with neutral */
 
-  /* Legacy mapping for compatibility if needed */
-  --color-brand-primary: var(--color-brand-cerulean);
-  --color-brand-secondary: var(--color-brand-aqua);
-  --color-brand-accent: var(--color-brand-orange);
-  --color-brand-dark: var(--color-brand-depth);
-  --color-brand-deep: var(--color-brand-deep-teal);
-  --color-brand-success: var(--color-brand-turquoise);
-  --color-brand-success-deep: var(--color-brand-tech-teal);
-  --color-brand-action: var(--color-brand-coral);
+  /* Highlights */
+  --color-brand-aqua: #0f172a;
+  /* Replaced with neutral */
+  --color-brand-turqouise: #cbd5e1;
+  /* Slate 300 */
+  --color-brand-mint: #e2e8f0;
+  /* Slate 200 */
+
+  /* Semantic Colors */
   --color-brand-link: var(--color-brand-cerulean);
+  --color-brand-success: #10b981;
+  /* Emerald 500 */
+  --color-brand-warning: #f59e0b;
+  /* Amber 500 */
+  --color-brand-error: #ef4444;
+  /* Red 500 */
+
+  /* Legacy overrides to neutralize old styles */
+  --color-brand-orange: #0f172a;
+  /* Neutralized */
+  --color-brand-coral: #334155;
+  /* Neutralized */
+  --color-brand-action: var(--color-brand-depth);
 
   /* Custom Animations */
   --animate-float-orb: float-orb 25s ease-in-out infinite;
@@ -58,13 +74,18 @@
 
   :host,
   :root {
-    --background: #ffffff;
-    --foreground: #213a57;
-    --card: #f8fafc;
-    --card-foreground: #213a57;
+    --background: #f8fafc;
+    /* Slate 50 - clean paper look */
+    --foreground: #020617;
+    /* Slate 950 - sharp text */
+    --card: #ffffff;
+    --card-foreground: #020617;
     --muted: #f1f5f9;
-    --muted-foreground: #475569;
-    --border: rgba(33, 58, 87, 0.1);
+    /* Slate 100 */
+    --muted-foreground: #64748b;
+    /* Slate 500 */
+    --border: #e2e8f0;
+    /* Slate 200 */
 
     scroll-behavior: smooth;
     font-family:
@@ -79,13 +100,19 @@
 
   :host([data-theme="dark"]),
   [data-theme="dark"] {
-    --background: #213a57;
-    --foreground: #ffffff;
-    --card: #0b6477;
-    --card-foreground: #ffffff;
-    --muted: #006b84;
-    --muted-foreground: #cbd5e1;
-    --border: rgba(255, 255, 255, 0.12);
+    --background: #020617;
+    /* Slate 950 */
+    --foreground: #f8fafc;
+    /* Slate 50 */
+    --card: #0f172a;
+    /* Slate 900 */
+    --card-foreground: #f8fafc;
+    --muted: #1e293b;
+    /* Slate 800 */
+    --muted-foreground: #94a3b8;
+    /* Slate 400 */
+    --border: #1e293b;
+    /* Slate 800 */
     color-scheme: dark;
   }
 

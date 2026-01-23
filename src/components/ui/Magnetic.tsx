@@ -6,7 +6,7 @@ interface MagneticProps {
     distance?: number;
 }
 
-const Magnetic: React.FC<MagneticProps> = ({ children, distance = 0.5 }) => {
+const Magnetic: React.FC<MagneticProps> = ({ children, distance = 0.15 }) => {
     const ref = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
