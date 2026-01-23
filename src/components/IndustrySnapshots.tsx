@@ -28,7 +28,7 @@ const SectorCard: React.FC<{
 
     <div className="relative z-10 flex flex-col h-full">
       <div className="flex justify-between items-start mb-6">
-        <span className="text-[10px] font-bold text-brand-link uppercase tracking-[0.2em] px-3 py-1 bg-brand-link/10 rounded-full backdrop-blur-md">
+        <span className="text-[11px] font-extrabold text-brand-link uppercase tracking-[0.15em] px-3.5 py-1 bg-brand-link/15 border border-brand-link/20 rounded-full backdrop-blur-md shadow-xs">
           {industry.label}
         </span>
         <div className="w-8 h-8 rounded-full bg-(--muted) flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0">
@@ -109,7 +109,7 @@ const CenterCard: React.FC<{ hoveredIndustry: Industry | null }> = ({
           <div className="h-1 w-12 bg-brand-primary mx-auto mt-4 rounded-full" />
         </h3>
 
-        <p className="text-brand-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-8">
+        <p className="inline-block text-brand-primary text-[11px] font-extrabold tracking-[0.15em] uppercase px-3.5 py-1 bg-brand-primary/10 border border-brand-primary/20 rounded-full backdrop-blur-md mb-8">
           {UNIVERSAL_BASELINE.tags.slice(0, 1).join("")}
         </p>
 
