@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
                 },
                 { text: " Team" },
               ]}
-              cursorColor="#ff5722"
+              cursorColor="#00c2ff"
             />
           </motion.h1>
 

@@ -62,7 +62,7 @@ const AuditTable: React.FC = () => {
                 Efficiency Audit
               </p>
             </div>
-            <div className="bg-brand-primary/10 text-brand-primary text-[10px] font-black px-4 py-2 rounded-full border border-brand-primary/20 uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(255,87,34,0.1)]">
+            <div className="bg-brand-primary/10 text-brand-primary text-[10px] font-black px-4 py-2 rounded-full border border-brand-primary/20 uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(0,194,255,0.1)]">
               verified proof
             </div>
           </div>

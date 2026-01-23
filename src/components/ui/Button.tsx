@@ -8,7 +8,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-linear-to-br from-brand-primary to-brand-accent text-white shadow-[0_16px_40px_rgba(255,87,34,0.35)] hover:-translate-y-1 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,87,34,0.5)]",
+          "bg-linear-to-br from-brand-primary to-brand-accent text-white shadow-[0_16px_40px_rgba(0,194,255,0.35)] hover:-translate-y-1 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,194,255,0.5)]",
         secondary:
           "bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/20",
         outline:
@@ -19,7 +19,7 @@ const buttonVariants = cva(
         glass:
           "bg-white/5 backdrop-blur-xl border border-white/10 text-(--foreground) shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.05)] hover:bg-white/10 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_0_20px_rgba(0,0,0,0.1)]",
         "glass-primary":
-          "bg-brand-primary/10 backdrop-blur-xl border border-brand-primary/20 text-brand-primary shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(255,87,34,0.1)] hover:bg-brand-primary/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_25px_rgba(255,87,34,0.15)]",
+          "bg-brand-primary/10 backdrop-blur-xl border border-brand-primary/20 text-brand-primary shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,194,255,0.1)] hover:bg-brand-primary/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_25px_rgba(0,194,255,0.15)]",
       },
       size: {
         sm: "px-4 py-2 text-sm rounded-lg",

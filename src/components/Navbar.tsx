@@ -28,11 +28,12 @@ const Navbar: React.FC = () => {
       >
         <div className="flex items-center justify-between relative z-10">
           {/* Logo */}
-          <a
-            href="/"
-            className="text-(--foreground) text-2xl sm:text-3xl font-black no-underline tracking-tighter transition-colors"
-          >
-            Ravan<span className="text-brand-primary">.ai</span>
+          <a href="/" className="transition-opacity hover:opacity-80">
+            <img
+              src="/assets/AX_logo_transparent.webp"
+              alt="Ravan.ai"
+              className="h-8 sm:h-10 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Links */}

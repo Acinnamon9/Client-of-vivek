@@ -63,7 +63,7 @@ const CallUs: React.FC = () => {
           className="absolute inset-0 opacity-0 group-hover/section:opacity-100 transition-opacity duration-700 z-0"
           style={{
             background: mousePos
-              ? `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 87, 34, 0.12), transparent 80%)`
+              ? `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 194, 255, 0.12), transparent 80%)`
               : "",
           }}
         />
@@ -104,7 +104,7 @@ const CallUs: React.FC = () => {
         />
 
         {/* Additional "Energy" Layer */}
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(255,87,34,0.1),transparent_70%)]" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(0,194,255,0.1),transparent_70%)]" />
       </div>
 
       <Container className="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24">
@@ -167,7 +167,7 @@ const CallUs: React.FC = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-brand-primary relative z-10 drop-shadow-[0_0_10px_rgba(255,87,34,0.3)]"
+                      className="text-brand-primary relative z-10 drop-shadow-[0_0_10px_rgba(0,194,255,0.3)]"
                     >
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>

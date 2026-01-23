@@ -2,9 +2,9 @@
 
 @theme {
   /* Brand Colors */
-  --color-brand-primary: #ff5722;
-  --color-brand-secondary: #ff8a65;
-  --color-brand-accent: #ff6a3d;
+  --color-brand-primary: #00c2ff;
+  --color-brand-secondary: #7dd3fc;
+  --color-brand-accent: #0ea5e9;
   --color-brand-dark: #1a1a1a;
   --color-brand-deep: #0f0f0f;
   --color-brand-success: #22c55e;
@@ -128,12 +128,12 @@
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 194, 255, 0.7);
   }
 
   50% {
     opacity: 0.6;
-    box-shadow: 0 0 0 8px rgba(255, 87, 34, 0);
+    box-shadow: 0 0 0 8px rgba(0, 194, 255, 0);
   }
 }
 
@@ -200,11 +200,11 @@
 @keyframes badge-glow {
   0%,
   100% {
-    box-shadow: 0 8px 24px rgba(255, 87, 34, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 194, 255, 0.35);
   }
 
   50% {
-    box-shadow: 0 12px 32px rgba(255, 87, 34, 0.5);
+    box-shadow: 0 12px 32px rgba(0, 194, 255, 0.5);
   }
 }
 
