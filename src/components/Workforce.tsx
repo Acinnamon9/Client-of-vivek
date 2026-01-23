@@ -99,7 +99,7 @@ const Workforce: React.FC = () => {
           <div className="px-5 py-2 bg-brand-primary/10 border border-brand-primary/20 rounded-full backdrop-blur-md flex items-center gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></div>
             <span className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em]">
-              Drag to Navigate Fleet
+              Drag to Explore Workforce
             </span>
           </div>
         </div>
@@ -145,7 +145,7 @@ const Workforce: React.FC = () => {
                 window.open("https://atomicx.ravan.ai/book", "_blank")
               }
             >
-              DEPLOY YOUR AI FORWARD FLEET
+              DEPLOY YOUR AI WORKFORCE
             </Button>
             <p className="mt-8 text-[10px] font-black text-(--muted-foreground) uppercase tracking-[0.4em] opacity-50">
               Initial setup completed in under 72 hours

@@ -27,8 +27,8 @@ const FinalCTA: React.FC = () => {
         <h2 className="text-[clamp(42px,5vw,64px)] font-black mb-8 leading-[1.1] tracking-tight text-(--foreground)">
           Stop Losing Leads.
           <br />
-          <span className="bg-linear-to-br from-brand-primary to-brand-primary/60 bg-clip-text text-transparent">
-            Start Printing Revenue.
+          <span className="bg-linear-to-br from-brand-primary to-brand-ocean bg-clip-text text-transparent">
+            Start Capturing Revenue.
           </span>
         </h2>
 
