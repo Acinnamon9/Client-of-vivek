@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { timelineEvents } from "../../constants/leadProblemData";
 import { Section, Container } from "../ui/Layout";
+import InteractiveTilt from "../ui/InteractiveTilt";
 
 /**
  * Timeline Component
@@ -64,49 +65,52 @@ const Timeline: React.FC = () => {
             viewport={{ once: true }}
             className="lg:col-span-12 xl:col-span-7 group/hero"
           >
-            <div className="relative h-full p-px rounded-[36px] bg-linear-to-br from-brand-success/40 via-transparent to-transparent shadow-2xl shadow-brand-success/10">
-              <div className="bg-(--card)/90 backdrop-blur-3xl rounded-[34px] p-8 md:p-12 border border-brand-success/30 h-full flex flex-col relative overflow-hidden">
-                {/* HUD Corner Accents */}
-                <div className="absolute top-6 left-6 w-3 h-3 border-t-2 border-l-2 border-brand-success/20"></div>
-                <div className="absolute top-6 right-6 w-3 h-3 border-t-2 border-r-2 border-brand-success/20"></div>
+            <InteractiveTilt className="h-full">
+              <div className="relative h-full p-px rounded-[36px] bg-linear-to-br from-brand-success/40 via-transparent to-transparent shadow-2xl shadow-brand-success/10">
+                <div className="bg-(--card)/90 backdrop-blur-3xl rounded-[34px] p-8 md:p-12 border border-brand-success/30 h-full flex flex-col relative overflow-hidden">
+                  {/* HUD Corner Accents ... content stays same ... */}
+                  {/* HUD Corner Accents */}
+                  <div className="absolute top-6 left-6 w-3 h-3 border-t-2 border-l-2 border-brand-success/20"></div>
+                  <div className="absolute top-6 right-6 w-3 h-3 border-t-2 border-r-2 border-brand-success/20"></div>
 
-                <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8 relative z-10">
-                  <div>
-                    <div className="text-7xl md:text-8xl font-black text-brand-success tracking-tighter leading-none mb-3 drop-shadow-[0_0_20px_rgba(34,197,94,0.2)]">
-                      {heroEvent.time}
+                  <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8 relative z-10">
+                    <div>
+                      <div className="text-7xl md:text-8xl font-black text-brand-success tracking-tighter leading-none mb-3 drop-shadow-[0_0_20px_rgba(34,197,94,0.2)]">
+                        {heroEvent.time}
+                      </div>
+                      <div className="text-lg md:text-2xl font-black text-(--foreground) uppercase tracking-tighter flex items-center gap-3">
+                        {heroEvent.event}
+                        <span className="h-1 w-1 rounded-full bg-brand-success animate-pulse"></span>
+                      </div>
                     </div>
-                    <div className="text-lg md:text-2xl font-black text-(--foreground) uppercase tracking-tighter flex items-center gap-3">
-                      {heroEvent.event}
-                      <span className="h-1 w-1 rounded-full bg-brand-success animate-pulse"></span>
+                    <div className="bg-brand-success/10 text-brand-success border border-brand-success/40 px-6 py-2 rounded-xl text-[9px] font-black tracking-[0.4em] uppercase whitespace-nowrap backdrop-blur-md">
+                      {heroEvent.result}
                     </div>
                   </div>
-                  <div className="bg-brand-success/10 text-brand-success border border-brand-success/40 px-6 py-2 rounded-xl text-[9px] font-black tracking-[0.4em] uppercase whitespace-nowrap backdrop-blur-md">
-                    {heroEvent.result}
+
+                  <div className="relative aspect-square rounded-2xl overflow-hidden border border-brand-success/20 mb-8 bg-black/40 group-hover/hero:border-brand-success/60 transition-all duration-700 shadow-xl">
+                    <motion.img
+                      src={heroEvent.image}
+                      alt={heroEvent.event}
+                      className="w-full h-full object-cover grayscale group-hover/hero:grayscale-0 group-hover/hero:scale-105 transition-all duration-1000 opacity-80"
+                    />
+                    {/* Scanline Effect */}
+                    <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-success/5 to-transparent h-16 -translate-y-full group-hover/hero:animate-[scan_3s_linear_infinite] pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-brand-success/30 to-transparent mix-blend-overlay"></div>
                   </div>
-                </div>
 
-                <div className="relative aspect-square rounded-2xl overflow-hidden border border-brand-success/20 mb-8 bg-black/40 group-hover/hero:border-brand-success/60 transition-all duration-700 shadow-xl">
-                  <motion.img
-                    src={heroEvent.image}
-                    alt={heroEvent.event}
-                    className="w-full h-full object-cover grayscale group-hover/hero:grayscale-0 group-hover/hero:scale-105 transition-all duration-1000 opacity-80"
-                  />
-                  {/* Scanline Effect */}
-                  <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-success/5 to-transparent h-16 -translate-y-full group-hover/hero:animate-[scan_3s_linear_infinite] pointer-events-none"></div>
-                  <div className="absolute inset-0 bg-linear-to-t from-brand-success/30 to-transparent mix-blend-overlay"></div>
-                </div>
-
-                <div className="mt-auto relative z-10">
-                  <div className="flex items-start gap-4">
-                    <div className="w-1 h-12 bg-linear-to-b from-brand-success to-transparent rounded-full opacity-40"></div>
-                    <p className="text-lg md:text-xl text-(--muted-foreground)/90 font-medium leading-relaxed italic">
-                      "The only interval that matters. This is where growth is
-                      captured or surrendered."
-                    </p>
+                  <div className="mt-auto relative z-10">
+                    <div className="flex items-start gap-4">
+                      <div className="w-1 h-12 bg-linear-to-b from-brand-success to-transparent rounded-full opacity-40"></div>
+                      <p className="text-lg md:text-xl text-(--muted-foreground)/90 font-medium leading-relaxed italic">
+                        "The only interval that matters. This is where growth is
+                        captured or surrendered."
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </InteractiveTilt>
           </motion.div>
 
           {/* THE DEGRADATION COLUMN */}
@@ -123,40 +127,42 @@ const Timeline: React.FC = () => {
                 transition={{ delay: idx * 0.15 + 0.3 }}
                 className="group/item relative flex-1"
               >
-                <div className="p-px rounded-[28px] bg-linear-to-r from-brand-primary/20 to-transparent hover:from-brand-primary/40 transition-all duration-700 shadow-lg hover:shadow-brand-primary/5 h-full">
-                  <div className="bg-(--card)/70 backdrop-blur-2xl rounded-[26px] p-6 border border-(--border)/50 hover:border-brand-primary/40 transition-all flex flex-col md:flex-row items-center gap-6 h-full relative overflow-hidden">
-                    {/* Technical Tick Mark */}
-                    <div className="absolute top-0 right-0 w-12 h-12 bg-brand-primary/5 rounded-bl-[30px] group-hover:bg-brand-primary/10 transition-colors"></div>
+                <InteractiveTilt className="h-full">
+                  <div className="p-px rounded-[28px] bg-linear-to-r from-brand-primary/20 to-transparent hover:from-brand-primary/40 transition-all duration-700 shadow-lg hover:shadow-brand-primary/5 h-full">
+                    <div className="bg-(--card)/70 backdrop-blur-2xl rounded-[26px] p-6 border border-(--border)/50 hover:border-brand-primary/40 transition-all flex flex-col md:flex-row items-center gap-6 h-full relative overflow-hidden">
+                      {/* Technical Tick Mark */}
+                      <div className="absolute top-0 right-0 w-12 h-12 bg-brand-primary/5 rounded-bl-[30px] group-hover:bg-brand-primary/10 transition-colors"></div>
 
-                    {/* Compact Image with Frame */}
-                    <div className="relative w-full md:w-48 aspect-3/4 shrink-0 rounded-2xl overflow-hidden border border-(--border)/80 bg-black/40 shadow-inner group-hover:border-brand-primary/30 transition-all">
-                      <img
-                        src={item.image}
-                        alt={item.event}
-                        className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 group-hover/item:scale-110 transition-all duration-700 opacity-60 group-hover/item:opacity-100"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent"></div>
-                    </div>
-
-                    <div className="flex-1 w-full text-center md:text-left space-y-3">
-                      <div className="flex flex-col gap-2">
-                        <span className="text-4xl font-black text-brand-primary tracking-tighter leading-none drop-shadow-[0_0_10px_rgba(255,87,34,0.1)]">
-                          {item.time}
-                        </span>
-                        <div className="h-px w-full bg-linear-to-r from-brand-primary/60 to-transparent"></div>
+                      {/* Compact Image with Frame */}
+                      <div className="relative w-full md:w-48 aspect-3/4 shrink-0 rounded-2xl overflow-hidden border border-(--border)/80 bg-black/40 shadow-inner group-hover:border-brand-primary/30 transition-all">
+                        <img
+                          src={item.image}
+                          alt={item.event}
+                          className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 group-hover/item:scale-110 transition-all duration-700 opacity-60 group-hover/item:opacity-100"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent"></div>
                       </div>
 
-                      <div>
-                        <h4 className="text-lg font-black text-(--foreground) uppercase tracking-tight mb-1.5 leading-tight">
-                          {item.event}
-                        </h4>
-                        <div className="inline-block text-[9px] font-black text-brand-primary border border-brand-primary/30 tracking-[0.3em] uppercase bg-brand-primary/10 px-4 py-1.5 rounded-lg backdrop-blur-md">
-                          {item.result}
+                      <div className="flex-1 w-full text-center md:text-left space-y-3">
+                        <div className="flex flex-col gap-2">
+                          <span className="text-4xl font-black text-brand-primary tracking-tighter leading-none drop-shadow-[0_0_10px_rgba(255,87,34,0.1)]">
+                            {item.time}
+                          </span>
+                          <div className="h-px w-full bg-linear-to-r from-brand-primary/60 to-transparent"></div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-black text-(--foreground) uppercase tracking-tight mb-1.5 leading-tight">
+                            {item.event}
+                          </h4>
+                          <div className="inline-block text-[9px] font-black text-brand-primary border border-brand-primary/30 tracking-[0.3em] uppercase bg-brand-primary/10 px-4 py-1.5 rounded-lg backdrop-blur-md">
+                            {item.result}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </InteractiveTilt>
               </motion.div>
             ))}
           </div>

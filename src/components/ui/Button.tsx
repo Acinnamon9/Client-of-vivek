@@ -8,18 +8,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-linear-to-br from-brand-primary to-brand-accent text-white shadow-[0_16px_40px_rgba(0,194,255,0.35)] hover:-translate-y-1 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,194,255,0.5)]",
+          "bg-linear-to-br from-brand-orange to-brand-coral text-white font-black shadow-[0_16px_40px_rgba(245,127,0,0.35)] hover:-translate-y-1 hover:scale-105 hover:shadow-[0_20px_50px_rgba(245,127,0,0.5)]",
         secondary:
-          "bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/20",
+          "bg-brand-cerulean text-white shadow-[0_16px_40px_rgba(0,129,167,0.3)] hover:-translate-y-1 hover:scale-105",
         outline:
-          "bg-transparent border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white",
-        black: "bg-brand-dark text-white hover:bg-[#333]",
-        ghost: "text-slate-600 hover:text-brand-dark bg-transparent",
-        link: "text-(--muted-foreground) hover:text-brand-primary underline-offset-4 hover:underline p-0 h-auto font-bold",
+          "bg-transparent border-2 border-brand-cerulean text-brand-cerulean hover:bg-brand-cerulean hover:text-white",
+        black: "bg-brand-depth text-white hover:bg-brand-deep-teal",
+        ghost: "text-(--muted-foreground) hover:text-brand-depth bg-transparent",
+        link: "text-(--muted-foreground) hover:text-brand-cerulean underline-offset-4 hover:underline p-0 h-auto font-bold",
         glass:
           "bg-white/5 backdrop-blur-xl border border-white/10 text-(--foreground) shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.05)] hover:bg-white/10 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_0_20px_rgba(0,0,0,0.1)]",
         "glass-primary":
-          "bg-brand-primary/10 backdrop-blur-xl border border-brand-primary/20 text-brand-primary shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,194,255,0.1)] hover:bg-brand-primary/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_25px_rgba(0,194,255,0.15)]",
+          "bg-brand-cerulean/10 backdrop-blur-xl border border-brand-cerulean/20 text-brand-cerulean shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,129,167,0.1)] hover:bg-brand-cerulean/20 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_25px_rgba(0,129,167,0.15)]",
       },
       size: {
         sm: "px-4 py-2 text-sm rounded-lg",
@@ -37,8 +37,8 @@ const buttonVariants = cva(
 
 interface ButtonProps
   extends
-    React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof buttonVariants> {
+  React.HTMLAttributes<HTMLElement>,
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   as?: React.ElementType;
   href?: string;

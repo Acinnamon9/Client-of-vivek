@@ -1,16 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
-  --color-brand-primary: #00c2ff;
-  --color-brand-secondary: #7dd3fc;
-  --color-brand-accent: #0ea5e9;
-  --color-brand-dark: #1a1a1a;
-  --color-brand-deep: #0f0f0f;
-  --color-brand-success: #22c55e;
-  --color-brand-success-deep: #00aa00;
-  --color-brand-action: #ef4444;
-  --color-brand-link: #4361ee;
+  /* AI Agency Color Palette - Version 2.0 */
+  --color-brand-depth: #213A57;
+  --color-brand-deep-teal: #0B6477;
+  --color-brand-ocean: #006B84;
+  --color-brand-cerulean: #0081A7;
+  --color-brand-tech-teal: #0B8788;
+  --color-brand-teal: #14919B;
+
+  --color-brand-aqua: #00AFB9;
+  --color-brand-turquoise: #3BB9A4;
+  --color-brand-light-aqua: #0AD1C8;
+  --color-brand-mint: #45DFB1;
+  --color-brand-mint-light: #80ED99;
+
+  --color-brand-orange: #F57F00;
+  --color-brand-coral: #F07167;
+  --color-brand-peach: #FED9B7;
+
+  /* Legacy mapping for compatibility if needed */
+  --color-brand-primary: var(--color-brand-cerulean);
+  --color-brand-secondary: var(--color-brand-aqua);
+  --color-brand-accent: var(--color-brand-orange);
+  --color-brand-dark: var(--color-brand-depth);
+  --color-brand-deep: var(--color-brand-deep-teal);
+  --color-brand-success: var(--color-brand-turquoise);
+  --color-brand-success-deep: var(--color-brand-tech-teal);
+  --color-brand-action: var(--color-brand-coral);
+  --color-brand-link: var(--color-brand-cerulean);
 
   /* Custom Animations */
   --animate-float-orb: float-orb 25s ease-in-out infinite;
@@ -37,18 +55,16 @@
 }
 
 @layer base {
+
   :host,
   :root {
-    --background: #f6f4f1;
-    /* Warm Base */
-    --foreground: #1a1a1a;
-    --card: #faf9f7;
-    /* Slightly Lighter for Inputs/Cards */
-    --card-foreground: #1a1a1a;
-    --muted: #efede8;
-    /* Slightly Darker for Contrast */
+    --background: #ffffff;
+    --foreground: #213a57;
+    --card: #f8fafc;
+    --card-foreground: #213a57;
+    --muted: #f1f5f9;
     --muted-foreground: #475569;
-    --border: rgba(26, 26, 26, 0.08);
+    --border: rgba(33, 58, 87, 0.1);
 
     scroll-behavior: smooth;
     font-family:
@@ -63,13 +79,13 @@
 
   :host([data-theme="dark"]),
   [data-theme="dark"] {
-    --background: #0f0f0f;
+    --background: #213a57;
     --foreground: #ffffff;
-    --card: #1a1a1a;
+    --card: #0b6477;
     --card-foreground: #ffffff;
-    --muted: #1c1c1c;
-    --muted-foreground: #94a3b8;
-    --border: rgba(255, 255, 255, 0.1);
+    --muted: #006b84;
+    --muted-foreground: #cbd5e1;
+    --border: rgba(255, 255, 255, 0.12);
     color-scheme: dark;
   }
 
@@ -88,6 +104,7 @@
 
 /* Custom Keyframes */
 @keyframes float-orb {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
@@ -103,6 +120,7 @@
 }
 
 @keyframes badge-float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -114,6 +132,7 @@
 }
 
 @keyframes float-badge-enhanced {
+
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
@@ -125,19 +144,21 @@
 }
 
 @keyframes pulse-dot {
+
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(0, 194, 255, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 129, 167, 0.7);
   }
 
   50% {
     opacity: 0.6;
-    box-shadow: 0 0 0 8px rgba(0, 194, 255, 0);
+    box-shadow: 0 0 0 8px rgba(0, 129, 167, 0);
   }
 }
 
 @keyframes fadeRotate {
+
   0%,
   100% {
     opacity: 0;
@@ -187,6 +208,7 @@
 }
 
 @keyframes pulse-bg {
+
   0%,
   100% {
     opacity: 1;
@@ -198,13 +220,14 @@
 }
 
 @keyframes badge-glow {
+
   0%,
   100% {
-    box-shadow: 0 8px 24px rgba(0, 194, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 129, 167, 0.35);
   }
 
   50% {
-    box-shadow: 0 12px 32px rgba(0, 194, 255, 0.5);
+    box-shadow: 0 12px 32px rgba(0, 129, 167, 0.5);
   }
 }
 
@@ -215,6 +238,7 @@
 }
 
 @keyframes vs-pulse {
+
   0%,
   100% {
     transform: scale(1);
@@ -226,6 +250,7 @@
 }
 
 @keyframes pulse-timeline {
+
   0%,
   100% {
     opacity: 0.5;
@@ -289,6 +314,7 @@
 }
 
 @keyframes pulse-success {
+
   0%,
   100% {
     opacity: 1;
@@ -306,6 +332,7 @@
   backdrop-filter: url(#frosted);
   -webkit-backdrop-filter: url(#frosted);
 }
+
 /* Premium Frosted Glass Effects */
 .glass-navbar-frosted {
   background: rgba(255, 255, 255, 0.05);
@@ -340,9 +367,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -352,6 +381,7 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -362,6 +392,7 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;

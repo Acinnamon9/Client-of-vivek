@@ -1,0 +1,38 @@
+// Primary Colors
+$color-navy-depth: #213A57;
+$color-deep-teal: #0B6477;
+$color-ocean-blue: #006B84;
+$color-cerulean: #0081A7;
+$color-tech-teal: #0B8788;
+$color-teal: #14919B;
+
+// Secondary Colors
+$color-aqua-cyan: #00AFB9;
+$color-turquoise: #3BB9A4;
+$color-light-aqua: #0AD1C8;
+$color-mint-fresh: #45DFB1;
+$color-mint-light: #80ED99;
+
+// Accent Colors
+$color-vivid-orange: #F57F00;
+$color-coral-sunset: #F07167;
+$color-peach-cream: #FED9B7;
+
+// Mixins for common combinations
+@mixin primary-button {
+    background-color: $color-vivid-orange;
+    color: $color-navy-depth;
+
+    &:hover {
+        background-color: lighten($color-vivid-orange, 5%);
+    }
+}
+
+@mixin secondary-button {
+    background-color: $color-cerulean;
+    color: #ffffff;
+
+    &:hover {
+        background-color: darken($color-cerulean, 5%);
+    }
+}

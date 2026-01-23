@@ -7,10 +7,10 @@ interface NeuralNetworkProps {
   backgroundColor?: string;
 }
 
-const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
+const NeuralNetwork: React.FC<NeuralNetworkProps> = React.memo(({
   className = "",
-  dotColor = "#00c2ff",
-  lineColor = "#00c2ff",
+  dotColor = "#0081A7",
+  lineColor = "#0081A7",
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -23,14 +23,16 @@ const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
 
     let particles: Particle[] = [];
     let animationFrameId: number;
-    let width = canvas.width;
-    let height = canvas.height;
+    let width = 0;
+    let height = 0;
+    const dpr = window.devicePixelRatio || 1;
 
     // Density configuration
-    // Adjust these to control how many nodes appear
-    const PARTICLE_DENSITY = 0.0001; // Particles per pixel squared
+    const PARTICLE_DENSITY = 0.0001;
     const CONNECTION_DISTANCE = 150;
+    const CONNECTION_DISTANCE_SQ = CONNECTION_DISTANCE * CONNECTION_DISTANCE;
     const MOUSE_RADIUS = 200;
+    const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS;
 
     let mouse = { x: -1000, y: -1000 };
 
@@ -44,34 +46,27 @@ const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        // Random velocity between -0.5 and 0.5
         this.vx = (Math.random() - 0.5) * 0.5;
         this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2 + 1; // Size between 1 and 3
+        this.size = (Math.random() * 2 + 1) * dpr;
       }
 
       update() {
         this.x += this.vx;
         this.y += this.vy;
 
-        // Bounce off edges
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
-        // Mouse interaction (gentle repel)
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const distSq = dx * dx + dy * dy;
 
-        if (distance < MOUSE_RADIUS) {
-          const forceDirectionX = dx / distance;
-          const forceDirectionY = dy / distance;
+        if (distSq < MOUSE_RADIUS_SQ) {
+          const distance = Math.sqrt(distSq);
           const force = (MOUSE_RADIUS - distance) / MOUSE_RADIUS;
-          const directionX = forceDirectionX * force * 0.5; // Strength
-          const directionY = forceDirectionY * force * 0.5;
-
-          this.vx -= directionX;
-          this.vy -= directionY;
+          this.vx -= (dx / distance) * force * 0.5;
+          this.vy -= (dy / distance) * force * 0.5;
         }
       }
 
@@ -86,12 +81,20 @@ const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
     }
 
     const init = () => {
-      width = canvas.width =
-        canvas.parentElement?.clientWidth || window.innerWidth;
-      height = canvas.height =
-        canvas.parentElement?.clientHeight || window.innerHeight;
+      const parent = canvas.parentElement;
+      const w = parent?.clientWidth || window.innerWidth;
+      const h = parent?.clientHeight || window.innerHeight;
 
-      const area = width * height;
+      width = w;
+      height = h;
+
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.scale(dpr, dpr);
+
+      const area = w * h;
       const numParticles = Math.floor(area * PARTICLE_DENSITY);
 
       particles = [];
@@ -108,34 +111,33 @@ const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
         particle.draw();
       });
 
-      // Draw connections
-      particles.forEach((a, index) => {
-        for (let i = index + 1; i < particles.length; i++) {
-          const b = particles[i];
+      ctx.strokeStyle = lineColor;
+      ctx.lineWidth = 1;
+
+      for (let i = 0; i < particles.length; i++) {
+        const a = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const b = particles[j];
           const dx = a.x - b.x;
           const dy = a.y - b.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy;
 
-          if (distance < CONNECTION_DISTANCE) {
+          if (distSq < CONNECTION_DISTANCE_SQ) {
+            const distance = Math.sqrt(distSq);
+            const opacity = (1 - distance / CONNECTION_DISTANCE) * 0.2;
+            ctx.globalAlpha = opacity;
             ctx.beginPath();
-            ctx.strokeStyle = lineColor;
-            ctx.lineWidth = 1;
-            // Opacity based on distance
-            const opacity = 1 - distance / CONNECTION_DISTANCE;
-            ctx.globalAlpha = opacity * 0.2; // Keep lines subtle
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
             ctx.stroke();
           }
         }
-      });
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    const handleResize = () => {
-      init();
-    };
+    const handleResize = () => init();
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -170,6 +172,6 @@ const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
       style={{ display: "block" }}
     />
   );
-};
+});
 
 export default NeuralNetwork;

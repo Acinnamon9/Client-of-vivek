@@ -4,6 +4,8 @@ import { Section, Container } from "./ui/Layout";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
 import { Card, CardContent } from "./ui/Card";
+import Magnetic from "./ui/Magnetic";
+import InteractiveTilt from "./ui/InteractiveTilt";
 
 interface FAQItemProps {
   question: string;
@@ -141,20 +143,24 @@ const FAQ: React.FC = () => {
           </FAQItem>
         </div>
 
-        <Card className="mt-16 text-center border-none shadow-none bg-(--muted)/20">
-          <CardContent className="pt-10">
-            <div className="text-xl font-bold mb-6 text-(--foreground)">
-              Still have questions?
-            </div>
-            <Button
-              onClick={() =>
-                window.open("https://atomicx.ravan.ai/book", "_blank")
-              }
-            >
-              Book a Free Demo Call
-            </Button>
-          </CardContent>
-        </Card>
+        <InteractiveTilt className="mt-16">
+          <Card className="text-center bg-(--card) border border-(--border)/50 shadow-2xl">
+            <CardContent className="pt-10">
+              <div className="text-xl font-bold mb-6 text-(--foreground)">
+                Still have questions?
+              </div>
+              <Magnetic>
+                <Button
+                  onClick={() =>
+                    window.open("https://atomicx.ravan.ai/book", "_blank")
+                  }
+                >
+                  Book a Free Demo Call
+                </Button>
+              </Magnetic>
+            </CardContent>
+          </Card>
+        </InteractiveTilt>
       </Container>
     </Section>
   );

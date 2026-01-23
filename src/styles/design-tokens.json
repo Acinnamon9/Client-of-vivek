@@ -1,0 +1,66 @@
+{
+    "colors": {
+        "primary": {
+            "navy-depth": {
+                "value": "#213A57",
+                "type": "color"
+            },
+            "deep-teal": {
+                "value": "#0B6477",
+                "type": "color"
+            },
+            "ocean-blue": {
+                "value": "#006B84",
+                "type": "color"
+            },
+            "cerulean": {
+                "value": "#0081A7",
+                "type": "color"
+            },
+            "tech-teal": {
+                "value": "#0B8788",
+                "type": "color"
+            },
+            "teal": {
+                "value": "#14919B",
+                "type": "color"
+            }
+        },
+        "secondary": {
+            "aqua-cyan": {
+                "value": "#00AFB9",
+                "type": "color"
+            },
+            "turquoise": {
+                "value": "#3BB9A4",
+                "type": "color"
+            },
+            "light-aqua": {
+                "value": "#0AD1C8",
+                "type": "color"
+            },
+            "mint-fresh": {
+                "value": "#45DFB1",
+                "type": "color"
+            },
+            "mint-light": {
+                "value": "#80ED99",
+                "type": "color"
+            }
+        },
+        "accent": {
+            "vivid-orange": {
+                "value": "#F57F00",
+                "type": "color"
+            },
+            "coral-sunset": {
+                "value": "#F07167",
+                "type": "color"
+            },
+            "peach-cream": {
+                "value": "#FED9B7",
+                "type": "color"
+            }
+        }
+    }
+}

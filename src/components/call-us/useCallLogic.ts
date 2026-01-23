@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 
 export interface CountryInfo {
   code: string;
@@ -80,16 +80,25 @@ export const useCallLogic = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [loadingText, setLoadingText] = useState("Initializing connection...");
 
-  // Persist to localStorage when values change
+  // Persist to localStorage with a debounce to prevent excessive disk writes during typing
   useEffect(() => {
-    localStorage.setItem("ravan_country_code", countryCode);
-    localStorage.setItem("ravan_phone_number", phoneNumber);
-    localStorage.setItem("ravan_user_name", name);
-    localStorage.setItem("ravan_user_email", email);
+    const timer = setTimeout(() => {
+      localStorage.setItem("ravan_country_code", countryCode);
+      localStorage.setItem("ravan_phone_number", phoneNumber);
+      localStorage.setItem("ravan_user_name", name);
+      localStorage.setItem("ravan_user_email", email);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [countryCode, phoneNumber, name, email]);
 
   useEffect(() => {
     const fetchCountries = async () => {
+      const cached = sessionStorage.getItem("ravan_countries_cache");
+      if (cached) {
+        setCountries(JSON.parse(cached));
+        return;
+      }
+
       try {
         const response = await fetch(
           "https://restcountries.com/v3.1/all?fields=name,idd,cca2,flags",
@@ -115,12 +124,29 @@ export const useCallLogic = () => {
 
         if (formatted.length > 0) {
           setCountries(formatted);
+          sessionStorage.setItem("ravan_countries_cache", JSON.stringify(formatted));
         }
       } catch (error) {
         console.error("Error fetching countries:", error);
       }
     };
     fetchCountries();
+  }, []);
+
+  // Auto-detect country code from IP
+  useEffect(() => {
+    const detectCountry = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        if (data.country_calling_code) {
+          setCountryCode(data.country_calling_code);
+        }
+      } catch (error) {
+        console.error("Failed to detect country code:", error);
+      }
+    };
+    detectCountry();
   }, []);
 
   useEffect(() => {
@@ -176,7 +202,7 @@ export const useCallLogic = () => {
     setPhoneNumber("");
   };
 
-  const handleCall = async (e: React.FormEvent) => {
+  const handleCall = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
 

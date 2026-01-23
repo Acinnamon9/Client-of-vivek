@@ -2,6 +2,7 @@ import React from "react";
 import { Section, Container } from "./ui/Layout";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
+import Magnetic from "./ui/Magnetic";
 
 const FinalCTA: React.FC = () => {
   const handleBookDemo = () => {
@@ -37,24 +38,28 @@ const FinalCTA: React.FC = () => {
         </p>
 
         <div className="flex flex-col gap-6 items-center mb-16">
-          <Button
-            size="xl"
-            onClick={handleBookDemo}
-            className="px-16 shadow-2xl shadow-brand-primary/20"
-          >
-            Book Your Free Demo Now
-          </Button>
-          <Button
-            variant="ghost"
-            className="text-(--muted-foreground) hover:text-(--foreground)"
-            onClick={() =>
-              document
-                .getElementById("engine")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            View Live ROI Calculator
-          </Button>
+          <Magnetic>
+            <Button
+              size="xl"
+              onClick={handleBookDemo}
+              className="px-16 shadow-2xl shadow-brand-primary/20"
+            >
+              Book Your Free Demo Now
+            </Button>
+          </Magnetic>
+          <Magnetic>
+            <Button
+              variant="ghost"
+              className="text-(--muted-foreground) hover:text-(--foreground)"
+              onClick={() =>
+                document
+                  .getElementById("engine")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              View Live ROI Calculator
+            </Button>
+          </Magnetic>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center border-t border-(--border) pt-16">

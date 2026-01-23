@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { heroStats, heroBenefits, heroBadgeLines } from "../constants/heroData";
 import { Section, Container } from "./ui/Layout";
@@ -11,6 +11,7 @@ import { containerVariants, itemVariants } from "../animations";
 import Typewriter from "./ui/Typewriter";
 import Tooltip from "./ui/Tooltip";
 import NeuralNetwork from "./ui/NeuralNetwork";
+import Magnetic from "./ui/Magnetic";
 
 /**
  * FEATURE TOGGLES
@@ -25,6 +26,25 @@ const HERO_CONFIG = {
 
 const Hero: React.FC = () => {
   const [badgeIndex, setBadgeIndex] = useState(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  const moveX1 = useTransform(springX, [0, window.innerWidth], [-20, 20]);
+  const moveY1 = useTransform(springY, [0, window.innerHeight], [-20, 20]);
+  const moveX2 = useTransform(springX, [0, window.innerWidth], [20, -20]);
+  const moveY2 = useTransform(springY, [0, window.innerHeight], [20, -20]);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -44,6 +64,7 @@ const Hero: React.FC = () => {
           <motion.div
             initial={{ y: 200, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            style={{ x: moveX1, y: moveY1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="absolute bottom-0 left-[-5%] w-[400px] hidden lg:block pointer-events-none z-0"
           >
@@ -57,6 +78,7 @@ const Hero: React.FC = () => {
           <motion.div
             initial={{ y: 200, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
+            style={{ x: moveX2, y: moveY2 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="absolute bottom-0 right-[-5%] w-[420px] hidden lg:block pointer-events-none z-0"
           >
@@ -76,8 +98,8 @@ const Hero: React.FC = () => {
       {/* Neural Network Decoration */}
       <div className="absolute inset-0 z-0 neural-network-bg pointer-events-none">
         <NeuralNetwork
-          dotColor="#00c2ff"
-          lineColor="#00c2ff"
+          dotColor="#0081A7"
+          lineColor="#0081A7"
           className="w-full h-full"
         />
       </div>
@@ -130,7 +152,7 @@ const Hero: React.FC = () => {
                 },
                 { text: " Team" },
               ]}
-              cursorColor="#00c2ff"
+              cursorColor="#0081A7"
             />
           </motion.h1>
 
@@ -172,26 +194,30 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row justify-center gap-6 mb-16 w-full sm:w-auto"
           >
-            <Button
-              variant="glass-primary"
-              size="xl"
-              className="px-12"
-              onClick={() =>
-                window.open("https://atomicx.ravan.ai/book", "_blank")
-              }
-            >
-              Book Demo
-            </Button>
-            <Tooltip content="Try our AI bot from within this page">
+            <Magnetic>
               <Button
-                as="a"
-                href="#demo"
-                variant="glass"
+                variant="glass-primary"
                 size="xl"
                 className="px-12"
+                onClick={() =>
+                  window.open("https://atomicx.ravan.ai/book", "_blank")
+                }
               >
-                Try Now
+                Book Demo
               </Button>
+            </Magnetic>
+            <Tooltip content="Try our AI bot from within this page">
+              <Magnetic>
+                <Button
+                  as="a"
+                  href="#demo"
+                  variant="glass"
+                  size="xl"
+                  className="px-12"
+                >
+                  Try Now
+                </Button>
+              </Magnetic>
             </Tooltip>
           </motion.div>
 
