@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import CallUs from "./components/CallUs";
 import Timeline from "./components/lead-problem/Timeline";
 import LayoutToggle from "./components/ui/LayoutToggle";
 
@@ -23,10 +22,6 @@ function App() {
       {/* Hero: No sticky, it's the base */}
       <div className="relative z-0">
         <Hero />
-      </div>
-
-      <div className="relative z-10 bg-(--background)">
-        <CallUs />
       </div>
 
       <div className="relative z-22 bg-(--background)">

@@ -22,6 +22,18 @@
   --color-brand-tech-teal: #0f172a;
   /* Replaced with neutral */
 
+  /* Theme Dependent Accents */
+  --color-electric-accent: #dd8448;
+  --color-hero-gradient-from: #2563eb;
+  --color-hero-gradient-via: #1d4ed8;
+  --color-hero-gradient-to: #3730a3;
+
+  /* Animation Colors */
+  --color-connection-line-start: #d1d5db;
+  --color-connection-line-end: #9ca3af;
+  --color-connection-pulse: #3b82f6;
+  --color-brain-glow: #2563eb;
+
   /* Highlights */
   --color-brand-aqua: #0f172a;
   /* Replaced with neutral */

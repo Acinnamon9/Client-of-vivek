@@ -82,15 +82,15 @@ const ElectricOverlay: React.FC = () => {
       </svg>
 
       {/* Electric Glow Layers (Deep Behind) */}
-      <div className="absolute inset-[-12px] rounded-[60px] bg-[#dd8448]/20 blur-2xl animate-pulse -z-20"></div>
-      <div className="absolute inset-[-4px] rounded-[52px] border-2 border-[#dd8448]/40 blur-[2px] -z-10"></div>
+      <div className="absolute inset-[-12px] rounded-[60px] bg-electric-accent/20 blur-2xl animate-pulse -z-20"></div>
+      <div className="absolute inset-[-4px] rounded-[52px] border-2 border-electric-accent/40 blur-[2px] -z-10"></div>
 
       {/* Background Glow Ambience */}
-      <div className="absolute inset-0 bg-linear-to-b from-[#dd8448]/10 to-transparent blur-3xl opacity-40 -z-30 rounded-[48px]"></div>
+      <div className="absolute inset-0 bg-linear-to-b from-electric-accent/10 to-transparent blur-3xl opacity-40 -z-30 rounded-[48px]"></div>
 
       {/* The Electric Border Itself (Overlay) */}
       <div
-        className="absolute inset-[-4px] rounded-[52px] border-[3px] border-[#dd8448] z-50 pointer-events-none"
+        className="absolute inset-[-4px] rounded-[52px] border-[3px] border-electric-accent z-50 pointer-events-none"
         style={{ filter: `url(#${filterId})`, opacity: 0.8 }}
       ></div>
     </>
