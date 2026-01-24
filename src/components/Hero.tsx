@@ -29,7 +29,10 @@ const Hero: React.FC = () => {
 
             {/* Right-side Blue Backdrop (Edge-to-Edge) - Hybrid Floating Panel */}
             <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-[42%] bg-gradient-to-br from-hero-gradient-from via-hero-gradient-via to-hero-gradient-to rounded-l-[80px] z-1 shadow-2xl shadow-brand-primary/20">
-                <div className="absolute inset-0 pointer-events-none opacity-100">
+                <div
+                    className="absolute inset-0 pointer-events-none opacity-100"
+                    style={{ clipPath: "polygon(-200% -200%, 300% -200%, 300% 100%, -200% 100%)" }}
+                >
                     <NeuralNetwork x="50%" y="80%" rotate={10} />
                 </div>
             </div>

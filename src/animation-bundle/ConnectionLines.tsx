@@ -17,7 +17,7 @@ const generateConnectionLines = (): LineData[] => {
     const numLines = 16; // Match original count
 
     // Single focal point where ALL lines converge
-    const focalX = WIDTH * 0.52;
+    const focalX = WIDTH * 0.62;
     const focalY = HEIGHT * 0.5;
 
     for (let i = 0; i < numLines; i++) {
