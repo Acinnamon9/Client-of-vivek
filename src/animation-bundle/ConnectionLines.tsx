@@ -39,12 +39,16 @@ const generateConnectionLines = (fX: number, fY: number): LineData[] => {
 
     const horizontalLength = endX - startX;
 
-    // Pathing: Stay horizontal for 70%, then curve sharply into the focal point
-    const cp1x = startX + horizontalLength * 0.7;
+    // Pathing Logic (Trait-Based):
+    // 1. Delayed curvature: Stay horizontal for 92% of the length.
+    // 2. Parallel entry: Arrive at targetY perfectly horizontally.
+    // 3. Low vertical aggression: Y-movement suppressed until the very end.
+    // 4. Monotonic: Single clean sweep, no overshoot.
+    const cp1x = startX + horizontalLength * 0.92;
     const cp1y = startY;
 
-    const cp2x = startX + horizontalLength * 0.95;
-    const cp2y = startY + (endY - startY) * 0.2;
+    const cp2x = endX - horizontalLength * 0.05;
+    const cp2y = endY;
 
     const path = `M ${startX},${startY} C ${cp1x},${cp1y} ${cp2x},${cp2y} ${endX},${endY}`;
     const strokeWidth = 1.4;
