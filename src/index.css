@@ -29,9 +29,7 @@
   --color-hero-gradient-to: #3730a3;
 
   /* Animation Colors */
-  --color-connection-line-start: #d1d5db;
-  --color-connection-line-end: #9ca3af;
-  --color-connection-pulse: #3b82f6;
+  /* Connection line colors moved to theme-aware blocks */
   --color-brain-glow: #2563eb;
 
   /* Highlights */
@@ -83,7 +81,6 @@
 }
 
 @layer base {
-
   :host,
   :root {
     --background: #f8fafc;
@@ -98,6 +95,18 @@
     /* Slate 500 */
     --border: #e2e8f0;
     /* Slate 200 */
+
+    --color-connection-line-start: color-mix(
+      in srgb,
+      var(--foreground) 40%,
+      var(--background)
+    );
+    --color-connection-line-end: color-mix(
+      in srgb,
+      var(--foreground) 80%,
+      var(--background)
+    );
+    --color-connection-pulse: var(--color-brand-cerulean);
 
     scroll-behavior: smooth;
     font-family:
@@ -125,6 +134,17 @@
     /* Slate 400 */
     --border: #1e293b;
     /* Slate 800 */
+    --color-connection-line-start: color-mix(
+      in srgb,
+      var(--foreground) 35%,
+      var(--background)
+    );
+    --color-connection-line-end: color-mix(
+      in srgb,
+      var(--foreground) 90%,
+      var(--background)
+    );
+    --color-connection-pulse: var(--color-brand-cerulean);
     color-scheme: dark;
   }
 
@@ -143,7 +163,6 @@
 
 /* Custom Keyframes */
 @keyframes float-orb {
-
   0%,
   100% {
     transform: translate(0, 0) scale(1);
@@ -159,7 +178,6 @@
 }
 
 @keyframes badge-float {
-
   0%,
   100% {
     transform: translateY(0);
@@ -171,7 +189,6 @@
 }
 
 @keyframes float-badge-enhanced {
-
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
@@ -183,7 +200,6 @@
 }
 
 @keyframes pulse-dot {
-
   0%,
   100% {
     opacity: 1;
@@ -197,7 +213,6 @@
 }
 
 @keyframes fadeRotate {
-
   0%,
   100% {
     opacity: 0;
@@ -247,7 +262,6 @@
 }
 
 @keyframes pulse-bg {
-
   0%,
   100% {
     opacity: 1;
@@ -259,7 +273,6 @@
 }
 
 @keyframes badge-glow {
-
   0%,
   100% {
     box-shadow: 0 8px 24px rgba(0, 129, 167, 0.35);
@@ -277,7 +290,6 @@
 }
 
 @keyframes vs-pulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -289,7 +301,6 @@
 }
 
 @keyframes pulse-timeline {
-
   0%,
   100% {
     opacity: 0.5;
@@ -353,7 +364,6 @@
 }
 
 @keyframes pulse-success {
-
   0%,
   100% {
     opacity: 1;
