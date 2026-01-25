@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen,
     activeSection,
     navLinks,
+    scrollToSection,
   } = useNavbar();
 
   return (
@@ -44,7 +45,7 @@ const Navbar: React.FC = () => {
                 <Button
                   key={link.label}
                   onClick={() => {
-                    window.location.href = link.href;
+                    scrollToSection(link.href);
                     setMobileMenuOpen(false);
                   }}
                   variant="glass"
@@ -141,7 +142,11 @@ const Navbar: React.FC = () => {
                         isActive &&
                           "bg-white/10 text-brand-primary border-brand-primary/20",
                       )}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(link.href);
+                        setMobileMenuOpen(false);
+                      }}
                     >
                       {link.label}
                     </Button>

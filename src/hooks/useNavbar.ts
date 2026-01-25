@@ -84,11 +84,24 @@ export const useNavbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (href: string) => {
+    const sectionId = href.replace("#", "");
+    const root = shadowRoot || document;
+    const element = root.getElementById(sectionId);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      // clear the hash in the url to avoid jumping
+      window.history.pushState(null, "", href);
+    }
+  };
+
   return {
     isScrolled,
     mobileMenuOpen,
     setMobileMenuOpen,
     activeSection,
     navLinks,
+    scrollToSection,
   };
 };
