@@ -124,7 +124,10 @@ export const useCallLogic = () => {
 
         if (formatted.length > 0) {
           setCountries(formatted);
-          sessionStorage.setItem("ravan_countries_cache", JSON.stringify(formatted));
+          sessionStorage.setItem(
+            "ravan_countries_cache",
+            JSON.stringify(formatted),
+          );
         }
       } catch (error) {
         console.error("Error fetching countries:", error);
@@ -137,10 +140,10 @@ export const useCallLogic = () => {
   useEffect(() => {
     const detectCountry = async () => {
       try {
-        const response = await fetch("https://ipapi.co/json/");
+        const response = await fetch("https://ipwho.is/");
         const data = await response.json();
-        if (data.country_calling_code) {
-          setCountryCode(data.country_calling_code);
+        if (data.calling_code) {
+          setCountryCode("+" + data.calling_code);
         }
       } catch (error) {
         console.error("Failed to detect country code:", error);

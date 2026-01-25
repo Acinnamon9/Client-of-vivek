@@ -7,10 +7,10 @@ export const useCurrency = () => {
   useEffect(() => {
     const fetchCurrency = async () => {
       try {
-        const response = await fetch("https://ipapi.co/json/");
+        const response = await fetch("https://ipwho.is/");
         const data = await response.json();
-        if (data.currency) {
-          setCurrency(data.currency);
+        if (data.currency?.code) {
+          setCurrency(data.currency.code);
         }
       } catch (error) {
         console.error("Failed to fetch currency based on location", error);
