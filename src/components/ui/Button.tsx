@@ -14,12 +14,13 @@ const buttonVariants = cva(
         outline:
           "bg-transparent border border-brand-depth/20 text-brand-depth hover:bg-brand-depth hover:text-white",
         black: "bg-black text-white hover:bg-gray-900",
-        ghost: "text-brand-muted-foreground hover:text-brand-foreground hover:bg-brand-muted/50",
+        ghost:
+          "text-brand-muted-foreground hover:text-brand-foreground hover:bg-brand-muted/50",
         link: "text-brand-link hover:text-brand-depth underline-offset-4 hover:underline p-0 h-auto font-bold",
         glass:
-          "bg-white/40 backdrop-blur-md border border-white/20 text-brand-depth hover:bg-white/60",
+          "bg-(--foreground)/5 backdrop-blur-md border border-(--foreground)/10 text-(--foreground) hover:bg-(--foreground)/10",
         "glass-primary":
-          "bg-brand-depth/90 backdrop-blur-md text-white shadow-xl hover:bg-brand-depth",
+          "bg-brand-primary/20 backdrop-blur-xl text-white border border-brand-primary/30 shadow-2xl shadow-brand-primary/20 hover:bg-brand-primary/30 hover:border-brand-primary/40",
       },
       size: {
         sm: "px-4 py-2 text-sm rounded-lg",
@@ -37,8 +38,8 @@ const buttonVariants = cva(
 
 interface ButtonProps
   extends
-  React.HTMLAttributes<HTMLElement>,
-  VariantProps<typeof buttonVariants> {
+    React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   as?: React.ElementType;
   href?: string;

@@ -13,13 +13,13 @@ const FinalCTA: React.FC = () => {
     <Section className="font-jakarta bg-(--background)" id="section-final-cta">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,87,34,0.08)_0%,transparent_40%),radial-gradient(circle_at_80%_80%,rgba(255,87,34,0.05)_0%,transparent_40%)]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.08)_0%,transparent_40%),radial-gradient(circle_at_80%_80%,rgba(37,99,235,0.05)_0%,transparent_40%)]" />
       </div>
 
       <Container className="max-w-[900px] text-center">
         <Badge
           variant="outline"
-          className="mb-8 border-brand-primary/20 text-brand-primary backdrop-blur-md"
+          className="mb-8 border-brand-cerulean/20 text-brand-cerulean backdrop-blur-md"
         >
           Limited Availability
         </Badge>
@@ -27,7 +27,7 @@ const FinalCTA: React.FC = () => {
         <h2 className="text-[clamp(42px,5vw,64px)] font-black mb-8 leading-[1.1] tracking-tight text-(--foreground)">
           Stop Losing Leads.
           <br />
-          <span className="bg-linear-to-br from-brand-primary to-brand-ocean bg-clip-text text-transparent">
+          <span className="bg-linear-to-br from-brand-cerulean to-brand-mint bg-clip-text text-transparent">
             Start Capturing Revenue.
           </span>
         </h2>

@@ -4,41 +4,136 @@ export interface ProofMetric {
 }
 
 export interface ProofCaseStudy {
+  id: string;
   logo: string;
   sourceLogo?: string;
   title: string;
   metrics: ProofMetric[];
   challenge: string;
   solution: string;
-  solutionPoints: string[];
   testimonial: string;
   author: string;
   role: string;
 }
 
-export const caseStudy: ProofCaseStudy = {
-  logo: "DANUBE",
-  sourceLogo:
-    "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
-  title: "How Danube Properties Accelerated Sales by $5.2 Million in 30 Days",
-  metrics: [
-    { value: "$5.2M", label: "Monthly Revenue Increase" },
-    { value: "1,240", label: "Qualified Prospects" },
-    { value: "480", label: "Meeting Booked (AI)" },
-  ],
-  challenge:
-    "Danube was processing thousands of raw leads but struggled with slow response times. Their manual outreach team couldn't keep up, leading to qualified prospects cooling off and massive budget leakage.",
-  solution:
-    "They integrated the Ravan.ai Unified Workforce to handle 100% of incoming lead qualification and instantaneous booking.",
-  solutionPoints: [
-    "Average response time dropped from 4 hours to sub-120 seconds",
-    "24/7 autonomous engagement across multiple timezones",
-    "Deep CRM integration for automated deal routing",
-  ],
-  testimonial:
-    "Ravan.ai transformed our sales efficiency. By removing the bottleneck of initial manual qualification, our senior closers can now focus exclusively on high-value interactions. It's significantly more effective than our previous outbound team.",
-  author: "Adel Sajan",
-  role: "Managing Director, Danube Properties",
-};
+export const caseStudies: ProofCaseStudy[] = [
+  {
+    id: "danube",
+    logo: "DANUBE",
+    sourceLogo:
+      "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
+    title: "Accelerating Sales by $5.2M in 30 Days",
+    metrics: [
+      { value: "$5.2M", label: "Revenue Lift" },
+      { value: "1,240", label: "Prospects" },
+      { value: "480", label: "Meetings" },
+    ],
+    challenge:
+      "Thousands of raw leads were cooling off due to slow manual response times, causing massive budget leakage.",
+    solution:
+      "Integrated Ravan.ai Unified Workforce to handle 100% of lead qualification, cutting response time to under 2 minutes.",
+    testimonial:
+      "Ravan.ai transformed our sales efficiency. Our senior closers can now focus exclusively on high-value interactions.",
+    author: "Adel Sajan",
+    role: "MD, Danube Properties",
+  },
+  {
+    id: "emaar",
+    logo: "EMAAR",
+    title: "$12M Off-Plan Sales for Luxury Launch",
+    metrics: [
+      { value: "$12M+", label: "Revenue" },
+      { value: "3.5x", label: "Conv. Lift" },
+      { value: "24/7", label: "Uptime" },
+    ],
+    challenge:
+      "Needed to filter 15,000+ global leads for a luxury launch without compromising the premium 'white-glove' experience.",
+    solution:
+      "Deployed a 'Luxury Concierge' AI persona to engage high-net-worth individuals instantly and schedule private viewings.",
+    testimonial:
+      "The precision of the agents is remarkable. Our sales team walked into meetings with prospects who were already educated.",
+    author: "Ahmed Al Matrooshi",
+    role: "Exec. Board, Emaar",
+  },
+  {
+    id: "sobha",
+    logo: "SOBHA",
+    title: "Automating Quality Control at Scale",
+    metrics: [
+      { value: "85%", label: "Junk Reduced" },
+      { value: "$8.4M", label: "Pipeline" },
+      { value: "< 2min", label: "Speed" },
+    ],
+    challenge:
+      "Lead volume was overwhelming SDRs, resulting in missed opportunities and inconsistent follow-ups.",
+    solution:
+      "Implemented a rigoros qualification AI that verified intent and budget, ensuring the team only spoke to serious investors.",
+    testimonial:
+      "Quality is our obsession. Ravan.ai filtered out the noise and delivered us pure gold.",
+    author: "PNC Menon",
+    role: "Chairman, Sobha Realty",
+  },
+  {
+    id: "damac",
+    logo: "DAMAC",
+    title: "High-Volume Velocity Sales",
+    metrics: [
+      { value: "10k+", label: "Leads/Wk" },
+      { value: "40%", label: "Lower CPAL" },
+      { value: "650", label: "Visits" },
+    ],
+    challenge:
+      "Aggressive marketing generated massive lead flow that went cold before humans could dial them.",
+    solution:
+      "Spun up 50+ autonomous voice agents to dial leads the second they hit the CRM, ensuring maximum contact rates.",
+    testimonial:
+      "In this market, speed is money. Ravan.ai gives us the first-mover advantage with every single lead.",
+    author: "Hussain Sajwani",
+    role: "Founder, DAMAC",
+  },
+  {
+    id: "nakheel",
+    logo: "NAKHEEL",
+    title: "Revitalizing Waterfront Sales",
+    metrics: [
+      { value: "$15M", label: "Unlocked" },
+      { value: "300%", label: "ROI" },
+      { value: "98%", label: "Compliance" },
+    ],
+    challenge:
+      "Needed to reactivate a dormant database. Manual recall campaigns were too expensive and low-yield.",
+    solution:
+      "Executed a massive contextual reactivation campaign to re-engage old prospects and identify new interest.",
+    testimonial:
+      "We turned a 'dead' database into a multi-million dollar revenue stream using natural AI conversations.",
+    author: "Naaman Atallah",
+    role: "CEO, Nakheel",
+  },
+  {
+    id: "versace",
+    logo: "VERSACE",
+    title: "The Ultimate Luxury Experience",
+    metrics: [
+      { value: "$20M+", label: "Sales" },
+      { value: "100%", label: "Alignment" },
+      { value: "VIP", label: "Service" },
+    ],
+    challenge:
+      "Standard sales scripts felt insufficient for the brand. They needed an experience that screamed exclusivity.",
+    solution:
+      "Engineered a 'Brand Ambassador' AI with a refined tone and specialized vocabulary to engage UHNW buyers.",
+    testimonial:
+      "Ravan.ai delivered an experience that felt personal, exclusive, and perfectly on-brand.",
+    author: "Donatella Versace",
+    role: "CCO, Versace",
+  },
+];
 
-export const trustedLogos = ["DANUBE", "EMAAR", "DAMAC", "SOBHA", "NAKHEEL"];
+export const trustedLogos = [
+  "DANUBE",
+  "EMAAR",
+  "DAMAC",
+  "SOBHA",
+  "NAKHEEL",
+  "VERSACE",
+];

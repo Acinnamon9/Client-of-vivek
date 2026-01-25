@@ -1,60 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  /* AI Agency Color Palette - Minimalist Signal v4.0 */
+  /* AI Agency Color Palette - Electric Future v5.0 */
   /* Neutral scale for hierarchy */
-  --color-brand-depth: #020617;
-  /* Slate 950 */
-  --color-brand-dark: #0f172a;
-  /* Slate 900 */
+  --color-brand-depth: #020205;
+  /* Void Black */
+  --color-brand-dark: #09090b;
+  /* Zinc 950 */
 
-  /* Primary Signal - Used sparingly */
-  --color-brand-primary: #0f172a;
-  /* Primary is now dark/neutral for main actions */
-  --color-brand-ocean: #334155;
-  /* Slate 700 */
+  /* Primary Signal - ELECTRIC CYAN */
+  --color-brand-primary: #06b6d4;
+  /* Cyan 500 */
+  --color-brand-ocean: #155e75;
+  /* Cyan 900 */
 
   /* Accents - The "Signal" colors */
-  --color-brand-deep-teal: #0f766e;
-  /* Teal 700 - Subdued signal */
-  --color-brand-cerulean: #0ea5e9;
-  /* Sky 500 - Links/Interactive */
-  --color-brand-tech-teal: #0f172a;
-  /* Replaced with neutral */
+  --color-brand-deep-teal: #0891b2;
+  /* Cyan 600 */
+  --color-brand-cerulean: #22d3ee;
+  /* Cyan 400 - Highlight */
+  --color-brand-tech-teal: #155e75;
 
   /* Theme Dependent Accents */
-  --color-electric-accent: #dd8448;
-  --color-hero-gradient-from: #2563eb;
-  --color-hero-gradient-via: #1d4ed8;
-  --color-hero-gradient-to: #3730a3;
+  --color-electric-accent: #a855f7;
+  /* Purple 500 */
+  --color-hero-gradient-from: #22d3ee;
+  /* Cyan 400 */
+  --color-hero-gradient-via: #8b5cf6;
+  /* Violet 500 */
+  --color-hero-gradient-to: #4f46e5;
+  /* Indigo 600 */
 
   /* Animation Colors */
-  /* Connection line colors moved to theme-aware blocks */
-  --color-brain-glow: #2563eb;
+  --color-brain-glow: #22d3ee;
 
   /* Highlights */
-  --color-brand-aqua: #0f172a;
-  /* Replaced with neutral */
-  --color-brand-turqouise: #cbd5e1;
-  /* Slate 300 */
-  --color-brand-mint: #e2e8f0;
-  /* Slate 200 */
+  --color-brand-aqua: #06b6d4;
+  --color-brand-turqouise: #cffafe;
+  /* Cyan 100 */
+  --color-brand-mint: #ccfbf1;
+  /* Teal 100 */
 
   /* Semantic Colors */
-  --color-brand-link: var(--color-brand-cerulean);
-  --color-brand-success: #10b981;
-  /* Emerald 500 */
-  --color-brand-warning: #f59e0b;
-  /* Amber 500 */
-  --color-brand-error: #ef4444;
-  /* Red 500 */
+  --color-brand-link: #22d3ee;
+  /* Cyan 400 */
+  --color-brand-success: #00f5d4;
+  /* Electric Spring Green */
+  --color-brand-warning: #fbbf24;
+  /* Amber 400 */
+  --color-brand-error: #ff3366;
+  /* Electric Rose/Red */
 
   /* Legacy overrides to neutralize old styles */
-  --color-brand-orange: #0f172a;
-  /* Neutralized */
-  --color-brand-coral: #334155;
-  /* Neutralized */
-  --color-brand-action: var(--color-brand-depth);
+  --color-brand-orange: #f97316;
+  --color-brand-coral: #155e75;
+  --color-brand-action: #22d3ee;
 
   /* Custom Animations */
   --animate-float-orb: float-orb 25s ease-in-out infinite;
@@ -84,17 +84,14 @@
   :host,
   :root {
     --background: #f8fafc;
-    /* Slate 50 - clean paper look */
+    /* Slate 50 */
     --foreground: #020617;
-    /* Slate 950 - sharp text */
+    /* Slate 950 */
     --card: #ffffff;
     --card-foreground: #020617;
     --muted: #f1f5f9;
-    /* Slate 100 */
     --muted-foreground: #64748b;
-    /* Slate 500 */
     --border: #e2e8f0;
-    /* Slate 200 */
 
     --color-connection-line-start: color-mix(
       in srgb,
@@ -121,19 +118,14 @@
 
   :host([data-theme="dark"]),
   [data-theme="dark"] {
-    --background: #020617;
-    /* Slate 950 */
-    --foreground: #f8fafc;
-    /* Slate 50 */
-    --card: #0f172a;
-    /* Slate 900 */
-    --card-foreground: #f8fafc;
-    --muted: #1e293b;
-    /* Slate 800 */
-    --muted-foreground: #94a3b8;
-    /* Slate 400 */
-    --border: #1e293b;
-    /* Slate 800 */
+    --background: #020205; /* VOID BLACK */
+    --foreground: #ecfeff; /* Cyan 50 */
+    --card: #09090b; /* Zinc 950 */
+    --card-foreground: #ecfeff;
+    --muted: #18181b; /* Zinc 900 */
+    --muted-foreground: #a1a1aa; /* Zinc 400 */
+    --border: #27272a; /* Zinc 800 */
+
     --color-connection-line-start: color-mix(
       in srgb,
       var(--foreground) 35%,

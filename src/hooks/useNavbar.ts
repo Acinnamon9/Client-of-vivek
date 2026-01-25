@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useWidgetContext } from "../contexts/WidgetContext";
 
 export const navLinks = [
-  { label: "Test Drive", href: "#demo" },
+  { label: "Test Drive", href: "#hero" },
   { label: "Platform", href: "#workforce" },
   { label: "Solutions", href: "#industry" },
   { label: "Proof", href: "#proof" },

@@ -2,110 +2,85 @@ import React, { useState } from "react";
 import { Section, Container } from "./ui/Layout";
 import { Card } from "./ui/Card";
 import Button from "./ui/Button";
-import Slider from "./ui/Slider";
-import { useCurrency } from "../hooks/useCurrency";
 import Magnetic from "./ui/Magnetic";
 import InteractiveTilt from "./ui/InteractiveTilt";
+import ROISliderGroup from "./roi/ROISliderGroup";
+import ROIResultCard from "./roi/ROIResultCard";
 
 const ROICalculator: React.FC = () => {
-  const [leads, setLeads] = useState(1000);
-  const [dealValue, setDealValue] = useState(2000);
-  const [closeRate, setCloseRate] = useState(5);
-  const { formatCurrency } = useCurrency();
+  const [leads, setLeads] = useState(10);
+  const [dealValue, setDealValue] = useState(500);
+  const [closeRate, setCloseRate] = useState(1);
 
   const currentRevenue = leads * (closeRate / 100) * dealValue;
   const projectedRevenue = currentRevenue * 0.3;
 
   return (
-    <Section className="bg-(--background) overflow-hidden relative">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-brand-primary rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-primary/20 rounded-full blur-[100px]"></div>
+    <Section
+      id="roi"
+      className="bg-(--background) overflow-hidden relative py-24 md:py-32"
+    >
+      {/* Background Decor - Theme Consistent */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-(--hero-gradient-from) rounded-full blur-[120px] opacity-20"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-(--hero-gradient-to) rounded-full blur-[100px] opacity-10"></div>
       </div>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="max-w-xl">
-            <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) mb-8 leading-[1.1] tracking-tighter">
-              Calculate Your{" "}
-              <span className="text-brand-primary">Revenue Uplift</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
+          <div className="max-w-xl text-center lg:text-left">
+            <div className="mb-6">
+              <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
+                Performance Analytics
+              </span>
+            </div>
+            <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) mb-8 leading-[1.05] tracking-tighter uppercase">
+              Project Your <br />
+              <span className="text-brand-link">Revenue Uplift</span>
             </h2>
-            <p className="text-xl text-(--muted-foreground) leading-relaxed font-medium mb-10">
-              See exactly how much revenue you're missing out on by relying on
-              human-only sales teams. Our AI increases contact rates and
-              follow-ups, leading to more closed deals.
+            <p className="text-lg text-(--muted-foreground) leading-relaxed font-medium mb-10 max-w-lg mx-auto lg:mx-0">
+              Quantify the operational leakage in your current manual workflows.
+              Our AI eliminates response delay and maximizes every unit of
+              inbound lead traffic.
             </p>
-            <Magnetic>
-              <Button
-                size="xl"
-                className="shadow-2xl shadow-brand-primary/20"
-                onClick={() =>
-                  window.open("https://atomicx.ravan.ai/book", "_blank")
-                }
-              >
-                Get Your Custom Plan
-              </Button>
-            </Magnetic>
+            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+              <Magnetic>
+                <Button
+                  size="xl"
+                  className="shadow-xl shadow-brand-link/20 group uppercase tracking-widest text-xs font-black"
+                  onClick={() =>
+                    window.open("https://atomicx.ravan.ai/book", "_blank")
+                  }
+                >
+                  Request Strategic Setup
+                </Button>
+              </Magnetic>
+              <span className="text-[10px] font-bold text-(--muted-foreground) uppercase tracking-widest opacity-60">
+                *Verified by Danube & Emaar
+              </span>
+            </div>
           </div>
 
           <InteractiveTilt>
-            <Card variant="white" className="p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-              <div className="space-y-10">
-                <Slider
-                  label="Monthly Leads"
-                  valueDisplay={leads.toLocaleString()}
-                  min="10"
-                  max="1000"
-                  step="10"
-                  value={leads}
-                  onChange={(e) => setLeads(parseInt(e.target.value))}
+            <Card
+              variant="white"
+              className="p-8 sm:p-12 shadow-2xl relative overflow-hidden bg-(--card)/40 backdrop-blur-xl border border-(--border)/30"
+            >
+              <div className="space-y-12">
+                <ROISliderGroup
+                  leads={leads}
+                  setLeads={setLeads}
+                  dealValue={dealValue}
+                  setDealValue={setDealValue}
+                  closeRate={closeRate}
+                  setCloseRate={setCloseRate}
                 />
 
-                <Slider
-                  label="Avg. Deal Value"
-                  valueDisplay={formatCurrency(dealValue)}
-                  min="500"
-                  max="50000"
-                  step="500"
-                  value={dealValue}
-                  onChange={(e) => setDealValue(parseInt(e.target.value))}
-                />
-
-                <Slider
-                  label="Current Close Rate"
-                  valueDisplay={`${closeRate}%`}
-                  min="1"
-                  max="20"
-                  step="0.5"
-                  value={closeRate}
-                  onChange={(e) => setCloseRate(parseFloat(e.target.value))}
-                />
-
-                <div className="bg-brand-primary/5 rounded-[32px] p-8 text-center border border-brand-primary/10 relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                    </svg>
-                  </div>
-                  <div className="text-[10px] font-black text-(--muted-foreground) uppercase tracking-[0.2em] mb-4">
-                    Projected Additional Revenue / Month
-                  </div>
-                  <div className="text-5xl sm:text-6xl font-black text-brand-primary tracking-tighter mb-4 transition-transform group-hover:scale-105 duration-500">
-                    {formatCurrency(projectedRevenue)}
-                  </div>
-                  <div className="text-[10px] text-(--muted-foreground) font-bold opacity-60">
-                    *Based on conservative 30% increase in conversion with AI
-                  </div>
-                </div>
+                <ROIResultCard projectedRevenue={projectedRevenue} />
               </div>
+
+              {/* Technical Accent */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-link/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
             </Card>
           </InteractiveTilt>
         </div>

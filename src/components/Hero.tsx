@@ -27,16 +27,21 @@ const Hero: React.FC = () => {
         <ConnectionLines focalPointX={0.79} focalPointY={0.88} />
       </div>
 
-      {/* Right-side Blue Backdrop (Edge-to-Edge) - Hybrid Floating Panel */}
-      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-[80%] w-[42%] bg-linear-to-br from-hero-gradient-from via-hero-gradient-via to-hero-gradient-to rounded-l-[80px] z-1 shadow-2xl shadow-brand-primary/20">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-100"
-          style={{
-            clipPath: "polygon(-200% -200%, 300% -200%, 300% 100%, -200% 100%)",
-          }}
-        >
-          <NeuralNetwork x="50%" y="80%" rotate={10} />
-        </div>
+      {/* Outer Brain (Adaptive: Black on Light, Orange on Dark) - visible on main background */}
+      <div
+        className="hidden lg:block absolute inset-0 pointer-events-none z-1"
+        style={{
+          clipPath:
+            "polygon(0 0, 55% 0, 55% 7.5%, 100% 7.5%, 100% 92.5%, 55% 92.5%, 55% 100%, 0 100%)",
+        }}
+      >
+        <NeuralNetwork x="77.5%" y="80%" rotate={10} variant="adaptive" />
+      </div>
+
+      {/* Right-side Decorative Backdrop (Pure Orange Impact) */}
+      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-[85%] w-[45%] bg-linear-to-br from-[#f97316] via-[#ea580c] to-[#c2410c] rounded-l-[100px] z-1 shadow-[0_0_120px_rgba(249,115,22,0.35)] border-l border-white/20 overflow-hidden">
+        {/* Inner Brain (White) - visible only inside the orange shape */}
+        <NeuralNetwork x="50%" y="80%" rotate={10} variant="white" />
       </div>
 
       <Container className="relative z-20 w-full max-w-full lg:max-w-[1400px] px-6 lg:px-12">

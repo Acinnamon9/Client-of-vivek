@@ -1,0 +1,71 @@
+import React from "react";
+import { motion } from "framer-motion";
+import Button from "../ui/Button";
+import { cn } from "../../lib/utils";
+
+interface NavbarDesktopLinksProps {
+  navLinks: { label: string; href: string }[];
+  activeSection: string;
+  scrollToSection: (href: string) => void;
+  setMobileMenuOpen: (open: boolean) => void;
+}
+
+const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
+  navLinks,
+  activeSection,
+  scrollToSection,
+  setMobileMenuOpen,
+}) => {
+  return (
+    <div className="hidden lg:flex items-center gap-2">
+      {navLinks.map((link) => {
+        const isActive = activeSection === link.href.replace("#", "");
+        return (
+          <Button
+            key={link.label}
+            onClick={() => {
+              scrollToSection(link.href);
+              setMobileMenuOpen(false);
+            }}
+            variant="glass"
+            size="lg"
+            className={cn(
+              "text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 transition-all",
+              isActive
+                ? "bg-(--foreground)/10 border-(--foreground)/20 text-(--foreground) -translate-y-px shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+                : "bg-transparent border-transparent text-(--muted-foreground) hover:text-(--foreground) hover:bg-(--foreground)/5",
+            )}
+          >
+            <span className="relative">
+              {link.label}
+              {isActive && (
+                <motion.span
+                  layoutId="activeNav"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-primary"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 380,
+                    damping: 30,
+                  }}
+                />
+              )}
+            </span>
+          </Button>
+        );
+      })}
+      <div className="h-6 w-px bg-(--border) mx-4"></div>
+      <Button
+        variant="glass-primary"
+        size="xl"
+        className="px-10 rounded-[20px]"
+        onClick={() => window.open("https://atomicx.ravan.ai/book", "_blank")}
+      >
+        Book Demo
+      </Button>
+    </div>
+  );
+};
+
+export default NavbarDesktopLinks;

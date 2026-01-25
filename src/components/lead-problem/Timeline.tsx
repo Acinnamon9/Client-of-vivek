@@ -6,171 +6,171 @@ import InteractiveTilt from "../ui/InteractiveTilt";
 
 /**
  * Timeline Component
- * Visualizes the "Split Reality" between instantaneous AI response and legacy degradation.
- * Pattern: High-impact Bento Grid with a large Hero Win and a vertical failure column.
- * Aesthetic: Technical HUD / Audit Report.
- * Layout: Compacted for better visual balance and information density.
+ * A high-end visual audit of lead spoilage.
+ * Structure:
+ * 1. "Instant Win" Hero Section (Top)
+ * 2. "Degradation Pipeline" (Bottom) - showing the decay of value over time.
+ * Layout: Balanced Compact + Square Images
  */
 const Timeline: React.FC = () => {
-  // Split data into the "Hero" (the win) and the "Degradation" (the losses)
   const heroEvent = timelineEvents[0];
   const lossEvents = timelineEvents.slice(1);
 
   return (
     <Section
       id="lead-problem-timeline"
-      className="bg-(--background) py-16 sm:py-24 relative overflow-hidden"
+      className="bg-(--background) py-20 md:py-28 relative overflow-hidden"
     >
-      {/* Technical Background Layer */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <div
-          className="absolute inset-0 bg-[grid-size:40px_40px] mask-[radial-gradient(ellipse_at_center,black,transparent)]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, currentColor 1px, transparent 1px)",
-          }}
-        ></div>
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(ellipse_at_top,rgba(0,194,255,0.1),transparent_70%)] opacity-60"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(circle_at_bottom_right,rgba(255,87,34,0.05),transparent_70%)]"></div>
       </div>
 
-      <Container className="max-w-7xl relative z-10">
-        {/* Header Section: High-Clarity Narrative */}
-        <div className="text-center mb-12 md:mb-20">
+      <Container className="max-w-[1400px] relative z-10 px-6">
+        {/* Header: Clinical Audit Style - Balanced */}
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 mb-4 backdrop-blur-sm"
           >
-            <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-primary/40"></div>
-            <span className="text-[9px] font-black tracking-[0.5em] text-brand-primary uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+            <span className="text-[10px] font-black tracking-[0.25em] text-brand-primary uppercase">
               Time-To-Value Analysis
             </span>
-            <div className="h-px w-10 bg-linear-to-l from-transparent to-brand-primary/40"></div>
           </motion.div>
-          <h3 className="text-4xl md:text-6xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9]">
+
+          <motion.h3
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9]"
+          >
             The Cost of <br />
-            <span className="text-brand-primary italic">Seconds</span>
-          </h3>
-          <p className="mt-6 text-(--muted-foreground) text-xs md:text-base font-bold max-w-xl mx-auto uppercase tracking-[0.4em] leading-relaxed opacity-80">
-            A real-time visual audit of{" "}
-            <span className="text-brand-primary">lead spoilage</span>
-          </p>
+            <span className="text-brand-primary/90">Seconds</span>
+          </motion.h3>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 relative">
-          {/* THE OPTIMAL PATH (Hero Card) */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 relative items-stretch">
+          {/* 1. THE INSTANT WIN (Hero Card) - Takes Left/Top */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-12 xl:col-span-7 group/hero"
+            className="xl:col-span-7 h-full min-h-[400px]"
           >
             <InteractiveTilt className="h-full">
-              <div className="relative h-full p-px rounded-[36px] bg-linear-to-br from-brand-success/40 via-transparent to-transparent shadow-2xl shadow-brand-success/10">
-                <div className="bg-(--card)/90 backdrop-blur-3xl rounded-[34px] p-8 md:p-12 border border-brand-success/30 h-full flex flex-col relative overflow-hidden">
-                  {/* HUD Corner Accents ... content stays same ... */}
-                  {/* HUD Corner Accents */}
-                  <div className="absolute top-6 left-6 w-3 h-3 border-t-2 border-l-2 border-brand-success/20"></div>
-                  <div className="absolute top-6 right-6 w-3 h-3 border-t-2 border-r-2 border-brand-success/20"></div>
+              <div className="group relative w-full h-full p-px rounded-[32px] bg-linear-to-b from-brand-success/40 to-brand-success/5 overflow-hidden shadow-[0_0_40px_-10px_rgba(34,197,94,0.15)]">
+                <div className="relative bg-(--card)/80 backdrop-blur-xl rounded-[31px] p-8 md:p-10 h-full flex flex-col md:flex-row gap-8 items-center overflow-hidden">
+                  {/* Left: Text Content */}
+                  <div className="flex-1 space-y-6 text-center md:text-left">
+                    <div className="inline-flex justify-center md:justify-start items-center gap-2 px-3 py-1 rounded-lg bg-brand-success/10 border border-brand-success/20 text-brand-success text-[10px] font-black tracking-widest uppercase">
+                      <svg
+                        className="w-3 h-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={3}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      Optimal Outcome
+                    </div>
 
-                  <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8 relative z-10">
                     <div>
-                      <div className="text-7xl md:text-8xl font-black text-brand-success tracking-tighter leading-none mb-3 drop-shadow-[0_0_20px_rgba(34,197,94,0.2)]">
+                      <div className="text-7xl md:text-8xl font-black text-brand-success tracking-tighter leading-none mb-2 drop-shadow-[0_0_20px_rgba(34,197,94,0.3)]">
                         {heroEvent.time}
                       </div>
-                      <div className="text-lg md:text-2xl font-black text-(--foreground) uppercase tracking-tighter flex items-center gap-3">
+                      <h4 className="text-2xl md:text-3xl font-bold text-(--foreground) tracking-tight">
                         {heroEvent.event}
-                        <span className="h-1 w-1 rounded-full bg-brand-success animate-pulse"></span>
-                      </div>
+                      </h4>
                     </div>
-                    <div className="bg-brand-success/10 text-brand-success border border-brand-success/40 px-6 py-2 rounded-xl text-[9px] font-black tracking-[0.4em] uppercase whitespace-nowrap backdrop-blur-md">
-                      {heroEvent.result}
-                    </div>
+
+                    <p className="text-base md:text-lg text-(--muted-foreground) leading-relaxed md:border-l-2 md:border-brand-success/30 md:pl-4">
+                      <span className="text-brand-success font-bold block text-xs uppercase tracking-wider mb-1">
+                        Result: {heroEvent.result}
+                      </span>
+                      Capture interest at the absolute peak of intent.
+                    </p>
                   </div>
 
-                  <div className="relative aspect-square rounded-2xl overflow-hidden border border-brand-success/20 mb-8 bg-black/40 group-hover/hero:border-brand-success/60 transition-all duration-700 shadow-xl">
-                    <motion.img
+                  {/* Right: Square Image */}
+                  <div className="relative w-64 h-64 md:w-72 md:h-72 shrink-0 rounded-2xl overflow-hidden border border-brand-success/20 shadow-2xl group-hover:scale-[1.02] transition-transform duration-700">
+                    <img
                       src={heroEvent.image}
-                      alt={heroEvent.event}
-                      className="w-full h-full object-cover grayscale group-hover/hero:grayscale-0 group-hover/hero:scale-105 transition-all duration-1000 opacity-80"
+                      alt="Instant Response"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
-                    {/* Scanline Effect */}
-                    <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-success/5 to-transparent h-16 -translate-y-full group-hover/hero:animate-[scan_3s_linear_infinite] pointer-events-none"></div>
                     <div className="absolute inset-0 bg-linear-to-t from-brand-success/30 to-transparent mix-blend-overlay"></div>
-                  </div>
-
-                  <div className="mt-auto relative z-10">
-                    <div className="flex items-start gap-4">
-                      <div className="w-1 h-12 bg-linear-to-b from-brand-success to-transparent rounded-full opacity-40"></div>
-                      <p className="text-lg md:text-xl text-(--muted-foreground)/90 font-medium leading-relaxed italic">
-                        "The only interval that matters. This is where growth is
-                        captured or surrendered."
-                      </p>
-                    </div>
+                    <div className="absolute top-0 left-0 w-full h-0.5 bg-brand-success/50 shadow-[0_0_10px_rgba(34,197,94,0.8)] animate-[scan_3s_linear_infinite]"></div>
                   </div>
                 </div>
               </div>
             </InteractiveTilt>
           </motion.div>
 
-          {/* THE DEGRADATION COLUMN */}
-          <div className="lg:col-span-12 xl:col-span-5 flex flex-col gap-4 lg:gap-6 relative h-full">
-            {/* Visual Trace Line */}
-            <div className="absolute left-8 md:left-10 top-16 bottom-16 w-px bg-linear-to-b from-brand-primary/60 via-brand-primary/20 to-transparent hidden sm:block"></div>
+          {/* 2. THE DEGRADATION PIPELINE (Loss Events) - Takes Right/Bottom */}
+          <div className="xl:col-span-5 flex flex-col justify-between gap-4 relative">
+            {/* Connector Line */}
+            <div className="absolute left-[35px] top-6 bottom-6 w-0.5 bg-linear-to-b from-brand-success/20 via-brand-primary/20 to-red-500/20 hidden xl:block"></div>
 
             {lossEvents.map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 + 0.3 }}
-                className="group/item relative flex-1"
+                transition={{ delay: idx * 0.15 + 0.2 }}
+                className="relative group w-full flex-1"
               >
-                <InteractiveTilt className="h-full">
-                  <div className="p-px rounded-[28px] bg-linear-to-r from-brand-primary/20 to-transparent hover:from-brand-primary/40 transition-all duration-700 shadow-lg hover:shadow-brand-primary/5 h-full">
-                    <div className="bg-(--card)/70 backdrop-blur-2xl rounded-[26px] p-6 border border-(--border)/50 hover:border-brand-primary/40 transition-all flex flex-col md:flex-row items-center gap-6 h-full relative overflow-hidden">
-                      {/* Technical Tick Mark */}
-                      <div className="absolute top-0 right-0 w-12 h-12 bg-brand-primary/5 rounded-bl-[30px] group-hover:bg-brand-primary/10 transition-colors"></div>
+                <div className="flex items-center gap-6 bg-(--card)/40 hover:bg-(--card)/60 p-4 rounded-2xl border border-transparent hover:border-red-500/20 transition-all duration-300 h-full">
+                  {/* Timeline Node */}
+                  <div className="w-3 h-3 rounded-full bg-(--background) border-2 border-(--muted-foreground) group-hover:border-red-500 shrink-0 relative z-10 hidden xl:block translate-x-[26px] mr-8"></div>
 
-                      {/* Compact Image with Frame */}
-                      <div className="relative w-full md:w-48 aspect-3/4 shrink-0 rounded-2xl overflow-hidden border border-(--border)/80 bg-black/40 shadow-inner group-hover:border-brand-primary/30 transition-all">
-                        <img
-                          src={item.image}
-                          alt={item.event}
-                          className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 group-hover/item:scale-110 transition-all duration-700 opacity-60 group-hover/item:opacity-100"
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent"></div>
+                  {/* Compact Card Content */}
+                  <div className="flex gap-5 items-center w-full">
+                    <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden border border-(--border) relative grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                      <img
+                        src={item.image}
+                        alt={item.event}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-2xl font-black text-(--foreground)/60 group-hover:text-red-500/90 transition-colors tracking-tighter leading-none">
+                          {item.time}
+                        </span>
+                        <span className="text-[10px] font-black text-red-500/80 uppercase tracking-wider bg-red-500/5 px-2 py-0.5 rounded-md border border-red-500/10">
+                          {item.result}
+                        </span>
                       </div>
-
-                      <div className="flex-1 w-full text-center md:text-left space-y-3">
-                        <div className="flex flex-col gap-2">
-                          <span className="text-4xl font-black text-brand-primary tracking-tighter leading-none drop-shadow-[0_0_10px_rgba(255,87,34,0.1)]">
-                            {item.time}
-                          </span>
-                          <div className="h-px w-full bg-linear-to-r from-brand-primary/60 to-transparent"></div>
-                        </div>
-
-                        <div>
-                          <h4 className="text-lg font-black text-(--foreground) uppercase tracking-tight mb-1.5 leading-tight">
-                            {item.event}
-                          </h4>
-                          <div className="inline-block text-[9px] font-black text-brand-primary border border-brand-primary/30 tracking-[0.3em] uppercase bg-brand-primary/10 px-4 py-1.5 rounded-lg backdrop-blur-md">
-                            {item.result}
-                          </div>
-                        </div>
-                      </div>
+                      <h4 className="text-base font-bold text-(--foreground) leading-tight truncate">
+                        {item.event}
+                      </h4>
                     </div>
                   </div>
-                </InteractiveTilt>
+                </div>
               </motion.div>
             ))}
+
+            {/* The Warning Footer */}
+            <div className="mt-2 pl-4 lg:pl-12 relative opacity-60">
+              <p className="text-[9px] uppercase tracking-wide text-(--muted-foreground) font-medium text-center xl:text-left">
+                * By 24h, conversion probability ≈ 0%.
+              </p>
+            </div>
           </div>
         </div>
       </Container>
-
-      {/* Background Decorative Element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[800px] bg-[radial-gradient(circle_at_50%_50%,rgba(255,87,34,0.03),transparent_70%)] pointer-events-none"></div>
     </Section>
   );
 };

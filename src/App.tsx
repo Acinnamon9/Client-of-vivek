@@ -10,7 +10,6 @@ const IndustrySnapshots = lazy(() => import("./components/IndustrySnapshots"));
 const ROICalculator = lazy(() => import("./components/ROICalculator"));
 const Proof = lazy(() => import("./components/Proof"));
 const FAQ = lazy(() => import("./components/FAQ"));
-const FinalCTA = lazy(() => import("./components/FinalCTA"));
 const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
@@ -49,9 +48,11 @@ function App() {
           <FAQ />
         </div>
 
+        {/* 
         <div className="relative z-80 bg-(--background)">
           <FinalCTA />
         </div>
+        */}
 
         <div className="relative z-90 bg-(--background) shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.1)]">
           <Footer />

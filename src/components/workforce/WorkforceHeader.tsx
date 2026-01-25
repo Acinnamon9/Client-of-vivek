@@ -1,0 +1,36 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+const WorkforceHeader: React.FC = () => {
+  return (
+    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center justify-center gap-4 mb-8"
+      >
+        <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-primary/40"></div>
+        <span className="text-[10px] font-black tracking-[0.5em] text-brand-primary uppercase">
+          Operational Fleet
+        </span>
+        <div className="h-px w-10 bg-linear-to-l from-transparent to-brand-primary/40"></div>
+      </motion.div>
+
+      <h2 className="text-5xl md:text-7xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9] mb-8">
+        Your 24/7 <br />
+        <span className="text-brand-primary italic">AI Salesforce</span>
+      </h2>
+
+      <p className="text-lg md:text-xl text-(--muted-foreground) leading-relaxed font-medium max-w-2xl mx-auto">
+        De-risk your growth by replacing manual overhead with{" "}
+        <span className="text-(--foreground) brightness-125">
+          precision-engineered digital agents
+        </span>{" "}
+        that never sleep, never miss a lead, and never underperform.
+      </p>
+    </div>
+  );
+};
+
+export default WorkforceHeader;

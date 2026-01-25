@@ -12,6 +12,7 @@ export interface Industry {
   metrics: IndustryMetric[];
   buttonText: string;
   image: string;
+  description: string;
 }
 
 export const UNIVERSAL_BASELINE: Industry = {
@@ -42,15 +43,16 @@ export const UNIVERSAL_BASELINE: Industry = {
     },
   ],
   buttonText: "See Universal Impact",
-  image:
-    "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Global Status.png",
+  image: "/Global Status.png",
+  description:
+    "Our core intelligence layer provides immediate efficiency across every operational node, slashing response times and standardizing quality.",
 };
 
 export const industries: Industry[] = [
   {
     id: "real-estate",
     label: "Real Estate",
-    title: "Speed-to-Lead Mastery",
+    title: "Lead Response Engine",
     tags: ["Instant <2m Response", "CRM Auto-Sync", "20 hrs saved/week"],
     metrics: [
       {
@@ -65,13 +67,14 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Real Estate.png",
+    image: "/Real Estate.png",
+    description:
+      "Agents bridge the gap between portal enquiry and viewing, qualifying buyers instantly and syncing data directly to your CRM.",
   },
   {
     id: "healthcare",
     label: "Healthcare",
-    title: "Patient Care Optimization",
+    title: "Intake Optimization",
     tags: ["Swift Scheduling", "Auto-Reminders", "Front-Desk Relief"],
     metrics: [
       {
@@ -86,13 +89,14 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Healthcare.png",
+    image: "/Healthcare.png",
+    description:
+      "AI manages the entire patient intake lifecycle, from instant slot booking to insurance verification and automated follow-ups.",
   },
   {
     id: "finance",
     label: "Financial Services",
-    title: "Seamless Application Handling",
+    title: "Verification Protocol",
     tags: ["Document Collection", "Live Transcription", "Compliance-Ready"],
     metrics: [
       {
@@ -107,13 +111,14 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Lending and Finance.png",
+    image: "/Lending and Finance.png",
+    description:
+      "Standardize complex document intake and KYC with OCR-enabled agents that guide applicants through the process in real-time.",
   },
   {
     id: "ecommerce",
     label: "E-commerce",
-    title: "High-Ticket Recovery & COD",
+    title: "Retention Operations",
     tags: ["Cart Recovery Calls", "COD Confirmation", "RTO Reduction"],
     metrics: [
       {
@@ -128,14 +133,15 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Global Status.png",
+    image: "/E-commerce.png",
+    description:
+      "Recover abandoned carts with personalized voice calls and verify COD orders instantly to eliminate RTO losses.",
   },
   {
     id: "supply-chain",
-    label: "Supply Chain & Delivery",
-    title: "Last-Mile Communication",
-    tags: ["Delivery Alerts", "Address Resolution", "Dispatch Efficiency"],
+    label: "Supply Chain",
+    title: "Dynamic Dispatch",
+    tags: ["Route Logic", "Address Accuracy", "Dispatch Yield"],
     metrics: [
       {
         value: "+10–25%",
@@ -149,14 +155,15 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Transportation and Logistics.png",
+    image: "/Supply Chain Management.png",
+    description:
+      "Optimize last-mile efficiency by resolving address conflicts and coordinating delivery windows via persistent customer loops.",
   },
   {
     id: "hospitality",
     label: "Hospitality",
-    title: "24/7 Booking Intelligence",
-    tags: ["Capture Missed Calls", "Upsell Attach", "Review Generation"],
+    title: "Inbound Capture",
+    tags: ["24/7 Concierge", "Upsell Attach", "Review Logic"],
     metrics: [
       {
         value: "+15–30%",
@@ -170,13 +177,14 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Global Status.png",
+    image: "/Hospitality.png",
+    description:
+      "Never miss a booking with a 24/7 AI concierge that handles reservations, FAQs, and local recommendations across 40+ languages.",
   },
   {
     id: "automotive",
     label: "Automotive",
-    title: "Service & Sales Continuity",
+    title: "Lifecycle Management",
     tags: ["Service Reminders", "Maintenance Sync", "Sales Follow-up"],
     metrics: [
       {
@@ -191,13 +199,14 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Global Status.png",
+    image: "/Automotive.png",
+    description:
+      "Maximize workshop yield with agents that proactively book service slots and follow-up on sales leads before they go cold.",
   },
   {
     id: "pro-services",
     label: "Professional Services",
-    title: "Inbound Lead Capture",
+    title: "High-Value Intake",
     tags: ["Lead Qualification", "Auto-Summarized", "Missed-Call Loss Zero"],
     metrics: [
       {
@@ -212,7 +221,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://vite-react-88wqhw1cu-abhijeets-projects-1922facd.vercel.app/Global Status.png",
+    image: "/Professional services.png",
+    description:
+      "Capture and score high-value leads instantly, providing summarized insights to your team to focus work on the winners.",
   },
 ];

@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavbar } from "../hooks/useNavbar";
-import { motion, AnimatePresence } from "framer-motion";
-import Button from "./ui/Button";
 import SpotlightEffect from "./ui/SpotlightEffect";
-import { cn } from "../lib/utils";
+import NavbarGlassFilter from "./navbar/NavbarGlassFilter";
+import NavbarDesktopLinks from "./navbar/NavbarDesktopLinks";
+import NavbarMobileMenu from "./navbar/NavbarMobileMenu";
 
 const Navbar: React.FC = () => {
   const {
@@ -38,56 +38,12 @@ const Navbar: React.FC = () => {
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-2">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.replace("#", "");
-              return (
-                <Button
-                  key={link.label}
-                  onClick={() => {
-                    scrollToSection(link.href);
-                    setMobileMenuOpen(false);
-                  }}
-                  variant="glass"
-                  size="lg"
-                  className={cn(
-                    "text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 transition-all",
-                    isActive
-                      ? "bg-white/10 border-white/20 text-white -translate-y-px shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] duration-0"
-                      : "border-white/5 opacity-70 hover:opacity-100 duration-300",
-                  )}
-                >
-                  <span className="relative">
-                    {link.label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="activeNav"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-primary"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </span>
-                </Button>
-              );
-            })}
-            <div className="h-6 w-px bg-(--border) mx-4"></div>
-            <Button
-              variant="glass-primary"
-              size="xl"
-              className="px-10 rounded-[20px]"
-              onClick={() =>
-                window.open("https://atomicx.ravan.ai/book", "_blank")
-              }
-            >
-              Book Demo
-            </Button>
-          </div>
+          <NavbarDesktopLinks
+            navLinks={navLinks}
+            activeSection={activeSection}
+            scrollToSection={scrollToSection}
+            setMobileMenuOpen={setMobileMenuOpen}
+          />
 
           {/* Mobile Toggle */}
           <button
@@ -120,100 +76,17 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0, marginTop: 0 }}
-              animate={{ opacity: 1, height: "auto", marginTop: 20 }}
-              exit={{ opacity: 0, height: 0, marginTop: 0 }}
-              className="md:hidden overflow-hidden relative z-10"
-            >
-              <div className="flex flex-col gap-5 pb-4 border-t border-(--border) pt-6">
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.href.replace("#", "");
-                  return (
-                    <Button
-                      key={link.label}
-                      as="a"
-                      href={link.href}
-                      variant="glass"
-                      className={cn(
-                        "w-full justify-start py-4 px-6 border-white/5",
-                        isActive &&
-                          "bg-white/10 text-brand-primary border-brand-primary/20",
-                      )}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(link.href);
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      {link.label}
-                    </Button>
-                  );
-                })}
-                <Button
-                  variant="glass-primary"
-                  size="xl"
-                  className="w-full rounded-[20px]"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    window.open("https://atomicx.ravan.ai/book", "_blank");
-                  }}
-                >
-                  Book Demo
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <NavbarMobileMenu
+          mobileMenuOpen={mobileMenuOpen}
+          navLinks={navLinks}
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+          setMobileMenuOpen={setMobileMenuOpen}
+        />
       </SpotlightEffect>
 
       {/* SVG Filter for Glass Effect */}
-      <svg
-        style={{
-          position: "absolute",
-          width: 0,
-          height: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <filter id="frosted-filter" primitiveUnits="objectBoundingBox">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.6"
-            numOctaves="3"
-            result="noise"
-          />
-          <feGaussianBlur
-            in="SourceGraphic"
-            stdDeviation="0.005"
-            result="blur"
-          />
-          <feDisplacementMap
-            in="blur"
-            in2="noise"
-            scale="0.02"
-            xChannelSelector="R"
-            yChannelSelector="G"
-          >
-            <animate
-              attributeName="scale"
-              to="0.04"
-              dur="0.3s"
-              begin="navbar-container.mouseover"
-              fill="freeze"
-            />
-            <animate
-              attributeName="scale"
-              to="0.02"
-              dur="0.3s"
-              begin="navbar-container.mouseout"
-              fill="freeze"
-            />
-          </feDisplacementMap>
-        </filter>
-      </svg>
+      <NavbarGlassFilter />
     </nav>
   );
 };
