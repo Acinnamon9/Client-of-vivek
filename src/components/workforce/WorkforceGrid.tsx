@@ -1,24 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { workforceRoles } from "../../constants/workforceData";
 import RoleCard from "./RoleCard";
 import { motion, AnimatePresence } from "framer-motion";
-import Button from "../ui/Button";
-import { cn } from "../../lib/utils";
 
 /**
  * WorkforceGrid Component
  * Displays the AI Workforce in a static, responsive grid layout.
  * Includes a "Show More" toggle to view the full fleet.
  */
-const WorkforceGrid: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+interface WorkforceGridProps {
+  isExpanded: boolean;
+}
 
+const WorkforceGrid: React.FC<WorkforceGridProps> = ({ isExpanded }) => {
   // Define how many items to show in the "collapsed" state based on viewport
-  // We'll show 4 by default as it covers the largest row size
-  const INITIAL_COUNT = 4;
+  // We'll show dynamic count based on screen width to fill exactly one row
+  const [initialCount, setInitialCount] = useState(4);
+
+  useEffect(() => {
+    const updateCount = () => {
+      const width = window.innerWidth;
+      if (width >= 1536) {
+        // 2xl: 4 cols
+        setInitialCount(4);
+      } else if (width >= 1024) {
+        // lg: 3 cols
+        setInitialCount(3);
+      } else if (width >= 768) {
+        // md: 2 cols
+        setInitialCount(2);
+      } else {
+        // default: 1 col
+        setInitialCount(1);
+      }
+    };
+
+    updateCount();
+    window.addEventListener("resize", updateCount);
+
+    // Preload all images in the background
+    workforceRoles.forEach((role) => {
+      if (role.image) {
+        const img = new Image();
+        img.src = role.image;
+      }
+    });
+
+    return () => window.removeEventListener("resize", updateCount);
+  }, []);
+
   const visibleRoles = isExpanded
     ? workforceRoles
-    : workforceRoles.slice(0, INITIAL_COUNT);
+    : workforceRoles.slice(0, initialCount);
 
   return (
     <div className="flex flex-col items-center gap-12">
@@ -42,41 +75,6 @@ const WorkforceGrid: React.FC = () => {
           ))}
         </AnimatePresence>
       </div>
-
-      <motion.div layout>
-        <Button
-          variant="glass"
-          onClick={() => {
-            if (isExpanded) {
-              document
-                .getElementById("workforce")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-            setIsExpanded(!isExpanded);
-          }}
-          className="group px-8 py-3 rounded-full border-brand-primary/20 hover:border-brand-primary/50 text-[11px] font-black tracking-[0.2em] uppercase transition-all"
-        >
-          <span className="flex items-center gap-3">
-            {isExpanded ? "Minimize Fleet" : "Expand Full Workforce"}
-            <svg
-              className={cn(
-                "w-4 h-4 transition-transform duration-500",
-                isExpanded ? "rotate-180" : "group-hover:translate-y-0.5",
-              )}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </span>
-        </Button>
-      </motion.div>
     </div>
   );
 };

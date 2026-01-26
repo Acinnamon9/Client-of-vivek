@@ -9,7 +9,10 @@ interface FooterLink {
 interface ExternalLink {
   email?: string;
   phone?: string;
-  address?: string;
+  address?: {
+    label: string;
+    href: string;
+  };
 }
 
 interface FooterNavProps {
@@ -54,18 +57,23 @@ const FooterNav: React.FC<FooterNavProps> = ({
           Company
         </h4>
         <ul className="space-y-4">
-          {companyLinks.map((link, idx) => (
-            <li key={idx}>
-              <Button
-                as="a"
-                href={link.href}
-                variant="link"
-                className="justify-start"
-              >
-                {link.label}
-              </Button>
-            </li>
-          ))}
+          {companyLinks.map((link, idx) => {
+            const isExternal = link.href.startsWith("http");
+            return (
+              <li key={idx}>
+                <Button
+                  as="a"
+                  href={link.href}
+                  variant="link"
+                  className="justify-start"
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                >
+                  {link.label}
+                </Button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -94,7 +102,18 @@ const FooterNav: React.FC<FooterNavProps> = ({
               </a>
             </li>
           )}
-          {contactInfo.address && <li>{contactInfo.address}</li>}
+          {contactInfo.address && (
+            <li>
+              <a
+                href={contactInfo.address.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-primary transition-all duration-300 no-underline"
+              >
+                {contactInfo.address.label}
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </>

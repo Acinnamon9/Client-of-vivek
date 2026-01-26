@@ -27,62 +27,67 @@ const ROICalculator: React.FC = () => {
       </div>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
-          <div className="max-w-xl text-center lg:text-left">
-            <div className="mb-6">
-              <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
-                Performance Analytics
-              </span>
-            </div>
-            <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) mb-8 leading-[1.05] tracking-tighter uppercase">
-              Project Your <br />
-              <span className="text-brand-link">Revenue Uplift</span>
-            </h2>
-            <p className="text-lg text-(--muted-foreground) leading-relaxed font-medium mb-10 max-w-lg mx-auto lg:mx-0">
-              Quantify the operational leakage in your current manual workflows.
-              Our AI eliminates response delay and maximizes every unit of
-              inbound lead traffic.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <Magnetic>
-                <Button
-                  size="xl"
-                  className="shadow-xl shadow-brand-link/20 group uppercase tracking-widest text-xs font-black"
-                  onClick={() =>
-                    window.open("https://atomicx.ravan.ai/book", "_blank")
-                  }
-                >
-                  Request Strategic Setup
-                </Button>
-              </Magnetic>
-              <span className="text-[10px] font-bold text-(--muted-foreground) uppercase tracking-widest opacity-60">
-                *Verified by Danube & Emaar
-              </span>
-            </div>
-          </div>
+        <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl overflow-hidden py-10 px-6 md:px-12">
+          {/* Glass Gradient Overlay */}
+          <div className="absolute inset-0 bg-linear-to-br from-brand-primary/5 via-transparent to-brand-primary/5 pointer-events-none" />
 
-          <InteractiveTilt>
-            <Card
-              variant="white"
-              className="p-8 sm:p-12 shadow-2xl relative overflow-hidden bg-(--card)/40 backdrop-blur-xl border border-(--border)/30"
-            >
-              <div className="space-y-12">
-                <ROISliderGroup
-                  leads={leads}
-                  setLeads={setLeads}
-                  dealValue={dealValue}
-                  setDealValue={setDealValue}
-                  closeRate={closeRate}
-                  setCloseRate={setCloseRate}
-                />
-
-                <ROIResultCard projectedRevenue={projectedRevenue} />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto relative z-10">
+            <div className="max-w-xl text-center lg:text-left">
+              <div className="mb-6">
+                <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
+                  Performance Analytics
+                </span>
               </div>
+              <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) mb-8 leading-[1.05] tracking-tighter uppercase">
+                Project Your <br />
+                <span className="text-brand-link">Revenue Uplift</span>
+              </h2>
+              <p className="text-lg text-(--muted-foreground) leading-relaxed font-medium mb-10 max-w-lg mx-auto lg:mx-0">
+                Quantify the operational leakage in your current manual
+                workflows. Our AI eliminates response delay and maximizes every
+                unit of inbound lead traffic.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                <Magnetic>
+                  <Button
+                    size="xl"
+                    className="shadow-xl shadow-brand-link/20 group uppercase tracking-widest text-xs font-black"
+                    onClick={() =>
+                      window.open("https://atomicx.ravan.ai/book", "_blank")
+                    }
+                  >
+                    Request Strategic Setup
+                  </Button>
+                </Magnetic>
+                <span className="text-[10px] font-bold text-(--muted-foreground) uppercase tracking-widest opacity-60">
+                  *Verified by Danube & Emaar
+                </span>
+              </div>
+            </div>
 
-              {/* Technical Accent */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-link/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
-            </Card>
-          </InteractiveTilt>
+            <InteractiveTilt>
+              <Card
+                variant="white"
+                className="p-8 sm:p-12 shadow-2xl relative overflow-hidden bg-(--card)/40 backdrop-blur-xl border border-(--border)/30"
+              >
+                <div className="space-y-12">
+                  <ROISliderGroup
+                    leads={leads}
+                    setLeads={setLeads}
+                    dealValue={dealValue}
+                    setDealValue={setDealValue}
+                    closeRate={closeRate}
+                    setCloseRate={setCloseRate}
+                  />
+
+                  <ROIResultCard projectedRevenue={projectedRevenue} />
+                </div>
+
+                {/* Technical Accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-link/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
+              </Card>
+            </InteractiveTilt>
+          </div>
         </div>
       </Container>
     </Section>

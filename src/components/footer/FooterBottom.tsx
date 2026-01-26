@@ -4,7 +4,7 @@ interface FooterBottomProps {
   currentYear: number;
   theme: string;
   toggleTheme: () => void;
-  socialLinks: string[];
+  socialLinks: { label: string; href: string }[];
 }
 
 /**
@@ -52,10 +52,12 @@ const FooterBottom: React.FC<FooterBottomProps> = ({
           {socialLinks.map((social, idx) => (
             <a
               key={idx}
-              href="#"
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-brand-primary font-black transition-all no-underline text-xs uppercase tracking-widest text-(--foreground)"
             >
-              {social}
+              {social.label}
             </a>
           ))}
         </div>

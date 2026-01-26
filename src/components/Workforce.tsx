@@ -18,6 +18,8 @@ const WORKFORCE_CONFIG = {
  * Presents the AI Workforce as a high-end command center.
  */
 const Workforce: React.FC = () => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
   return (
     <Section
       id="workforce"
@@ -35,15 +37,25 @@ const Workforce: React.FC = () => {
       </div>
 
       <Container className="max-w-7xl relative z-10">
-        <WorkforceHeader />
-        {WORKFORCE_CONFIG.layout === "grid" && <WorkforceGrid />}
-      </Container>
+        <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl overflow-hidden py-10 px-6 md:px-12">
+          {/* Glass Gradient Overlay */}
+          <div className="absolute inset-0 bg-linear-to-br from-brand-primary/5 via-transparent to-brand-primary/5 pointer-events-none" />
 
-      {/* Workforce Marquee: Truly Infinite Interactive Fleet */}
-      {WORKFORCE_CONFIG.layout === "marquee" && <WorkforceMarquee />}
+          <WorkforceHeader />
+          {WORKFORCE_CONFIG.layout === "grid" && (
+            <WorkforceGrid isExpanded={isExpanded} />
+          )}
 
-      <Container className="max-w-7xl relative z-10 mt-12">
-        <WorkforceCTA />
+          {/* Workforce Marquee: Truly Infinite Interactive Fleet */}
+          {WORKFORCE_CONFIG.layout === "marquee" && <WorkforceMarquee />}
+
+          <div className="mt-12">
+            <WorkforceCTA
+              isExpanded={isExpanded}
+              toggleExpanded={() => setIsExpanded(!isExpanded)}
+            />
+          </div>
+        </div>
       </Container>
 
       {/* Atmospheric Decoration */}

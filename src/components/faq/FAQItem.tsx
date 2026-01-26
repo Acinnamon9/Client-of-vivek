@@ -69,7 +69,7 @@ const FAQItem: React.FC<FAQItemProps> = React.memo(({ question, children }) => {
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-8 -mt-2">
+            <div className="px-4 pb-8">
               <div className="flex gap-4">
                 <div className="w-0.5 bg-brand-link/30 shrink-0 mt-1.5" />
                 <div className="text-[14px] leading-relaxed text-(--muted-foreground) font-medium max-w-2xl">

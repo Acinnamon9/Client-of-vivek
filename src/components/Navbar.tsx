@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden p-2 text-(--foreground) focus:outline-none bg-(--muted)/20 rounded-full"
+            className="md:hidden p-2 text-(--foreground) focus:outline-none bg-(--muted)/20 rounded-full pointer-events-auto"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <svg

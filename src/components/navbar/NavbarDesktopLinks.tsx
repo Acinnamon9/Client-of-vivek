@@ -17,7 +17,7 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
   setMobileMenuOpen,
 }) => {
   return (
-    <div className="hidden lg:flex items-center gap-2">
+    <div className="hidden lg:flex items-center gap-2 pointer-events-auto">
       {navLinks.map((link) => {
         const isActive = activeSection === link.href.replace("#", "");
         return (

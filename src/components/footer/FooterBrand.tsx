@@ -11,7 +11,7 @@ const FooterBrand: React.FC = () => {
         href="/"
         className="text-(--foreground) text-3xl font-black no-underline tracking-tighter transition-colors"
       >
-        Ravan<span className="text-brand-primary">.ai</span>
+        AtomicX
       </a>
       <p className="leading-relaxed text-base font-medium max-w-xs transition-colors">
         Building the world's first truly autonomous AI sales workforce. Scale

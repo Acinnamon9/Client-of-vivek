@@ -10,7 +10,7 @@ const ProofHeader: React.FC = () => {
     <div className="text-center mb-0">
       <Badge
         variant="secondary"
-        className="uppercase tracking-[0.3em] font-black text-[10px] mb-6"
+        className="uppercase tracking-[0.3em] font-black text-[10px] mb-6 border-brand-link text-brand-link bg-brand-link/5"
       >
         Evidence Archive
       </Badge>
