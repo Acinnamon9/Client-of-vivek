@@ -28,28 +28,19 @@ const HeroPhone: React.FC = () => {
   } = useCallLogic();
 
   return (
-    <div className="relative flex items-center justify-center min-h-[500px] lg:min-h-0 lg:-ml-24 xl:-ml-32">
-      {/* Mobile-only blue bg overlay */}
-      <div className="lg:hidden absolute inset-0 -mx-6 bg-linear-to-br from-brand-link/20 via-brand-primary/10 to-brand-ocean/20 rounded-3xl overflow-hidden z-0 backdrop-blur-sm border border-white/5"></div>
-
+    <div className="relative flex items-center justify-center min-h-[450px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-0 md:-ml-12 lg:-ml-24 xl:-ml-32">
       {/* Phone Interface */}
       <motion.div
         initial={{ opacity: 0, y: 40, rotateY: -10 }}
         animate={{
           opacity: 1,
           rotateY: 0,
-          y: [0, -15, 0],
         }}
         transition={{
           opacity: { duration: 0.8, delay: 0.3 },
           rotateY: { duration: 0.8, delay: 0.3 },
-          y: {
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
         }}
-        className="relative z-10 py-12 lg:py-0"
+        className="relative z-10 py-8 sm:py-10 md:py-12 lg:py-0 lg:animate-[phone-float_4s_ease-in-out_infinite]"
       >
         <PhoneFrame currentTime={currentTime}>
           <div className="mb-6 text-center">

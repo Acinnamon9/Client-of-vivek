@@ -23,11 +23,11 @@ const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({
       {mobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0, marginTop: 0 }}
-          animate={{ opacity: 1, height: "auto", marginTop: 20 }}
+          animate={{ opacity: 1, height: "auto", marginTop: 16 }}
           exit={{ opacity: 0, height: 0, marginTop: 0 }}
-          className="md:hidden overflow-hidden relative z-10"
+          className="lg:hidden overflow-hidden relative z-10"
         >
-          <div className="flex flex-col gap-5 pb-4 border-t border-(--border) pt-6">
+          <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 pb-3 sm:pb-4 border-t border-(--border) pt-4 sm:pt-5 md:pt-6">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace("#", "");
               return (
@@ -37,7 +37,7 @@ const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({
                   href={link.href}
                   variant="glass"
                   className={cn(
-                    "w-full justify-start py-4 px-6 border-white/5",
+                    "w-full justify-start py-3 sm:py-3.5 md:py-4 px-4 sm:px-5 md:px-6 border-white/5 text-sm sm:text-base",
                     isActive &&
                       "bg-(--foreground)/5 text-brand-primary border-brand-primary/20",
                   )}
@@ -53,8 +53,8 @@ const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({
             })}
             <Button
               variant="glass-primary"
-              size="xl"
-              className="w-full rounded-[20px]"
+              size="lg"
+              className="w-full rounded-2xl sm:rounded-[20px] py-3 sm:py-3.5 md:py-4 text-sm sm:text-base"
               onClick={() => {
                 setMobileMenuOpen(false);
                 window.open("https://atomicx.ravan.ai/book", "_blank");

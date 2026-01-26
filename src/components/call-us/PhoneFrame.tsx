@@ -15,7 +15,7 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({
 }) => {
   return (
     <div
-      className="relative z-10 w-full max-w-[360px] aspect-[9/19] h-auto rounded-[48px] transition-all duration-700 hover:scale-[1.02] mx-auto shadow-[0px_40px_80px_-20px_rgba(0,0,0,0.1)] dark:shadow-[0px_40px_80px_-20px_rgba(0,0,0,0.3)]"
+      className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] aspect-9/19 h-auto rounded-[36px] sm:rounded-[42px] md:rounded-[48px] transition-all duration-700 hover:scale-[1.02] mx-auto shadow-[0px_30px_60px_-15px_rgba(0,0,0,0.1)] sm:shadow-[0px_35px_70px_-18px_rgba(0,0,0,0.1)] md:shadow-[0px_40px_80px_-20px_rgba(0,0,0,0.1)] dark:shadow-[0px_30px_60px_-15px_rgba(0,0,0,0.3)] dark:sm:shadow-[0px_35px_70px_-18px_rgba(0,0,0,0.3)] dark:md:shadow-[0px_40px_80px_-20px_rgba(0,0,0,0.3)]"
       style={{ transformStyle: "preserve-3d" }}
     >
       {isElectric && <ElectricOverlay />}
@@ -24,14 +24,14 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({
         Inner Digital Screen:
         - Houses the actual application content.
       */}
-      <div className="relative z-10 w-full h-full bg-(--background)/20 rounded-[48px] overflow-hidden flex flex-col isolate backdrop-blur-xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),inset_0_0_15px_rgba(255,255,255,0.05)]">
+      <div className="relative z-10 w-full h-full bg-(--background)/20 rounded-[36px] sm:rounded-[42px] md:rounded-[48px] overflow-hidden flex flex-col isolate backdrop-blur-xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),inset_0_0_15px_rgba(255,255,255,0.05)]">
         {/* Gloss Reflection: Adds a subtle glass-like shine from the top light source */}
         <div className="absolute inset-0 bg-linear-to-b from-white/30 dark:from-white/10 via-transparent to-transparent pointer-events-none z-20 opacity-50 dark:opacity-20"></div>
 
         <StatusBar currentTime={currentTime} />
 
         {/* App Content: The main area where children components (Form, Success, etc.) are rendered */}
-        <div className="relative z-10 flex-1 flex flex-col px-6 pt-8 pb-8 overflow-y-auto no-scrollbar">
+        <div className="relative z-10 flex-1 flex flex-col px-4 sm:px-5 md:px-6 pt-6 sm:pt-7 md:pt-8 pb-6 sm:pb-7 md:pb-8 overflow-y-auto no-scrollbar">
           {children}
         </div>
 

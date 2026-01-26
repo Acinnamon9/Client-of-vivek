@@ -15,7 +15,10 @@ const HeroBadge: React.FC = () => {
   }, []);
 
   return (
-    <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
+    <motion.div
+      variants={itemVariants}
+      className="mb-4 sm:mb-5 md:mb-6 lg:mb-8"
+    >
       <a
         href="https://atomicx.ravan.ai/book"
         target="_blank"
@@ -25,7 +28,7 @@ const HeroBadge: React.FC = () => {
         <Badge
           variant="glass"
           size="md"
-          className="pl-3 pr-5 py-2 flex items-center gap-3 overflow-hidden backdrop-blur-xl border-white/10 shadow-lg group-hover:border-white/30 transition-colors"
+          className="pl-2.5 sm:pl-3 pr-4 sm:pr-5 py-1.5 sm:py-2 flex items-center gap-2 sm:gap-3 overflow-hidden backdrop-blur-xl border-white/10 shadow-lg group-hover:border-white/30 transition-colors"
         >
           <div className="relative flex items-center justify-center">
             <span className="w-2 h-2 bg-brand-orange rounded-full shrink-0"></span>
