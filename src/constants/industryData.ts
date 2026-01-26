@@ -43,7 +43,8 @@ export const UNIVERSAL_BASELINE: Industry = {
     },
   ],
   buttonText: "See Universal Impact",
-  image: "/Global Status.png",
+  image:
+    "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Global Status.png",
   description:
     "Our core intelligence layer provides immediate efficiency across every operational node, slashing response times and standardizing quality.",
 };
@@ -67,7 +68,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Real Estate.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Real Estate.png",
     description:
       "Agents bridge the gap between portal enquiry and viewing, qualifying buyers instantly and syncing data directly to your CRM.",
   },
@@ -89,7 +91,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Healthcare.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Healthcare.png",
     description:
       "AI manages the entire patient intake lifecycle, from instant slot booking to insurance verification and automated follow-ups.",
   },
@@ -111,7 +114,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Lending and Finance.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Lending and Finance.png",
     description:
       "Standardize complex document intake and KYC with OCR-enabled agents that guide applicants through the process in real-time.",
   },
@@ -133,7 +137,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/E-commerce.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/E-commerce.png",
     description:
       "Recover abandoned carts with personalized voice calls and verify COD orders instantly to eliminate RTO losses.",
   },
@@ -155,7 +160,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Supply Chain Management.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Supply Chain Management.png",
     description:
       "Optimize last-mile efficiency by resolving address conflicts and coordinating delivery windows via persistent customer loops.",
   },
@@ -177,7 +183,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Hospitality.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Hospitality.png",
     description:
       "Never miss a booking with a 24/7 AI concierge that handles reservations, FAQs, and local recommendations across 40+ languages.",
   },
@@ -199,7 +206,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Automotive.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Automotive.png",
     description:
       "Maximize workshop yield with agents that proactively book service slots and follow-up on sales leads before they go cold.",
   },
@@ -221,7 +229,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "/Professional services.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/Professional services.png",
     description:
       "Capture and score high-value leads instantly, providing summarized insights to your team to focus work on the winners.",
   },
