@@ -20,7 +20,7 @@ const FooterBottom: React.FC<FooterBottomProps> = ({
   return (
     <div className="pt-10 border-t border-(--border) flex flex-col md:flex-row justify-between items-center gap-6">
       <p className="font-bold opacity-60 font-['Plus_Jakarta_Sans',sans-serif] tracking-tight">
-        &copy; {currentYear} Ravan.ai. Built for Global Dominance.
+        &copy; {currentYear} AtomicX. Built for Global Dominance.
       </p>
 
       <div className="flex items-center gap-8">

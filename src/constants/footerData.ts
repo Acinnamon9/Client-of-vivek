@@ -1,8 +1,8 @@
 export const footerPlatformLinks = [
-  { label: "Features", href: "#features" },
-  { label: "AI Influencer", href: "#ai-influencer" },
-  { label: "AI Sales Rep", href: "#ai-sales-rep" },
-  { label: "Integrations", href: "#integrations" },
+  { label: "Features", href: "#workforce" },
+  { label: "AI Influencer", href: "#workforce" },
+  { label: "AI Sales Rep", href: "#workforce" },
+  { label: "Integrations", href: "#industry" },
 ];
 
 export const footerCompanyLinks = [

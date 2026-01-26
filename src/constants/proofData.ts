@@ -67,7 +67,7 @@ export const caseStudies: ProofCaseStudy[] = [
     challenge:
       "Lead volume was overwhelming SDRs, resulting in missed opportunities and inconsistent follow-ups.",
     solution:
-      "Implemented a rigoros qualification AI that verified intent and budget, ensuring the team only spoke to serious investors.",
+      "Implemented a rigorous qualification AI that verified intent and budget, ensuring the team only spoke to serious investors.",
     testimonial:
       "Quality is our obsession. Ravan.ai filtered out the noise and delivered us pure gold.",
     author: "PNC Menon",

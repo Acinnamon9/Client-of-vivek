@@ -8,6 +8,7 @@ import LayoutToggle from "./components/ui/LayoutToggle";
 const Workforce = lazy(() => import("./components/Workforce"));
 const IndustrySnapshots = lazy(() => import("./components/IndustrySnapshots"));
 const ROICalculator = lazy(() => import("./components/ROICalculator"));
+const Philosophy = lazy(() => import("./components/Philosophy"));
 const Proof = lazy(() => import("./components/Proof"));
 const FAQ = lazy(() => import("./components/FAQ"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -41,6 +42,10 @@ function App() {
 
         <div className="relative z-50 bg-transparent">
           <ROICalculator />
+        </div>
+
+        <div className="relative z-55 bg-transparent">
+          <Philosophy />
         </div>
 
         <div className="relative z-60 bg-transparent">
