@@ -55,9 +55,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ showTrustedBy = true }) => {
           </div>
 
           <div className="relative w-full overflow-hidden">
-            {/* Edge Fades */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-linear-to-r from-[rgba(255,255,255,0.05)] to-transparent z-10 pointer-events-none dark:from-[rgba(0,0,0,0.2)]"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-linear-to-l from-[rgba(255,255,255,0.05)] to-transparent z-10 pointer-events-none dark:from-[rgba(0,0,0,0.2)]"></div>
+            {/* Infinite Horizontal Scroller */}
 
             <motion.div
               className="flex gap-12 sm:gap-16 items-center whitespace-nowrap"
