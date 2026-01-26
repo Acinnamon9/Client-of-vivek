@@ -12,7 +12,7 @@ const Proof: React.FC = () => {
   return (
     <Section
       id="proof"
-      className="font-jakarta py-24 md:py-32 overflow-hidden bg-(--background) border-y border-(--border)/30"
+      className="font-jakarta py-24 md:py-32 overflow-hidden bg-transparent border-y border-(--border)/30"
     >
       <Container>
         <ProofHeader />

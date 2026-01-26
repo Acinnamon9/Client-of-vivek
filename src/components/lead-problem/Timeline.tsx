@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { timelineEvents } from "../../constants/leadProblemData";
 import { Section, Container } from "../ui/Layout";
 import InteractiveTilt from "../ui/InteractiveTilt";
+import BackgroundDecor from "./BackgroundDecor";
 
 /**
  * Timeline Component
@@ -19,13 +20,9 @@ const Timeline: React.FC = () => {
   return (
     <Section
       id="lead-problem-timeline"
-      className="bg-(--background) py-20 md:py-28 relative overflow-hidden"
+      className="bg-transparent py-20 md:py-28 relative overflow-hidden"
     >
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(ellipse_at_top,rgba(0,194,255,0.1),transparent_70%)] opacity-60"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(circle_at_bottom_right,rgba(255,87,34,0.05),transparent_70%)]"></div>
-      </div>
+      <BackgroundDecor />
 
       <Container className="max-w-[1400px] relative z-10 px-6">
         {/* Header: Clinical Audit Style - Balanced */}

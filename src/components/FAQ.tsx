@@ -13,7 +13,7 @@ const FAQ: React.FC = () => {
     faqCategories.find((cat) => cat.id === activeTab) || faqCategories[0];
 
   return (
-    <Section id="faq" className="font-jakarta py-24 md:py-32">
+    <Section id="faq" className="font-jakarta py-24 md:py-32 bg-transparent">
       <Container>
         <FAQHeader />
 

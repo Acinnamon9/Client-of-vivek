@@ -20,7 +20,10 @@ const Footer: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <footer className="bg-(--background) border-t border-(--border) pt-24 pb-12 px-5 text-(--muted-foreground) text-sm">
+    <footer
+      data-theme="dark"
+      className="bg-brand-depth border-t border-(--border) pt-24 pb-12 px-5 text-(--muted-foreground) text-sm"
+    >
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-16 mb-20">
           <FooterBrand />

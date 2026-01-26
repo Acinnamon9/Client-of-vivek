@@ -46,8 +46,8 @@ export const NeuralNetwork: React.FC<NeuralNetworkProps> = ({
       <motion.div
         className="absolute -translate-x-1/2 -translate-y-1/2 w-[80vw] h-auto z-10 pointer-events-none"
         style={{ left: x, top: y, rotate }}
-        animate={{ scale: [1, 1.02, 1] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ scale: [1, 1.008, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
         <img
           src={brainImage}

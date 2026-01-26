@@ -21,7 +21,7 @@ const Workforce: React.FC = () => {
   return (
     <Section
       id="workforce"
-      className="font-jakarta bg-(--background) py-16 sm:py-20 relative overflow-hidden"
+      className="font-jakarta bg-transparent py-16 sm:py-20 relative overflow-hidden"
     >
       {/* Precision Grid Background */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">

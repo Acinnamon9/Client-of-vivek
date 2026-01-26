@@ -18,7 +18,7 @@ const ROICalculator: React.FC = () => {
   return (
     <Section
       id="roi"
-      className="bg-(--background) overflow-hidden relative py-24 md:py-32"
+      className="bg-transparent overflow-hidden relative py-24 md:py-32"
     >
       {/* Background Decor - Theme Consistent */}
       <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">

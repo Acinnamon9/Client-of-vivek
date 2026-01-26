@@ -15,7 +15,7 @@ const IndustrySnapshots: React.FC = () => {
   return (
     <Section
       id="industry"
-      className="font-jakarta py-16 md:py-20 overflow-hidden"
+      className="font-jakarta py-16 md:py-20 overflow-hidden bg-transparent"
     >
       <Container>
         <IndustryHeader />

@@ -22,7 +22,7 @@ function App() {
       <LayoutToggle />
 
       {/* Hero: No sticky, it's the base */}
-      <div className="relative z-0">
+      <div className="relative z-10">
         <Hero />
       </div>
 

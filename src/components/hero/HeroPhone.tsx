@@ -35,15 +35,27 @@ const HeroPhone: React.FC = () => {
       {/* Phone Interface */}
       <motion.div
         initial={{ opacity: 0, y: 40, rotateY: -10 }}
-        animate={{ opacity: 1, y: 0, rotateY: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+        animate={{
+          opacity: 1,
+          rotateY: 0,
+          y: [0, -15, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.8, delay: 0.3 },
+          rotateY: { duration: 0.8, delay: 0.3 },
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
         className="relative z-10 py-12 lg:py-0"
       >
         <PhoneFrame currentTime={currentTime}>
           <div className="mb-6 text-center">
             {!isCalling && (
               <>
-                <SpotlightEffect className="w-14 h-14 bg-brand-primary/5 dark:bg-white/5 rounded-2xl mx-auto flex items-center justify-center mb-3 border border-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),inset_0_0_15px_rgba(255,255,255,0.02)] backdrop-blur-md">
+                <SpotlightEffect className="w-14 h-14 bg-brand-orange/5 dark:bg-white/5 rounded-2xl mx-auto flex items-center justify-center mb-3 border border-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),inset_0_0_15px_rgba(255,255,255,0.02)] backdrop-blur-md">
                   <svg
                     width="22"
                     height="22"
@@ -53,7 +65,7 @@ const HeroPhone: React.FC = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-brand-primary relative z-10 drop-shadow-[0_0_10px_rgba(0,194,255,0.3)]"
+                    className="text-brand-orange relative z-10 drop-shadow-[0_0_10px_rgba(249,115,22,0.3)]"
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>

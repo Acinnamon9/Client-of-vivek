@@ -21,6 +21,8 @@ const buttonVariants = cva(
           "bg-(--foreground)/5 backdrop-blur-md border border-(--foreground)/10 text-(--foreground) hover:bg-(--foreground)/10",
         "glass-primary":
           "bg-brand-primary/20 backdrop-blur-xl text-white border border-brand-primary/30 shadow-2xl shadow-brand-primary/20 hover:bg-brand-primary/30 hover:border-brand-primary/40",
+        "glass-orange":
+          "bg-brand-orange/20 backdrop-blur-xl text-white border border-brand-orange/30 shadow-2xl shadow-brand-orange/20 hover:bg-brand-orange/30 hover:border-brand-orange/40",
       },
       size: {
         sm: "px-4 py-2 text-sm rounded-lg",

@@ -10,7 +10,7 @@ const FinalCTA: React.FC = () => {
   };
 
   return (
-    <Section className="font-jakarta bg-(--background)" id="section-final-cta">
+    <Section className="font-jakarta bg-transparent" id="section-final-cta">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.08)_0%,transparent_40%),radial-gradient(circle_at_80%_80%,rgba(37,99,235,0.05)_0%,transparent_40%)]" />

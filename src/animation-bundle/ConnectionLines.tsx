@@ -143,7 +143,9 @@ export const ConnectionLines: React.FC<ConnectionLinesProps> = ({
           {/* Animated pulse traveling along the line */}
           <circle
             r="3.5"
-            fill="var(--color-connection-pulse)"
+            fill="none"
+            stroke="var(--color-brand-orange)"
+            strokeWidth="1.5"
             style={{
               filter: "url(#glow)",
               opacity: 0.9,

@@ -38,6 +38,11 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({
         {/* Home Indicator: The thin pill-shaped bar at the bottom of modern smartphones */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-(--foreground)/20 rounded-full z-30"></div>
       </div>
+
+      {/* Side Buttons (Physical Accents) */}
+      <div className="absolute left-[-2px] top-24 w-[2px] h-12 bg-brand-orange/40 rounded-l shadow-[inset_-1px_0_1px_rgba(255,255,255,0.1)]"></div>
+      <div className="absolute left-[-2px] top-40 w-[2px] h-12 bg-brand-orange/40 rounded-l shadow-[inset_-1px_0_1px_rgba(255,255,255,0.1)]"></div>
+      <div className="absolute right-[-2px] top-32 w-[2px] h-16 bg-brand-orange/40 rounded-r shadow-[inset_1px_0_1px_rgba(255,255,255,0.1)]"></div>
     </div>
   );
 };
