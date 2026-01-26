@@ -142,7 +142,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Content Strategist",
     replaces: "Marketing Team",
     replacesValue: "$6k/mo",
-    image: "/assets/Content Strategist.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Content Strategist.png",
     features: [
       "Plans content calendars end-to-end",
       "Analyzes trends & competitors",
@@ -172,7 +173,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Lead Nurturer",
     replaces: "Email + WhatsApp Rep",
     replacesValue: "$5k/mo",
-    image: "/assets/Lead Nurturer.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Lead Nurturer.png",
     features: [
       "Runs multi-step follow-up sequences",
       "Warms cold & semi-warm leads",
@@ -200,7 +202,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Appointment Setter",
     replaces: "Admin + SDR",
     replacesValue: "$8k/mo",
-    image: "/assets/Sales representative.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Sales representative.png",
     features: [
       "Confirms, reschedules & follows up",
       "Reduces no-shows automatically",
@@ -231,7 +234,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Funnel Optimizer",
     replaces: "CRO Specialist",
     replacesValue: "$10k/mo",
-    image: "/assets/AB tester.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/AB tester.png",
     features: [
       "Analyzes drop-offs across funnel",
       "Suggests copy & flow improvements",
@@ -259,7 +263,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Community Manager",
     replaces: "Social Manager",
     replacesValue: "$4k/mo",
-    image: "/assets/Customer service.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Customer service.png",
     features: [
       "Replies to comments & DMs instantly",
       "Moderates spam & negativity",
@@ -290,7 +295,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Onboarding Specialist",
     replaces: "Customer Success Rep",
     replacesValue: "$6k/mo",
-    image: "/assets/Onboarding specialist.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Onboarding specialist.png",
     features: [
       "Guides new users step-by-step",
       "Explains features contextually",
@@ -320,7 +326,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Knowledge Base Builder",
     replaces: "Technical Writer",
     replacesValue: "$5k/mo",
-    image: "/assets/Content Strategist.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Content Strategist.png",
     features: [
       "Auto-creates FAQs from conversations",
       "Keeps docs updated in real time",
@@ -349,7 +356,8 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Outbound Prospector",
     replaces: "Cold Outreach Team",
     replacesValue: "$12k/mo",
-    image: "/assets/Lead Nurturer.png",
+    image:
+      "https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app/assets/Lead Nurturer.png",
     features: [
       "Finds & enriches leads",
       "Personalizes cold emails & messages",
