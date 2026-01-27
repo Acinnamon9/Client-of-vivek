@@ -27,7 +27,7 @@ const NeuralNetworkCanvas: React.FC<NeuralNetworkProps> = ({
         let height = canvas.height;
 
         // Density configuration
-        const PARTICLE_DENSITY = 0.0001; // Particles per pixel squared
+        const PARTICLE_DENSITY = 0.00025; // Particles per pixel squared
         const CONNECTION_DISTANCE = 150;
         const MOUSE_RADIUS = 200;
 
@@ -76,7 +76,7 @@ const NeuralNetworkCanvas: React.FC<NeuralNetworkProps> = ({
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = dotColor;
-                ctx.globalAlpha = 0.6;
+                ctx.globalAlpha = 0.7;
                 ctx.fill();
             }
         }

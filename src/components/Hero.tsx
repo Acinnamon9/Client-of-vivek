@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Section, Container } from "./ui/Layout";
 import { containerVariants, itemVariants } from "../animations";
 import { heroBadgeLines } from "../constants/heroData";
@@ -20,6 +20,15 @@ const HERO_CONFIG = {
 
 const Hero: React.FC = () => {
     const [badgeIndex, setBadgeIndex] = useState(0);
+    const containerRef = useRef<HTMLElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"],
+    });
+
+    const headlineOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+    const headlineY = useTransform(scrollYProgress, [0, 0.4], [0, -40]);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -30,6 +39,7 @@ const Hero: React.FC = () => {
 
     return (
         <Section
+            ref={containerRef}
             id="hero"
             className="bg-linear-to-t from-(--muted) to-(--background) min-h-screen pt-32 sm:pt-48 lg:pt-64 flex items-center relative overflow-hidden"
         >
@@ -81,6 +91,7 @@ const Hero: React.FC = () => {
 
                     <motion.h1
                         variants={itemVariants}
+                        style={{ opacity: headlineOpacity, y: headlineY }}
                         className="text-6xl sm:text-7xl md:text-8xl font-black leading-[1.05] text-(--foreground) mb-12 tracking-tighter max-w-5xl"
                     >
                         <Typewriter
