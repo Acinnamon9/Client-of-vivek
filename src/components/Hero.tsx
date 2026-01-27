@@ -1,93 +1,168 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Section, Container } from "./ui/Layout";
-import { containerVariants } from "../animations";
-import { NeuralNetwork } from "../animation-bundle/NeuralNetwork";
-import { ConnectionLines } from "../animation-bundle/ConnectionLines";
-import HeroBadge from "./hero/HeroBadge";
-import HeroContent from "./hero/HeroContent";
-import HeroPhone from "./hero/HeroPhone";
-import { useIsMobile } from "../hooks/useIsMobile";
+import { containerVariants, itemVariants } from "../animations";
+import { heroBadgeLines } from "../constants/heroData";
+import NeuralNetworkCanvas from "./ui/NeuralNetworkCanvas";
+import Typewriter from "./ui/Typewriter";
+import Button from "./ui/Button";
+import Tooltip from "./ui/Tooltip";
+import { heroBenefits } from "../constants/heroData";
+import { ArrowRight } from "lucide-react";
 
 /**
  * FEATURE TOGGLES
  */
 const HERO_CONFIG = {
-  showBadge: true,
-  showTrustedBy: true,
+    showBadge: true,
+    showBenefits: true,
 };
 
 const Hero: React.FC = () => {
-  const isMobile = useIsMobile();
+    const [badgeIndex, setBadgeIndex] = useState(0);
 
-  return (
-    <Section
-      id="hero"
-      className="bg-(--background) min-h-dvh flex items-center relative overflow-hidden p-0 z-10"
-    >
-      {/* Background Lines - Dynamic Focal Point for Mobile vs Desktop */}
-      <div className="hidden lg:block absolute left-0 top-[15%] md:top-[18%] lg:top-[19%] w-full h-[70%] md:h-[65%] lg:h-[62%] z-0 pointer-events-none opacity-40 md:opacity-50 lg:opacity-70 dark:opacity-50 dark:md:opacity-60">
-        <div className="w-full h-full">
-          <ConnectionLines focalPointX={0.8} focalPointY={0.5} />
-        </div>
-      </div>
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setBadgeIndex((prev) => (prev + 1) % heroBadgeLines.length);
+        }, 4000);
+        return () => clearInterval(timer);
+    }, []);
 
-      {/* Outer Brain (Adaptive) - Desktop Only */}
-      <div
-        className="hidden lg:block absolute inset-0 pointer-events-none z-1"
-        style={{
-          clipPath: "none",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            clipPath:
-              "polygon(0 0, 55% 0, 55% 7.5%, 100% 7.5%, 100% 92.5%, 55% 92.5%, 55% 100%, 0 100%)",
-          }}
+    return (
+        <Section
+            id="hero"
+            className="bg-linear-to-t from-(--muted) to-(--background) min-h-screen pt-32 sm:pt-48 lg:pt-64 flex items-center relative overflow-hidden"
         >
-          <NeuralNetwork x="77.5%" y="80%" rotate={10} variant="adaptive" />
-        </div>
-      </div>
+            {/* Neural Network Decoration (Canvas) */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <NeuralNetworkCanvas
+                    dotColor="#00c2ff"
+                    lineColor="#00c2ff"
+                    className="w-full h-full opacity-40 dark:opacity-20"
+                />
+            </div>
 
-      {/* Right-side Decorative Backdrop (Pure Orange Impact) / Mobile: Bottom Glow */}
-      <div className="absolute right-0 bottom-0 md:bottom-0 lg:top-1/2 lg:-translate-y-1/2 h-[45vh] md:h-[50vh] lg:h-[85%] w-full md:w-[60%] lg:w-[45%] bg-linear-to-t lg:bg-linear-to-br from-brand-orange via-[#ea580c] to-[#c2410c] md:rounded-l-[60px] lg:rounded-l-[100px] z-1 shadow-[0_0_80px_rgba(249,115,22,0.25)] md:shadow-[0_0_100px_rgba(249,115,22,0.3)] lg:shadow-[0_0_120px_rgba(249,115,22,0.35)] border-t md:border-l lg:border-l md:border-t-0 lg:border-t-0 border-white/20 overflow-hidden lg:block">
-        {/* Inner Brain - Synchronized with Outer Brain scale/position */}
-        <div className="hidden lg:block absolute inset-0">
-          {/* This container matches the section height (100/85 = 117.647%) and padding (7.5/85 = 8.823%) */}
-          <div className="absolute right-0 top-[-8.823%] w-screen h-[117.647%]">
-            <NeuralNetwork x="77.5%" y="80%" rotate={10} variant="white" />
-          </div>
-        </div>
-      </div>
+            {/* Background Decor */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary/3 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-link/2 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
 
-      <Container className="relative z-20 w-full max-w-full lg:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
-        {/* Split Layout Grid - Optimized for Mobile Flow (Shifted Upwards) */}
-        <div className="grid lg:grid-cols-[55%_45%] gap-8 sm:gap-10 md:gap-12 lg:gap-0 items-start lg:items-center min-h-dvh py-20 sm:py-24 md:py-28 lg:py-0">
-          {/* Left Column: Text Content */}
-          <motion.div
-            variants={containerVariants}
-            initial={isMobile ? "visible" : "hidden"}
-            animate="visible"
-            className="text-center lg:text-left flex flex-col items-center lg:items-start md:pr-2 lg:pr-4 md:-ml-8 lg:-ml-16 pt-8 sm:pt-12 md:pt-16 lg:pt-0"
-          >
-            {HERO_CONFIG.showBadge && <HeroBadge />}
-            <HeroContent showTrustedBy={HERO_CONFIG.showTrustedBy} />
-          </motion.div>
+            <Container className="relative z-10 w-full max-w-full lg:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+                <motion.div
+                    className="max-w-4xl mx-auto text-center flex flex-col items-center"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    {/* Dynamic Badge */}
+                    {HERO_CONFIG.showBadge && (
+                        <motion.div
+                            variants={itemVariants}
+                            className="mb-10 w-full max-w-md"
+                        >
+                            <div className="bg-(--card) px-6 py-3 rounded-full border border-brand-primary/20 shadow-xl shadow-brand-primary/5 flex items-center gap-4 overflow-hidden relative">
+                                <span className="w-2.5 h-2.5 bg-brand-primary rounded-full animate-pulse shrink-0"></span>
+                                <div className="relative h-5 flex-1 text-left">
+                                    <AnimatePresence mode="wait">
+                                        <motion.span
+                                            key={badgeIndex}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -20 }}
+                                            transition={{ duration: 0.6, ease: "anticipate" }}
+                                            className="absolute inset-0 text-[11px] sm:text-xs font-black text-brand-primary uppercase tracking-widest whitespace-nowrap"
+                                        >
+                                            {heroBadgeLines[badgeIndex]}
+                                        </motion.span>
+                                    </AnimatePresence>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
-          {/* Right Column: Phone Interface */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="pb-6 sm:pb-8 md:pb-10 lg:pb-0"
-          >
-            <HeroPhone />
-          </motion.div>
-        </div>
-      </Container>
-    </Section>
-  );
+                    <motion.h1
+                        variants={itemVariants}
+                        className="text-6xl sm:text-7xl md:text-8xl font-black leading-[1.05] text-(--foreground) mb-12 tracking-tighter max-w-5xl"
+                    >
+                        <Typewriter
+                            delay={0.6}
+                            segments={[
+                                { text: "Full AI " },
+                                {
+                                    text: "Sales & Marketing",
+                                    className:
+                                        "bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent",
+                                },
+                                { text: " Team" },
+                            ]}
+                            cursorColor="#00c2ff"
+                        />
+                    </motion.h1>
+
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-xl sm:text-2xl md:text-3xl text-(--muted-foreground) leading-relaxed mb-16 max-w-4xl font-medium tracking-tight"
+                    >
+                        Hundreds of qualified appointments every month —{" "}
+                        <span className="text-(--foreground) font-semibold italic">
+                            while you sleep.
+                        </span>
+                    </motion.p>
+
+                    {/* CTAs */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex flex-col sm:flex-row justify-center gap-6 mb-16 w-full sm:w-auto"
+                    >
+                        <Button
+                            variant="glass-primary"
+                            size="xl"
+                            className="px-12"
+                            onClick={() =>
+                                window.open("https://atomicx.ravan.ai/book", "_blank")
+                            }
+                        >
+                            Book Demo
+                        </Button>
+                        <Tooltip content="Try our AI bot from within this page">
+                            <Button
+                                as="a"
+                                href="#demo"
+                                variant="glass"
+                                size="xl"
+                                className="px-12"
+                            >
+                                Try Now
+                            </Button>
+                        </Tooltip>
+                    </motion.div>
+
+                    {/* Benefits List */}
+                    {HERO_CONFIG.showBenefits && (
+                        <motion.div variants={itemVariants} className="max-w-2xl">
+                            <div className="flex flex-col items-center gap-4">
+                                {heroBenefits.map((benefit, idx) => (
+                                    <motion.a
+                                        key={idx}
+                                        href={benefit.href}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="inline-flex items-center gap-4 px-8 py-4 bg-white/5 backdrop-blur-2xl border border-white/10 transition-all shadow-[inset_0_0_30px_rgba(0,0,0,0.15),inset_0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.3)] group cursor-pointer text-left no-underline rounded-2xl"
+                                    >
+                                        <span className="w-10 h-10 rounded-xl bg-linear-to-br from-brand-primary/20 to-brand-primary/5 text-brand-primary flex items-center justify-center border border-brand-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform shrink-0">
+                                            <ArrowRight size={18} strokeWidth={3} />
+                                        </span>
+                                        <span className="text-(--foreground) font-bold text-base sm:text-lg whitespace-nowrap">
+                                            {benefit.label}
+                                        </span>
+                                    </motion.a>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </motion.div>
+            </Container>
+        </Section>
+    );
 };
 
 export default Hero;

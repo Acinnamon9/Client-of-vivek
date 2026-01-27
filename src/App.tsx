@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import PhoneSection from "./components/PhoneSection";
 import Timeline from "./components/lead-problem/Timeline";
 import LayoutToggle from "./components/ui/LayoutToggle";
 
@@ -25,6 +26,11 @@ function App() {
       {/* Hero: No sticky, it's the base */}
       <div className="relative z-10">
         <Hero />
+      </div>
+
+      {/* Phone Section: Relocated from Hero */}
+      <div className="relative z-15 bg-transparent">
+        <PhoneSection />
       </div>
 
       <div className="relative z-22 bg-transparent">
