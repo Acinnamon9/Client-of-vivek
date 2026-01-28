@@ -3,6 +3,7 @@ import { Section, Container } from "./ui/Layout";
 import { motion } from "framer-motion";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
+import AdaptationLayer from "./approach/AdaptationLayer";
 
 const Approach: React.FC = () => {
   return (
@@ -27,58 +28,91 @@ const Approach: React.FC = () => {
               Core Philosophy
             </Badge>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-(--foreground) tracking-tighter mb-8 leading-[1.1]">
-              We Tailor the Solution to{" "}
-              <span className="text-brand-primary">You</span>.
+              We Adapt AI to{" "}
+              <span className="text-brand-primary">Your Business</span>.
               <br />
               <span className="opacity-40">Not the Other Way Around.</span>
             </h2>
-            <div className="space-y-6 text-lg md:text-xl text-(--muted-foreground) font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              {/* <p>
-                AI agents are powerful, but they're not always perfect.
-                Sometimes they need guidance, oversight, and that human touch.
-              </p> */}
+            <div className="space-y-8 text-lg md:text-xl text-(--muted-foreground) font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
               <p className="text-(--foreground)">
-                <strong className="text-brand-primary">AtomicX</strong> provides
-                an <strong>extra layer of service</strong> that ensures{" "}
-                <strong className="text-brand-primary">
-                  you're well cared for
-                </strong>
-                —guaranteeing <strong>last-mile delivery</strong> of your AI
-                agents. We're the{" "}
-                <strong className="text-brand-primary">
-                  final human layer
-                </strong>{" "}
-                your clients need, <strong>bridging the gap</strong> between
-                automation and excellence.
+                Most AI platforms ship rigid workflows and expect your team to
+                adjust.
+                <strong className="text-brand-primary"> AtomicX</strong> sits
+                between the AI and your business — making sure the system bends,
+                not you.
+              </p>
+
+              <div className="space-y-4">
+                <p className="text-sm uppercase tracking-widest text-brand-primary font-bold opacity-80">
+                  We handle setup, integration, and last-mile execution:
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Work with your CRM, not around it",
+                    "Speak in your brand’s voice",
+                    "Escalate intelligently when automation isn’t enough",
+                  ].map((item, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * i }}
+                      className="flex items-center gap-3 text-(--foreground)"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-primary shadow-[0_0_10px_rgba(var(--brand-primary-rgb),0.5)]" />
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="text-base italic opacity-70 border-l-2 border-brand-primary/30 pl-4">
+                When something breaks, underperforms, or needs tuning — that’s
+                our responsibility.
               </p>
             </div>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                variant="glass-primary"
-                size="lg"
-                onClick={() =>
-                  window.open("https://atomicx.ravan.ai/book", "_blank")
-                }
-                className="w-full md:w-auto px-6 md:px-8 py-4 font-black tracking-wider md:tracking-widest rounded-2xl text-[10px] md:text-xs whitespace-normal md:whitespace-nowrap"
-              >
-                <span className="flex items-center gap-2">
-                  START YOUR ADAPTATION
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
+            <div className="mt-10 flex flex-col gap-4 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button
+                  variant="glass-primary"
+                  size="lg"
+                  onClick={() =>
+                    window.open("https://atomicx.ravan.ai/book", "_blank")
+                  }
+                  className="w-full md:w-auto px-6 md:px-8 py-4 font-black tracking-wider md:tracking-widest rounded-2xl text-[10px] md:text-xs whitespace-normal md:whitespace-nowrap"
+                >
+                  <span className="flex items-center gap-2">
+                    START YOUR ADAPTATION
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </span>
+                </Button>
+              </div>
+              {/* Micro-proof badge */}
+              <div className="flex flex-wrap items-center gap-3 text-xs text-(--muted-foreground) justify-center lg:justify-start">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
+                  Live in 72 hours
                 </span>
-              </Button>
+                <span className="opacity-30">·</span>
+                <span>Works with any CRM</span>
+                <span className="opacity-30">·</span>
+                <span className="text-brand-primary font-medium">
+                  Human-in-the-loop
+                </span>
+              </div>
             </div>
           </motion.div>
 
@@ -90,31 +124,7 @@ const Approach: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-1 w-full max-w-md lg:max-w-full"
           >
-            <div className="relative aspect-square rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex items-center justify-center p-12">
-              <div className="absolute inset-0 bg-linear-to-br from-brand-primary/10 via-transparent to-brand-depth/20" />
-
-              {/* Central Hub */}
-              <div className="relative z-10 w-32 h-32 rounded-2xl bg-(--card) border border-white/10 flex items-center justify-center">
-                <div className="text-4xl font-black text-(--foreground)">
-                  YOU
-                </div>
-
-                {/* Orbiting Elements */}
-                <div className="absolute inset-0 -m-12 border border-dashed border-white/20 rounded-full animate-[spin_10s_linear_infinite]" />
-                <div className="absolute inset-0 -m-24 border border-dashed border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-
-                {/* Satellites */}
-                <div className="absolute top-1/2 left-1/2 -translate-y-1/2 translate-x-20 w-12 h-12 bg-brand-primary/20 backdrop-blur-md rounded-xl border border-brand-primary/40 flex items-center justify-center text-xs font-bold text-brand-primary animate-pulse">
-                  AI
-                </div>
-                <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-32 w-12 h-12 bg-brand-link/20 backdrop-blur-md rounded-xl border border-brand-link/40 flex items-center justify-center text-xs font-bold text-brand-link animate-pulse delay-75">
-                  CRM
-                </div>
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-16 w-12 h-12 bg-brand-success/20 backdrop-blur-md rounded-xl border border-brand-success/40 flex items-center justify-center text-xs font-bold text-brand-success animate-pulse delay-150">
-                  VOICE
-                </div>
-              </div>
-            </div>
+            <AdaptationLayer />
           </motion.div>
         </div>
       </Container>

@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
         id="navbar-container"
         spotlightSize={250}
         spotlightColor="rgba(255, 255, 255, 0.20)"
-        className={`max-w-360 mx-auto transition-all duration-500 pointer-events-auto ${
+        className={`max-w-[1400px] mx-auto transition-all duration-500 pointer-events-auto ${
           isScrolled
             ? "glass-navbar-frosted rounded-2xl sm:rounded-3xl px-4 sm:px-6 md:px-8 lg:px-12 py-3 sm:py-3.5 md:py-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_20px_40px_rgba(0,0,0,0.1)]"
             : "bg-transparent border border-transparent px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3"

@@ -1,106 +1,166 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Section, Container } from "./ui/Layout";
 import HeroPhone from "./hero/HeroPhone";
+import { PhoneForwarded, MessageSquare, Zap } from "lucide-react";
+import { cn } from "../lib/utils";
+
+const DEMO_STEPS = [
+  {
+    id: "voice",
+    label: "Instant Website Conversations",
+    description:
+      "AI speech-to-speech bot that engages visitors and converts leads 24/7",
+    icon: <MessageSquare className="w-6 h-6" />,
+    color: "text-brand-orange",
+    bg: "bg-brand-orange/10",
+    border: "border-brand-orange/20",
+  },
+  {
+    id: "calling",
+    label: "Always-On Lead Calling",
+    description:
+      "AI phone caller that handles calls, books appointments, and follows up",
+    icon: <PhoneForwarded className="w-6 h-6" />,
+    color: "text-brand-primary",
+    bg: "bg-brand-primary/10",
+    border: "border-brand-primary/20",
+  },
+  {
+    id: "automation",
+    label: "Zero-Latency Follow-Up",
+    description:
+      "Custom AI workflows and automated business processes to scale your operations effortlessly",
+    icon: <Zap className="w-6 h-6" />,
+    color: "text-brand-success",
+    bg: "bg-brand-success/10",
+    border: "border-brand-success/20",
+  },
+];
 
 const InteractiveDemo: React.FC = () => {
-    return (
-        <Section id="demo" className="bg-transparent py-24 relative overflow-hidden">
-            <Container className="relative z-10">
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % DEMO_STEPS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <Section
+      id="demo"
+      className="bg-transparent py-24 relative overflow-hidden"
+    >
+      <Container className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-brand-orange uppercase bg-brand-orange/10 rounded-full border border-brand-orange/20">
+            Interactive Demo
+          </span>
+          <h2 className="text-4xl md:text-6xl font-black text-(--foreground) tracking-tighter mb-6">
+            The Systems That Stop <br className="hidden md:block" />
+            <span className="text-brand-orange">Leads From Dying</span>
+          </h2>
+          <p className="text-xl text-(--muted-foreground) max-w-3xl mx-auto font-medium leading-relaxed">
+            Replace the chaos of missed calls and slow follow-ups with instant,
+            always-on infrastructure.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="space-y-6">
+            {DEMO_STEPS.map((step, index) => {
+              const isActive = activeStep === index;
+              return (
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
+                  key={step.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  onClick={() => setActiveStep(index)}
+                  className={cn(
+                    "group p-8 rounded-3xl border backdrop-blur-xl transition-all duration-500 cursor-pointer relative overflow-hidden",
+                    isActive
+                      ? "bg-white/8 border-white/20 shadow-2xl scale-[1.02]"
+                      : "bg-white/5 border-white/10 hover:bg-white/8",
+                  )}
                 >
-                    <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-brand-orange uppercase bg-brand-orange/10 rounded-full border border-brand-orange/20">
-                        Interactive Demo
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-black text-(--foreground) tracking-tighter mb-6">
-                        Experience Our <span className="text-brand-orange">AI Solutions</span>
-                    </h2>
-                    <p className="text-xl text-(--muted-foreground) max-w-3xl mx-auto font-medium leading-relaxed">
-                        Try live demos of our AI solutions and see how they can transform your business instantly.
-                    </p>
+                  {/* Active Indicator Line */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-indicator"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-brand-orange"
+                    />
+                  )}
+
+                  <div className="flex items-start gap-6">
+                    <div
+                      className={cn(
+                        "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border transition-all duration-500",
+                        isActive
+                          ? "bg-brand-orange text-white border-brand-orange shadow-[0_0_20px_rgba(249,115,22,0.4)]"
+                          : cn(
+                              step.bg,
+                              step.border,
+                              step.color,
+                              "group-hover:scale-110",
+                            ),
+                      )}
+                    >
+                      {step.icon}
+                    </div>
+                    <div>
+                      <h3
+                        className={cn(
+                          "text-2xl font-bold mb-2 transition-colors duration-300",
+                          isActive ? "text-white" : "text-(--foreground)",
+                        )}
+                      >
+                        {step.label}
+                      </h3>
+                      <p
+                        className={cn(
+                          "text-lg leading-relaxed transition-colors duration-300",
+                          isActive
+                            ? "text-white/80"
+                            : "text-(--muted-foreground)",
+                        )}
+                      >
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
+              );
+            })}
+          </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    <div className="space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="group p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/[0.08] transition-all duration-300 shadow-2xl shadow-black/20"
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20 group-hover:scale-110 transition-transform duration-300">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-orange">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-(--foreground) mb-3">AI Website Voice Widget</h3>
-                                    <p className="text-(--muted-foreground) text-lg leading-relaxed">
-                                        AI speech-to-speech bot that engages visitors and converts leads 24/7
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
-                            className="group p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/[0.08] transition-all duration-300 shadow-2xl shadow-black/20"
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20 group-hover:scale-110 transition-transform duration-300">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-orange">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-(--foreground) mb-3">AI Calling</h3>
-                                    <p className="text-(--muted-foreground) text-lg leading-relaxed">
-                                        AI phone caller that handles calls, books appointments, and follows up
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                            className="group p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/[0.08] transition-all duration-300 shadow-2xl shadow-black/20"
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20 group-hover:scale-110 transition-transform duration-300">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-orange">
-                                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-(--foreground) mb-3">AI Automation</h3>
-                                    <p className="text-(--muted-foreground) text-lg leading-relaxed">
-                                        Custom AI workflows and automated business processes to scale your operations effortlessly
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    <div className="w-full flex justify-center lg:justify-end">
-                        <HeroPhone />
-                    </div>
-                </div>
-            </Container>
-        </Section>
-    );
+          <div className="w-full flex justify-center lg:justify-end relative">
+            {/* Dynamic Glow effect behind phone */}
+            <div
+              className={cn(
+                "absolute inset-0 blur-[100px] rounded-full opacity-30 animate-pulse transition-colors duration-1000",
+                activeStep === 0
+                  ? "bg-brand-orange/40"
+                  : activeStep === 1
+                    ? "bg-brand-primary/40"
+                    : "bg-brand-success/40",
+              )}
+            />
+            <HeroPhone />
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
 };
 
 export default InteractiveDemo;

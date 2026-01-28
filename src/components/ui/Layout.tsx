@@ -30,7 +30,7 @@ const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 }) => {
   return (
     <div
-      className={cn("max-w-[1200px] mx-auto relative z-10", className)}
+      className={cn("max-w-[1400px] mx-auto relative z-10 px-6", className)}
       {...props}
     />
   );

@@ -5,6 +5,7 @@ import InteractiveDemo from "./components/InteractiveDemo";
 import JourneyTimeline from "./components/journey/Timeline";
 import LayoutToggle from "./components/ui/LayoutToggle";
 import InteractiveBackground from "./components/ui/InteractiveBackground";
+import OnboardingTimeline from "./components/OnboardingTimeline";
 
 // Lazy load non-critical sections
 const AITeam = lazy(() => import("./components/AITeam"));
@@ -26,6 +27,12 @@ const PAGE_SECTIONS = [
   { id: "journey", Component: JourneyTimeline, zIndex: 22, isLazy: false },
   { id: "ai-team", Component: AITeam, zIndex: 30, isLazy: true },
 
+  {
+    id: "onboarding",
+    Component: OnboardingTimeline,
+    zIndex: 35,
+    isLazy: false,
+  },
   { id: "demo", Component: InteractiveDemo, zIndex: 15, isLazy: false },
   { id: "approach", Component: Approach, zIndex: 55, isLazy: true },
 
