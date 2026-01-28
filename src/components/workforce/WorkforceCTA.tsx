@@ -71,7 +71,7 @@ const WorkforceCTA: React.FC<WorkforceCTAProps> = ({
             onClick={() => {
               if (isExpanded) {
                 document
-                  .getElementById("workforce")
+                  .getElementById("ai-team")
                   ?.scrollIntoView({ behavior: "smooth", block: "start" });
               }
               toggleExpanded();

@@ -1,125 +1,122 @@
 /**
  * @file journeyData.ts
- * @description Constants and interfaces for the multi-narrative Journey section.
+ * @description Constants and interfaces for the 4-card multi-narrative Journey section.
  */
 
-export interface NarrativeStep {
-    label: string; // e.g. "01 / SITUATION"
-    time?: string; // Optional time marker
-    event: string;
-    result: string;
-    type: "won" | "lost";
+export interface NarrativeCard {
+    title: string;
+    description: string;
     image: string;
+    metric?: string;
+    type: "won" | "lost";
+    isFeatured?: boolean;
 }
 
 export interface Narrative {
     id: string;
     tabLabel: string;
-    title: string;
-    subtitle: string;
-    metricLabel: string;
-    metricValue: string;
-    heroImage: string;
-    steps: NarrativeStep[];
+    cards: NarrativeCard[];
 }
 
 export const JOURNEY_NARRATIVES: Narrative[] = [
     {
         id: "desire-decay",
         tabLabel: "⏱ Lead Goes Cold",
-        title: "The Decay of Desire",
-        subtitle: "Interest is perishable. Every second without response rewrites the buyer's intent.",
-        metricLabel: "Optimal Outcome",
-        metricValue: "< 5s",
-        heroImage: "/assets/Lead submits form.jpg",
-        steps: [
+        cards: [
             {
-                label: "01 / PEAK",
-                time: "3 min",
-                event: "Peak Interest Window",
-                result: "Your SDR hasn't seen it yet",
-                type: "lost",
+                title: "INSTANT RESPONSE",
+                description: "Capture interest at the absolute peak of intent. AtomicX ensures every lead is met with immediate engagement.",
+                image: "/assets/Lead submits form.jpg",
+                metric: "< 5s",
+                type: "won",
+                isFeatured: true,
+            },
+            {
+                title: "PEAK WINDOW",
+                description: "The golden window closes. Slow response kills conversions—your SDR hasn't seen the notification yet.",
                 image: "/assets/Peak Interest Window.jpg",
+                metric: "3 min",
+                type: "lost",
             },
             {
-                label: "02 / SPOILAGE",
-                time: "1 hour",
-                event: "Lead Goes Cold",
-                result: "21x less likely to convert",
-                type: "lost",
+                title: "LEAD SPOILAGE",
+                description: "Intent begins to evaporate. You are now 21x less likely to convert this expensive, hard-won lead.",
                 image: "/assets/Lead Goes Cold.jpg",
+                metric: "1 hour",
+                type: "lost",
             },
             {
-                label: "03 / FAILURE",
-                time: "24 hours",
-                event: "First Contact Attempt",
-                result: "Already bought from competitor",
-                type: "lost",
+                title: "TOTAL LOSS",
+                description: "The lead has already purchased from a competitor. Your acquisition cost is now a pure loss.",
                 image: "/assets/First Contact Attempt.jpg",
+                metric: "24 hours",
+                type: "lost",
             },
         ],
     },
     {
         id: "human-bottleneck",
         tabLabel: "🧠 Human Bottleneck",
-        title: "The Hidden Bottleneck",
-        subtitle: "Leads don't die because companies don't care. They die because humans forget, hesitate, or misplace them.",
-        metricLabel: "Operational Impact",
-        metricValue: "42%",
-        heroImage: "/assets/Sales representative.png",
-        steps: [
+        cards: [
             {
-                label: "01 / HESITATION",
-                event: "Rep Freezes",
-                result: "Unsure of the right pitch",
+                title: "THE SILENT KILLER",
+                description: "Shockingly, 70% of inbound leads never get called. You're paying for traffic you never attempt to close.",
+                image: "/assets/Sales representative.png",
+                metric: "70%",
                 type: "lost",
+                isFeatured: true,
+            },
+            {
+                title: "REP HESITATION",
+                description: "Humans don't follow up consistently. Junior reps freeze or overthink the pitch, losing the lead.",
                 image: "/assets/Guy.png",
+                type: "lost",
             },
             {
-                label: "02 / OVERSIGHT",
-                event: "The 'Later' List",
-                result: "Lead buried in inbox",
-                type: "lost",
+                title: "FOLLOW-UP DECAY",
+                description: "The effort disappears fast. Statistics show follow-up attempts drop off a cliff after day 2.",
                 image: "/assets/Lead Nurturer.png",
+                metric: "Day 2",
+                type: "lost",
             },
             {
-                label: "03 / SILENCE",
-                event: "Broken Follow-up",
-                result: "No single owner identified",
-                type: "lost",
+                title: "QUALIFICATION WASTE",
+                description: "Sales teams waste 40% of their time on bad-fit leads instead of focusing on high-intent buyers.",
                 image: "/assets/Woman.png",
+                metric: "40%",
+                type: "lost",
             },
         ],
     },
     {
         id: "trust-erosion",
         tabLabel: "🔁 Trust Erosion",
-        title: "The Friction Trap",
-        subtitle: "Every handoff degrades trust. Every repeated question feels like incompetence to the caller.",
-        metricLabel: "Trust Integrity",
-        metricValue: "-60%",
-        heroImage: "/assets/Customer service.png",
-        steps: [
+        cards: [
             {
-                label: "01 / REPETITION",
-                event: "The Repeat Question",
-                result: "Caller explains problem again",
-                type: "lost",
-                image: "/assets/Receptionist.png",
-            },
-            {
-                label: "02 / FRAGMENTATION",
-                event: "Broken Context",
-                result: "Rep has zero shared history",
-                type: "lost",
-                image: "/assets/Onboarding specialist.png",
-            },
-            {
-                label: "03 / ABANDONMENT",
-                event: "Friction Exit",
-                result: "Caller feels unsafe buying",
-                type: "lost",
+                title: "TRUST INTEGRITY",
+                description: "Every handoff degrades trust. Fragmented experiences make leads feel like a number, not a customer.",
                 image: "/assets/Customer service.png",
+                metric: "-60%",
+                type: "lost",
+                isFeatured: true,
+            },
+            {
+                title: "REPETITION",
+                description: "The caller has to explain their problem for the third time. Trust evaporates with every repeat question.",
+                image: "/assets/Receptionist.png",
+                type: "lost",
+            },
+            {
+                title: "FRAGMENTATION",
+                description: "Reps have zero shared history or context. The brand feels disconnected and unprofessional.",
+                image: "/assets/Onboarding specialist.png",
+                type: "lost",
+            },
+            {
+                title: "FRICTION EXIT",
+                description: "The buyer feels unsafe and abandons the journey due to perceived negligence and friction.",
+                image: "/assets/Customer service.png",
+                type: "lost",
             },
         ],
     },

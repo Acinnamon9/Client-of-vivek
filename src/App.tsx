@@ -24,11 +24,13 @@ const PAGE_SECTIONS = [
   { id: "hero", Component: Hero, zIndex: 10, isLazy: false },
 
   { id: "journey", Component: JourneyTimeline, zIndex: 22, isLazy: false },
-  { id: "demo", Component: InteractiveDemo, zIndex: 15, isLazy: false },
   { id: "ai-team", Component: AITeam, zIndex: 30, isLazy: true },
+
+  { id: "demo", Component: InteractiveDemo, zIndex: 15, isLazy: false },
+  { id: "approach", Component: Approach, zIndex: 55, isLazy: true },
+
   { id: "solutions", Component: IndustrySolutions, zIndex: 40, isLazy: true },
   { id: "roi", Component: ROICalculator, zIndex: 50, isLazy: true },
-  { id: "approach", Component: Approach, zIndex: 55, isLazy: true },
   { id: "social-proof", Component: SocialProof, zIndex: 60, isLazy: true },
   { id: "faq", Component: FAQ, zIndex: 70, isLazy: true },
   { id: "footer", Component: Footer, zIndex: 90, isLazy: true },

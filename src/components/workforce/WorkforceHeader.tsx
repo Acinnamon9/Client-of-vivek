@@ -19,18 +19,18 @@ const WorkforceHeader: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <div className="flex-1 text-left">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9]">
-            Your 24/7 <br />
-            <span className="text-brand-primary italic">AI Salesforce</span>
+            The New <br />
+            <span className="text-brand-primary italic">Digital Workforce</span>
           </h2>
         </div>
 
         <div className="flex-1 md:max-w-lg text-left md:text-right">
           <p className="text-lg md:text-xl text-(--muted-foreground) leading-relaxed font-medium">
-            De-risk your growth by replacing manual overhead with{" "}
+            Translate manual overhead into definitive outcomes. Deploy specialized{" "}
             <span className="text-(--foreground) brightness-125">
-              precision-engineered digital agents
+              AI agents engineered to replace bottlenecked roles
             </span>{" "}
-            that never sleep, never miss a lead, and never underperform.
+            with 100% availability, instant speed, and massive volume.
           </p>
         </div>
       </div>

@@ -5,13 +5,13 @@ import { Section, Container } from "../ui/Layout";
 import BackgroundDecor from "./BackgroundDecor";
 import JourneyHeader from "./JourneyHeader";
 import JourneyTabs from "./JourneyTabs";
-import NarrativeHeroCard from "./JourneyOptimalCard";
-import NarrativeDetailList from "./JourneyDegradationList";
+import NarrativeStepCard from "./NarrativeStepCard";
 
 /**
  * JourneyTimeline Component
  * A modularized, high-end visual audit of revenue leaks.
  * Supports multiple narratives: Time Decay, Human Bottleneck, and Trust Erosion.
+ * Layout: Numbered 4-card horizontal grid for sequential storytelling.
  */
 const JourneyTimeline: React.FC = () => {
   const [activeNarrativeId, setActiveNarrativeId] = useState(JOURNEY_NARRATIVES[0].id);
@@ -35,14 +35,15 @@ const JourneyTimeline: React.FC = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeNarrativeId}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="grid grid-cols-1 xl:grid-cols-12 gap-8 lg:gap-12 relative items-stretch"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch"
           >
-            <NarrativeHeroCard narrative={activeNarrative} />
-            <NarrativeDetailList steps={activeNarrative.steps} />
+            {activeNarrative.cards.map((card, idx) => (
+              <NarrativeStepCard key={idx} card={card} index={idx} />
+            ))}
           </motion.div>
         </AnimatePresence>
       </Container>
