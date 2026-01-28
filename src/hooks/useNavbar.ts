@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useWidgetContext } from "../contexts/WidgetContext";
 
 export const navLinks = [
-  { label: "Test Drive", href: "#hero" },
-  { label: "Platform", href: "#workforce" },
-  { label: "Solutions", href: "#industry" },
-  { label: "Proof", href: "#proof" },
+  { label: "Test Drive", href: "#demo" },
+  { label: "Platform", href: "#ai-team" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "Proof", href: "#social-proof" },
   { label: "FAQ", href: "#faq" },
 ];
 

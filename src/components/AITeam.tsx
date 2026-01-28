@@ -17,12 +17,12 @@ const WORKFORCE_CONFIG = {
  * Workforce Component
  * Presents the AI Workforce as a high-end command center.
  */
-const Workforce: React.FC = () => {
+const AITeam: React.FC = () => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
     <Section
-      id="workforce"
+      id="ai-team"
       className="font-jakarta bg-transparent py-16 sm:py-20 relative overflow-hidden"
     >
       {/* Precision Grid Background */}
@@ -64,4 +64,4 @@ const Workforce: React.FC = () => {
   );
 };
 
-export default Workforce;
+export default AITeam;

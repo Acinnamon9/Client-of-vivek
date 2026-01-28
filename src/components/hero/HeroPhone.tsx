@@ -40,7 +40,7 @@ const HeroPhone: React.FC = () => {
           opacity: { duration: 0.8, delay: 0.3 },
           rotateY: { duration: 0.8, delay: 0.3 },
         }}
-        className="relative z-10 py-8 sm:py-10 md:py-12 lg:py-0 lg:animate-[phone-float_4s_ease-in-out_infinite]"
+        className="relative z-10 py-8 sm:py-10 md:py-12 lg:py-0"
       >
         <PhoneFrame currentTime={currentTime}>
           <div className="mb-6 text-center">

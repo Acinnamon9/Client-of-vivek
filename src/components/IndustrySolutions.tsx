@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "./ui/Button";
 import { cn } from "../lib/utils";
 
-const IndustrySnapshots: React.FC = () => {
+const IndustrySolutions: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hoveredIndustry, setHoveredIndustry] = useState<Industry | null>(null);
 
@@ -32,7 +32,7 @@ const IndustrySnapshots: React.FC = () => {
 
   return (
     <Section
-      id="industry"
+      id="solutions"
       className="font-jakarta py-16 md:py-20 overflow-hidden bg-transparent"
     >
       <Container>
@@ -144,7 +144,7 @@ const IndustrySnapshots: React.FC = () => {
                 onClick={() => {
                   if (isExpanded) {
                     document
-                      .getElementById("industry")
+                      .getElementById("solutions")
                       ?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }
                   setIsExpanded(!isExpanded);
@@ -187,4 +187,4 @@ const IndustrySnapshots: React.FC = () => {
   );
 };
 
-export default IndustrySnapshots;
+export default IndustrySolutions;

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Section, Container } from "./ui/Layout";
 import HeroPhone from "./hero/HeroPhone";
 
-const PhoneSection: React.FC = () => {
+const InteractiveDemo: React.FC = () => {
     return (
         <Section id="demo" className="bg-transparent py-24 relative overflow-hidden">
             <Container className="relative z-10">
@@ -103,4 +103,4 @@ const PhoneSection: React.FC = () => {
     );
 };
 
-export default PhoneSection;
+export default InteractiveDemo;

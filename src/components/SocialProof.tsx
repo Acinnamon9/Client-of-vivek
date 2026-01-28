@@ -5,13 +5,13 @@ import ProofHeader from "./proof/ProofHeader";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
 
-const Proof: React.FC = () => {
+const SocialProof: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeStudy = caseStudies[activeIndex];
 
   return (
     <Section
-      id="proof"
+      id="social-proof"
       className="font-jakarta py-24 md:py-32 overflow-hidden bg-transparent border-y border-(--border)/30"
     >
       <Container>
@@ -209,4 +209,4 @@ const Proof: React.FC = () => {
   );
 };
 
-export default Proof;
+export default SocialProof;

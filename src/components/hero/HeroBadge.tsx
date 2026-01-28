@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { heroBadgeLines } from "../../constants/heroData";
 import { itemVariants } from "../../animations";
-import Badge from "../ui/Badge";
 
 const HeroBadge: React.FC = () => {
   const [badgeIndex, setBadgeIndex] = useState(0);
@@ -17,40 +16,25 @@ const HeroBadge: React.FC = () => {
   return (
     <motion.div
       variants={itemVariants}
-      className="mb-4 sm:mb-5 md:mb-6 lg:mb-8"
+      className="mb-10 w-full max-w-md"
     >
-      <a
-        href="https://atomicx.ravan.ai/book"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block group focus:outline-none"
-      >
-        <Badge
-          variant="glass"
-          size="md"
-          className="pl-2.5 sm:pl-3 pr-4 sm:pr-5 py-1.5 sm:py-2 flex items-center gap-2 sm:gap-3 overflow-hidden backdrop-blur-xl border-white/10 shadow-lg group-hover:border-white/30 transition-colors"
-        >
-          <div className="relative flex items-center justify-center">
-            <span className="w-2 h-2 bg-brand-orange rounded-full shrink-0"></span>
-            <span className="absolute w-2 h-2 bg-brand-orange rounded-full animate-ping opacity-75"></span>
-          </div>
-
-          <div className="flex-1 text-left py-0.5">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={badgeIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="text-[10px] sm:text-[11px] font-bold text-(--foreground)/80 uppercase tracking-[0.2em] whitespace-nowrap"
-              >
-                {heroBadgeLines[badgeIndex]}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </Badge>
-      </a>
+      <div className="bg-(--card) px-6 py-3 rounded-full border border-brand-primary/20 shadow-xl shadow-brand-primary/5 flex items-center gap-4 overflow-hidden relative">
+        <span className="w-2.5 h-2.5 bg-brand-primary rounded-full animate-pulse shrink-0"></span>
+        <div className="relative h-5 flex-1 text-left">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={badgeIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: "anticipate" }}
+              className="absolute inset-0 text-[11px] sm:text-xs font-black text-brand-primary uppercase tracking-widest whitespace-nowrap"
+            >
+              {heroBadgeLines[badgeIndex]}
+            </motion.span>
+          </AnimatePresence>
+        </div>
+      </div>
     </motion.div>
   );
 };

@@ -1,16 +1,16 @@
 import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import PhoneSection from "./components/PhoneSection";
-import Timeline from "./components/lead-problem/Timeline";
+import InteractiveDemo from "./components/InteractiveDemo";
+import JourneyTimeline from "./components/journey/Timeline";
 import LayoutToggle from "./components/ui/LayoutToggle";
 
 // Lazy load non-critical sections
-const Workforce = lazy(() => import("./components/Workforce"));
-const IndustrySnapshots = lazy(() => import("./components/IndustrySnapshots"));
+const AITeam = lazy(() => import("./components/AITeam"));
+const IndustrySolutions = lazy(() => import("./components/IndustrySolutions"));
 const ROICalculator = lazy(() => import("./components/ROICalculator"));
-const Philosophy = lazy(() => import("./components/Philosophy"));
-const Proof = lazy(() => import("./components/Proof"));
+const Approach = lazy(() => import("./components/Approach"));
+const SocialProof = lazy(() => import("./components/SocialProof"));
 const FAQ = lazy(() => import("./components/FAQ"));
 const Footer = lazy(() => import("./components/Footer"));
 
@@ -30,20 +30,20 @@ function App() {
 
       {/* Phone Section: Relocated from Hero */}
       <div className="relative z-15 bg-transparent">
-        <PhoneSection />
+        <InteractiveDemo />
       </div>
 
       <div className="relative z-22 bg-transparent">
-        <Timeline />
+        <JourneyTimeline />
       </div>
 
       <Suspense fallback={<div className="h-screen bg-transparent" />}>
         <div className="relative z-30 bg-transparent">
-          <Workforce />
+          <AITeam />
         </div>
 
         <div className="relative z-40 bg-transparent">
-          <IndustrySnapshots />
+          <IndustrySolutions />
         </div>
 
         <div className="relative z-50 bg-transparent">
@@ -51,11 +51,11 @@ function App() {
         </div>
 
         <div className="relative z-55 bg-transparent">
-          <Philosophy />
+          <Approach />
         </div>
 
         <div className="relative z-60 bg-transparent">
-          <Proof />
+          <SocialProof />
         </div>
 
         <div className="relative z-70 bg-transparent">

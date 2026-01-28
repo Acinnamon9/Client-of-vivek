@@ -13,13 +13,13 @@ import BackgroundDecor from "./BackgroundDecor";
  * 2. "Degradation Pipeline" (Bottom) - showing the decay of value over time.
  * Layout: Balanced Compact + Square Images
  */
-const Timeline: React.FC = () => {
+const JourneyTimeline: React.FC = () => {
   const heroEvent = timelineEvents[0];
   const lossEvents = timelineEvents.slice(1);
 
   return (
     <Section
-      id="lead-problem-timeline"
+      id="journey-timeline"
       className="bg-transparent py-20 md:py-28 relative overflow-hidden"
     >
       <BackgroundDecor />
@@ -172,4 +172,4 @@ const Timeline: React.FC = () => {
   );
 };
 
-export default Timeline;
+export default JourneyTimeline;

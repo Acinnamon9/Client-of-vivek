@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
 
-const Philosophy: React.FC = () => {
+const Approach: React.FC = () => {
   return (
     <Section
-      id="philosophy"
+      id="approach"
       className="py-24 md:py-32 relative overflow-hidden bg-transparent"
     >
       <Container className="relative z-10">
@@ -122,4 +122,4 @@ const Philosophy: React.FC = () => {
   );
 };
 
-export default Philosophy;
+export default Approach;
