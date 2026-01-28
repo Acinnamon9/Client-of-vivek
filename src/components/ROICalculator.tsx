@@ -8,9 +8,9 @@ import ROISliderGroup from "./roi/ROISliderGroup";
 import ROIResultCard from "./roi/ROIResultCard";
 
 const ROICalculator: React.FC = () => {
-  const [leads, setLeads] = useState(10);
-  const [dealValue, setDealValue] = useState(500);
-  const [closeRate, setCloseRate] = useState(1);
+  const [leads, setLeads] = useState(300);
+  const [dealValue, setDealValue] = useState(1000);
+  const [closeRate, setCloseRate] = useState(7);
 
   const currentRevenue = leads * (closeRate / 100) * dealValue;
   const projectedRevenue = currentRevenue * 0.3;
